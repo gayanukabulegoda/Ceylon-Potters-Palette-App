@@ -8,7 +8,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
-public class SupplierAddPopUpFormController {
+public class CustomerAddPopUpFormController {
 
     @FXML
     private Pane AddBtnPane;
@@ -41,10 +41,10 @@ public class SupplierAddPopUpFormController {
     private TextField txtContactNo;
 
     @FXML
-    private TextField txtSupplierEmail;
+    private TextField txtCustomerEmail;
 
     @FXML
-    private TextField txtSupplierName;
+    private TextField txtCustomerName;
 
     @FXML
     void btnAddOnAction(ActionEvent event) {

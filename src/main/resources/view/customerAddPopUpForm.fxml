@@ -10,15 +10,15 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="490.0" prefWidth="627.0" style="-fx-background-radius: 12; -fx-background-color: white;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.grb.ceylonPottersPalette.controller.SupplierAddPopUpFormController">
+<AnchorPane prefHeight="490.0" prefWidth="627.0" style="-fx-background-radius: 12; -fx-background-color: white;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.grb.ceylonPottersPalette.controller.CustomerAddPopUpFormController">
    <children>
       <ImageView fitHeight="64.0" fitWidth="64.0" layoutX="48.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../assests/img/supplierAddPopUpImg.png" />
+            <Image url="@../assests/img/customerAddPopUpImg.png" />
          </image>
       </ImageView>
       <Line endX="541.0931396484375" endY="-7.62939453125E-6" layoutX="44.0" layoutY="128.0" stroke="#ae7c5a" strokeLineCap="ROUND" />
-      <Label layoutX="132.0" layoutY="67.0" text="Add Supplier">
+      <Label layoutX="132.0" layoutY="67.0" text="Add Customer">
          <font>
             <Font name="System Bold" size="21.0" />
          </font>
@@ -52,7 +52,7 @@
       </Pane>
       <JFXButton fx:id="btnCancel" layoutX="48.0" layoutY="391.0" onAction="#btnCancelOnAction" prefHeight="54.0" prefWidth="259.0" style="-fx-background-radius: 12;" text=" " />
       <JFXButton fx:id="btnAdd" layoutX="320.0" layoutY="391.0" onAction="#btnAddOnAction" prefHeight="54.0" prefWidth="259.0" style="-fx-background-radius: 12;" text=" " />
-      <TextField fx:id="txtSupplierName" layoutX="94.0" layoutY="168.0" prefHeight="42.0" prefWidth="441.0" promptText="Supplier name" style="-fx-background-color: white; -fx-background-radius: 12; -fx-border-color: E8E8E8; -fx-border-width: 1; -fx-border-radius: 12;">
+      <TextField fx:id="txtCustomerName" layoutX="94.0" layoutY="168.0" prefHeight="42.0" prefWidth="441.0" promptText="Customer name" style="-fx-background-color: white; -fx-background-radius: 12; -fx-border-color: E8E8E8; -fx-border-width: 1; -fx-border-radius: 12;">
          <font>
             <Font size="15.0" />
          </font>
@@ -62,7 +62,7 @@
             <Font size="15.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtSupplierEmail" layoutX="94.0" layoutY="302.0" prefHeight="42.0" prefWidth="441.0" promptText="Supplier email" style="-fx-background-color: white; -fx-background-radius: 12; -fx-border-color: E8E8E8; -fx-border-width: 1; -fx-border-radius: 12;">
+      <TextField fx:id="txtCustomerEmail" layoutX="94.0" layoutY="302.0" prefHeight="42.0" prefWidth="441.0" promptText="Customer email" style="-fx-background-color: white; -fx-background-radius: 12; -fx-border-color: E8E8E8; -fx-border-width: 1; -fx-border-radius: 12;">
          <font>
             <Font size="15.0" />
          </font>

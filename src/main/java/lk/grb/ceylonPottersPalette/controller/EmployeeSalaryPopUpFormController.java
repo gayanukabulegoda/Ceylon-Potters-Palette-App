@@ -12,16 +12,16 @@ import javafx.scene.layout.Pane;
 public class EmployeeSalaryPopUpFormController {
 
     @FXML
-    private Pane SaveBtnPane;
+    private Pane AddBtnPane;
+
+    @FXML
+    private JFXButton btnAdd;
 
     @FXML
     private JFXButton btnCancel;
 
     @FXML
     private JFXButton btnCloseIcon;
-
-    @FXML
-    private JFXButton btnSave;
 
     @FXML
     private Pane cancelBtnPane;
@@ -36,13 +36,13 @@ public class EmployeeSalaryPopUpFormController {
     private ImageView imgCloseIcon;
 
     @FXML
+    private Label lblAdd;
+
+    @FXML
     private Label lblCancel;
 
     @FXML
     private Label lblEmployeeName;
-
-    @FXML
-    private Label lblSave;
 
     @FXML
     private Label lblTotalAmount;
@@ -57,17 +57,17 @@ public class EmployeeSalaryPopUpFormController {
     private TextField txtSalary;
 
     @FXML
+    void btnAddOnAction(ActionEvent event) {
+
+    }
+
+    @FXML
     void btnCancelOnAction(ActionEvent event) {
 
     }
 
     @FXML
     void btnCloseIconONAction(ActionEvent event) {
-
-    }
-
-    @FXML
-    void btnSaveOnAction(ActionEvent event) {
 
     }
 

@@ -12,16 +12,16 @@ import javafx.scene.layout.Pane;
 public class EmployeeAddPopUpFormController {
 
     @FXML
-    private Pane SaveBtnPane;
+    private Pane AddBtnPane;
+
+    @FXML
+    private JFXButton btnAdd;
 
     @FXML
     private JFXButton btnCancel;
 
     @FXML
     private JFXButton btnCloseIcon;
-
-    @FXML
-    private JFXButton btnSave;
 
     @FXML
     private Pane cancelBtnPane;
@@ -36,10 +36,10 @@ public class EmployeeAddPopUpFormController {
     private ImageView imgCloseIcon;
 
     @FXML
-    private Label lblCancel;
+    private Label lblAdd;
 
     @FXML
-    private Label lblSave;
+    private Label lblCancel;
 
     @FXML
     private TextField txtCity;
@@ -66,17 +66,17 @@ public class EmployeeAddPopUpFormController {
     private TextField txtStreet;
 
     @FXML
+    void btnAddOnAction(ActionEvent event) {
+
+    }
+
+    @FXML
     void btnCancelOnAction(ActionEvent event) {
 
     }
 
     @FXML
     void btnCloseIconOnAction(ActionEvent event) {
-
-    }
-
-    @FXML
-    void btnSaveOnAction(ActionEvent event) {
 
     }
 
