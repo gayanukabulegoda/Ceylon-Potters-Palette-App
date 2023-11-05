@@ -27,42 +27,7 @@ public class DashboardFormController {
     }
 
     @FXML
-    void btnCustomerOnAction(ActionEvent event) {
-
-    }
-
-    @FXML
-    void btnDashboardOnAction(ActionEvent event) {
-
-    }
-
-    @FXML
-    void btnEmployeeOnAction(ActionEvent event) {
-
-    }
-
-    @FXML
     void btnEmployeePaymentOnAction(ActionEvent event) {
-
-    }
-
-    @FXML
-    void btnLogOutOnAction(ActionEvent event) {
-
-    }
-
-    @FXML
-    void btnSalesOnAction(ActionEvent event) {
-
-    }
-
-    @FXML
-    void btnStockOnAction(ActionEvent event) {
-
-    }
-
-    @FXML
-    void btnSupplierOnAction(ActionEvent event) {
 
     }
 }

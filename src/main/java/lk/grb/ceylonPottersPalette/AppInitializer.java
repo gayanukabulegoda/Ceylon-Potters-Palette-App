@@ -13,7 +13,7 @@ public class AppInitializer extends Application {
     }
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/view/supplierOrderManageForm.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/view/loginForm.fxml"));
 //        Parent root = FXMLLoader.load(getClass().getResource("/view/forgotPasswordForm.fxml"));
 //        Parent root = FXMLLoader.load(getClass().getResource("/view/OTPVerifyForm.fxml"));
 //        Parent root = FXMLLoader.load(getClass().getResource("/view/resetPasswordFrom.fxml"));
