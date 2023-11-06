@@ -29,7 +29,9 @@ CREATE TABLE customer(
                          contact_No VARCHAR(14) UNIQUE NOT NULL,
                          email VARCHAR(100) UNIQUE NOT NULL,
                          date DATE NOT NULL,
-                         time TIME NOT NULL
+                         time TIME NOT NULL,
+                         user_Name VARCHAR(20),
+                         CONSTRAINT FOREIGN KEY (user_Name) REFERENCES user(user_Name) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE customer_Order(
@@ -72,7 +74,9 @@ CREATE TABLE supplier(
                          email VARCHAR(100) UNIQUE NOT NULL,
                          contact_No VARCHAR(14) UNIQUE NOT NULL,
                          time TIME NOT NULL,
-                         date DATE NOT NULL
+                         date DATE NOT NULL,
+                         user_Name VARCHAR(20),
+                         CONSTRAINT FOREIGN KEY (user_Name) REFERENCES user(user_Name) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE supplier_Order(
