@@ -2,10 +2,31 @@ package lk.grb.ceylonPottersPalette.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 public class EmployeeSalaryFormController {
+
+    @FXML
+    private Pane btnEmployeeAttendancePane1;
+
+    @FXML
+    private Pane btnEmployeeManagePane;
+
+    @FXML
+    private Pane btnEmployeeSalaryPane;
+
+    @FXML
+    private Label lblEmployeeAttendance;
+
+    @FXML
+    private Label lblEmployeeManage;
+
+    @FXML
+    private Label lblEmployeeSalary;
+
     @FXML
     private TextField txtSearch;
 
@@ -13,17 +34,7 @@ public class EmployeeSalaryFormController {
     private VBox vBoxEmployeeSalary;
 
     @FXML
-    void btnCalculateOnAction(ActionEvent event) {
-
-    }
-
-    @FXML
-    void btnCustomerOnAction(ActionEvent event) {
-
-    }
-
-    @FXML
-    void btnDashboardOnAction(ActionEvent event) {
+    void btnAddSalaryOnAction(ActionEvent event) {
 
     }
 
@@ -38,32 +49,7 @@ public class EmployeeSalaryFormController {
     }
 
     @FXML
-    void btnEmployeeOnAction(ActionEvent event) {
-
-    }
-
-    @FXML
     void btnEmployeeSalaryOnAction(ActionEvent event) {
-
-    }
-
-    @FXML
-    void btnLogOutOnAction(ActionEvent event) {
-
-    }
-
-    @FXML
-    void btnSalesOnAction(ActionEvent event) {
-
-    }
-
-    @FXML
-    void btnStockOnAction(ActionEvent event) {
-
-    }
-
-    @FXML
-    void btnSupplierOnAction(ActionEvent event) {
 
     }
 }

@@ -14,63 +14,33 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="981.0" prefWidth="1745.0" style="-fx-background-color: E8E8E8;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.grb.ceylonPottersPalette.controller.SupplierOrderManageFormController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="885.0" prefWidth="1523.0" style="-fx-background-color: E8E8E8;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.grb.ceylonPottersPalette.controller.SupplierOrderManageFormController">
    <children>
-      <AnchorPane layoutX="228.0" layoutY="-14.0" prefHeight="112.0" prefWidth="1516.0" style="-fx-background-color: white; -fx-background-radius: 12;">
-         <children>
-            <ImageView fitHeight="68.0" fitWidth="429.0" layoutX="14.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assests/img/logoLinePanel.png" />
-               </image>
-            </ImageView>
-            <Label layoutX="99.0" layoutY="36.0" text="Welcome !!">
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="102.0" layoutY="77.0" text="Admin">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Line endX="207.91552734375" endY="51.90953063964844" layoutX="1295.0" layoutY="49.0" startX="207.91552734375" startY="-21.727100372314453" stroke="#885d40" strokeLineCap="ROUND" strokeWidth="2.0" />
-            <Label layoutX="1408.0" layoutY="41.0" text="12:29:12">
-               <font>
-                  <Font name="System Bold" size="16.0" />
-               </font>
-            </Label>
-            <Label layoutX="1395.0" layoutY="68.0" text="Sep 02, 2023">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-         </children>
-      </AnchorPane>
-      <AnchorPane layoutX="244.0" layoutY="189.0" prefHeight="770.0" prefWidth="1488.0" style="-fx-background-color: white; -fx-background-radius: 20;">
+      <AnchorPane layoutX="22.0" layoutY="92.0" prefHeight="770.0" prefWidth="1488.0" style="-fx-background-color: white; -fx-background-radius: 20;">
          <children>
             <HBox alignment="CENTER_LEFT" layoutX="65.0" layoutY="10.0" prefHeight="79.0" prefWidth="1405.0">
                <children>
-                  <Label prefHeight="20.0" prefWidth="164.0" text="ID">
+                  <Label prefHeight="20.0" prefWidth="180.0" text="ID">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
                   </Label>
-                  <Label layoutX="10.0" layoutY="40.0" prefHeight="20.0" prefWidth="258.0" text="Supplier ID">
+                  <Label layoutX="10.0" layoutY="40.0" prefHeight="20.0" prefWidth="306.0" text="Supplier ID">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
                   </Label>
-                  <Label layoutX="137.0" layoutY="40.0" prefHeight="20.0" prefWidth="250.0" text="Amount">
+                  <Label layoutX="652.0" layoutY="40.0" prefHeight="20.0" prefWidth="290.0" text="Amount">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
                   </Label>
-                  <Label layoutX="265.0" layoutY="40.0" prefHeight="20.0" prefWidth="263.0" text="Date">
+                  <Label layoutX="296.0" layoutY="40.0" prefHeight="20.0" prefWidth="252.0" text="Date">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
                   </Label>
-                  <Label layoutX="392.0" layoutY="40.0" prefHeight="20.0" prefWidth="292.0" text="Time">
+                  <Label layoutX="137.0" layoutY="40.0" prefHeight="20.0" prefWidth="251.0" text="Time">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
@@ -82,135 +52,80 @@
                   </Label>
                </children>
             </HBox>
-            <Line endX="1342.459716796875" endY="1.0" layoutX="128.0" layoutY="80.0" startX="-112.90805053710938" startY="1.0" />
-            <ScrollPane layoutX="-2.0" layoutY="81.0" prefHeight="693.0" prefWidth="1490.0" style="-fx-background-radius: 20;">
+            <Line endX="1342.459716796875" endY="1.0" layoutX="128.0" layoutY="78.0" startX="-112.90805053710938" startY="1.0" />
+            <ScrollPane layoutX="4.0" layoutY="84.0" prefHeight="693.0" prefWidth="1482.0" style="-fx-background-radius: 20; -fx-border-color: white; -fx-border-width: 1; -fx-border-radius: 12; -fx-background-color: white;">
                <content>
-                  <VBox fx:id="vBoxSupplierOrderManage" prefHeight="689.0" prefWidth="1485.0" style="-fx-background-color: white;" />
+                  <VBox fx:id="vBoxSupplierOrders" prefHeight="689.0" prefWidth="1479.0" style="-fx-background-color: white;" />
                </content>
             </ScrollPane>
          </children>
       </AnchorPane>
-      <JFXButton alignment="CENTER" layoutX="255.0" layoutY="126.0" onAction="#btnCustomerOrdersOnAction" prefHeight="38.0" prefWidth="244.0" style="-fx-background-color: white; -fx-background-radius: 25;" text="Customer Orders" textFill="#885d40">
-         <font>
-            <Font size="16.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </JFXButton>
-      <JFXButton alignment="CENTER" layoutX="512.0" layoutY="126.0" onAction="#btnSupplierOrdersOnAction" prefHeight="38.0" prefWidth="244.0" style="-fx-background-color: chocolate; -fx-background-radius: 25;" text="Supplier Orders" textFill="WHITE">
-         <font>
-            <Font size="16.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </JFXButton>
-      <JFXButton layoutX="1256.0" layoutY="122.0" onAction="#btnAddOrdersOnAction" prefHeight="46.0" prefWidth="155.0" style="-fx-background-color: white; -fx-background-radius: 12;" text="  Add Orders">
-         <font>
-            <Font size="16.0" />
-         </font>
-         <graphic>
-            <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assests/icon/addIcon.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </JFXButton>
-      <Pane layoutX="1425.0" layoutY="122.0" prefHeight="46.0" prefWidth="300.0" style="-fx-background-color: white; -fx-background-radius: 12;" />
-      <TextField fx:id="txtSearch" layoutX="1468.0" layoutY="122.0" prefHeight="46.0" prefWidth="258.0" promptText="Search by ID or Name" style="-fx-background-color: white; -fx-background-radius: 12;">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </TextField>
-      <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="1440.0" layoutY="133.0" pickOnBounds="true" preserveRatio="true">
+      <Pane layoutX="1203.0" layoutY="24.0" prefHeight="46.0" prefWidth="300.0" style="-fx-background-color: white; -fx-background-radius: 12;">
+         <children>
+            <TextField fx:id="txtSearch" layoutX="40.0" prefHeight="46.0" prefWidth="258.0" promptText="Search by ID or Date" style="-fx-background-color: white; -fx-background-radius: 12;">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+         </children>
+      </Pane>
+      <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="1218.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assests/icon/searchIcon.png" />
          </image>
       </ImageView>
-      <AnchorPane prefHeight="981.0" prefWidth="222.0" style="-fx-background-color: white;">
+      <Pane layoutX="1052.0" layoutY="24.0" prefHeight="46.0" prefWidth="140.0" style="-fx-background-color: white; -fx-background-radius: 12;">
          <children>
-            <Pane layoutX="23.0" layoutY="245.0" prefHeight="48.0" prefWidth="174.0" style="-fx-background-radius: 12; -fx-background-color: FFDDC5;">
-               <children>
-                  <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="20.0" layoutY="145.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../assests/icon/customerIcon.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </Pane>
-            <ImageView fitHeight="105.22" fitWidth="189.0" layoutX="16.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assests/img/logoButtonPanel.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="42.0" layoutY="191.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assests/icon/dashboardIcon.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="42.0" layoutY="257.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assests/icon/salesIcon.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="42.0" layoutY="324.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assests/icon/stockIcon.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="43.0" layoutY="522.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assests/icon/supplierIcon.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="43.0" layoutY="877.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assests/icon/logoutIcon2.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="43.0" layoutY="456.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assests/icon/employeeIcon.png" />
-               </image>
-            </ImageView>
-            <JFXButton layoutX="23.0" layoutY="179.0" onAction="#btnDashboardOnAction" prefHeight="48.0" prefWidth="174.0" style="-fx-background-radius: 12;" text="        Dashboard" textFill="#727374">
+            <Label layoutX="45.0" layoutY="13.0" text="Add Order">
                <font>
                   <Font size="16.0" />
                </font>
-            </JFXButton>
-            <JFXButton layoutX="23.0" layoutY="245.0" onAction="#btnSalesOnAction" prefHeight="48.0" prefWidth="174.0" style="-fx-background-radius: 12;" text="Sales" textFill="#727374">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </JFXButton>
-            <JFXButton layoutX="23.0" layoutY="312.0" onAction="#btnStockOnAction" prefHeight="48.0" prefWidth="174.0" style="-fx-background-radius: 12;" text=" Stock" textFill="#727374">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </JFXButton>
-            <JFXButton layoutX="24.0" layoutY="444.0" onAction="#btnEmployeeOnAction" prefHeight="48.0" prefWidth="174.0" style="-fx-background-radius: 12;" text="      Employee" textFill="#727374">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </JFXButton>
-            <JFXButton layoutX="24.0" layoutY="510.0" onAction="#btnSupplierOnAction" prefHeight="48.0" prefWidth="174.0" style="-fx-background-radius: 12;" text="   Supplier" textFill="#727374">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </JFXButton>
-            <JFXButton layoutX="24.0" layoutY="865.0" onAction="#btnLogOutOnAction" prefHeight="48.0" prefWidth="174.0" style="-fx-background-radius: 12;" text="   Log Out" textFill="#727374">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </JFXButton>
-            <JFXButton layoutX="23.0" layoutY="378.0" onAction="#btnCustomerOnAction" prefHeight="48.0" prefWidth="174.0" style="-fx-background-radius: 12;" text="      Customer" textFill="#727374">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </JFXButton>
+            </Label>
+            <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="13.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assests/icon/addIcon.png" />
+               </image>
+            </ImageView>
          </children>
-      </AnchorPane>
+      </Pane>
+      <JFXButton layoutX="1052.0" layoutY="24.0" onAction="#btnAddOrderOnAction" prefHeight="46.0" prefWidth="140.0" style="-fx-background-radius: 12;" text=" ">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </JFXButton>
+      <Pane fx:id="btnCustomerOrdersPane" layoutX="34.0" layoutY="29.0" prefHeight="38.0" prefWidth="244.0" style="-fx-background-color: white; -fx-background-radius: 25;">
+         <children>
+            <Label fx:id="lblCustomerOrders" layoutX="54.0" layoutY="9.0" text="Customer Orders" textFill="#885d40">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <JFXButton alignment="CENTER" layoutX="34.0" layoutY="29.0" onAction="#btnCustomerOrdersOnAction" prefHeight="38.0" prefWidth="244.0" style="-fx-background-radius: 25;" text=" " textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <Pane fx:id="btnSupplierOrdersPane" layoutX="291.0" layoutY="29.0" prefHeight="38.0" prefWidth="244.0" style="-fx-background-color: chocolate; -fx-background-radius: 25;">
+         <children>
+            <Label fx:id="lblSupplierOrders" layoutX="59.0" layoutY="9.0" text="Supplier Orders" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <JFXButton alignment="CENTER" layoutX="291.0" layoutY="29.0" onAction="#btnSupplierOrdersOnAction" prefHeight="38.0" prefWidth="244.0" style="-fx-background-radius: 25;" text=" " textFill="#885d40">
+         <font>
+            <Font size="16.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
    </children>
 </AnchorPane>

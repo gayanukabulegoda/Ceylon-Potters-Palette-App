@@ -1,385 +1,121 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="885.0" prefWidth="1523.0" style="-fx-background-color: E8E8E8;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="885.0" prefWidth="1523.0" style="-fx-background-color: E8E8E8;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.grb.ceylonPottersPalette.controller.Test1Form">
    <children>
-      <Pane layoutX="31.0" layoutY="58.0" prefHeight="144.0" prefWidth="358.0" style="-fx-background-color: white; -fx-background-radius: 16;">
+      <AnchorPane layoutX="22.0" layoutY="92.0" prefHeight="770.0" prefWidth="1488.0" style="-fx-background-color: white; -fx-background-radius: 20;">
          <children>
-            <ImageView fitHeight="96.0" fitWidth="96.0" layoutX="44.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assests/img/watchlist1.png" />
-               </image>
-            </ImageView>
-            <Label fx:id="lblTodaySales" layoutX="170.0" layoutY="32.0" text="100" textFill="#c56e33">
-               <font>
-                  <Font name="System Bold" size="49.0" />
-               </font>
-            </Label>
-            <Label layoutX="173.0" layoutY="97.0" text="Today Sales" textFill="#727374">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
-            <Line endX="-174.36257934570312" endY="164.18295288085938" layoutX="197.0" layoutY="-36.0" startX="-174.36257934570312" startY="56.09162902832031" stroke="#c56e33" strokeLineCap="ROUND" strokeWidth="2.0" />
-         </children>
-      </Pane>
-      <Pane layoutX="428.0" layoutY="65.0" prefHeight="727.0" prefWidth="732.0" style="-fx-background-color: white; -fx-background-radius: 16;">
-         <children>
-            <ImageView fitHeight="501.0" fitWidth="626.0" layoutX="53.0" layoutY="197.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assests/img/salesChart.png" />
-               </image>
-            </ImageView>
-            <Label layoutX="185.0" layoutY="69.0" text="Sales - November " textFill="#973f04">
-               <font>
-                  <Font size="40.0" />
-               </font>
-            </Label>
-            <Line endX="145.7294921875" layoutX="446.0" layoutY="125.0" startX="-318.90618896484375" stroke="#973f04" strokeLineCap="ROUND" strokeWidth="2.0" />
-         </children>
-      </Pane>
-      <Pane layoutX="31.0" layoutY="390.0" prefHeight="144.0" prefWidth="358.0" style="-fx-background-color: white; -fx-background-radius: 16;">
-         <children>
-            <ImageView fitHeight="96.0" fitWidth="96.0" layoutX="44.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assests/img/watchlist4.png" />
-               </image>
-            </ImageView>
-            <Label fx:id="lblAttendance" layoutX="170.0" layoutY="32.0" text="014" textFill="#c56e33">
-               <font>
-                  <Font name="System Bold" size="49.0" />
-               </font>
-            </Label>
-            <Label layoutX="173.0" layoutY="97.0" text="Today Attendance" textFill="#727374">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
-            <Line endX="-174.36257934570312" endY="164.18295288085938" layoutX="197.0" layoutY="-36.0" startX="-174.36257934570312" startY="56.09162902832031" stroke="#c56e33" strokeLineCap="ROUND" strokeWidth="2.0" />
-         </children>
-      </Pane>
-      <Pane layoutX="31.0" layoutY="556.0" prefHeight="144.0" prefWidth="358.0" style="-fx-background-color: white; -fx-background-radius: 16;">
-         <children>
-            <ImageView fitHeight="96.0" fitWidth="96.0" layoutX="44.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assests/img/watchlist3.png" />
-               </image>
-            </ImageView>
-            <Label fx:id="lblProductTotal" layoutX="170.0" layoutY="32.0" text="412" textFill="#c56e33">
-               <font>
-                  <Font name="System Bold" size="49.0" />
-               </font>
-            </Label>
-            <Label layoutX="173.0" layoutY="97.0" text="Produced Product Total" textFill="#727374" wrapText="true">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
-            <Line endX="-174.36257934570312" endY="164.18295288085938" layoutX="197.0" layoutY="-36.0" startX="-174.36257934570312" startY="56.09162902832031" stroke="#c56e33" strokeLineCap="ROUND" strokeWidth="2.0" />
-         </children>
-      </Pane>
-      <Pane layoutX="1201.0" layoutY="227.0" prefHeight="603.0" prefWidth="283.0" style="-fx-background-color: white; -fx-background-radius: 16;">
-         <children>
-            <ScrollPane layoutY="57.0" prefHeight="548.0" prefWidth="284.0" style="-fx-background-radius: 12; -fx-border-radius: 12;">
+            <HBox alignment="CENTER_LEFT" layoutX="65.0" layoutY="10.0" prefHeight="79.0" prefWidth="1405.0">
+               <children>
+                  <Label prefHeight="20.0" prefWidth="260.0" text="ID">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="10.0" layoutY="40.0" prefHeight="20.0" prefWidth="325.0" text="Description">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="296.0" layoutY="40.0" prefHeight="20.0" prefWidth="360.0" text="QTY To Repair">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="137.0" layoutY="40.0" prefHeight="20.0" prefWidth="310.0" text="Category">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="519.0" layoutY="40.0" prefHeight="20.0" prefWidth="81.0" text="Action">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <Line endX="1342.459716796875" endY="1.0" layoutX="128.0" layoutY="78.0" startX="-112.90805053710938" startY="1.0" />
+            <ScrollPane layoutX="4.0" layoutY="84.0" prefHeight="693.0" prefWidth="1482.0" style="-fx-background-radius: 20; -fx-border-color: white; -fx-border-width: 1; -fx-border-radius: 12; -fx-background-color: white;">
                <content>
-                  <VBox fx:id="vBoxOrders" prefHeight="536.0" prefWidth="280.0" style="-fx-background-color: white;" />
+                  <VBox fx:id="vBoxRepairStock" prefHeight="689.0" prefWidth="1479.0" style="-fx-background-color: white;" />
                </content>
             </ScrollPane>
-            <Label layoutX="100.0" layoutY="21.0" text="Orders" textFill="#c56e33">
-               <font>
-                  <Font name="System Bold" size="22.0" />
-               </font>
-            </Label>
-            <Line endX="-66.0845947265625" layoutX="340.0" layoutY="56.0" startX="-331.5401611328125" stroke="#c56e33" strokeLineCap="ROUND" strokeWidth="2.0" />
-            <Pane layoutX="17.0" layoutY="81.0" prefHeight="60.0" prefWidth="248.0" style="-fx-border-color: AE7C5A; -fx-border-width: 1; -fx-border-radius: 12;">
-               <children>
-                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="14.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../assests/img/logoFlowerBrown.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="22.0" fitWidth="22.0" layoutX="217.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../assests/icon/customerOrderBtnIcon.png" />
-                     </image>
-                  </ImageView>
-                  <Line endX="-174.0" endY="157.0" layoutX="383.0" layoutY="-103.0" startX="-174.362548828125" startY="109.81982421875" stroke="#885d40" strokeLineCap="ROUND" strokeWidth="2.0" />
-                  <Label layoutX="60.0" layoutY="13.0" text="O001" textFill="#885d40">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="60.0" layoutY="37.0" text="Total Purchases: 1000LKR " textFill="#885d40">
-                     <font>
-                        <Font size="10.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="121.0" layoutY="22.0" text="13 : 42" textFill="#885d40">
-                     <font>
-                        <Font size="8.0" />
-                     </font>
-                  </Label>
-                  <JFXButton layoutX="212.0" layoutY="5.0" prefHeight="50.0" prefWidth="34.0" style="-fx-background-radius: 12;" text=" " />
-               </children>
-            </Pane>
-            <Pane layoutX="18.0" layoutY="155.0" prefHeight="60.0" prefWidth="248.0" style="-fx-border-color: AE7C5A; -fx-border-width: 1; -fx-border-radius: 12;">
-               <children>
-                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="14.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../assests/img/logoFlowerBrown.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="22.0" fitWidth="22.0" layoutX="217.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../assests/icon/customerOrderBtnIcon.png" />
-                     </image>
-                  </ImageView>
-                  <Line endX="-174.0" endY="157.0" layoutX="383.0" layoutY="-103.0" startX="-174.362548828125" startY="109.81982421875" stroke="#885d40" strokeLineCap="ROUND" strokeWidth="2.0" />
-                  <Label layoutX="60.0" layoutY="13.0" text="O001" textFill="#885d40">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="60.0" layoutY="37.0" text="Total Purchases: 1000LKR " textFill="#885d40">
-                     <font>
-                        <Font size="10.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="121.0" layoutY="22.0" text="13 : 42" textFill="#885d40">
-                     <font>
-                        <Font size="8.0" />
-                     </font>
-                  </Label>
-                  <JFXButton layoutX="212.0" layoutY="5.0" prefHeight="50.0" prefWidth="34.0" style="-fx-background-radius: 12;" text=" " />
-               </children>
-            </Pane>
-            <Pane layoutX="18.0" layoutY="229.0" prefHeight="60.0" prefWidth="248.0" style="-fx-border-color: AE7C5A; -fx-border-width: 1; -fx-border-radius: 12;">
-               <children>
-                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="14.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../assests/img/logoFlowerBrown.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="22.0" fitWidth="22.0" layoutX="217.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../assests/icon/customerOrderBtnIcon.png" />
-                     </image>
-                  </ImageView>
-                  <Line endX="-174.0" endY="157.0" layoutX="383.0" layoutY="-103.0" startX="-174.362548828125" startY="109.81982421875" stroke="#885d40" strokeLineCap="ROUND" strokeWidth="2.0" />
-                  <Label layoutX="60.0" layoutY="13.0" text="O001" textFill="#885d40">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="60.0" layoutY="37.0" text="Total Purchases: 1000LKR " textFill="#885d40">
-                     <font>
-                        <Font size="10.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="121.0" layoutY="22.0" text="13 : 42" textFill="#885d40">
-                     <font>
-                        <Font size="8.0" />
-                     </font>
-                  </Label>
-                  <JFXButton layoutX="212.0" layoutY="5.0" prefHeight="50.0" prefWidth="34.0" style="-fx-background-radius: 12;" text=" " />
-               </children>
-            </Pane>
-            <Pane layoutX="18.0" layoutY="304.0" prefHeight="60.0" prefWidth="248.0" style="-fx-border-color: AE7C5A; -fx-border-width: 1; -fx-border-radius: 12;">
-               <children>
-                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="14.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../assests/img/logoFlowerBrown.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="22.0" fitWidth="22.0" layoutX="217.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../assests/icon/customerOrderBtnIcon.png" />
-                     </image>
-                  </ImageView>
-                  <Line endX="-174.0" endY="157.0" layoutX="383.0" layoutY="-103.0" startX="-174.362548828125" startY="109.81982421875" stroke="#885d40" strokeLineCap="ROUND" strokeWidth="2.0" />
-                  <Label layoutX="60.0" layoutY="13.0" text="O001" textFill="#885d40">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="60.0" layoutY="37.0" text="Total Purchases: 1000LKR " textFill="#885d40">
-                     <font>
-                        <Font size="10.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="121.0" layoutY="22.0" text="13 : 42" textFill="#885d40">
-                     <font>
-                        <Font size="8.0" />
-                     </font>
-                  </Label>
-                  <JFXButton layoutX="212.0" layoutY="5.0" prefHeight="50.0" prefWidth="34.0" style="-fx-background-radius: 12;" text=" " />
-               </children>
-            </Pane>
-            <Pane layoutX="18.0" layoutY="379.0" prefHeight="60.0" prefWidth="248.0" style="-fx-border-color: AE7C5A; -fx-border-width: 1; -fx-border-radius: 12;">
-               <children>
-                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="14.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../assests/img/logoFlowerBrown.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="22.0" fitWidth="22.0" layoutX="217.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../assests/icon/customerOrderBtnIcon.png" />
-                     </image>
-                  </ImageView>
-                  <Line endX="-174.0" endY="157.0" layoutX="383.0" layoutY="-103.0" startX="-174.362548828125" startY="109.81982421875" stroke="#885d40" strokeLineCap="ROUND" strokeWidth="2.0" />
-                  <Label layoutX="60.0" layoutY="13.0" text="O001" textFill="#885d40">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="60.0" layoutY="37.0" text="Total Purchases: 1000LKR " textFill="#885d40">
-                     <font>
-                        <Font size="10.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="121.0" layoutY="22.0" text="13 : 42" textFill="#885d40">
-                     <font>
-                        <Font size="8.0" />
-                     </font>
-                  </Label>
-                  <JFXButton layoutX="212.0" layoutY="5.0" prefHeight="50.0" prefWidth="34.0" style="-fx-background-radius: 12;" text=" " />
-               </children>
-            </Pane>
-            <Pane layoutX="19.0" layoutY="453.0" prefHeight="60.0" prefWidth="248.0" style="-fx-border-color: AE7C5A; -fx-border-width: 1; -fx-border-radius: 12;">
-               <children>
-                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="14.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../assests/img/logoFlowerBrown.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="22.0" fitWidth="22.0" layoutX="217.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../assests/icon/customerOrderBtnIcon.png" />
-                     </image>
-                  </ImageView>
-                  <Line endX="-174.0" endY="157.0" layoutX="383.0" layoutY="-103.0" startX="-174.362548828125" startY="109.81982421875" stroke="#885d40" strokeLineCap="ROUND" strokeWidth="2.0" />
-                  <Label layoutX="60.0" layoutY="13.0" text="O001" textFill="#885d40">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="60.0" layoutY="37.0" text="Total Purchases: 1000LKR " textFill="#885d40">
-                     <font>
-                        <Font size="10.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="121.0" layoutY="22.0" text="13 : 42" textFill="#885d40">
-                     <font>
-                        <Font size="8.0" />
-                     </font>
-                  </Label>
-                  <JFXButton layoutX="212.0" layoutY="5.0" prefHeight="50.0" prefWidth="34.0" style="-fx-background-radius: 12;" text=" " />
-               </children>
-            </Pane>
-            <Pane layoutX="19.0" layoutY="528.0" prefHeight="60.0" prefWidth="248.0" style="-fx-border-color: AE7C5A; -fx-border-width: 1; -fx-border-radius: 12;">
-               <children>
-                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="14.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../assests/img/logoFlowerBrown.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="22.0" fitWidth="22.0" layoutX="217.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../assests/icon/customerOrderBtnIcon.png" />
-                     </image>
-                  </ImageView>
-                  <Line endX="-174.0" endY="157.0" layoutX="383.0" layoutY="-103.0" startX="-174.362548828125" startY="109.81982421875" stroke="#885d40" strokeLineCap="ROUND" strokeWidth="2.0" />
-                  <Label layoutX="60.0" layoutY="13.0" text="O001" textFill="#885d40">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="60.0" layoutY="37.0" text="Total Purchases: 1000LKR " textFill="#885d40">
-                     <font>
-                        <Font size="10.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="121.0" layoutY="22.0" text="13 : 42" textFill="#885d40">
-                     <font>
-                        <Font size="8.0" />
-                     </font>
-                  </Label>
-                  <JFXButton layoutX="212.0" layoutY="5.0" prefHeight="50.0" prefWidth="34.0" style="-fx-background-radius: 12;" text=" " />
-               </children>
-            </Pane>
          </children>
-      </Pane>
-      <Pane layoutX="31.0" layoutY="224.0" prefHeight="144.0" prefWidth="358.0" style="-fx-background-color: white; -fx-background-radius: 16;">
-         <children>
-            <ImageView fitHeight="96.0" fitWidth="96.0" layoutX="44.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assests/img/watchlist2.png" />
-               </image>
-            </ImageView>
-            <Label fx:id="lblClayStock" layoutX="170.0" layoutY="32.0" text="100kg" textFill="#c56e33">
-               <font>
-                  <Font name="System Bold" size="49.0" />
-               </font>
-            </Label>
-            <Label layoutX="173.0" layoutY="97.0" text="Available Clay Stock" textFill="#727374">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
-            <Line endX="-174.36257934570312" endY="164.18295288085938" layoutX="197.0" layoutY="-36.0" startX="-174.36257934570312" startY="56.09162902832031" stroke="#c56e33" strokeLineCap="ROUND" strokeWidth="2.0" />
-         </children>
-      </Pane>
-      <Pane layoutX="78.0" layoutY="742.0" prefHeight="86.0" prefWidth="266.0" style="-fx-background-radius: 20; -fx-background-color: white;">
-         <children>
-            <Line endX="-75.72579956054688" endY="289.8216552734375" layoutX="157.0" layoutY="-212.0" startX="-75.72579956054688" startY="224.18505859375" stroke="#973f04" strokeLineCap="ROUND" strokeWidth="2.0" />
-            <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="17.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assests/icon/changeCredentialsIcon.png" />
-               </image>
-            </ImageView>
-            <Label layoutX="104.0" layoutY="11.0" prefHeight="68.0" prefWidth="109.0" text="Change Credentials" textFill="#973f04" wrapText="true">
-               <font>
-                  <Font size="19.0" />
-               </font>
-            </Label>
-         </children>
-      </Pane>
-      <JFXButton layoutX="78.0" layoutY="742.0" onAction="#btnChangeCredentialsOnAction" prefHeight="86.0" prefWidth="266.0" style="-fx-background-radius: 20;" text=" " textFill="#727374" wrapText="true">
+      </AnchorPane>
+      <Pane layoutX="1203.0" layoutY="24.0" prefHeight="46.0" prefWidth="300.0" style="-fx-background-color: white; -fx-background-radius: 12;" />
+      <TextField fx:id="txtSearch" layoutX="1246.0" layoutY="24.0" prefHeight="46.0" prefWidth="258.0" promptText="Search by ID or Name" style="-fx-background-color: white; -fx-background-radius: 12;">
          <font>
-            <Font name="System Bold" size="20.0" />
+            <Font size="16.0" />
          </font>
+      </TextField>
+      <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="1218.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assests/icon/searchIcon.png" />
+         </image>
+      </ImageView>
+      <Pane fx:id="btnProductStockPane" layoutX="34.0" layoutY="29.0" prefHeight="38.0" prefWidth="244.0" style="-fx-background-color: white; -fx-background-radius: 25;">
+         <children>
+            <Label fx:id="lblProductStock" layoutX="67.0" layoutY="9.0" text="Product Stock" textFill="#885d40">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <JFXButton alignment="CENTER" layoutX="34.0" layoutY="29.0" onAction="#btnProductStockOnAction" prefHeight="38.0" prefWidth="244.0" style="-fx-background-radius: 25;" text=" " textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </JFXButton>
-      <Pane layoutX="1201.0" layoutY="65.0" prefHeight="134.0" prefWidth="283.0" style="-fx-background-radius: 20; -fx-background-color: white;">
+      <Pane fx:id="btnRepairStockPane" layoutX="291.0" layoutY="29.0" prefHeight="38.0" prefWidth="244.0" style="-fx-background-color: chocolate; -fx-background-radius: 25;">
          <children>
-            <ImageView fitHeight="96.0" fitWidth="96.0" layoutX="22.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assests/img/dashboardPaymentBtn.png" />
-               </image>
-            </ImageView>
-            <Line endX="-174.36257934570312" endY="164.18295288085938" layoutX="313.0" layoutY="-43.0" startX="-174.36257934570312" startY="56.09162902832031" stroke="#c56e33" strokeLineCap="ROUND" strokeWidth="2.0" />
-            <Label layoutX="155.0" layoutY="15.0" prefHeight="105.0" prefWidth="115.0" text="Employee Payment Page" textFill="#c56e33" wrapText="true">
+            <Label fx:id="lblRepairStock" layoutX="71.0" layoutY="9.0" text="Repair Stock" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="20.0" />
+                  <Font size="16.0" />
                </font>
             </Label>
          </children>
       </Pane>
-      <JFXButton layoutX="1201.0" layoutY="65.0" onAction="#btnEmployeePaymentOnAction" prefHeight="134.0" prefWidth="283.0" style="-fx-background-radius: 20;" text=" " textFill="#727374" wrapText="true">
+      <JFXButton alignment="CENTER" layoutX="291.0" layoutY="29.0" onAction="#btnRepairStockOnAction" prefHeight="38.0" prefWidth="244.0" style="-fx-background-radius: 25;" text=" " textFill="#885d40">
          <font>
-            <Font name="System Bold" size="20.0" />
+            <Font size="16.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <Pane fx:id="btnItemStockPane" layoutX="548.0" layoutY="29.0" prefHeight="38.0" prefWidth="244.0" style="-fx-background-color: white; -fx-background-radius: 25;">
+         <children>
+            <Label fx:id="lblItemStock" layoutX="79.0" layoutY="9.0" text="Item Stock" textFill="#885d40">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <JFXButton alignment="CENTER" layoutX="548.0" layoutY="29.0" onAction="#btnItemStockOnAction" prefHeight="38.0" prefWidth="244.0" style="-fx-background-radius: 25;" text=" " textFill="#885d40">
+         <font>
+            <Font size="16.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </JFXButton>
    </children>
 </AnchorPane>
