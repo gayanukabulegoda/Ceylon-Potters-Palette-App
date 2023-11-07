@@ -13,7 +13,7 @@ public class AppInitializer extends Application {
     }
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/view/loginForm.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/view/globalForm.fxml"));
         stage.setScene(new Scene(root));
         //stage.setTitle("Ceylon Potters' Palette");
         stage.initStyle(StageStyle.UNDECORATED);
