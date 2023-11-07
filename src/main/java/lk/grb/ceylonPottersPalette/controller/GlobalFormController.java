@@ -3,6 +3,7 @@ package lk.grb.ceylonPottersPalette.controller;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -11,8 +12,10 @@ import javafx.scene.input.MouseEvent;
 import lk.grb.ceylonPottersPalette.utill.Navigation;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class GlobalFormController {
+public class GlobalFormController implements Initializable {
     @FXML
     private JFXButton btnCustomer;
 
@@ -210,6 +213,66 @@ public class GlobalFormController {
         btnUnselected(paneBtnLogOut, lblLogOut, imgLogOut, "logoutIcon2.png");
     }
 
+    @FXML
+    void btnCustomerOnMouseEntered(MouseEvent event) {
+        allBtnHoverCss(paneBtnCustomer, lblCustomer, imgCustomer, "customerIcon2.png");
+    }
+
+    @FXML
+    void btnCustomerOnMouseExited(MouseEvent event) {
+        btnUnselected(paneBtnCustomer, lblCustomer, imgCustomer, "customerIcon.png");
+    }
+
+    @FXML
+    void btnDashboardOnMouseEntered(MouseEvent event) {
+        allBtnHoverCss(paneBtnDashboard, lblDashboard, imgDashboard, "dashboardIcon2.png");
+    }
+
+    @FXML
+    void btnDashboardOnMouseExited(MouseEvent event) {
+        btnUnselected(paneBtnDashboard, lblDashboard, imgDashboard, "dashboardIcon.png");
+    }
+
+    @FXML
+    void btnEmployeeOnMouseEntered(MouseEvent event) {
+        allBtnHoverCss(paneBtnEmployee, lblEmployee, imgEmployee, "employeeIcon2.png");
+    }
+
+    @FXML
+    void btnEmployeeOnMouseExited(MouseEvent event) {
+        btnUnselected(paneBtnEmployee, lblEmployee, imgEmployee, "employeeIcon.png");
+    }
+
+    @FXML
+    void btnSalesOnMouseEntered(MouseEvent event) {
+        allBtnHoverCss(paneBtnSales, lblSales, imgSales, "salesIcon2.png");
+    }
+
+    @FXML
+    void btnSalesOnMouseExited(MouseEvent event) {
+        btnUnselected(paneBtnSales, lblSales, imgSales, "salesIcon.png");
+    }
+
+    @FXML
+    void btnStockOnMouseEntered(MouseEvent event) {
+        allBtnHoverCss(paneBtnStock, lblStock, imgStock, "stockIcon2.png");
+    }
+
+    @FXML
+    void btnStockOnMouseExited(MouseEvent event) {
+        btnUnselected(paneBtnStock, lblStock, imgStock, "stockIcon.png");
+    }
+
+    @FXML
+    void btnSupplierOnMouseEntered(MouseEvent event) {
+        allBtnHoverCss(paneBtnSupplier, lblSupplier, imgSupplier, "supplierIcon2.png");
+    }
+
+    @FXML
+    void btnSupplierOnMouseExited(MouseEvent event) {
+        btnUnselected(paneBtnSupplier, lblSupplier, imgSupplier, "supplierIcon.png");
+    }
+
     void btnSelected(Pane pane, Label label, ImageView imageView, String path) {
         pane.setStyle(
                 "-fx-background-color: #FFDDC5;" +
@@ -235,5 +298,24 @@ public class GlobalFormController {
         label.setStyle("-fx-text-fill: #FF2626;" +
                 "-fx-font-size: 16px");
         imageView.setImage(new Image("assests/icon/" + path));
+    }
+
+    void allBtnHoverCss(Pane pane, Label label, ImageView imageView, String path){
+        pane.setStyle(
+                "-fx-background-color: #E8E8E8;" +
+                        "-fx-background-radius: 12px;");
+        label.setStyle("-fx-text-fill: #885D40;" +
+                "-fx-font-size: 16px");
+        imageView.setImage(new Image("assests/icon/" + path));
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        btnSelected(paneBtnDashboard, lblDashboard, imgDashboard, "dashboardIcon2.png");
+        try {
+            Navigation.switchPaging(pagingPane, "dashboardForm.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
