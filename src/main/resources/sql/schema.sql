@@ -121,3 +121,7 @@ CREATE TABLE attendance(
                            time TIME NOT NULL,
                            CONSTRAINT FOREIGN KEY(employee_Id) REFERENCES employee(employee_Id) ON DELETE CASCADE ON UPDATE CASCADE
 );
+
+INSERT INTO employee VALUES ('E001','Nisal','Gamage','200209801818','30/7','Matara Road','Matara','070 241 9999','nisalgamage@gmail.com','Manager');
+
+INSERT INTO user VALUES ('grb','1234','E001');
