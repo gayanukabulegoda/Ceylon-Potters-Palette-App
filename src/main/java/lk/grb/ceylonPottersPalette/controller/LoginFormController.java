@@ -36,6 +36,11 @@ public class LoginFormController {
     }
 
     @FXML
+    void btnPowerOffOnAction(ActionEvent event) {
+        Navigation.exit();
+    }
+
+    @FXML
     void hlinkForgotPasswordOnAction(ActionEvent event) {
 
     }

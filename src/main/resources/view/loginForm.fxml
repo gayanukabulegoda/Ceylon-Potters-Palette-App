@@ -42,5 +42,11 @@
          </font>
       </JFXButton>
       <Hyperlink contentDisplay="CENTER" layoutX="558.0" layoutY="386.0" onAction="#hlinkForgotPasswordOnAction" text="Forgot Password ?" textFill="#6a6b6b" />
+      <ImageView fitHeight="42.0" fitWidth="42.0" layoutX="7.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assests/icon/powerOffIcon.png" />
+         </image>
+      </ImageView>
+      <JFXButton layoutX="7.0" layoutY="5.0" minHeight="42.0" onAction="#btnPowerOffOnAction" prefWidth="42.0" style="-fx-background-radius: 100;" text=" " />
    </children>
 </AnchorPane>
