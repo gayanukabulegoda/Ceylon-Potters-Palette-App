@@ -10,13 +10,13 @@ import lombok.ToString;
 @Data
 @ToString
 
-public class CustomerDTO {
+public class SupplierDto {
 
-    private String customer_Id;
+    private String supplier_Id;
     private String name;
-    private String contact_No;
     private String email;
-    private String date;
+    private String contact_No;
     private String time;
+    private String date;
     private String user_Name;
 }

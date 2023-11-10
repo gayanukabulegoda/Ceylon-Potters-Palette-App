@@ -10,7 +10,7 @@ import lombok.ToString;
 @Data
 @ToString
 
-public class CustomerOrderDTO {
+public class CustomerOrderDto {
 
    private String customer_Order_Id;
    private String customer_Id;

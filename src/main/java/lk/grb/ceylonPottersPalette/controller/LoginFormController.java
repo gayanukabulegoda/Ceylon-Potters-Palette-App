@@ -6,7 +6,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import lk.grb.ceylonPottersPalette.model.UserModel;
-import lk.grb.ceylonPottersPalette.utill.Navigation;
+import lk.grb.ceylonPottersPalette.util.Navigation;
 
 import java.io.IOException;
 import java.sql.SQLException;

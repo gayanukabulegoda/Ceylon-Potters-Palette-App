@@ -1,11 +1,11 @@
-package lk.grb.ceylonPottersPalette.utill;
+package lk.grb.ceylonPottersPalette.util;
 
 import lk.grb.ceylonPottersPalette.db.DbConnection;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class SQLUtill {
+public class SQLUtil {
     public static <T>T execute(String sql, Object...arg) throws SQLException {
         PreparedStatement statement = DbConnection.getInstance().getConnection().prepareStatement(sql);
 

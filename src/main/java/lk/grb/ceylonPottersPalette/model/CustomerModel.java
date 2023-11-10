@@ -1,8 +1,7 @@
 package lk.grb.ceylonPottersPalette.model;
 
-import lk.grb.ceylonPottersPalette.dto.CustomerDTO;
-import lk.grb.ceylonPottersPalette.dto.SupplierDTO;
-import lk.grb.ceylonPottersPalette.utill.SQLUtill;
+import lk.grb.ceylonPottersPalette.dto.CustomerDto;
+import lk.grb.ceylonPottersPalette.util.SQLUtil;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,8 +9,8 @@ import java.util.ArrayList;
 
 public class CustomerModel {
 
-    public boolean save(CustomerDTO customerDTO) throws SQLException {
-        return SQLUtill.execute("insert into customer VALUES (?,?,?,?,?)",
+    public boolean save(CustomerDto customerDTO) throws SQLException {
+        return SQLUtil.execute("insert into customer VALUES (?,?,?,?,?)",
                 customerDTO.getCustomer_Id(),
                 customerDTO.getName(),
                 customerDTO.getCustomer_Id(),
@@ -19,10 +18,10 @@ public class CustomerModel {
                 customerDTO.getUser_Name());
     }
 
-    public CustomerDTO getData(String id) throws SQLException {
-        ResultSet set = SQLUtill.execute("SELECT * FROM customer WHERE customer_Id=?", id);
+    public CustomerDto getData(String id) throws SQLException {
+        ResultSet set = SQLUtil.execute("SELECT * FROM customer WHERE customer_Id=?", id);
 
-        CustomerDTO customerDTO = new CustomerDTO();
+        CustomerDto customerDTO = new CustomerDto();
 
         if (set.next()) {
             customerDTO.setCustomer_Id(set.getString(1));
@@ -34,8 +33,8 @@ public class CustomerModel {
         return customerDTO;
     }
 
-    public boolean update(CustomerDTO customerDTO) throws SQLException {
-        return SQLUtill.execute("UPDATE customer SET " +
+    public boolean update(CustomerDto customerDTO) throws SQLException {
+        return SQLUtil.execute("UPDATE customer SET " +
                         "name=?," +
                         "email=?," +
                         "contact_No=? ," +
@@ -47,11 +46,11 @@ public class CustomerModel {
     }
 
     public boolean delete(String id) throws SQLException {
-        return SQLUtill.execute("DELETE FROM customer WHERE customer_Id=?", id);
+        return SQLUtil.execute("DELETE FROM customer WHERE customer_Id=?", id);
     }
 
     public ArrayList<String> getAllCustomerId() throws SQLException {
-        ResultSet resultSet = SQLUtill.execute("SELECT customer_Id FROM customer ORDER BY LENGTH(customer_Id),customer_Id");
+        ResultSet resultSet = SQLUtil.execute("SELECT customer_Id FROM customer ORDER BY LENGTH(customer_Id),customer_Id");
         ArrayList<String> list = new ArrayList<>();
 
         while (resultSet.next()) {

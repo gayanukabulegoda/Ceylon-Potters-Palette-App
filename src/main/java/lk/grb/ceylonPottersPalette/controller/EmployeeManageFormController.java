@@ -6,9 +6,13 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import lk.grb.ceylonPottersPalette.utill.Navigation;
+import lk.grb.ceylonPottersPalette.model.EmployeeModel;
+import lk.grb.ceylonPottersPalette.model.SupplierModel;
+import lk.grb.ceylonPottersPalette.util.Navigation;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class EmployeeManageFormController {
 
@@ -36,6 +40,16 @@ public class EmployeeManageFormController {
     @FXML
     private VBox vBoxEmployeeManage;
 
+    private static EmployeeManageFormController controller;
+
+    public EmployeeManageFormController() {
+        controller = this;
+    }
+
+    public static EmployeeManageFormController getInstance() {
+        return controller;
+    }
+
     @FXML
     void btnAddEmployeeOnAction(ActionEvent event) throws IOException {
         Navigation.imgPopUpBackground("employeeAddPopUpForm.fxml");
@@ -54,5 +68,16 @@ public class EmployeeManageFormController {
     @FXML
     void btnEmployeeSalaryOnAction(ActionEvent event) throws IOException {
         Navigation.switchPaging(GlobalFormController.getInstance().pagingPane, "employeeSalaryForm.fxml");
+    }
+
+    public void allEmployeeId() throws SQLException {
+
+        vBoxEmployeeManage.getChildren().clear();
+        EmployeeModel employeeModel = new EmployeeModel();
+        ArrayList<String> list = employeeModel.getAllEmployeeId();
+
+        for (int i = 0; i < list.size(); i++) {
+            //loadDataTable(list.get(i));
+        }
     }
 }

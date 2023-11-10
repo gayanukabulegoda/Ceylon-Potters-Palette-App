@@ -9,7 +9,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.input.MouseEvent;
-import lk.grb.ceylonPottersPalette.utill.Navigation;
+import lk.grb.ceylonPottersPalette.util.Navigation;
 
 import java.io.IOException;
 import java.net.URL;
@@ -114,6 +114,9 @@ public class GlobalFormController implements Initializable {
 
     @FXML
     public Pane popUpPane;
+
+    @FXML
+    public Pane orderPopUpPane;
 
     private static GlobalFormController controller;
 

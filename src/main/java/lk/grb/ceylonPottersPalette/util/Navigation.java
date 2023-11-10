@@ -1,4 +1,4 @@
-package lk.grb.ceylonPottersPalette.utill;
+package lk.grb.ceylonPottersPalette.util;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -12,6 +12,7 @@ import lk.grb.ceylonPottersPalette.controller.GlobalFormController;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 
 public class Navigation {
 
@@ -77,9 +78,26 @@ public class Navigation {
         GlobalFormController.getInstance().imgPopUpBackground.setVisible(false);
     }
 
+    public static void closeOrderPopUpPane() {
+        GlobalFormController.getInstance().orderPopUpPane.getChildren().clear();
+        GlobalFormController.getInstance().orderPopUpPane.setVisible(false);
+        GlobalFormController.getInstance().imgPopUpBackground.setVisible(false);
+    }
+
     public static void imgPopUpBackground(String path) throws IOException {
         GlobalFormController.getInstance().imgPopUpBackground.setVisible(true);
-        GlobalFormController.getInstance().popUpPane.setVisible(true);
-        switchPaging(GlobalFormController.getInstance().popUpPane, path);
+
+        if (path.equals("customerOrderAddPopUpForm.fxml")) {
+            GlobalFormController.getInstance().orderPopUpPane.setVisible(true);
+            switchPaging(GlobalFormController.getInstance().orderPopUpPane, path);
+        }
+        else if (path.equals("supplierOrderAddPopUpForm.fxml")) {
+            GlobalFormController.getInstance().orderPopUpPane.setVisible(true);
+            switchPaging(GlobalFormController.getInstance().orderPopUpPane, path);
+        }
+        else {
+            GlobalFormController.getInstance().popUpPane.setVisible(true);
+            switchPaging(GlobalFormController.getInstance().popUpPane, path);
+        }
     }
 }

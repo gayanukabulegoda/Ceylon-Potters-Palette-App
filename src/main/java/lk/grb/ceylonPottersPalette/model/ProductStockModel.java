@@ -1,8 +1,7 @@
 package lk.grb.ceylonPottersPalette.model;
 
-import lk.grb.ceylonPottersPalette.dto.CustomerDTO;
-import lk.grb.ceylonPottersPalette.dto.ProductStockDTO;
-import lk.grb.ceylonPottersPalette.utill.SQLUtill;
+import lk.grb.ceylonPottersPalette.dto.ProductStockDto;
+import lk.grb.ceylonPottersPalette.util.SQLUtil;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,8 +9,8 @@ import java.util.ArrayList;
 
 public class ProductStockModel {
 
-    public boolean save(ProductStockDTO productStockDTO) throws SQLException {
-        return SQLUtill.execute("INSERT INTO product_Stock VALUES (?,?,?,?,?)",
+    public boolean save(ProductStockDto productStockDTO) throws SQLException {
+        return SQLUtil.execute("INSERT INTO product_Stock VALUES (?,?,?,?,?)",
                 productStockDTO.getProduct_Id(),
                 productStockDTO.getDescription(),
                 productStockDTO.getQty_On_Hand(),
@@ -20,10 +19,10 @@ public class ProductStockModel {
                 productStockDTO.getQty());
     }
 
-    public ProductStockDTO getData(String id) throws SQLException {
-        ResultSet set = SQLUtill.execute("SELECT * FROM product_Stock WHERE customer_Id=?", id);
+    public ProductStockDto getData(String id) throws SQLException {
+        ResultSet set = SQLUtil.execute("SELECT * FROM product_Stock WHERE customer_Id=?", id);
 
-        ProductStockDTO productStockDTO = new ProductStockDTO();
+        ProductStockDto productStockDTO = new ProductStockDto();
 
         if (set.next()) {
             productStockDTO.setProduct_Id(set.getString(1));
@@ -36,8 +35,8 @@ public class ProductStockModel {
         return productStockDTO;
     }
 
-    public boolean update(ProductStockDTO productStockDTO) throws SQLException {
-        return SQLUtill.execute("UPDATE product_Stock SET " +
+    public boolean update(ProductStockDto productStockDTO) throws SQLException {
+        return SQLUtil.execute("UPDATE product_Stock SET " +
                         "description=?," +
                         "qty_On_Hand=?," +
                         "unit_Price=? ," +
@@ -51,11 +50,11 @@ public class ProductStockModel {
     }
 
     public boolean delete(String id) throws SQLException {
-        return SQLUtill.execute("DELETE FROM product_Stock WHERE product_Id=?", id);
+        return SQLUtil.execute("DELETE FROM product_Stock WHERE product_Id=?", id);
     }
 
     public ArrayList<String> getAllProductId() throws SQLException {
-        ResultSet resultSet = SQLUtill.execute("SELECT product_Id FROM product_Stock ORDER BY LENGTH(product_Id),product_Id");
+        ResultSet resultSet = SQLUtil.execute("SELECT product_Id FROM product_Stock ORDER BY LENGTH(product_Id),product_Id");
         ArrayList<String> list = new ArrayList<>();
 
         while (resultSet.next()) {

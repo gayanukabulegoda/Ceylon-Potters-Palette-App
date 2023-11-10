@@ -1,7 +1,7 @@
 package lk.grb.ceylonPottersPalette.model;
 
-import lk.grb.ceylonPottersPalette.dto.EmployeeDTO;
-import lk.grb.ceylonPottersPalette.utill.SQLUtill;
+import lk.grb.ceylonPottersPalette.dto.EmployeeDto;
+import lk.grb.ceylonPottersPalette.util.SQLUtil;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,8 +9,8 @@ import java.util.ArrayList;
 
 public class EmployeeModel {
 
-    public boolean save(EmployeeDTO employeeDTO) throws SQLException {
-        return SQLUtill.execute("INSERT INTO employee VALUES (?,?,?,?,?,?,?,?,?,?)",
+    public boolean save(EmployeeDto employeeDTO) throws SQLException {
+        return SQLUtil.execute("INSERT INTO employee VALUES (?,?,?,?,?,?,?,?,?,?)",
                 employeeDTO.getEmployee_Id(),
                 employeeDTO.getFirst_Name(),
                 employeeDTO.getLast_Name(),
@@ -23,10 +23,10 @@ public class EmployeeModel {
                 employeeDTO.getRole());
     }
 
-    public EmployeeDTO getData(String id) throws SQLException {
-        ResultSet set = SQLUtill.execute("SELECT * FROM employee WHERE employee_Id=?", id);
+    public EmployeeDto getData(String id) throws SQLException {
+        ResultSet set = SQLUtil.execute("SELECT * FROM employee WHERE employee_Id=?", id);
 
-        EmployeeDTO employeeDTO = new EmployeeDTO();
+        EmployeeDto employeeDTO = new EmployeeDto();
 
         if (set.next()) {
             employeeDTO.setEmployee_Id(set.getString(1));
@@ -43,8 +43,8 @@ public class EmployeeModel {
         return employeeDTO;
     }
 
-    public boolean update(EmployeeDTO employeeDTO) throws SQLException {
-        return SQLUtill.execute("UPDATE employee SET " +
+    public boolean update(EmployeeDto employeeDTO) throws SQLException {
+        return SQLUtil.execute("UPDATE employee SET " +
                         "first_Name=?," +
                         "last_Name=?," +
                         "nic=? ," +
@@ -69,11 +69,11 @@ public class EmployeeModel {
     }
 
     public boolean delete(String id) throws SQLException {
-        return SQLUtill.execute("DELETE FROM employee WHERE employee_Id=?", id);
+        return SQLUtil.execute("DELETE FROM employee WHERE employee_Id=?", id);
     }
 
     public ArrayList<String> getAllEmployeeId() throws SQLException {
-        ResultSet resultSet = SQLUtill.execute("SELECT employee_Id FROM employee ORDER BY LENGTH(employee_Id),employee_Id");
+        ResultSet resultSet = SQLUtil.execute("SELECT employee_Id FROM employee ORDER BY LENGTH(employee_Id),employee_Id");
         ArrayList<String> list = new ArrayList<>();
 
         while (resultSet.next()) {

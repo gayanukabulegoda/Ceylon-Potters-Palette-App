@@ -10,10 +10,14 @@ import lombok.ToString;
 @Data
 @ToString
 
-public class ItemStockDTO {
+public class SupplierOrderDto {
 
+    private String supplier_Order_Id;
+    private String supplier_Id;
     private String item_Id;
-    private String description;
+    private int item_Qty;
     private double unit_Price;
-    private int qty_On_Hand;
+    private double total_Price;
+    private String date;
+    private String time;
 }

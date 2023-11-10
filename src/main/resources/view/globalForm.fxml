@@ -190,5 +190,6 @@
          </image>
       </ImageView>
       <Pane fx:id="popUpPane" layoutX="559.0" layoutY="194.0" prefHeight="538.0" prefWidth="627.0" visible="false" />
+      <Pane fx:id="orderPopUpPane" layoutX="238.0" layoutY="97.0" prefHeight="729.0" prefWidth="1269.0" visible="false" />
    </children>
 </AnchorPane>

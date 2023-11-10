@@ -4,6 +4,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
+import lk.grb.ceylonPottersPalette.util.Navigation;
+
+import java.io.IOException;
 
 public class DashboardFormController {
     @FXML
@@ -22,12 +25,12 @@ public class DashboardFormController {
     private VBox vBoxOrders;
 
     @FXML
-    void btnChangeCredentialsOnAction(ActionEvent event) {
-
+    void btnChangeCredentialsOnAction(ActionEvent event) throws IOException {
+        Navigation.imgPopUpBackground("credentialChangePopUpForm.fxml");
     }
 
     @FXML
-    void btnEmployeePaymentOnAction(ActionEvent event) {
-
+    void btnEmployeePaymentOnAction(ActionEvent event) throws IOException {
+        Navigation.switchPaging(GlobalFormController.getInstance().pagingPane, "employeeSalaryForm.fxml");
     }
 }

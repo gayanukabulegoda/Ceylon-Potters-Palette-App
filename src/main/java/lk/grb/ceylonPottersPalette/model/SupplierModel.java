@@ -1,7 +1,7 @@
 package lk.grb.ceylonPottersPalette.model;
 
-import lk.grb.ceylonPottersPalette.dto.SupplierDTO;
-import lk.grb.ceylonPottersPalette.utill.SQLUtill;
+import lk.grb.ceylonPottersPalette.dto.SupplierDto;
+import lk.grb.ceylonPottersPalette.util.SQLUtil;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,19 +9,19 @@ import java.util.ArrayList;
 
 public class SupplierModel {
 
-    public boolean save(SupplierDTO supplierDTO) throws SQLException {
-        return SQLUtill.execute("insert into supplier VALUES (?,?,?,?,?)",
-                supplierDTO.getSupplier_Id(),
-                supplierDTO.getName(),
-                supplierDTO.getEmail(),
-                supplierDTO.getContact_No(),
-                supplierDTO.getUser_Name());
+    public boolean save(SupplierDto supplierDto) throws SQLException {
+        return SQLUtil.execute("insert into supplier VALUES (?,?,?,?)",
+                supplierDto.getSupplier_Id(),
+                supplierDto.getName(),
+                supplierDto.getEmail(),
+                supplierDto.getContact_No());
+                //supplierDto.getUser_Name());
     }
 
-    public SupplierDTO getData(String id) throws SQLException {
-        ResultSet resultSet = SQLUtill.execute("SELECT * FROM supplier WHERE supplier_Id=?", id);
+    public SupplierDto getData(String id) throws SQLException {
+        ResultSet resultSet = SQLUtil.execute("SELECT * FROM supplier WHERE supplier_Id=?", id);
 
-        SupplierDTO supplierDTO = new SupplierDTO();
+        SupplierDto supplierDTO = new SupplierDto();
 
         if(resultSet.next()){
             supplierDTO.setSupplier_Id(resultSet.getString(1));
@@ -35,8 +35,8 @@ public class SupplierModel {
         return supplierDTO;
     }
 
-    public boolean update(SupplierDTO supplierDTO) throws SQLException {
-        return SQLUtill.execute("UPDATE  supplier SET " +
+    public boolean update(SupplierDto supplierDTO) throws SQLException {
+        return SQLUtil.execute("UPDATE  supplier SET " +
                         "name=?," +
                         "email=?," +
                         "contact_No=? ," +
@@ -48,11 +48,11 @@ public class SupplierModel {
     }
 
     public boolean delete(String id) throws SQLException {
-        return SQLUtill.execute("DELETE FEOM supplier WHERE supplier_Id=?", id);
+        return SQLUtil.execute("DELETE FEOM supplier WHERE supplier_Id=?", id);
     }
 
     public ArrayList<String> getAllSupplierId() throws SQLException {
-        ResultSet resultSet = SQLUtill.execute("SELECT supplier_Id FROM supplier ORDER BY LENGTH(supplier_Id),supplier_Id");
+        ResultSet resultSet = SQLUtil.execute("SELECT supplier_Id FROM supplier ORDER BY LENGTH(supplier_Id),supplier_Id");
         ArrayList<String> list = new ArrayList<>();
 
         while (resultSet.next()) {

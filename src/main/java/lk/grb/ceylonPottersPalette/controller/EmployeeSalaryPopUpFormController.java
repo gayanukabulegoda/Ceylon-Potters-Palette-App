@@ -8,7 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-import lk.grb.ceylonPottersPalette.utill.Navigation;
+import lk.grb.ceylonPottersPalette.util.Navigation;
 
 public class EmployeeSalaryPopUpFormController {
 

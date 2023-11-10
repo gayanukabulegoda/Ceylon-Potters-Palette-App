@@ -6,7 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import lk.grb.ceylonPottersPalette.utill.Navigation;
+import lk.grb.ceylonPottersPalette.util.Navigation;
 
 import java.io.IOException;
 
