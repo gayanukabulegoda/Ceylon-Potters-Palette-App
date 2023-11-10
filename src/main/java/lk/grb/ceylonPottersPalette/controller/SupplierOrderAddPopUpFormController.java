@@ -9,6 +9,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import lk.grb.ceylonPottersPalette.utill.Navigation;
 
 public class SupplierOrderAddPopUpFormController {
 
@@ -93,7 +94,7 @@ public class SupplierOrderAddPopUpFormController {
 
     @FXML
     void btnCancelOnAction(ActionEvent event) {
-
+        Navigation.closePane();
     }
 
     @FXML

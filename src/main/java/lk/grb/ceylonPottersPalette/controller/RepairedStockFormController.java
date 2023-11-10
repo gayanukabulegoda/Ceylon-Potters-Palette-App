@@ -6,6 +6,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import lk.grb.ceylonPottersPalette.utill.Navigation;
+
+import java.io.IOException;
 
 public class RepairedStockFormController {
 
@@ -34,13 +37,13 @@ public class RepairedStockFormController {
     private VBox vBoxRepairStock;
 
     @FXML
-    void btnItemStockOnAction(ActionEvent event) {
-
+    void btnItemStockOnAction(ActionEvent event) throws IOException {
+        Navigation.switchPaging(GlobalFormController.getInstance().pagingPane, "itemStockForm.fxml");
     }
 
     @FXML
-    void btnProductStockOnAction(ActionEvent event) {
-
+    void btnProductStockOnAction(ActionEvent event) throws IOException {
+        Navigation.switchPaging(GlobalFormController.getInstance().pagingPane, "productStockForm.fxml");
     }
 
     @FXML

@@ -6,6 +6,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import lk.grb.ceylonPottersPalette.utill.Navigation;
+
+import java.io.IOException;
 
 public class SupplierOrderManageFormController {
 
@@ -28,13 +31,13 @@ public class SupplierOrderManageFormController {
     private VBox vBoxSupplierOrders;
 
     @FXML
-    void btnAddOrderOnAction(ActionEvent event) {
-
+    void btnAddOrderOnAction(ActionEvent event) throws IOException {
+        Navigation.imgPopUpBackground("supplierOrderAddPopUpForm.fxml");
     }
 
     @FXML
-    void btnCustomerOrdersOnAction(ActionEvent event) {
-
+    void btnCustomerOrdersOnAction(ActionEvent event) throws IOException {
+        Navigation.switchPaging(GlobalFormController.getInstance().pagingPane, "customerOrderManageForm.fxml");
     }
 
     @FXML

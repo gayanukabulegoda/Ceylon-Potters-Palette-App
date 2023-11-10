@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import lk.grb.ceylonPottersPalette.utill.Navigation;
 
 public class EmployeeSalaryPopUpFormController {
 
@@ -63,12 +64,12 @@ public class EmployeeSalaryPopUpFormController {
 
     @FXML
     void btnCancelOnAction(ActionEvent event) {
-
+        Navigation.closePane();
     }
 
     @FXML
     void btnCloseIconONAction(ActionEvent event) {
-
+        Navigation.closePane();
     }
 
     @FXML

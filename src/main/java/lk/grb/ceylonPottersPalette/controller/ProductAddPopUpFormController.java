@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import lk.grb.ceylonPottersPalette.utill.Navigation;
 
 public class ProductAddPopUpFormController {
 
@@ -56,11 +57,11 @@ public class ProductAddPopUpFormController {
 
     @FXML
     void btnCancelOnAction(ActionEvent event) {
-
+        Navigation.closePane();
     }
 
     @FXML
     void btnCloseIconOnAction(ActionEvent event) {
-
+        Navigation.closePane();
     }
 }

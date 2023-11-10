@@ -89,7 +89,7 @@ public class GlobalFormController implements Initializable {
     private Label lblTime;
 
     @FXML
-    private Pane pagingPane;
+    public Pane pagingPane;
 
     @FXML
     private Pane paneBtnCustomer;

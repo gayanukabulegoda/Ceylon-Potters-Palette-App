@@ -6,6 +6,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import lk.grb.ceylonPottersPalette.utill.Navigation;
+
+import java.io.IOException;
 
 public class EmployeeAttendanceFormController {
 
@@ -39,17 +42,17 @@ public class EmployeeAttendanceFormController {
     }
 
     @FXML
-    void btnEmployeeManageOnAction(ActionEvent event) {
-
+    void btnEmployeeManageOnAction(ActionEvent event) throws IOException {
+        Navigation.switchPaging(GlobalFormController.getInstance().pagingPane, "employeeManageForm.fxml");
     }
 
     @FXML
-    void btnEmployeeSalaryOnAction(ActionEvent event) {
-
+    void btnEmployeeSalaryOnAction(ActionEvent event) throws IOException {
+        Navigation.switchPaging(GlobalFormController.getInstance().pagingPane, "employeeSalaryForm.fxml");
     }
 
     @FXML
-    void btnEnterIdOnAction(ActionEvent event) {
-
+    void btnEnterIdOnAction(ActionEvent event) throws IOException {
+        Navigation.imgPopUpBackground("employeeAttendanceMarkPopUp.fxml");
     }
 }

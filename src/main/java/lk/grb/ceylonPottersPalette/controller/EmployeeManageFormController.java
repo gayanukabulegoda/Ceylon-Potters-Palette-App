@@ -6,6 +6,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import lk.grb.ceylonPottersPalette.utill.Navigation;
+
+import java.io.IOException;
 
 public class EmployeeManageFormController {
 
@@ -34,13 +37,13 @@ public class EmployeeManageFormController {
     private VBox vBoxEmployeeManage;
 
     @FXML
-    void btnAddEmployeeOnAction(ActionEvent event) {
-
+    void btnAddEmployeeOnAction(ActionEvent event) throws IOException {
+        Navigation.imgPopUpBackground("employeeAddPopUpForm.fxml");
     }
 
     @FXML
-    void btnEmployeeAttendanceOnAction(ActionEvent event) {
-
+    void btnEmployeeAttendanceOnAction(ActionEvent event) throws IOException {
+        Navigation.switchPaging(GlobalFormController.getInstance().pagingPane, "employeeAttendanceForm.fxml");
     }
 
     @FXML
@@ -49,7 +52,7 @@ public class EmployeeManageFormController {
     }
 
     @FXML
-    void btnEmployeeSalaryOnAction(ActionEvent event) {
-
+    void btnEmployeeSalaryOnAction(ActionEvent event) throws IOException {
+        Navigation.switchPaging(GlobalFormController.getInstance().pagingPane, "employeeSalaryForm.fxml");
     }
 }

@@ -8,6 +8,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import lk.grb.ceylonPottersPalette.utill.Navigation;
+
+import java.io.IOException;
 
 public class EmployeeAddPopUpFormController {
 
@@ -66,18 +69,18 @@ public class EmployeeAddPopUpFormController {
     private TextField txtStreet;
 
     @FXML
-    void btnAddOnAction(ActionEvent event) {
+    void btnAddOnAction(ActionEvent event) throws IOException {
 
     }
 
     @FXML
     void btnCancelOnAction(ActionEvent event) {
-
+        Navigation.closePane();
     }
 
     @FXML
     void btnCloseIconOnAction(ActionEvent event) {
-
+        Navigation.closePane();
     }
 
     @FXML

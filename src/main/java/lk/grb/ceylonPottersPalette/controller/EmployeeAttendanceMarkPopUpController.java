@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import lk.grb.ceylonPottersPalette.utill.Navigation;
 
 public class EmployeeAttendanceMarkPopUpController {
 
@@ -36,7 +37,7 @@ public class EmployeeAttendanceMarkPopUpController {
 
     @FXML
     void btnCloseIconOnAction(ActionEvent event) {
-
+        Navigation.closePane();
     }
 
     @FXML
