@@ -9,7 +9,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.input.MouseEvent;
+import lk.grb.ceylonPottersPalette.util.DateTimeUtil;
 import lk.grb.ceylonPottersPalette.util.Navigation;
+import lombok.SneakyThrows;
 
 import java.io.IOException;
 import java.net.URL;
@@ -312,6 +314,7 @@ public class GlobalFormController implements Initializable {
         imageView.setImage(new Image("assests/icon/" + path));
     }
 
+    @SneakyThrows
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         btnSelected(paneBtnDashboard, lblDashboard, imgDashboard, "dashboardIcon2.png");
@@ -320,5 +323,8 @@ public class GlobalFormController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        lblTime.setText(DateTimeUtil.timeNow());
+        lblDate.setText(DateTimeUtil.dateNow());
     }
 }

@@ -3,19 +3,18 @@ package lk.grb.ceylonPottersPalette.dto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 
-public class CustomerDto {
+public class EmployeeSalaryDto {
 
-    private String customer_Id;
-    private String name;
-    private String contact_No;
-    private String email;
+    private String employee_Id;
+    private int worked_Day_Count;
+    private double salary;
+    private double bonus;
+    private double total_Payment;
     private String date;
     private String time;
-    private String user_Name;
 }

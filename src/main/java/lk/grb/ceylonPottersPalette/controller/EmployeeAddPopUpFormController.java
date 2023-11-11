@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -15,10 +16,12 @@ import lk.grb.ceylonPottersPalette.util.Navigation;
 import lk.grb.ceylonPottersPalette.util.NewId;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
-public class EmployeeAddPopUpFormController {
+public class EmployeeAddPopUpFormController implements Initializable {
 
     @FXML
     private Pane AddBtnPane;
@@ -39,7 +42,7 @@ public class EmployeeAddPopUpFormController {
     private Pane closeIconPane;
 
     @FXML
-    public JFXComboBox<?> cmbRole;
+    public JFXComboBox<String> cmbRole;
 
     @FXML
     private ImageView imgCloseIcon;
@@ -97,7 +100,7 @@ public class EmployeeAddPopUpFormController {
         roles.add("Minor Staff");
         roles.add("other");
 
-       // cmbRole.getItems().addAll(roles);
+        cmbRole.getItems().addAll(roles);
     }
 
     @FXML
@@ -136,5 +139,10 @@ public class EmployeeAddPopUpFormController {
     @FXML
     void cmbRoleOnAction(ActionEvent event) {
 
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        setDataInComboBox();
     }
 }

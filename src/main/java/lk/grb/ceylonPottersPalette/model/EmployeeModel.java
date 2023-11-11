@@ -1,8 +1,10 @@
 package lk.grb.ceylonPottersPalette.model;
 
+import lk.grb.ceylonPottersPalette.db.DbConnection;
 import lk.grb.ceylonPottersPalette.dto.EmployeeDto;
 import lk.grb.ceylonPottersPalette.util.SQLUtil;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -80,5 +82,18 @@ public class EmployeeModel {
             list.add(resultSet.getString(1));
         }
         return list;
+    }
+
+    public String getEmployeeName(String id) throws SQLException {
+
+        String sql = ("SELECT first_Name FROM employee WHERE employee_Id=?");
+        PreparedStatement statement = DbConnection.getInstance().getConnection().prepareStatement(sql);
+        statement.setString(1,id);
+
+        ResultSet resultSet = statement.executeQuery();
+        if (resultSet.next()) {
+            return resultSet.getString(1);
+        }
+        return null;
     }
 }

@@ -4,7 +4,9 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Year;
 import java.time.YearMonth;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 public class DateTimeUtil {
 
@@ -37,4 +39,15 @@ public class DateTimeUtil {
     public static int getCountOfDayForYear(int year ){
         return Year.of(year).length();
     }
+
+    public static String timeNowRefresh() throws InterruptedException {
+
+        SimpleDateFormat dateFormat=new SimpleDateFormat("hh:mm:ss");
+        int totalIterations = Math.toIntExact(TimeUnit.HOURS.toSeconds(2));
+        for (int sec = 0; sec < totalIterations; sec++) {
+            TimeUnit.SECONDS.sleep(1);
+        }
+        return dateFormat.format(new Date()) ;
+    }
+
 }

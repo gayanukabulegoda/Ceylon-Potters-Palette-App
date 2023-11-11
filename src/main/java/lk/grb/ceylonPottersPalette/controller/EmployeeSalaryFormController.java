@@ -9,6 +9,8 @@ import javafx.scene.layout.VBox;
 import lk.grb.ceylonPottersPalette.util.Navigation;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class EmployeeSalaryFormController {
 
@@ -55,4 +57,5 @@ public class EmployeeSalaryFormController {
     void btnEmployeeSalaryOnAction(ActionEvent event) {
 
     }
+
 }

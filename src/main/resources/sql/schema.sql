@@ -108,8 +108,9 @@ CREATE TABLE supplier_Order_Detail(
 CREATE TABLE salary(
                        employee_Id VARCHAR(6) NOT NULL,
                        worked_Day_Count INT NOT NULL,
-                       total_Payment DECIMAL NOT NULL,
+                       salary DECIMAL NOT NULL,
                        bonus DECIMAL NOT NULL,
+                       total_Payment DECIMAL NOT NULL,
                        date DATE NOT NULL,
                        time TIME NOT NULL,
                        CONSTRAINT FOREIGN KEY(employee_Id) REFERENCES employee(employee_Id) ON DELETE CASCADE ON UPDATE CASCADE
