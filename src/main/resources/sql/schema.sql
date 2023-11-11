@@ -122,4 +122,6 @@ CREATE TABLE attendance(
 
 INSERT INTO employee VALUES ('E001','Nisal','Gamage','200209801818','30/7','Matara Road','Matara','070 241 9999','nisalgamage@gmail.com','Manager');
 
+INSERT INTO employee VALUES ('E002','Wimal','Gamage','200109801818','20/7','Galle Road','Galle','070 241 0000','wimalgamage@gmail.com','Minor Staff');
+
 INSERT INTO user VALUES ('grb','1234','E001');
