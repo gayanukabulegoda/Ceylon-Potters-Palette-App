@@ -42,26 +42,26 @@ public class NewId {
                     return "C001";
                 }
 
-//            case STOCK:
-//                try {
-//                    String[] split = lastId.split("I-0");
-//                    int idNum = Integer.parseInt(split[1]);
-//                    idNum++;
-//                    return "I-0" + idNum;
-//                } catch (Exception e) {
-//                    return "I-01";
-//                }
-//
-//            case RENT:
-//                try {
-//                    String[] split = lastId.split("R-0");
-//                    int idNum = Integer.parseInt(split[1]);
-//                    idNum++;
-//                    return "R-0" + idNum;
-//                } catch (Exception e) {
-//                    return "R-01";
-//                }
-//
+            case PRODUCT_STOCK:
+                try {
+                    String[] split = lastId.split("P00");
+                    int idNum = Integer.parseInt(split[1]);
+                    idNum++;
+                    return "P00" + idNum;
+                } catch (Exception e) {
+                    return "P001";
+                }
+
+            case ITEM_STOCK:
+                try {
+                    String[] split = lastId.split("I00");
+                    int idNum = Integer.parseInt(split[1]);
+                    idNum++;
+                    return "I00" + idNum;
+                } catch (Exception e) {
+                    return "I001";
+                }
+
 //            case TAX:
 //                try {
 //                    String[] split = lastId.split("T-0");

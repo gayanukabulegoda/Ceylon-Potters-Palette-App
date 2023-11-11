@@ -54,7 +54,6 @@ public class CustomerAddPopUpFormController {
     @FXML
     private TextField txtCustomerName;
 
-    public static CustomerAddPopUpFormController controller;
     CustomerModel customerModel = new CustomerModel();
 
     @FXML
@@ -69,10 +68,10 @@ public class CustomerAddPopUpFormController {
         customerDto.setEmail(txtCustomerEmail.getText());
         customerDto.setTime(DateTimeUtil.timeNow());
         customerDto.setDate(DateTimeUtil.dateNow());
+        customerDto.setUser_Name(GlobalFormController.user);
 
-        boolean save = customerModel.save(customerDto);
+        customerModel.save(customerDto);
 
-        CustomerManageFormController.getInstance().allCustomerId();
         Navigation.closePane();
     }
 

@@ -10,12 +10,14 @@ import java.util.ArrayList;
 public class SupplierModel {
 
     public boolean save(SupplierDto supplierDto) throws SQLException {
-        return SQLUtil.execute("insert into supplier VALUES (?,?,?,?)",
+        return SQLUtil.execute("INSERT INTO supplier VALUES (?,?,?,?,?,?,?)",
                 supplierDto.getSupplier_Id(),
                 supplierDto.getName(),
                 supplierDto.getEmail(),
-                supplierDto.getContact_No());
-                //supplierDto.getUser_Name());
+                supplierDto.getContact_No(),
+                supplierDto.getTime(),
+                supplierDto.getDate(),
+                supplierDto.getUser_Name());
     }
 
     public SupplierDto getData(String id) throws SQLException {

@@ -19,7 +19,7 @@ public class EmployeeSalaryModel {
                 employeeSalaryDto.getTime());
     }
 
-    public String workedDayCount(String id) throws SQLException {
-        return SQLUtil.execute("SELECT date FROM attendance WHERE id=?", id);
+    public String workedDayCount(String date, String id) throws SQLException {
+        return SQLUtil.execute("SELECT count(employee_Id) FROM attendance WHERE employee_Id=? AND date LIKE ", id);
     }
 }

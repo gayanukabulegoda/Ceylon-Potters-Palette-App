@@ -76,8 +76,8 @@ public class EmployeeSalaryPopUpFormController implements Initializable {
         EmployeeSalaryDto employeeSalaryDto = new EmployeeSalaryDto();
 
         employeeSalaryDto.setEmployee_Id(cmbEmployeeId.getSelectionModel().getSelectedItem());
-        employeeSalaryDto.setWorked_Day_Count(calculateWorkedDays());
-        lblWorkedDays.setText(String.valueOf(employeeSalaryModel.workedDayCount(cmbEmployeeId.getSelectionModel().getSelectedItem())));
+      //  employeeSalaryDto.setWorked_Day_Count(calculateWorkedDays());
+     //   lblWorkedDays.setText(String.valueOf(employeeSalaryModel.workedDayCount(cmbEmployeeId.getSelectionModel().getSelectedItem())));
 
         employeeSalaryDto.setSalary(Double.parseDouble(txtSalary.getText()));
         employeeSalaryDto.setBonus(Double.parseDouble(txtBonus.getText()));
@@ -107,9 +107,9 @@ public class EmployeeSalaryPopUpFormController implements Initializable {
         lblEmployeeName.setText(employeeModel.getEmployeeName(String.valueOf(cmbEmployeeId.getSelectionModel().getSelectedItem())));
     }
 
-    public int calculateWorkedDays() throws SQLException {
-        return Integer.parseInt(employeeSalaryModel.workedDayCount(cmbEmployeeId.getSelectionModel().getSelectedItem()));
-    }
+//    public int calculateWorkedDays() throws SQLException {
+//        return Integer.parseInt(employeeSalaryModel.workedDayCount(cmbEmployeeId.getSelectionModel().getSelectedItem()));
+//    }
 
     public void setDataInComboBox() throws SQLException {
         ArrayList<String> roles = employeeModel.getAllEmployeeId();

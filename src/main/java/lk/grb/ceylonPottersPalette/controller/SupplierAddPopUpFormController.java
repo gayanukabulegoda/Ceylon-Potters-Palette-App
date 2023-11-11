@@ -69,10 +69,10 @@ public class SupplierAddPopUpFormController {
         supplierDto.setContact_No(txtContactNo.getText());
         supplierDto.setTime(DateTimeUtil.timeNow());
         supplierDto.setDate(DateTimeUtil.dateNow());
+        supplierDto.setUser_Name(GlobalFormController.user);
 
-        boolean save = supplierModel.save(supplierDto);
+        supplierModel.save(supplierDto);
 
-        SupplierManageFormController.getInstance().allSupplierId();
         Navigation.closePane();
     }
 

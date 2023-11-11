@@ -48,7 +48,7 @@ public class ItemStockModel {
         return SQLUtil.execute("DELETE FROM item_Stock WHERE item_Id=?", id);
     }
 
-    public ArrayList<String> getAllProductId() throws SQLException {
+    public ArrayList<String> getAllItemId() throws SQLException {
         ResultSet resultSet = SQLUtil.execute("SELECT item_Id FROM item_Stock ORDER BY LENGTH(item_Id),item_Id");
         ArrayList<String> list = new ArrayList<>();
 

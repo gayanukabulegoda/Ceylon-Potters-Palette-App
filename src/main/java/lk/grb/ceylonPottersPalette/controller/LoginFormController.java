@@ -26,6 +26,7 @@ public class LoginFormController {
 
         try {
             if (userModel.checkUsernameAndPassword(txtUsername.getText(), txtPassword.getText()).equals("grb")) {
+                GlobalFormController.user = txtUsername.getText();
                 Navigation.switchNavigation("globalForm.fxml", event);
             } else {
                 new Alert(Alert.AlertType.ERROR, "Invalid Username Or Password!!").show();

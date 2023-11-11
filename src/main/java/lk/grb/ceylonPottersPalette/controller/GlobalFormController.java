@@ -88,7 +88,7 @@ public class GlobalFormController implements Initializable {
     private Label lblSupplier;
 
     @FXML
-    private Label lblTime;
+    public Label lblTime;
 
     @FXML
     public Pane pagingPane;
@@ -119,6 +119,8 @@ public class GlobalFormController implements Initializable {
 
     @FXML
     public Pane orderPopUpPane;
+
+    public static String user;
 
     private static GlobalFormController controller;
 

@@ -10,11 +10,13 @@ import java.util.ArrayList;
 public class CustomerModel {
 
     public boolean save(CustomerDto customerDTO) throws SQLException {
-        return SQLUtil.execute("insert into customer VALUES (?,?,?,?,?)",
+        return SQLUtil.execute("insert into customer VALUES (?,?,?,?,?,?,?)",
                 customerDTO.getCustomer_Id(),
                 customerDTO.getName(),
-                customerDTO.getCustomer_Id(),
+                customerDTO.getContact_No(),
                 customerDTO.getEmail(),
+                customerDTO.getDate(),
+                customerDTO.getTime(),
                 customerDTO.getUser_Name());
     }
 

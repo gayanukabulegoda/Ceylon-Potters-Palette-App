@@ -45,9 +45,10 @@ public class DateTimeUtil {
         SimpleDateFormat dateFormat=new SimpleDateFormat("hh:mm:ss");
         int totalIterations = Math.toIntExact(TimeUnit.HOURS.toSeconds(2));
         for (int sec = 0; sec < totalIterations; sec++) {
+            timeNow();
             TimeUnit.SECONDS.sleep(1);
         }
-        return dateFormat.format(new Date()) ;
+        return dateFormat.format(new Date());
     }
 
 }

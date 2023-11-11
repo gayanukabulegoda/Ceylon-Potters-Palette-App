@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class ProductStockModel {
 
     public boolean save(ProductStockDto productStockDTO) throws SQLException {
-        return SQLUtil.execute("INSERT INTO product_Stock VALUES (?,?,?,?,?)",
+        return SQLUtil.execute("INSERT INTO product_Stock VALUES (?,?,?,?,?,?)",
                 productStockDTO.getProduct_Id(),
                 productStockDTO.getDescription(),
                 productStockDTO.getQty_On_Hand(),
