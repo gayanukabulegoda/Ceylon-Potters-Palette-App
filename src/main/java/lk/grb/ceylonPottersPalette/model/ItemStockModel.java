@@ -1,9 +1,11 @@
 package lk.grb.ceylonPottersPalette.model;
 
+import lk.grb.ceylonPottersPalette.db.DbConnection;
 import lk.grb.ceylonPottersPalette.dto.ItemStockDto;
 import lk.grb.ceylonPottersPalette.dto.ProductStockDto;
 import lk.grb.ceylonPottersPalette.util.SQLUtil;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -32,16 +34,20 @@ public class ItemStockModel {
         return itemStockDto;
     }
 
-    public boolean update(ItemStockDto itemStockDto) throws SQLException {
-        return SQLUtil.execute("UPDATE item_Stock SET " +
-                        "description=?," +
-                        "unit_Price=?," +
-                        "qty_On_Hand=? ," +
-                        "WHERE item_Id=?",
-                itemStockDto.getDescription(),
-                itemStockDto.getUnit_Price(),
-                itemStockDto.getQty_On_Hand()
-        );
+    public boolean update(ArrayList<String[]> arrayList) throws SQLException {
+        String sql = "UPDATE item_Stock SET qty_On_Hand = qty_On_Hand + ? WHERE item_Id=?";
+        PreparedStatement statement = DbConnection.getInstance().getConnection().prepareStatement(sql);
+
+        for (int i = 0; i < arrayList.size() ; i++) {
+            statement.setInt(1, Integer.parseInt(arrayList.get(i)[1]));
+            statement.setString(2,arrayList.get(i)[0]);
+            int value = statement.executeUpdate();
+
+            if (value == 0) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public boolean delete(String id) throws SQLException {
@@ -56,5 +62,44 @@ public class ItemStockModel {
             list.add(resultSet.getString(1));
         }
         return list;
+    }
+
+    public String getDescription(String id) throws SQLException {
+
+        String sql = ("SELECT description FROM item_Stock WHERE item_Id=?");
+        PreparedStatement statement = DbConnection.getInstance().getConnection().prepareStatement(sql);
+        statement.setString(1,id);
+
+        ResultSet resultSet = statement.executeQuery();
+        if (resultSet.next()) {
+            return resultSet.getString(1);
+        }
+        return null;
+    }
+
+    public String getUnitPrice(String id) throws SQLException {
+
+        String sql = ("SELECT unit_Price FROM item_Stock WHERE item_Id=?");
+        PreparedStatement statement = DbConnection.getInstance().getConnection().prepareStatement(sql);
+        statement.setString(1,id);
+
+        ResultSet resultSet = statement.executeQuery();
+        if (resultSet.next()) {
+            return resultSet.getString(1);
+        }
+        return null;
+    }
+
+    public String getQtyOnHand(String id) throws SQLException {
+
+        String sql = ("SELECT qty_On_Hand FROM item_Stock WHERE item_Id=?");
+        PreparedStatement statement = DbConnection.getInstance().getConnection().prepareStatement(sql);
+        statement.setString(1,id);
+
+        ResultSet resultSet = statement.executeQuery();
+        if (resultSet.next()) {
+            return resultSet.getString(1);
+        }
+        return null;
     }
 }

@@ -4,16 +4,30 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import lk.grb.ceylonPottersPalette.dto.SupplierDto;
+import lk.grb.ceylonPottersPalette.dto.SupplierOrderDto;
+import lk.grb.ceylonPottersPalette.model.ItemStockModel;
+import lk.grb.ceylonPottersPalette.model.PlaceSupplierOrderModel;
+import lk.grb.ceylonPottersPalette.model.SupplierModel;
+import lk.grb.ceylonPottersPalette.model.SupplierOrderModel;
+import lk.grb.ceylonPottersPalette.util.DateTimeUtil;
 import lk.grb.ceylonPottersPalette.util.Navigation;
+import lk.grb.ceylonPottersPalette.util.NewId;
 
 import java.io.IOException;
+import java.net.URL;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
 
-public class SupplierOrderAddPopUpFormController {
+public class SupplierOrderAddPopUpFormController implements Initializable {
 
     @FXML
     private Pane AddToCartBtnPane;
@@ -40,10 +54,10 @@ public class SupplierOrderAddPopUpFormController {
     private Pane cancelBtnPane;
 
     @FXML
-    private JFXComboBox<?> cmbItemId;
+    private JFXComboBox<String> cmbItemId;
 
     @FXML
-    private JFXComboBox<?> cmbSupplierId;
+    private JFXComboBox<String> cmbSupplierId;
 
     @FXML
     private Label lblAddToCart;
@@ -84,6 +98,23 @@ public class SupplierOrderAddPopUpFormController {
     @FXML
     private VBox vBoxCustomerOrder;
 
+    SupplierOrderModel supplierOrderModel = new SupplierOrderModel();
+    PlaceSupplierOrderModel placeSupplierOrderModel = new PlaceSupplierOrderModel();
+    SupplierModel supplierModel = new SupplierModel();
+    ItemStockModel itemStockModel = new ItemStockModel();
+    ArrayList<String[]> itemList = new ArrayList<>();
+    ArrayList<String> idList;
+
+    {
+        try {
+            idList = supplierOrderModel.getAllSupplierOrderId();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    double netTotal = 0;
+
     @FXML
     void btnAddNewSupplierOnAction(ActionEvent event) throws IOException {
         Navigation.closeOrderPopUpPane();
@@ -93,6 +124,14 @@ public class SupplierOrderAddPopUpFormController {
     @FXML
     void btnAddToCartOnAction(ActionEvent event) {
 
+        String[] items = {String.valueOf(cmbItemId.getSelectionModel().getSelectedItem()), txtItemQty.getText()};
+
+        itemList.add(items);
+
+        netTotal += (Integer.parseInt(txtItemQty.getText())) * (Double.parseDouble(lblUnitPrice.getText()));
+        lblNetTotal.setText(String.valueOf(netTotal));
+
+        txtItemQty.clear();
     }
 
     @FXML
@@ -103,15 +142,61 @@ public class SupplierOrderAddPopUpFormController {
     @FXML
     void btnPlaceOrderOnAction(ActionEvent event) {
 
+        SupplierOrderDto supplierOrderDto = new SupplierOrderDto();
+
+        supplierOrderDto.setSupplier_Order_Id(lblOrderId.getText());
+        supplierOrderDto.setSupplier_Id(cmbSupplierId.getSelectionModel().getSelectedItem());
+        supplierOrderDto.setTotal_Price(Double.parseDouble(lblNetTotal.getText()));
+        supplierOrderDto.setDate(DateTimeUtil.dateNow());
+        supplierOrderDto.setTime(DateTimeUtil.timeNow());
+        supplierOrderDto.setOrderList(itemList);
+
+        boolean isSaved = placeSupplierOrderModel.placeSupplierOrder(supplierOrderDto);
+
+        if (isSaved) {
+            Navigation.closeOrderPopUpPane();
+        }
+        else {
+            new Alert(Alert.AlertType.ERROR, "Unable to Save the ORDER!!!").show();
+        }
     }
 
     @FXML
-    void cmbItemIdOnAction(ActionEvent event) {
+    void cmbItemIdOnAction(ActionEvent event) throws SQLException {
+        lblDescription.setText(itemStockModel.getDescription(cmbItemId.getSelectionModel().getSelectedItem()));
+        lblUnitPrice.setText(itemStockModel.getUnitPrice(cmbItemId.getSelectionModel().getSelectedItem()));
+        lblQtyOnHand.setText(itemStockModel.getQtyOnHand(cmbItemId.getSelectionModel().getSelectedItem()));
+    }
 
+    public void setItemDataInComboBox() throws SQLException {
+        ArrayList<String> roles = itemStockModel.getAllItemId();
+        cmbItemId.getItems().addAll(roles);
     }
 
     @FXML
-    void cmbSupplierIdOnAction(ActionEvent event) {
+    void cmbSupplierIdOnAction(ActionEvent event) throws SQLException {
+        lblSupplierName.setText(supplierModel.getSupplierName(cmbSupplierId.getSelectionModel().getSelectedItem()));
+    }
 
+    public void setSupplierDataInComboBox() throws SQLException {
+        ArrayList<String> roles = supplierModel.getAllSupplierId();
+        cmbSupplierId.getItems().addAll(roles);
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        lblOrderId.setText(NewId.newId(idList, NewId.GetType.SUPPLIER_ORDER));
+        lblOrderDate.setText(DateTimeUtil.dateNow());
+
+        try {
+            setItemDataInComboBox();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        try {
+            setSupplierDataInComboBox();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

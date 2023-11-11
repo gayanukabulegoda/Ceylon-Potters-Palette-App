@@ -1,8 +1,10 @@
 package lk.grb.ceylonPottersPalette.model;
 
+import lk.grb.ceylonPottersPalette.db.DbConnection;
 import lk.grb.ceylonPottersPalette.dto.CustomerDto;
 import lk.grb.ceylonPottersPalette.util.SQLUtil;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -10,7 +12,7 @@ import java.util.ArrayList;
 public class CustomerModel {
 
     public boolean save(CustomerDto customerDTO) throws SQLException {
-        return SQLUtil.execute("insert into customer VALUES (?,?,?,?,?,?,?)",
+        return SQLUtil.execute("INSERT INTO customer VALUES (?,?,?,?,?,?,?)",
                 customerDTO.getCustomer_Id(),
                 customerDTO.getName(),
                 customerDTO.getContact_No(),
@@ -59,5 +61,18 @@ public class CustomerModel {
             list.add(resultSet.getString(1));
         }
         return list;
+    }
+
+    public String getCustomerName(String id) throws SQLException {
+
+        String sql = ("SELECT name FROM customer WHERE customer_Id=?");
+        PreparedStatement statement = DbConnection.getInstance().getConnection().prepareStatement(sql);
+        statement.setString(1,id);
+
+        ResultSet resultSet = statement.executeQuery();
+        if (resultSet.next()) {
+            return resultSet.getString(1);
+        }
+        return null;
     }
 }

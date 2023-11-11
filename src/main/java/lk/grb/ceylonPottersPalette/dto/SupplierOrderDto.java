@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.util.ArrayList;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -13,10 +15,8 @@ public class SupplierOrderDto {
 
     private String supplier_Order_Id;
     private String supplier_Id;
-    private String item_Id;
-    private int item_Qty;
-    private double unit_Price;
     private double total_Price;
     private String date;
     private String time;
+    private ArrayList<String[]> orderList;
 }

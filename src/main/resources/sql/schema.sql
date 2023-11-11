@@ -37,8 +37,6 @@ CREATE TABLE customer(
 CREATE TABLE customer_Order(
                                customer_Order_Id VARCHAR(20) PRIMARY KEY,
                                customer_Id VARCHAR(10) NOT NULL,
-                               product_Id VARCHAR(50) NOT NULL,
-                               product_Qty INT NOT NULL,
                                total_Price DECIMAL NOT NULL,
                                date DATE NOT NULL,
                                time TIME NOT NULL,
@@ -57,6 +55,7 @@ CREATE TABLE product_Stock(
 CREATE TABLE customer_Order_Detail(
                                       customer_Order_Id VARCHAR(20) NOT NULL,
                                       product_Id VARCHAR(10) NOT NULL,
+                                      product_Quantity INT NOT NULL,
                                       CONSTRAINT FOREIGN KEY(customer_Order_Id) REFERENCES customer_Order(customer_Order_Id) ON DELETE CASCADE ON UPDATE CASCADE,
                                       CONSTRAINT FOREIGN KEY(product_Id) REFERENCES product_Stock(product_Id) ON DELETE CASCADE ON UPDATE CASCADE
 );
@@ -82,9 +81,6 @@ CREATE TABLE supplier(
 CREATE TABLE supplier_Order(
                                supplier_Order_Id VARCHAR(20) PRIMARY KEY,
                                supplier_Id VARCHAR(6) NOT NULL,
-                               item_Id VARCHAR(6) NOT NULL,
-                               item_Qty INT NOT NULL,
-                               unit_Price DECIMAL NOT NULL,
                                total_Price DECIMAL NOT NULL,
                                date DATE NOT NULL,
                                time TIME NOT NULL,
@@ -101,6 +97,7 @@ CREATE TABLE item_Stock(
 CREATE TABLE supplier_Order_Detail(
                                       supplier_Order_Id VARCHAR(20) NOT NULL,
                                       item_Id VARCHAR(6) NOT NULL,
+                                      item_Qty INT NOT NULL,
                                       CONSTRAINT FOREIGN KEY(supplier_Order_Id) REFERENCES supplier_Order(supplier_Order_Id) ON DELETE CASCADE ON UPDATE CASCADE,
                                       CONSTRAINT FOREIGN KEY(item_Id) REFERENCES item_Stock(item_Id) ON DELETE CASCADE ON UPDATE CASCADE
 );
