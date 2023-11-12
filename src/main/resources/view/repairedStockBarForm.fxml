@@ -16,34 +16,29 @@
                   <Font name="SansSerif Regular" size="16.0" />
                </font>
             </Text>
-            <Text fx:id="description" opacity="0.68" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" wrappingWidth="357.36500549316406">
+            <Text fx:id="description" opacity="0.68" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" wrappingWidth="363.7287139892578">
                <font>
                   <Font name="SansSerif Regular" size="16.0" />
                </font>
             </Text>
-            <Text fx:id="unitPrice" opacity="0.68" strokeType="OUTSIDE" strokeWidth="0.0" text="Unit Price" wrappingWidth="302.18434143066406">
+            <Text fx:id="qtyToRepair" opacity="0.68" strokeType="OUTSIDE" strokeWidth="0.0" text="QTY to Repair" wrappingWidth="298.5479888319969">
                <font>
                   <Font name="SansSerif Regular" size="16.0" />
                </font>
             </Text>
-            <Text fx:id="category" layoutX="793.0" layoutY="44.0" opacity="0.68" strokeType="OUTSIDE" strokeWidth="0.0" text="Category" wrappingWidth="311.3113479614258">
+            <Text fx:id="category" layoutX="793.0" layoutY="44.0" opacity="0.68" strokeType="OUTSIDE" strokeWidth="0.0" text="Category" wrappingWidth="234.94734954833984">
                <font>
                   <Font name="SansSerif Regular" size="16.0" />
                </font>
             </Text>
-            <ImageView fx:id="updateImg" fitHeight="25.0" fitWidth="25.0" onMouseClicked="#updateOnMouseClick" onMouseEntered="#updateOnMouseEntered" onMouseExited="#updateOnMouseExited" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imgUpdate" fitHeight="39.0" fitWidth="113.0" onMouseClicked="#imgUpdateOnMouseClicked" onMouseEntered="#imgUpdateOnMouseEntered" onMouseExited="#imgUpdateOnMouseExited" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assests/icon/editIcon.png" />
+                  <Image url="@../assests/img/btnRepairedUpdate.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="deleteImg" fitHeight="25.0" fitWidth="25.0" onMouseClicked="#deleteOnMouseClick" onMouseEntered="#deleteOnMouseEntered" onMouseExited="#deleteOnMouseExited" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imgRepaired" fitHeight="39.0" fitWidth="113.0" layoutX="1271.0" layoutY="19.0" onMouseClicked="#imgRepairedOnMouseClicked" onMouseEntered="#imgRepairedOnMouseEntered" onMouseExited="#imgRepairedOnMouseExited" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assests/icon/deleteIcon.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="viewImg" fitHeight="25.0" fitWidth="25.0" onMouseClicked="#viewDetailsOnMouseClick" onMouseEntered="#viewOnMouseEntered" onMouseExited="#viewOnMouseExited" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assests/icon/viewIcon.png" />
+                  <Image url="@../assests/img/btnRepairedProducts.png" />
                </image>
             </ImageView>
          </children>

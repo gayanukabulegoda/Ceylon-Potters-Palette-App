@@ -10,6 +10,7 @@ import javafx.scene.layout.Pane;
 import lk.grb.ceylonPottersPalette.dto.ProductStockDto;
 import lk.grb.ceylonPottersPalette.dto.SupplierDto;
 import lk.grb.ceylonPottersPalette.model.ProductStockModel;
+import lk.grb.ceylonPottersPalette.model.ProductStockTransactionModel;
 import lk.grb.ceylonPottersPalette.model.SupplierModel;
 import lk.grb.ceylonPottersPalette.util.DateTimeUtil;
 import lk.grb.ceylonPottersPalette.util.Navigation;
@@ -62,6 +63,7 @@ public class ProductAddPopUpFormController {
     public static int producedTotalProductQuantity;
 
     ProductStockModel productStockModel = new ProductStockModel();
+    ProductStockTransactionModel productStockTransactionModel = new ProductStockTransactionModel();
 
     @FXML
     void btnAddOnAction(ActionEvent event) throws SQLException {
@@ -78,9 +80,11 @@ public class ProductAddPopUpFormController {
         producedTotalProductQuantity += productStockDto.getQty_On_Hand();
         productStockDto.setQty(producedTotalProductQuantity);
 
-        productStockModel.save(productStockDto);
+        boolean saved = productStockTransactionModel.saveProduct(productStockDto);
 
-        Navigation.closePane();
+        if (saved) {
+            Navigation.closePane();
+        }
     }
 
     @FXML

@@ -8,10 +8,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 
-public class EmployeeAttendanceDto {
+public class RepairStockDto {
 
-    private String attendance_Id;
-    private String employee_Id;
-    private String date;
-    private String time;
+    private String product_Id;
+    private String qty_To_Repair;
 }

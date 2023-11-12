@@ -3,6 +3,7 @@ package lk.grb.ceylonPottersPalette.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
@@ -10,10 +11,12 @@ import lk.grb.ceylonPottersPalette.model.SupplierModel;
 import lk.grb.ceylonPottersPalette.util.Navigation;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
-public class SupplierManageFormController {
+public class SupplierManageFormController implements Initializable {
 
     @FXML
     private TextField txtSearch;
@@ -48,14 +51,23 @@ public class SupplierManageFormController {
     }
 
     private void loadDataTable(String id) {
-//        try {
-//            FXMLLoader loader = new FXMLLoader(SupplierManageFormController.class.getResource("/view/SupplierDetailsBarForm.fxml"));
-//            Parent root = loader.load();
-//            SupplierDetailsBarFormController controller = loader.getController();
-//            controller.setData(id);
-//            vBox.getChildren().add(root);
-//        } catch (IOException | SQLException | ClassNotFoundException e) {
-//            throw new RuntimeException(e);
-//        }
+        try {
+            FXMLLoader loader = new FXMLLoader(SupplierManageFormController.class.getResource("/view/supplierManageBarForm.fxml"));
+            Parent root = loader.load();
+            SupplierManageBarFormController controller = loader.getController();
+            controller.setData(id);
+            vBoxSupplierManage.getChildren().add(root);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        try {
+            allSupplierId();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

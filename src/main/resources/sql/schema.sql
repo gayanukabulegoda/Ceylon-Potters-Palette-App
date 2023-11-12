@@ -63,7 +63,6 @@ CREATE TABLE customer_Order_Detail(
 CREATE TABLE repair_Stock(
                              product_Id VARCHAR(10) NOT NULL,
                              qty_To_Repair INT NOT NULL,
-                             category VARCHAR(12) NOT NULL,
                              CONSTRAINT FOREIGN KEY(product_Id) REFERENCES product_Stock(product_Id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
@@ -103,6 +102,7 @@ CREATE TABLE supplier_Order_Detail(
 );
 
 CREATE TABLE salary(
+                       salary_Id VARCHAR(6) PRIMARY KEY,
                        employee_Id VARCHAR(6) NOT NULL,
                        worked_Day_Count INT NOT NULL,
                        salary DECIMAL NOT NULL,
@@ -114,6 +114,7 @@ CREATE TABLE salary(
 );
 
 CREATE TABLE attendance(
+                           attendance_Id VARCHAR(6) PRIMARY KEY,
                            employee_Id VARCHAR(20) NOT NULL,
                            date DATE NOT NULL,
                            time TIME NOT NULL,
@@ -123,5 +124,6 @@ CREATE TABLE attendance(
 INSERT INTO employee VALUES ('E001','Nisal','Gamage','200209801818','30/7','Matara Road','Matara','070 241 9999','nisalgamage@gmail.com','Manager');
 
 INSERT INTO employee VALUES ('E002','Wimal','Gamage','200109801818','20/7','Galle Road','Galle','070 241 0000','wimalgamage@gmail.com','Minor Staff');
+
 
 INSERT INTO user VALUES ('grb','1234','E001');

@@ -4,6 +4,11 @@ import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
+import lk.grb.ceylonPottersPalette.dto.ProductStockDto;
+import lk.grb.ceylonPottersPalette.dto.SupplierDto;
+import lk.grb.ceylonPottersPalette.model.ProductStockModel;
+
+import java.sql.SQLException;
 
 public class ProductStockBarFormController {
 
@@ -30,6 +35,8 @@ public class ProductStockBarFormController {
 
     @FXML
     private ImageView viewImg;
+
+    ProductStockModel productStockModel = new ProductStockModel();
 
     @FXML
     void deleteOnMouseClick(MouseEvent event) {
@@ -74,5 +81,19 @@ public class ProductStockBarFormController {
     @FXML
     void viewOnMouseExited(MouseEvent event) {
 
+    }
+
+    public void setData(String id) {
+        try {
+            ProductStockDto productStockDto = productStockModel.getData(id);
+
+            this.id.setText(productStockDto.getProduct_Id());
+            description.setText(productStockDto.getDescription());
+            unitPrice.setText(String.valueOf(productStockDto.getUnit_Price()));
+            quantity.setText(String.valueOf(productStockDto.getQty_On_Hand()));
+            category.setText(productStockDto.getCategory());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

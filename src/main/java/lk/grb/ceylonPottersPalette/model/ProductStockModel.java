@@ -22,7 +22,7 @@ public class ProductStockModel {
     }
 
     public ProductStockDto getData(String id) throws SQLException {
-        ResultSet set = SQLUtil.execute("SELECT * FROM product_Stock WHERE customer_Id=?", id);
+        ResultSet set = SQLUtil.execute("SELECT * FROM product_Stock WHERE product_Id=?", id);
 
         ProductStockDto productStockDTO = new ProductStockDto();
 
@@ -51,6 +51,34 @@ public class ProductStockModel {
             }
         }
         return true;
+    }
+
+    public boolean update(String id, String qty) throws SQLException {
+        String sql = "UPDATE product_Stock SET qty_On_Hand = qty_On_Hand - ? WHERE product_Id=?";
+        PreparedStatement statement = DbConnection.getInstance().getConnection().prepareStatement(sql);
+
+        statement.setString(1,qty);
+        statement.setString(2,id);
+        int i = statement.executeUpdate();
+
+        if (i > 0) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean updateIncrement(String id, String qty) throws SQLException {
+        String sql = "UPDATE product_Stock SET qty_On_Hand = qty_On_Hand + ? WHERE product_Id=?";
+        PreparedStatement statement = DbConnection.getInstance().getConnection().prepareStatement(sql);
+
+        statement.setString(1,qty);
+        statement.setString(2,id);
+        int i = statement.executeUpdate();
+
+        if (i > 0) {
+            return true;
+        }
+        return false;
     }
 
     public boolean delete(String id) throws SQLException {

@@ -82,11 +82,31 @@ public class NewId {
                     return "CO-01";
                 }
 
+            case ATTENDANCE_ID:
+                try {
+                    String[] split = lastId.split("A00");
+                    int idNum = Integer.parseInt(split[1]);
+                    idNum++;
+                    return "A00" + idNum;
+                } catch (Exception e) {
+                    return "A001";
+                }
+
+            case SALARY_ID:
+                try {
+                    String[] split = lastId.split("SI-0");
+                    int idNum = Integer.parseInt(split[1]);
+                    idNum++;
+                    return "SI-0" + idNum;
+                } catch (Exception e) {
+                    return "SI-01";
+                }
+
             default:
                 return null;
         }
     }
     public enum GetType {
-        EMPLOYEE, SUPPLIER, CUSTOMER, PRODUCT_STOCK, ITEM_STOCK, SUPPLIER_ORDER, CUSTOMER_ORDER
+        EMPLOYEE, SUPPLIER, CUSTOMER, PRODUCT_STOCK, ITEM_STOCK, SUPPLIER_ORDER, CUSTOMER_ORDER, ATTENDANCE_ID, SALARY_ID
     }
 }

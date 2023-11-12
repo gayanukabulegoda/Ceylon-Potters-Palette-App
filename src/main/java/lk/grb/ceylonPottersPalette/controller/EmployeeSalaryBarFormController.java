@@ -4,6 +4,13 @@ import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
+import lk.grb.ceylonPottersPalette.dto.EmployeeDto;
+import lk.grb.ceylonPottersPalette.dto.EmployeeSalaryDto;
+import lk.grb.ceylonPottersPalette.dto.SupplierDto;
+import lk.grb.ceylonPottersPalette.model.EmployeeModel;
+import lk.grb.ceylonPottersPalette.model.EmployeeSalaryModel;
+
+import java.sql.SQLException;
 
 public class EmployeeSalaryBarFormController {
 
@@ -24,6 +31,9 @@ public class EmployeeSalaryBarFormController {
 
     @FXML
     private ImageView viewImg;
+
+    EmployeeSalaryModel employeeSalaryModel = new EmployeeSalaryModel();
+    EmployeeModel employeeModel = new EmployeeModel();
 
     @FXML
     void updateOnMouseClick(MouseEvent event) {
@@ -53,5 +63,19 @@ public class EmployeeSalaryBarFormController {
     @FXML
     void viewOnMouseExited(MouseEvent event) {
 
+    }
+
+    public void setData(String id) {
+        try {
+            EmployeeSalaryDto employeeSalaryDto = employeeSalaryModel.getData(id);
+            EmployeeDto employeeDto = employeeModel.getData(employeeSalaryDto.getEmployee_Id());
+
+            this.id.setText(employeeSalaryDto.getEmployee_Id());
+            name.setText(employeeDto.getFirst_Name() + " " + employeeDto.getLast_Name());
+            payment.setText(String.valueOf(employeeSalaryDto.getTotal_Payment()));
+            date.setText(employeeSalaryDto.getDate());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

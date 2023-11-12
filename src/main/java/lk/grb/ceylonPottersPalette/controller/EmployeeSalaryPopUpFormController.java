@@ -15,6 +15,7 @@ import lk.grb.ceylonPottersPalette.model.EmployeeModel;
 import lk.grb.ceylonPottersPalette.model.EmployeeSalaryModel;
 import lk.grb.ceylonPottersPalette.util.DateTimeUtil;
 import lk.grb.ceylonPottersPalette.util.Navigation;
+import lk.grb.ceylonPottersPalette.util.NewId;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -79,6 +80,9 @@ public class EmployeeSalaryPopUpFormController implements Initializable {
 
         EmployeeSalaryDto employeeSalaryDto = new EmployeeSalaryDto();
 
+        ArrayList<String> list = employeeSalaryModel.getAllSalaryId();
+
+        employeeSalaryDto.setSalary_Id(NewId.newId(list, NewId.GetType.SALARY_ID));
         employeeSalaryDto.setEmployee_Id(cmbEmployeeId.getSelectionModel().getSelectedItem());
         employeeSalaryDto.setWorked_Day_Count(Integer.parseInt(lblWorkedDays.getText()));
         employeeSalaryDto.setSalary(Double.parseDouble(txtSalary.getText()));
@@ -116,19 +120,29 @@ public class EmployeeSalaryPopUpFormController implements Initializable {
 
     @FXML
     void txtBonusOnAction(ActionEvent event) {
+        isEmpty();
         lblTotalAmount.setText(String.valueOf(Double.parseDouble(txtSalary.getText())+Double.parseDouble(txtBonus.getText())));
     }
 
     @FXML
     void txtSalaryOnAction(ActionEvent event) {
+        isEmpty();
         lblTotalAmount.setText(String.valueOf((Double.parseDouble(txtSalary.getText()))+Double.parseDouble(txtBonus.getText())));
         txtBonus.setEditable(true);
     }
 
+    public void isEmpty() {
+        if (txtBonus.getText().isEmpty()) {
+            txtBonus.setText(String.valueOf(0.00));
+        }
+        if (txtSalary.getText().isEmpty()) {
+            txtSalary.setText(String.valueOf(0.00));
+        }
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        txtSalary.setText(String.valueOf(0.00));
-        txtBonus.setText(String.valueOf(0.00));
+
         lblTotalAmount.setText(String.valueOf(0.00));
 
         try {
