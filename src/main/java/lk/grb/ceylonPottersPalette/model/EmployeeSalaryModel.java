@@ -9,7 +9,7 @@ import java.sql.SQLException;
 public class EmployeeSalaryModel {
 
     public boolean save(EmployeeSalaryDto employeeSalaryDto) throws SQLException {
-        return SQLUtil.execute("INSERT INTO salary VALUES (?,?,?,?,?,?)",
+        return SQLUtil.execute("INSERT INTO salary VALUES (?,?,?,?,?,?,?)",
                 employeeSalaryDto.getEmployee_Id(),
                 employeeSalaryDto.getWorked_Day_Count(),
                 employeeSalaryDto.getSalary(),
@@ -17,9 +17,5 @@ public class EmployeeSalaryModel {
                 employeeSalaryDto.getTotal_Payment(),
                 employeeSalaryDto.getDate(),
                 employeeSalaryDto.getTime());
-    }
-
-    public String workedDayCount(String date, String id) throws SQLException {
-        return SQLUtil.execute("SELECT count(employee_Id) FROM attendance WHERE employee_Id=? AND date LIKE ", id);
     }
 }

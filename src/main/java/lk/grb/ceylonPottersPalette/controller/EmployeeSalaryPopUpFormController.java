@@ -10,6 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import lk.grb.ceylonPottersPalette.dto.EmployeeSalaryDto;
+import lk.grb.ceylonPottersPalette.model.EmployeeAttendanceModel;
 import lk.grb.ceylonPottersPalette.model.EmployeeModel;
 import lk.grb.ceylonPottersPalette.model.EmployeeSalaryModel;
 import lk.grb.ceylonPottersPalette.util.DateTimeUtil;
@@ -17,6 +18,8 @@ import lk.grb.ceylonPottersPalette.util.Navigation;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -69,6 +72,7 @@ public class EmployeeSalaryPopUpFormController implements Initializable {
 
     EmployeeModel employeeModel = new EmployeeModel();
     EmployeeSalaryModel employeeSalaryModel = new EmployeeSalaryModel();
+    EmployeeAttendanceModel employeeAttendanceModel = new EmployeeAttendanceModel();
 
     @FXML
     void btnAddOnAction(ActionEvent event) throws SQLException {
@@ -76,20 +80,17 @@ public class EmployeeSalaryPopUpFormController implements Initializable {
         EmployeeSalaryDto employeeSalaryDto = new EmployeeSalaryDto();
 
         employeeSalaryDto.setEmployee_Id(cmbEmployeeId.getSelectionModel().getSelectedItem());
-      //  employeeSalaryDto.setWorked_Day_Count(calculateWorkedDays());
-     //   lblWorkedDays.setText(String.valueOf(employeeSalaryModel.workedDayCount(cmbEmployeeId.getSelectionModel().getSelectedItem())));
-
+        employeeSalaryDto.setWorked_Day_Count(Integer.parseInt(lblWorkedDays.getText()));
         employeeSalaryDto.setSalary(Double.parseDouble(txtSalary.getText()));
         employeeSalaryDto.setBonus(Double.parseDouble(txtBonus.getText()));
-        lblTotalAmount.setText(String.valueOf(employeeSalaryDto.getSalary() + employeeSalaryDto.getBonus()));
-
-        employeeSalaryDto.setTotal_Payment(employeeSalaryDto.getSalary() + employeeSalaryDto.getBonus());
+        employeeSalaryDto.setTotal_Payment(Double.parseDouble(lblTotalAmount.getText()));
         employeeSalaryDto.setDate(DateTimeUtil.dateNow());
         employeeSalaryDto.setTime(DateTimeUtil.timeNow());
 
         boolean save = employeeSalaryModel.save(employeeSalaryDto);
-
-        Navigation.closePane();
+        if (save) {
+            Navigation.closePane();
+        }
     }
 
     @FXML
@@ -105,19 +106,31 @@ public class EmployeeSalaryPopUpFormController implements Initializable {
     @FXML
     void cmbEmployeeIdOnAction(ActionEvent event) throws SQLException {
         lblEmployeeName.setText(employeeModel.getEmployeeName(String.valueOf(cmbEmployeeId.getSelectionModel().getSelectedItem())));
+        lblWorkedDays.setText(employeeAttendanceModel.workedDayCount(cmbEmployeeId.getSelectionModel().getSelectedItem(), (LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM")) + "%")));
     }
-
-//    public int calculateWorkedDays() throws SQLException {
-//        return Integer.parseInt(employeeSalaryModel.workedDayCount(cmbEmployeeId.getSelectionModel().getSelectedItem()));
-//    }
 
     public void setDataInComboBox() throws SQLException {
         ArrayList<String> roles = employeeModel.getAllEmployeeId();
         cmbEmployeeId.getItems().addAll(roles);
     }
 
+    @FXML
+    void txtBonusOnAction(ActionEvent event) {
+        lblTotalAmount.setText(String.valueOf(Double.parseDouble(txtSalary.getText())+Double.parseDouble(txtBonus.getText())));
+    }
+
+    @FXML
+    void txtSalaryOnAction(ActionEvent event) {
+        lblTotalAmount.setText(String.valueOf((Double.parseDouble(txtSalary.getText()))+Double.parseDouble(txtBonus.getText())));
+        txtBonus.setEditable(true);
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        txtSalary.setText(String.valueOf(0.00));
+        txtBonus.setText(String.valueOf(0.00));
+        lblTotalAmount.setText(String.valueOf(0.00));
+
         try {
             setDataInComboBox();
         } catch (SQLException e) {
