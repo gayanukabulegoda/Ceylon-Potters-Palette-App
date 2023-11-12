@@ -4,7 +4,9 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -124,6 +126,8 @@ public class CustomerOrderAddPopUpFormController implements Initializable {
 
         productList.add(products);
 
+        allCustomerOrderCartId();
+
         netTotal += (Integer.parseInt(txtProductQty.getText())) * (Double.parseDouble(lblUnitPrice.getText()));
         lblNetTotal.setText(String.valueOf(netTotal));
 
@@ -179,6 +183,27 @@ public class CustomerOrderAddPopUpFormController implements Initializable {
         cmbProductId.getItems().addAll(roles);
     }
 
+    public void allCustomerOrderCartId() {
+
+        vBoxCustomerOrder.getChildren().clear();
+
+        for (int i = 0; i < productList.size(); i++) {
+            loadDataTable(productList.get(i));
+        }
+    }
+
+    private void loadDataTable(String[] id) {
+        try {
+            FXMLLoader loader = new FXMLLoader(CustomerOrderAddPopUpFormController.class.getResource("/view/customerOrderAddPopUpBarForm.fxml"));
+            Parent root = loader.load();
+            CustomerOrderAddPopUpBarFormController controller = loader.getController();
+            controller.setData(id);
+            vBoxCustomerOrder.getChildren().add(root);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         lblOrderId.setText(NewId.newId(idList, NewId.GetType.CUSTOMER_ORDER));
@@ -189,6 +214,7 @@ public class CustomerOrderAddPopUpFormController implements Initializable {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+
         try {
             setProductDataInComboBox();
         } catch (SQLException e) {

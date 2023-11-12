@@ -4,7 +4,9 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -128,6 +130,8 @@ public class SupplierOrderAddPopUpFormController implements Initializable {
 
         itemList.add(items);
 
+        allSupplierOrderCartId();
+
         netTotal += (Integer.parseInt(txtItemQty.getText())) * (Double.parseDouble(lblUnitPrice.getText()));
         lblNetTotal.setText(String.valueOf(netTotal));
 
@@ -181,6 +185,27 @@ public class SupplierOrderAddPopUpFormController implements Initializable {
     public void setSupplierDataInComboBox() throws SQLException {
         ArrayList<String> roles = supplierModel.getAllSupplierId();
         cmbSupplierId.getItems().addAll(roles);
+    }
+
+    public void allSupplierOrderCartId() {
+
+        vBoxCustomerOrder.getChildren().clear();
+
+        for (int i = 0; i < itemList.size(); i++) {
+            loadDataTable(itemList.get(i));
+        }
+    }
+
+    private void loadDataTable(String[] id) {
+        try {
+            FXMLLoader loader = new FXMLLoader(SupplierOrderAddPopUpFormController.class.getResource("/view/supplierOrderAddPopUpBarForm.fxml"));
+            Parent root = loader.load();
+            SupplierOrderAddPopUpBarFormController controller = loader.getController();
+            controller.setData(id);
+            vBoxCustomerOrder.getChildren().add(root);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override

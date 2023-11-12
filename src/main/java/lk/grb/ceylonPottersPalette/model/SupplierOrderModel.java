@@ -1,5 +1,6 @@
 package lk.grb.ceylonPottersPalette.model;
 
+import lk.grb.ceylonPottersPalette.dto.EmployeeDto;
 import lk.grb.ceylonPottersPalette.dto.SupplierDto;
 import lk.grb.ceylonPottersPalette.dto.SupplierOrderDto;
 import lk.grb.ceylonPottersPalette.util.SQLUtil;
@@ -17,6 +18,21 @@ public class SupplierOrderModel {
                 supplierOrderDto.getTotal_Price(),
                 supplierOrderDto.getDate(),
                 supplierOrderDto.getTime());
+    }
+
+    public SupplierOrderDto getData(String id) throws SQLException {
+        ResultSet set = SQLUtil.execute("SELECT * FROM supplier_Order WHERE supplier_Order_Id=?", id);
+
+        SupplierOrderDto supplierOrderDto = new SupplierOrderDto();
+
+        if (set.next()) {
+            supplierOrderDto.setSupplier_Order_Id(set.getString(1));
+            supplierOrderDto.setSupplier_Id(set.getString(2));
+            supplierOrderDto.setTotal_Price(Double.parseDouble(set.getString(3)));
+            supplierOrderDto.setDate(set.getString(4));
+            supplierOrderDto.setTime(set.getString(5));
+        }
+        return supplierOrderDto;
     }
 
     public ArrayList<String> getAllSupplierOrderId() throws SQLException {

@@ -102,4 +102,22 @@ public class ItemStockModel {
         }
         return null;
     }
+
+    public String[] descAndUnitPriceGet(String id) throws SQLException {
+        String sql = "SELECT description, unit_Price FROM item_Stock WHERE item_Id=?";
+
+        PreparedStatement preparedStatement = DbConnection.getInstance().getConnection().prepareStatement(sql);
+        preparedStatement.setString(1,id);
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        String[] set = new String[2];
+
+        if (resultSet.next()) {
+            set[0] = resultSet.getString(1);
+            set[1] = resultSet.getString(2);
+        }
+
+        return set;
+    }
 }

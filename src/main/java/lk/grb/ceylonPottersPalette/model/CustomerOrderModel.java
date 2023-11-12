@@ -19,6 +19,21 @@ public class CustomerOrderModel {
                 customerOrderDto.getTime());
     }
 
+    public CustomerOrderDto getData(String id) throws SQLException {
+        ResultSet set = SQLUtil.execute("SELECT * FROM customer_Order WHERE customer_Order_Id=?", id);
+
+        CustomerOrderDto customerOrderDto = new CustomerOrderDto();
+
+        if (set.next()) {
+            customerOrderDto.setCustomer_Order_Id(set.getString(1));
+            customerOrderDto.setCustomer_Id(set.getString(2));
+            customerOrderDto.setTotal_Price(Double.parseDouble(set.getString(3)));
+            customerOrderDto.setDate(set.getString(4));
+            customerOrderDto.setTime(set.getString(5));
+        }
+        return customerOrderDto;
+    }
+
     public ArrayList<String> getAllCustomerOrderId() throws SQLException {
         ResultSet resultSet = SQLUtil.execute("SELECT customer_Order_Id FROM customer_Order ORDER BY LENGTH(customer_Order_Id),customer_Order_Id");
         ArrayList<String> list = new ArrayList<>();

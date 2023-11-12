@@ -1,9 +1,12 @@
 package lk.grb.ceylonPottersPalette.model;
 
+import com.mysql.cj.protocol.Resultset;
+import com.mysql.cj.protocol.ResultsetRow;
 import lk.grb.ceylonPottersPalette.db.DbConnection;
 import lk.grb.ceylonPottersPalette.dto.ProductStockDto;
 import lk.grb.ceylonPottersPalette.util.SQLUtil;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -132,5 +135,23 @@ public class ProductStockModel {
             return resultSet.getString(1);
         }
         return null;
+    }
+
+    public String[] descAndUnitPriceGet(String id) throws SQLException {
+        String sql = "SELECT description, unit_Price FROM product_Stock WHERE product_Id=?";
+
+        PreparedStatement preparedStatement = DbConnection.getInstance().getConnection().prepareStatement(sql);
+        preparedStatement.setString(1,id);
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        String[] set = new String[2];
+
+        if (resultSet.next()) {
+            set[0] = resultSet.getString(1);
+            set[1] = resultSet.getString(2);
+         }
+
+        return set;
     }
 }

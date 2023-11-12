@@ -3,8 +3,10 @@ package lk.grb.ceylonPottersPalette.model;
 import lk.grb.ceylonPottersPalette.db.DbConnection;
 import lk.grb.ceylonPottersPalette.dto.CustomerOrderDto;
 import lk.grb.ceylonPottersPalette.dto.SupplierOrderDto;
+import lk.grb.ceylonPottersPalette.util.SQLUtil;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class SupplierOrderDetailModel {
@@ -24,5 +26,20 @@ public class SupplierOrderDetailModel {
             }
         }
         return true;
+    }
+
+    public SupplierOrderDto getData(String id) throws SQLException {
+        ResultSet set = SQLUtil.execute("SELECT * FROM supplier_Order_Detail WHERE supplier_Order_Id=?", id);
+
+        SupplierOrderDto supplierOrderDto = new SupplierOrderDto();
+
+        if (set.next()) {
+            supplierOrderDto.setSupplier_Order_Id(set.getString(1));
+            supplierOrderDto.setSupplier_Id(set.getString(2));
+            supplierOrderDto.setTotal_Price(Double.parseDouble(set.getString(3)));
+            supplierOrderDto.setDate(set.getString(4));
+            supplierOrderDto.setTime(set.getString(5));
+        }
+        return supplierOrderDto;
     }
 }
