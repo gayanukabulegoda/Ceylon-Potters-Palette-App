@@ -52,7 +52,7 @@ public class CustomerManageFormController implements Initializable {
         }
     }
 
-    private void loadDataTable(String id) {
+    public void loadDataTable(String id) {
         try {
             FXMLLoader loader = new FXMLLoader(CustomerManageFormController.class.getResource("/view/customerManageBarForm.fxml"));
             Parent root = loader.load();

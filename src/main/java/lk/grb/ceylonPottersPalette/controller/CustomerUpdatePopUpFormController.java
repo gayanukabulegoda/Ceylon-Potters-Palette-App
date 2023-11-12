@@ -16,19 +16,16 @@ import lk.grb.ceylonPottersPalette.util.NewId;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class CustomerAddPopUpFormController {
-
-    @FXML
-    private Pane AddBtnPane;
-
-    @FXML
-    private JFXButton btnAdd;
+public class CustomerUpdatePopUpFormController {
 
     @FXML
     private JFXButton btnCancel;
 
     @FXML
     private JFXButton btnCloseIcon;
+
+    @FXML
+    private JFXButton btnUpdate;
 
     @FXML
     private Pane cancelBtnPane;
@@ -40,10 +37,10 @@ public class CustomerAddPopUpFormController {
     private ImageView imgCloseIcon;
 
     @FXML
-    private Label lblAdd;
+    private Label lblCancel;
 
     @FXML
-    private Label lblCancel;
+    private Label lblUpdate;
 
     @FXML
     private TextField txtContactNo;
@@ -54,29 +51,10 @@ public class CustomerAddPopUpFormController {
     @FXML
     private TextField txtCustomerName;
 
-    CustomerModel customerModel = new CustomerModel();
-
     @FXML
-    void btnAddOnAction(ActionEvent event) throws SQLException {
-        CustomerDto customerDto = new CustomerDto();
+    private Pane updateBtnPane;
 
-        ArrayList<String> list = customerModel.getAllCustomerId();
-
-        customerDto.setCustomer_Id(NewId.newId(list, NewId.GetType.CUSTOMER));
-        customerDto.setName(txtCustomerName.getText());
-        customerDto.setContact_No(txtContactNo.getText());
-        customerDto.setEmail(txtCustomerEmail.getText());
-        customerDto.setTime(DateTimeUtil.timeNow());
-        customerDto.setDate(DateTimeUtil.dateNow());
-        customerDto.setUser_Name(GlobalFormController.user);
-
-        boolean saved = customerModel.save(customerDto);
-
-        if (saved) {
-            Navigation.closePane();
-            CustomerManageFormController.getInstance().allCustomerId();
-        }
-    }
+    CustomerModel customerModel = new CustomerModel();
 
     @FXML
     void btnCancelOnAction(ActionEvent event) {
@@ -86,5 +64,23 @@ public class CustomerAddPopUpFormController {
     @FXML
     void btnCloseIconOnAction(ActionEvent event) {
         Navigation.closePane();
+    }
+
+    @FXML
+    void btnUpdateOnAction(ActionEvent event) throws SQLException {
+
+        CustomerDto customerDto = new CustomerDto();
+
+        customerDto.setCustomer_Id(CustomerManageBarFormController.customerId);
+        customerDto.setName(txtCustomerName.getText());
+        customerDto.setContact_No(txtContactNo.getText());
+        customerDto.setEmail(txtCustomerEmail.getText());
+
+        boolean updated = customerModel.update(customerDto);
+
+        if (updated) {
+            Navigation.closePane();
+            CustomerManageFormController.getInstance().allCustomerId();
+        }
     }
 }

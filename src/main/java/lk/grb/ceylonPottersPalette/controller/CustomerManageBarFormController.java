@@ -7,7 +7,9 @@ import javafx.scene.text.Text;
 import lk.grb.ceylonPottersPalette.dto.CustomerDto;
 import lk.grb.ceylonPottersPalette.dto.SupplierDto;
 import lk.grb.ceylonPottersPalette.model.CustomerModel;
+import lk.grb.ceylonPottersPalette.util.Navigation;
 
+import java.io.IOException;
 import java.sql.SQLException;
 
 public class CustomerManageBarFormController {
@@ -33,6 +35,8 @@ public class CustomerManageBarFormController {
     @FXML
     private ImageView viewImg;
 
+    public static String customerId;
+
     CustomerModel customerModel = new CustomerModel();
 
     @FXML
@@ -51,8 +55,9 @@ public class CustomerManageBarFormController {
     }
 
     @FXML
-    void updateOnMouseClick(MouseEvent event) {
-
+    void updateOnMouseClick(MouseEvent event) throws IOException {
+        customerId = id.getText();
+        Navigation.imgPopUpBackground("customerUpdatePopUpForm.fxml");
     }
 
     @FXML

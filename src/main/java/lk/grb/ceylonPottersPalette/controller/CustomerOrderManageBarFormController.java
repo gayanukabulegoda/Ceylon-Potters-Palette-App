@@ -7,7 +7,9 @@ import javafx.scene.text.Text;
 import lk.grb.ceylonPottersPalette.dto.CustomerOrderDto;
 import lk.grb.ceylonPottersPalette.dto.SupplierOrderDto;
 import lk.grb.ceylonPottersPalette.model.CustomerOrderModel;
+import lk.grb.ceylonPottersPalette.util.Navigation;
 
+import java.io.IOException;
 import java.sql.SQLException;
 
 public class CustomerOrderManageBarFormController {
@@ -54,7 +56,7 @@ public class CustomerOrderManageBarFormController {
     }
 
     @FXML
-    void updateOnMouseClick(MouseEvent event) {
+    void updateOnMouseClick(MouseEvent event) throws IOException {
 
     }
 

@@ -41,11 +41,12 @@ public class CustomerModel {
         return SQLUtil.execute("UPDATE customer SET " +
                         "name=?," +
                         "email=?," +
-                        "contact_No=? ," +
+                        "contact_No=? " +
                         "WHERE customer_Id=?",
                 customerDTO.getName(),
                 customerDTO.getEmail(),
-                customerDTO.getContact_No()
+                customerDTO.getContact_No(),
+                customerDTO.getCustomer_Id()
         );
     }
 
