@@ -84,6 +84,7 @@ public class ProductAddPopUpFormController {
 
         if (saved) {
             Navigation.closePane();
+            ProductStockFormController.getInstance().allProductId();
         }
     }
 

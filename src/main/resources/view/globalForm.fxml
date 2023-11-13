@@ -27,6 +27,12 @@
                   </ImageView>
                </children>
             </Pane>
+            <JFXButton layoutX="-24.0" layoutY="-26.0" prefHeight="0.0" prefWidth="0.0" style="-fx-background-color: white;" text=" " />
+            <JFXButton fx:id="btnLogOut" layoutX="24.0" layoutY="865.0" onAction="#btnLogOutOnAction" onMouseEntered="#btnLogOutOnMouseEntered" onMouseExited="#btnLogOutOnMouseExited" prefHeight="48.0" prefWidth="174.0" style="-fx-background-radius: 12;" text=" " textFill="#727374">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </JFXButton>
             <Pane fx:id="paneBtnSupplier" layoutX="24.0" layoutY="510.0" prefHeight="48.0" prefWidth="174.0" style="-fx-background-radius: 12;">
                <children>
                   <Label fx:id="lblSupplier" layoutX="65.0" layoutY="15.0" text="Supplier" textFill="#727374">
@@ -41,6 +47,11 @@
                   </ImageView>
                </children>
             </Pane>
+            <JFXButton fx:id="btnSupplier" layoutX="24.0" layoutY="510.0" onAction="#btnSupplierOnAction" prefHeight="48.0" prefWidth="174.0" style="-fx-background-radius: 12;" text=" " textFill="#727374">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </JFXButton>
             <Pane fx:id="paneBtnEmployee" layoutX="24.0" layoutY="444.0" prefHeight="48.0" prefWidth="174.0" style="-fx-background-radius: 12;">
                <children>
                   <Label fx:id="lblEmployee" layoutX="65.0" layoutY="15.0" text="Employee" textFill="#727374">
@@ -55,6 +66,11 @@
                   </ImageView>
                </children>
             </Pane>
+            <JFXButton fx:id="btnEmployee" layoutX="24.0" layoutY="445.0" onAction="#btnEmployeeOnAction" prefHeight="48.0" prefWidth="174.0" style="-fx-background-radius: 12;" text=" " textFill="#727374">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </JFXButton>
             <Pane fx:id="paneBtnCustomer" layoutX="23.0" layoutY="378.0" prefHeight="48.0" prefWidth="174.0" style="-fx-background-radius: 12;">
                <children>
                   <Label fx:id="lblCustomer" layoutX="65.0" layoutY="15.0" text="Customer" textFill="#727374">
@@ -69,6 +85,11 @@
                   </ImageView>
                </children>
             </Pane>
+            <JFXButton fx:id="btnCustomer" layoutX="24.0" layoutY="379.0" onAction="#btnCustomerOnAction" prefHeight="48.0" prefWidth="174.0" style="-fx-background-radius: 12;" text=" " textFill="#727374">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </JFXButton>
             <Pane fx:id="paneBtnStock" layoutX="23.0" layoutY="312.0" prefHeight="48.0" prefWidth="174.0" style="-fx-background-radius: 12;">
                <children>
                   <Label fx:id="lblStock" layoutX="65.0" layoutY="15.0" text="Stock" textFill="#727374">
@@ -83,6 +104,11 @@
                   </ImageView>
                </children>
             </Pane>
+            <JFXButton fx:id="btnStock" layoutX="23.0" layoutY="313.0" onAction="#btnStockOnAction" prefHeight="48.0" prefWidth="174.0" style="-fx-background-radius: 12;" text=" " textFill="#727374">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </JFXButton>
             <Pane fx:id="paneBtnSales" layoutX="23.0" layoutY="245.0" prefHeight="48.0" prefWidth="174.0" style="-fx-background-radius: 12;">
                <children>
                   <Label fx:id="lblSales" layoutX="65.0" layoutY="15.0" text="Sales" textFill="#727374">
@@ -97,6 +123,11 @@
                   </ImageView>
                </children>
             </Pane>
+            <JFXButton fx:id="btnSales" layoutX="23.0" layoutY="245.0" onAction="#btnSalesOnAction" prefHeight="48.0" prefWidth="174.0" style="-fx-background-radius: 12;" text=" " textFill="#727374">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </JFXButton>
             <Pane fx:id="paneBtnDashboard" layoutX="23.0" layoutY="179.0" prefHeight="48.0" prefWidth="174.0" style="-fx-background-radius: 12;">
                <children>
                   <ImageView fx:id="imgDashboard" fitHeight="24.0" fitWidth="24.0" layoutX="19.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
@@ -111,46 +142,16 @@
                   </Label>
                </children>
             </Pane>
+            <JFXButton fx:id="btnDashboard" layoutX="24.0" layoutY="179.0" onAction="#btnDashboardOnAction" prefHeight="48.0" prefWidth="174.0" style="-fx-background-radius: 12;" text=" " textFill="#885d40">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </JFXButton>
             <ImageView fitHeight="105.22" fitWidth="189.0" layoutX="16.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assests/img/logoButtonPanel.png" />
                </image>
             </ImageView>
-            <JFXButton fx:id="btnEmployee" layoutX="24.0" layoutY="445.0" onAction="#btnEmployeeOnAction" onMouseEntered="#btnEmployeeOnMouseEntered" onMouseExited="#btnEmployeeOnMouseExited" prefHeight="48.0" prefWidth="174.0" style="-fx-background-radius: 12;" text=" " textFill="#727374">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </JFXButton>
-            <JFXButton fx:id="btnCustomer" layoutX="24.0" layoutY="379.0" onAction="#btnCustomerOnAction" onMouseEntered="#btnCustomerOnMouseEntered" onMouseExited="#btnCustomerOnMouseExited" prefHeight="48.0" prefWidth="174.0" style="-fx-background-radius: 12;" text=" " textFill="#727374">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </JFXButton>
-            <JFXButton fx:id="btnLogOut" layoutX="24.0" layoutY="865.0" onAction="#btnLogOutOnAction" onMouseEntered="#btnLogOutOnMouseEntered" onMouseExited="#btnLogOutOnMouseExited" prefHeight="48.0" prefWidth="174.0" style="-fx-background-radius: 12;" text=" " textFill="#727374">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </JFXButton>
-            <JFXButton fx:id="btnDashboard" layoutX="24.0" layoutY="179.0" onAction="#btnDashboardOnAction" onMouseEntered="#btnDashboardOnMouseEntered" onMouseExited="#btnDashboardOnMouseExited" prefHeight="48.0" prefWidth="174.0" style="-fx-background-radius: 12;" text=" " textFill="#885d40">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </JFXButton>
-            <JFXButton fx:id="btnSupplier" layoutX="24.0" layoutY="510.0" onAction="#btnSupplierOnAction" onMouseEntered="#btnSupplierOnMouseEntered" onMouseExited="#btnSupplierOnMouseExited" prefHeight="48.0" prefWidth="174.0" style="-fx-background-radius: 12;" text=" " textFill="#727374">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </JFXButton>
-            <JFXButton fx:id="btnStock" layoutX="23.0" layoutY="313.0" onAction="#btnStockOnAction" onMouseEntered="#btnStockOnMouseEntered" onMouseExited="#btnStockOnMouseExited" prefHeight="48.0" prefWidth="174.0" style="-fx-background-radius: 12;" text=" " textFill="#727374">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </JFXButton>
-            <JFXButton fx:id="btnSales" layoutX="23.0" layoutY="245.0" onAction="#btnSalesOnAction" onMouseEntered="#btnSalesOnMouseEntered" onMouseExited="#btnSalesOnMouseExited" prefHeight="48.0" prefWidth="174.0" style="-fx-background-radius: 12;" text=" " textFill="#727374">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </JFXButton>
          </children>
       </AnchorPane>
       <AnchorPane layoutX="230.0" layoutY="-13.0" prefHeight="110.0" prefWidth="1515.0" style="-fx-background-color: white;">

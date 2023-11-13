@@ -103,7 +103,7 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Label fx:id="lblNetTotal" layoutX="28.0" layoutY="622.0" text="20000.00" textFill="#151619">
+            <Label fx:id="lblNetTotal" layoutX="28.0" layoutY="622.0" textFill="#151619">
                <font>
                   <Font size="26.0" />
                </font>

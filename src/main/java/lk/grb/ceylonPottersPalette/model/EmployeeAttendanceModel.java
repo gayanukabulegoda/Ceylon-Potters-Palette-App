@@ -33,13 +33,16 @@ public class EmployeeAttendanceModel {
         );
     }
 
+    public boolean delete(String id) throws SQLException {
+        return SQLUtil.execute("DELETE FROM attendance WHERE attendance_Id=?", id);
+    }
+
     public EmployeeAttendanceDto getData(String id) throws SQLException {
         ResultSet resultSet = SQLUtil.execute("SELECT * FROM attendance WHERE attendance_Id=?", id);
 
         EmployeeAttendanceDto employeeAttendanceDto = new EmployeeAttendanceDto();
 
         if(resultSet.next()){
-            System.out.println(resultSet.getString(2));
             employeeAttendanceDto.setEmployee_Id(resultSet.getString(2));
             employeeAttendanceDto.setDate(resultSet.getString(3));
             employeeAttendanceDto.setTime(resultSet.getString(4));
@@ -53,6 +56,7 @@ public class EmployeeAttendanceModel {
 
         while (resultSet.next()) {
             list.add(resultSet.getString(1));
+            System.out.println(resultSet.getString(1));
         }
         return list;
     }

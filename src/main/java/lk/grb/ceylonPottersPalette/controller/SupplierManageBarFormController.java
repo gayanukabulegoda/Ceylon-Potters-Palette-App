@@ -38,8 +38,9 @@ public class SupplierManageBarFormController {
     SupplierModel supplierModel = new SupplierModel();
 
     @FXML
-    void deleteOnMouseClick(MouseEvent event) {
-
+    void deleteOnMouseClick(MouseEvent event) throws IOException {
+        ConfirmationPopUpFormController.setId(id.getText());
+        Navigation.imgPopUpBackground("confirmationPopUpForm.fxml");
     }
 
     @FXML

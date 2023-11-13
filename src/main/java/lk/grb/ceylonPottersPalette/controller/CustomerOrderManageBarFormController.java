@@ -41,21 +41,6 @@ public class CustomerOrderManageBarFormController {
     CustomerOrderModel customerOrderModel = new CustomerOrderModel();
 
     @FXML
-    void deleteOnMouseClick(MouseEvent event) {
-
-    }
-
-    @FXML
-    void deleteOnMouseEntered(MouseEvent event) {
-
-    }
-
-    @FXML
-    void deleteOnMouseExited(MouseEvent event) {
-
-    }
-
-    @FXML
     void updateOnMouseClick(MouseEvent event) throws IOException {
 
     }

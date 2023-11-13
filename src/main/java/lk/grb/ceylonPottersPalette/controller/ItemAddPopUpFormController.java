@@ -68,9 +68,12 @@ public class ItemAddPopUpFormController {
         itemStockDto.setUnit_Price(Double.parseDouble(txtUnitPrice.getText()));
         itemStockDto.setQty_On_Hand(Integer.parseInt(txtQuantity.getText()));
 
-        itemStockModel.save(itemStockDto);
+        boolean saved = itemStockModel.save(itemStockDto);
 
-        Navigation.closePane();
+        if (saved) {
+            Navigation.closePane();
+            ItemStockFormController.getInstance().allItemId();
+        }
     }
 
     @FXML

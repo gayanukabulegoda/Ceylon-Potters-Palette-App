@@ -38,6 +38,16 @@ public class SupplierOrderManageFormController implements Initializable {
     @FXML
     private VBox vBoxSupplierOrders;
 
+    private static SupplierOrderManageFormController controller;
+
+    public SupplierOrderManageFormController() {
+        controller = this;
+    }
+
+    public static  SupplierOrderManageFormController getInstance() {
+        return controller;
+    }
+
     @FXML
     void btnAddOrderOnAction(ActionEvent event) throws IOException {
         Navigation.imgPopUpBackground("supplierOrderAddPopUpForm.fxml");

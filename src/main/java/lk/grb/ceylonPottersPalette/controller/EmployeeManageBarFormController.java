@@ -40,8 +40,9 @@ public class EmployeeManageBarFormController {
     EmployeeModel employeeModel = new EmployeeModel();
 
     @FXML
-    void deleteOnMouseClick(MouseEvent event) {
-
+    void deleteOnMouseClick(MouseEvent event) throws IOException {
+        ConfirmationPopUpFormController.setId(id.getText());
+        Navigation.imgPopUpBackground("confirmationPopUpForm.fxml");
     }
 
     @FXML

@@ -11,7 +11,7 @@
    <children>
       <HBox alignment="CENTER_LEFT" layoutX="41.0" prefHeight="56.0" prefWidth="1405.0" spacing="10.0" style="-fx-background-color: white;">
          <children>
-            <Text fx:id="id" opacity="0.68" strokeType="OUTSIDE" strokeWidth="0.0" text="ID" wrappingWidth="198.8520758152008">
+            <Text fx:id="id" opacity="0.68" strokeType="OUTSIDE" strokeWidth="0.0" text="ID" wrappingWidth="207.03389954566956">
                <font>
                   <Font name="SansSerif Regular" size="16.0" />
                </font>
@@ -21,17 +21,17 @@
                   <Font name="SansSerif Regular" size="16.0" />
                </font>
             </Text>
-            <Text fx:id="amount" opacity="0.68" strokeType="OUTSIDE" strokeWidth="0.0" text="Amount" wrappingWidth="267.6388702392578">
+            <Text fx:id="amount" opacity="0.68" strokeType="OUTSIDE" strokeWidth="0.0" text="Amount" wrappingWidth="259.4569854736328">
                <font>
                   <Font name="SansSerif Regular" size="16.0" />
                </font>
             </Text>
-            <Text fx:id="date" opacity="0.68" strokeType="OUTSIDE" strokeWidth="0.0" text="Date" wrappingWidth="240.40216827392578">
+            <Text fx:id="date" opacity="0.68" strokeType="OUTSIDE" strokeWidth="0.0" text="Date" wrappingWidth="248.58393096923828">
                <font>
                   <Font name="SansSerif Regular" size="16.0" />
                </font>
             </Text>
-            <Text fx:id="time" layoutX="787.0" layoutY="44.0" opacity="0.68" strokeType="OUTSIDE" strokeWidth="0.0" text="Time" wrappingWidth="242.2202833890915">
+            <Text fx:id="time" layoutX="787.0" layoutY="44.0" opacity="0.68" strokeType="OUTSIDE" strokeWidth="0.0" text="Time" wrappingWidth="253.1294630765915">
                <font>
                   <Font name="SansSerif Regular" size="16.0" />
                </font>
@@ -39,11 +39,6 @@
             <ImageView fx:id="updateImg" fitHeight="25.0" fitWidth="25.0" onMouseClicked="#updateOnMouseClick" onMouseEntered="#updateOnMouseEntered" onMouseExited="#updateOnMouseExited" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assests/icon/editIcon.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="deleteImg" fitHeight="25.0" fitWidth="25.0" onMouseClicked="#deleteOnMouseClick" onMouseEntered="#deleteOnMouseEntered" onMouseExited="#deleteOnMouseExited" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assests/icon/deleteIcon.png" />
                </image>
             </ImageView>
             <ImageView fx:id="viewImg" fitHeight="25.0" fitWidth="25.0" onMouseClicked="#viewDetailsOnMouseClick" onMouseEntered="#viewOnMouseEntered" onMouseExited="#viewOnMouseExited" pickOnBounds="true" preserveRatio="true">

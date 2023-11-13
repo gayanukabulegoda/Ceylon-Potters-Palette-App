@@ -71,9 +71,13 @@ public class SupplierAddPopUpFormController {
         supplierDto.setDate(DateTimeUtil.dateNow());
         supplierDto.setUser_Name(GlobalFormController.user);
 
-        supplierModel.save(supplierDto);
+        boolean saved = supplierModel.save(supplierDto);
 
-        Navigation.closePane();
+        if (saved) {
+            Navigation.closePane();
+            SupplierManageFormController.getInstance().allSupplierId();
+        }
+
     }
 
     @FXML

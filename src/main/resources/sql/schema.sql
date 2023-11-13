@@ -13,7 +13,7 @@ CREATE TABLE employee(
                          city VARCHAR(30) NOT NULL,
                          contact_No VARCHAR(14) UNIQUE NOT NULL,
                          email VARCHAR(100) UNIQUE NOT NULL,
-                         role VARCHAR(15) NOT NULL
+                         role VARCHAR(30) NOT NULL
 );
 
 CREATE TABLE user(
@@ -121,9 +121,102 @@ CREATE TABLE attendance(
                            CONSTRAINT FOREIGN KEY(employee_Id) REFERENCES employee(employee_Id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-INSERT INTO employee VALUES ('E001','Nisal','Gamage','200209801818','30/7','Matara Road','Matara','070 241 9999','nisalgamage@gmail.com','Manager');
+INSERT INTO employee (employee_Id, first_Name, last_Name, nic, house_No, street, city, contact_No, email, role)
+VALUES ('E001', 'John', 'Doe', '1234567890123', '123', 'Main Street', 'Cityville', '+1234567890', 'john.doe@example.com', 'Manager');
 
-INSERT INTO employee VALUES ('E002','Wimal','Gamage','200109801818','20/7','Galle Road','Galle','070 241 0000','wimalgamage@gmail.com','Minor Staff');
+
+INSERT INTO employee (employee_Id, first_Name, last_Name, nic, house_No, street, city, contact_No, email, role)
+VALUES ('E002', 'Jane', 'Smith', '2345678901234', '456', 'Broadway', 'Towntown', '+9876543210', 'jane.smith@example.com', 'Clerk');
 
 
-INSERT INTO user VALUES ('grb','1234','E001');
+INSERT INTO employee (employee_Id, first_Name, last_Name, nic, house_No, street, city, contact_No, email, role)
+VALUES ('E003', 'Alice', 'Johnson', '3456789012345', '789', 'Park Avenue', 'Villageton', '+1122334455', 'alice.johnson@example.com', 'Salesperson');
+
+
+INSERT INTO employee (employee_Id, first_Name, last_Name, nic, house_No, street, city, contact_No, email, role)
+VALUES ('E004', 'Bob', 'Williams', '4567890123456', '1011', 'Sunset Boulevard', 'Cityscape', '+9988776655', 'bob.williams@example.com', 'Technician');
+
+
+INSERT INTO employee (employee_Id, first_Name, last_Name, nic, house_No, street, city, contact_No, email, role)
+VALUES ('E005', 'Eva', 'Miller', '5678901234567', '1314', 'Ocean Drive', 'Seaville', '+1125334455', 'eva.miller@example.com', 'Intern');
+
+
+
+
+INSERT INTO user (user_Name, password, employee_Id)
+VALUES ('grb', '1234', 'E001');
+
+
+INSERT INTO user (user_Name, password, employee_Id)
+VALUES ('rgb', '1234', 'E002');
+
+
+
+
+INSERT INTO customer (customer_Id, name, contact_No, email, date, time, user_Name)
+VALUES ('C001', 'John Doe', '+1234567890', 'john.doe@example.com', '2023-11-10', '12:30:00', 'grb');
+
+
+INSERT INTO customer (customer_Id, name, contact_No, email, date, time, user_Name)
+VALUES ('C002', 'Jane Smith', '+9876543210', 'jane.smith@example.com', '2023-11-11', '15:45:00', 'grb');
+
+
+INSERT INTO customer (customer_Id, name, contact_No, email, date, time, user_Name)
+VALUES ('C003', 'Alice Johnson', '+1122334455', 'alice.johnson@example.com', '2023-11-12', '10:15:00', 'rgb');
+
+
+INSERT INTO customer (customer_Id, name, contact_No, email, date, time, user_Name)
+VALUES ('C004', 'Bob Williams', '+9988776655', 'bob.williams@example.com', '2023-11-13', '14:00:00', 'rgb');
+
+
+INSERT INTO customer (customer_Id, name, contact_No, email, date, time, user_Name)
+VALUES ('C005', 'Eva Davis', '+7766554433', 'eva.davis@example.com', '2023-11-14', '17:30:00', 'grb');
+
+
+
+
+INSERT INTO supplier (supplier_Id, name, email, contact_No, time, date, user_Name)
+VALUES ('S001', 'ABC Suppliers', 'abc.suppliers@example.com', '+1234567890', '08:00:00', '2023-11-10', 'rgb');
+
+
+INSERT INTO supplier (supplier_Id, name, email, contact_No, time, date, user_Name)
+VALUES ('S002', 'XYZ Distributors', 'xyz.distributors@example.com', '+9876543210', '10:30:00', '2023-11-11', 'grb');
+
+
+INSERT INTO supplier (supplier_Id, name, email, contact_No, time, date, user_Name)
+VALUES ('S003', 'LMN Traders', 'lmn.traders@example.com', '+1122334455', '13:15:00', '2023-11-12', 'rgb');
+
+
+INSERT INTO supplier (supplier_Id, name, email, contact_No, time, date, user_Name)
+VALUES ('S004', 'PQR Importers', 'pqr.importers@example.com', '+9988776655', '15:45:00', '2023-11-13', 'grb');
+
+
+INSERT INTO supplier (supplier_Id, name, email, contact_No, time, date, user_Name)
+VALUES ('S005', 'MNO Wholesalers', 'mno.wholesalers@example.com', '+7766554433', '18:20:00', '2023-11-14', 'rgb');
+
+
+
+
+
+INSERT INTO item_Stock (item_Id, description, unit_Price, qty_On_Hand)
+VALUES ('I001', 'Clay', 10.50, 100);
+
+
+INSERT INTO item_Stock (item_Id, description, unit_Price, qty_On_Hand)
+VALUES ('I002', 'Paints', 25.75, 75);
+
+
+INSERT INTO item_Stock (item_Id, description, unit_Price, qty_On_Hand)
+VALUES ('I003', 'Oils', 15.20, 120);
+
+
+INSERT INTO item_Stock (item_Id, description, unit_Price, qty_On_Hand)
+VALUES ('I004', 'Gasoline', 30.00, 90);
+
+
+INSERT INTO item_Stock (item_Id, description, unit_Price, qty_On_Hand)
+VALUES ('I005', 'Water', 50.80, 60);
+
+delete from attendance where attendance_Id = 'A0010';
+
+select attendance_Id from attendance order by attendance_Id desc limit 1;

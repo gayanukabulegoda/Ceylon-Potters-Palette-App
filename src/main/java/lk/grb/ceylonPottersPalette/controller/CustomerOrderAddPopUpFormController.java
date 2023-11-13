@@ -140,7 +140,7 @@ public class CustomerOrderAddPopUpFormController implements Initializable {
     }
 
     @FXML
-    void btnPlaceOrderOnAction(ActionEvent event) {
+    void btnPlaceOrderOnAction(ActionEvent event) throws SQLException {
 
         CustomerOrderDto customerOrderDto = new CustomerOrderDto();
 
@@ -155,6 +155,7 @@ public class CustomerOrderAddPopUpFormController implements Initializable {
 
         if (isSaved) {
             Navigation.closeOrderPopUpPane();
+            CustomerOrderManageFormController.getInstance().allCustomerOrderId();
         }
         else {
             new Alert(Alert.AlertType.ERROR, "Unable to Save the ORDER!!!").show();

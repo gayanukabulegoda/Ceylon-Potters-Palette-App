@@ -94,6 +94,7 @@ public class EmployeeSalaryPopUpFormController implements Initializable {
         boolean save = employeeSalaryModel.save(employeeSalaryDto);
         if (save) {
             Navigation.closePane();
+            EmployeeSalaryFormController.getInstance().allSalaryId();
         }
     }
 

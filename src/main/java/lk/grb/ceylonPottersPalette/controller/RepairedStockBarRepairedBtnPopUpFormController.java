@@ -50,6 +50,7 @@ public class RepairedStockBarRepairedBtnPopUpFormController {
 
             if (isUpdated) {
                 Navigation.closePane();
+                RepairedStockFormController.getInstance().allRepairedProductId();
             }
 
         } catch (SQLException e) {

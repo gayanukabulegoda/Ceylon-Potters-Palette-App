@@ -38,8 +38,9 @@ public class ItemStockBarFormController {
     ItemStockModel itemStockModel = new ItemStockModel();
 
     @FXML
-    void deleteOnMouseClick(MouseEvent event) {
-
+    void deleteOnMouseClick(MouseEvent event) throws IOException {
+        ConfirmationPopUpFormController.setId(id.getText());
+        Navigation.imgPopUpBackground("confirmationPopUpForm.fxml");
     }
 
     @FXML

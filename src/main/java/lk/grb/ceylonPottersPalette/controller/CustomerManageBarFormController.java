@@ -38,8 +38,9 @@ public class CustomerManageBarFormController {
     CustomerModel customerModel = new CustomerModel();
 
     @FXML
-    void deleteOnMouseClick(MouseEvent event) {
-
+    void deleteOnMouseClick(MouseEvent event) throws IOException {
+        ConfirmationPopUpFormController.setId(id.getText());
+        Navigation.imgPopUpBackground("confirmationPopUpForm.fxml");
     }
 
     @FXML

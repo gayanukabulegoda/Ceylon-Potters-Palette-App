@@ -122,8 +122,10 @@ public class EmployeeAddPopUpFormController implements Initializable {
 
         boolean save = employeeModel.save(employeeDto);
 
-        EmployeeManageFormController.getInstance().allEmployeeId();
-        Navigation.closePane();
+        if (save) {
+            Navigation.closePane();
+            EmployeeManageFormController.getInstance().allEmployeeId();
+        }
     }
 
     @FXML

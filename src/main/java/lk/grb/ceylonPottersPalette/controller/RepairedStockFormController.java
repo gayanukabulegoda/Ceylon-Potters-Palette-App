@@ -46,6 +46,16 @@ public class RepairedStockFormController implements Initializable {
     @FXML
     private VBox vBoxRepairStock;
 
+    private static RepairedStockFormController controller;
+
+    public RepairedStockFormController() {
+        controller = this;
+    }
+
+    public static RepairedStockFormController getInstance() {
+        return controller;
+    }
+
     @FXML
     void btnItemStockOnAction(ActionEvent event) throws IOException {
         Navigation.switchPaging(GlobalFormController.getInstance().pagingPane, "itemStockForm.fxml");

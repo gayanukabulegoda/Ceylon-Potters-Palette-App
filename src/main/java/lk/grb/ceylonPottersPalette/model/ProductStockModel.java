@@ -101,7 +101,10 @@ public class ProductStockModel {
     }
 
     public boolean delete(String id) throws SQLException {
-        return SQLUtil.execute("DELETE FROM product_Stock WHERE product_Id=?", id);
+        return SQLUtil.execute("DELETE ps, rs " +
+                        "FROM product_Stock ps " +
+                        "JOIN repair_Stock rs ON ps.product_Id = rs.product_Id " +
+                        "WHERE ps.product_Id = ?", id);
     }
 
     public ArrayList<String> getAllProductId() throws SQLException {

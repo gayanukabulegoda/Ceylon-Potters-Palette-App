@@ -70,6 +70,7 @@ public class EmployeeAttendanceMarkPopUpController implements Initializable {
 
         if (save) {
             Navigation.closePane();
+            EmployeeAttendanceFormController.getInstance().allAttendanceId();
         }
     }
 

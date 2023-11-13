@@ -9,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import lk.grb.ceylonPottersPalette.model.CustomerModel;
 import lk.grb.ceylonPottersPalette.model.CustomerOrderModel;
 import lk.grb.ceylonPottersPalette.model.SupplierOrderModel;
 import lk.grb.ceylonPottersPalette.util.Navigation;
@@ -37,6 +38,16 @@ public class CustomerOrderManageFormController implements Initializable {
 
     @FXML
     private VBox vBoxCustomerOrders;
+
+    private static CustomerOrderManageFormController controller;
+
+    public CustomerOrderManageFormController() {
+        controller = this;
+    }
+
+    public static  CustomerOrderManageFormController getInstance() {
+        return controller;
+    }
 
     @FXML
     void btnAddOrderOnAction(ActionEvent event) throws IOException {

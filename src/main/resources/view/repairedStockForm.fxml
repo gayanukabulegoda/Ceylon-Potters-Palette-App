@@ -83,7 +83,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <Pane fx:id="btnRepairStockPane" layoutX="291.0" layoutY="29.0" prefHeight="38.0" prefWidth="244.0" style="-fx-background-color: chocolate; -fx-background-radius: 25;">
+      <Pane fx:id="btnRepairStockPane" layoutX="291.0" layoutY="29.0" prefHeight="38.0" prefWidth="244.0" style="-fx-background-radius: 25;" styleClass="manage-attendance-salary-btn" stylesheets="@../style/EmployeeFormStyle.css">
          <children>
             <Label fx:id="lblRepairStock" layoutX="71.0" layoutY="9.0" text="Repair Stock" textFill="WHITE">
                <font>

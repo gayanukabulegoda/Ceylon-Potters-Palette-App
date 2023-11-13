@@ -105,7 +105,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <Pane fx:id="btnEmployeeAttendancePane" layoutX="291.0" layoutY="29.0" prefHeight="38.0" prefWidth="244.0" style="-fx-background-color: chocolate; -fx-background-radius: 25;">
+      <Pane fx:id="btnEmployeeAttendancePane" layoutX="291.0" layoutY="29.0" prefHeight="38.0" prefWidth="244.0" style="-fx-background-radius: 25;" styleClass="manage-attendance-salary-btn" stylesheets="@../style/EmployeeFormStyle.css">
          <children>
             <Label fx:id="lblEmployeeAttendance" layoutX="34.0" layoutY="9.0" text="Employee Attendance" textFill="WHITE">
                <font>

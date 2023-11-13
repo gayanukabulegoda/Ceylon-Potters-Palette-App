@@ -122,7 +122,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <Pane fx:id="btnEmployeeSalaryPane" layoutX="548.0" layoutY="29.0" prefHeight="38.0" prefWidth="244.0" style="-fx-background-color: chocolate; -fx-background-radius: 25;">
+      <Pane fx:id="btnEmployeeSalaryPane" layoutX="548.0" layoutY="29.0" prefHeight="38.0" prefWidth="244.0" style="-fx-background-radius: 25;" styleClass="manage-attendance-salary-btn" stylesheets="@../style/EmployeeFormStyle.css">
          <children>
             <Label fx:id="lblEmployeeSalary" layoutX="55.0" layoutY="9.0" text="Employee Salary" textFill="WHITE">
                <font>

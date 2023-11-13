@@ -144,7 +144,7 @@ public class SupplierOrderAddPopUpFormController implements Initializable {
     }
 
     @FXML
-    void btnPlaceOrderOnAction(ActionEvent event) {
+    void btnPlaceOrderOnAction(ActionEvent event) throws SQLException {
 
         SupplierOrderDto supplierOrderDto = new SupplierOrderDto();
 
@@ -159,6 +159,7 @@ public class SupplierOrderAddPopUpFormController implements Initializable {
 
         if (isSaved) {
             Navigation.closeOrderPopUpPane();
+            SupplierOrderManageFormController.getInstance().allSupplierOrderId();
         }
         else {
             new Alert(Alert.AlertType.ERROR, "Unable to Save the ORDER!!!").show();

@@ -39,21 +39,6 @@ public class SupplierOrderManageBarFormController {
     SupplierOrderModel supplierOrderModel = new SupplierOrderModel();
 
     @FXML
-    void deleteOnMouseClick(MouseEvent event) {
-
-    }
-
-    @FXML
-    void deleteOnMouseEntered(MouseEvent event) {
-
-    }
-
-    @FXML
-    void deleteOnMouseExited(MouseEvent event) {
-
-    }
-
-    @FXML
     void updateOnMouseClick(MouseEvent event) {
 
     }
