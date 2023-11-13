@@ -45,6 +45,16 @@ public class ItemStockFormController implements Initializable {
     @FXML
     private VBox vBoxItemStock;
 
+    private static ItemStockFormController controller;
+
+    public ItemStockFormController() {
+        controller = this;
+    }
+
+    public static ItemStockFormController getInstance() {
+        return controller;
+    }
+
     @FXML
     void btnAddItemOnAction(ActionEvent event) throws IOException {
         Navigation.imgPopUpBackground("itemAddPopUpForm.fxml");

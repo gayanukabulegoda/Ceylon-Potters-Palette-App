@@ -9,7 +9,9 @@ import lk.grb.ceylonPottersPalette.dto.EmployeeSalaryDto;
 import lk.grb.ceylonPottersPalette.dto.SupplierDto;
 import lk.grb.ceylonPottersPalette.model.EmployeeModel;
 import lk.grb.ceylonPottersPalette.model.EmployeeSalaryModel;
+import lk.grb.ceylonPottersPalette.util.Navigation;
 
+import java.io.IOException;
 import java.sql.SQLException;
 
 public class EmployeeSalaryBarFormController {
@@ -32,12 +34,15 @@ public class EmployeeSalaryBarFormController {
     @FXML
     private ImageView viewImg;
 
+    private String salary_Id;
+
     EmployeeSalaryModel employeeSalaryModel = new EmployeeSalaryModel();
     EmployeeModel employeeModel = new EmployeeModel();
 
     @FXML
-    void updateOnMouseClick(MouseEvent event) {
-
+    void updateOnMouseClick(MouseEvent event) throws IOException {
+        EmployeeSalaryUpdatePopUpFormController.salaryId = salary_Id;
+        Navigation.imgPopUpBackground("employeeSalaryUpdatePopUpForm.fxml");
     }
 
     @FXML
@@ -66,6 +71,7 @@ public class EmployeeSalaryBarFormController {
     }
 
     public void setData(String id) {
+
         try {
             EmployeeSalaryDto employeeSalaryDto = employeeSalaryModel.getData(id);
             EmployeeDto employeeDto = employeeModel.getData(employeeSalaryDto.getEmployee_Id());
@@ -74,6 +80,7 @@ public class EmployeeSalaryBarFormController {
             name.setText(employeeDto.getFirst_Name() + " " + employeeDto.getLast_Name());
             payment.setText(String.valueOf(employeeSalaryDto.getTotal_Payment()));
             date.setText(employeeSalaryDto.getDate());
+            salary_Id = id;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

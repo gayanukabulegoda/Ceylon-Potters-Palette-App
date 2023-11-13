@@ -20,7 +20,6 @@ import java.util.ResourceBundle;
 
 public class ProductStockFormController implements Initializable {
 
-
     @FXML
     private Pane btnItemStockPane;
 
@@ -44,6 +43,16 @@ public class ProductStockFormController implements Initializable {
 
     @FXML
     private VBox vBoxProductStock;
+
+    private static ProductStockFormController controller;
+
+    public ProductStockFormController() {
+        controller = this;
+    }
+
+    public static ProductStockFormController getInstance() {
+        return controller;
+    }
 
     @FXML
     void btnAddProductOnAction(ActionEvent event) throws IOException {

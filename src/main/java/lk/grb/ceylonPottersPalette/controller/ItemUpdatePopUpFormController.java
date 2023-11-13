@@ -8,19 +8,16 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-import lk.grb.ceylonPottersPalette.dto.CustomerDto;
-import lk.grb.ceylonPottersPalette.dto.EmployeeDto;
-import lk.grb.ceylonPottersPalette.model.CustomerModel;
-import lk.grb.ceylonPottersPalette.util.DateTimeUtil;
+import lk.grb.ceylonPottersPalette.dto.ItemStockDto;
+import lk.grb.ceylonPottersPalette.dto.ProductStockDto;
+import lk.grb.ceylonPottersPalette.model.ItemStockModel;
 import lk.grb.ceylonPottersPalette.util.Navigation;
-import lk.grb.ceylonPottersPalette.util.NewId;
 
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class CustomerUpdatePopUpFormController implements Initializable {
+public class ItemUpdatePopUpFormController implements Initializable {
 
     @FXML
     private JFXButton btnCancel;
@@ -47,20 +44,20 @@ public class CustomerUpdatePopUpFormController implements Initializable {
     private Label lblUpdate;
 
     @FXML
-    private TextField txtContactNo;
+    private TextField txtDescription;
 
     @FXML
-    private TextField txtCustomerEmail;
+    private TextField txtQuantity;
 
     @FXML
-    private TextField txtCustomerName;
+    private TextField txtUnitPrice;
 
     @FXML
     private Pane updateBtnPane;
 
-    public static String customerId;
+    public static String itemId;
 
-    CustomerModel customerModel = new CustomerModel();
+    ItemStockModel itemStockModel = new ItemStockModel();
 
     @FXML
     void btnCancelOnAction(ActionEvent event) {
@@ -75,32 +72,28 @@ public class CustomerUpdatePopUpFormController implements Initializable {
     @FXML
     void btnUpdateOnAction(ActionEvent event) throws SQLException {
 
-        CustomerDto customerDto = new CustomerDto();
+        ItemStockDto itemStockDto = new ItemStockDto();
 
-        customerDto.setCustomer_Id(CustomerUpdatePopUpFormController.customerId);
-        customerDto.setName(txtCustomerName.getText());
-        customerDto.setContact_No(txtContactNo.getText());
-        customerDto.setEmail(txtCustomerEmail.getText());
-        customerDto.setDate(customerDto.getDate());
-        customerDto.setTime(customerDto.getTime());
-        customerDto.setUser_Name(customerDto.getUser_Name());
+        itemStockDto.setItem_Id(itemId);
+        itemStockDto.setDescription(txtDescription.getText());
+        itemStockDto.setUnit_Price(Double.parseDouble(txtUnitPrice.getText()));
+        itemStockDto.setQty_On_Hand(Integer.parseInt(txtQuantity.getText()));
 
-        boolean updated = customerModel.update(customerDto);
+        boolean updated = itemStockModel.updateFromPopUp(itemStockDto);
 
         if (updated) {
             Navigation.closePane();
-            CustomerManageFormController.getInstance().allCustomerId();
+            ItemStockFormController.getInstance().allItemId();
         }
     }
 
     public void setData() {
         try {
+            ItemStockDto itemStockDto = itemStockModel.getData(itemId);
 
-            CustomerDto customerDto = customerModel.getData(customerId);
-
-            txtCustomerName.setText(customerDto.getName());
-            txtContactNo.setText(customerDto.getContact_No());
-            txtCustomerEmail.setText(customerDto.getEmail());
+            txtDescription.setText(itemStockDto.getDescription());
+            txtQuantity.setText(String.valueOf(itemStockDto.getQty_On_Hand()));
+            txtUnitPrice.setText(String.valueOf(itemStockDto.getUnit_Price()));
 
         } catch (SQLException e) {
             throw new RuntimeException(e);

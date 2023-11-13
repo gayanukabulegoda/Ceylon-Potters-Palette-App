@@ -49,7 +49,7 @@ public class EmployeeModel {
         return SQLUtil.execute("UPDATE employee SET " +
                         "first_Name=?," +
                         "last_Name=?," +
-                        "nic=? ," +
+                        "nic=?," +
                         "house_No=? ," +
                         "street=? ," +
                         "city=?," +

@@ -7,7 +7,9 @@ import javafx.scene.text.Text;
 import lk.grb.ceylonPottersPalette.dto.EmployeeDto;
 import lk.grb.ceylonPottersPalette.dto.SupplierDto;
 import lk.grb.ceylonPottersPalette.model.SupplierModel;
+import lk.grb.ceylonPottersPalette.util.Navigation;
 
+import java.io.IOException;
 import java.sql.SQLException;
 
 public class SupplierManageBarFormController {
@@ -51,8 +53,9 @@ public class SupplierManageBarFormController {
     }
 
     @FXML
-    void updateOnMouseClick(MouseEvent event) {
-
+    void updateOnMouseClick(MouseEvent event) throws IOException {
+        SupplierUpdatePopUpFormController.supplierId = id.getText();
+        Navigation.imgPopUpBackground("supplierUpdatePopUpForm.fxml");
     }
 
     @FXML

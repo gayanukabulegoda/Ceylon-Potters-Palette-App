@@ -20,6 +20,19 @@ public class ItemStockModel {
                 itemStockDto.getQty_On_Hand());
     }
 
+    public boolean updateFromPopUp(ItemStockDto itemStockDto) throws SQLException {
+        return SQLUtil.execute("UPDATE item_Stock SET " +
+                        "description=?," +
+                        "qty_On_Hand=?," +
+                        "unit_Price=?" +
+                        "WHERE item_Id=?",
+                itemStockDto.getDescription(),
+                itemStockDto.getQty_On_Hand(),
+                itemStockDto.getUnit_Price(),
+                itemStockDto.getItem_Id()
+        );
+    }
+
     public ItemStockDto getData(String id) throws SQLException {
         ResultSet set = SQLUtil.execute("SELECT * FROM item_Stock WHERE item_Id=?", id);
 

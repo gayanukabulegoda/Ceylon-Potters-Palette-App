@@ -35,8 +35,6 @@ public class CustomerManageBarFormController {
     @FXML
     private ImageView viewImg;
 
-    public static String customerId;
-
     CustomerModel customerModel = new CustomerModel();
 
     @FXML
@@ -56,7 +54,7 @@ public class CustomerManageBarFormController {
 
     @FXML
     void updateOnMouseClick(MouseEvent event) throws IOException {
-        customerId = id.getText();
+        CustomerUpdatePopUpFormController.customerId = id.getText();
         Navigation.imgPopUpBackground("customerUpdatePopUpForm.fxml");
     }
 

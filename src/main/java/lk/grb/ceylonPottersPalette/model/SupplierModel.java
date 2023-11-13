@@ -40,19 +40,20 @@ public class SupplierModel {
     }
 
     public boolean update(SupplierDto supplierDTO) throws SQLException {
-        return SQLUtil.execute("UPDATE  supplier SET " +
+        return SQLUtil.execute("UPDATE supplier SET " +
                         "name=?," +
                         "email=?," +
-                        "contact_No=? ," +
+                        "contact_No=? " +
                         "WHERE supplier_Id=?",
                 supplierDTO.getName(),
                 supplierDTO.getEmail(),
-                supplierDTO.getContact_No()
+                supplierDTO.getContact_No(),
+                supplierDTO.getSupplier_Id()
         );
     }
 
     public boolean delete(String id) throws SQLException {
-        return SQLUtil.execute("DELETE FEOM supplier WHERE supplier_Id=?", id);
+        return SQLUtil.execute("DELETE FROM supplier WHERE supplier_Id=?", id);
     }
 
     public ArrayList<String> getAllSupplierId() throws SQLException {

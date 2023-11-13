@@ -4,6 +4,7 @@ import com.mysql.cj.protocol.Resultset;
 import com.mysql.cj.protocol.ResultsetRow;
 import lk.grb.ceylonPottersPalette.db.DbConnection;
 import lk.grb.ceylonPottersPalette.dto.ProductStockDto;
+import lk.grb.ceylonPottersPalette.dto.SupplierDto;
 import lk.grb.ceylonPottersPalette.util.SQLUtil;
 
 import java.sql.Connection;
@@ -22,6 +23,21 @@ public class ProductStockModel {
                 productStockDTO.getUnit_Price(),
                 productStockDTO.getCategory(),
                 productStockDTO.getQty());
+    }
+
+    public boolean updateFromPopUp(ProductStockDto productStockDto) throws SQLException {
+        return SQLUtil.execute("UPDATE product_Stock SET " +
+                        "description=?," +
+                        "qty_On_Hand=?," +
+                        "unit_Price=?," +
+                        "category=? " +
+                        "WHERE product_Id=?",
+                productStockDto.getDescription(),
+                productStockDto.getQty_On_Hand(),
+                productStockDto.getUnit_Price(),
+                productStockDto.getCategory(),
+                productStockDto.getProduct_Id()
+        );
     }
 
     public ProductStockDto getData(String id) throws SQLException {

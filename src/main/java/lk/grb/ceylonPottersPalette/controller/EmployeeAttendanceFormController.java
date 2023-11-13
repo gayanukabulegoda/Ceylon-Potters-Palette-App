@@ -45,6 +45,16 @@ public class EmployeeAttendanceFormController implements Initializable {
     @FXML
     private VBox vBoxEmployeeAttendance;
 
+    private static EmployeeAttendanceFormController controller;
+
+    public EmployeeAttendanceFormController() {
+        controller = this;
+    }
+
+    public static EmployeeAttendanceFormController getInstance() {
+        return controller;
+    }
+
     @FXML
     void btnEmployeeAttendanceOnAction(ActionEvent event) {
 

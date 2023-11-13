@@ -3,6 +3,7 @@ package lk.grb.ceylonPottersPalette.model;
 import lk.grb.ceylonPottersPalette.db.DbConnection;
 import lk.grb.ceylonPottersPalette.dto.EmployeeAttendanceDto;
 import lk.grb.ceylonPottersPalette.dto.EmployeeDto;
+import lk.grb.ceylonPottersPalette.dto.EmployeeSalaryDto;
 import lk.grb.ceylonPottersPalette.dto.SupplierDto;
 import lk.grb.ceylonPottersPalette.util.SQLUtil;
 
@@ -20,6 +21,16 @@ public class EmployeeAttendanceModel {
                 employeeAttendanceDto.getEmployee_Id(),
                 employeeAttendanceDto.getDate(),
                 employeeAttendanceDto.getTime());
+    }
+
+    public boolean update(EmployeeAttendanceDto employeeAttendanceDto) throws SQLException {
+
+        return SQLUtil.execute("UPDATE attendance SET " +
+                        "employee_Id=?" +
+                        "WHERE attendance_Id=?",
+                employeeAttendanceDto.getEmployee_Id(),
+                employeeAttendanceDto.getAttendance_Id()
+        );
     }
 
     public EmployeeAttendanceDto getData(String id) throws SQLException {

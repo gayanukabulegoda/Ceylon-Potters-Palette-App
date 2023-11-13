@@ -45,6 +45,16 @@ public class EmployeeSalaryFormController implements Initializable {
     @FXML
     private VBox vBoxEmployeeSalary;
 
+    private static EmployeeSalaryFormController controller;
+
+    public EmployeeSalaryFormController() {
+        controller = this;
+    }
+
+    public static EmployeeSalaryFormController getInstance() {
+        return controller;
+    }
+
     @FXML
     void btnAddSalaryOnAction(ActionEvent event) throws IOException {
         Navigation.imgPopUpBackground("employeeSalaryPopUpForm.fxml");

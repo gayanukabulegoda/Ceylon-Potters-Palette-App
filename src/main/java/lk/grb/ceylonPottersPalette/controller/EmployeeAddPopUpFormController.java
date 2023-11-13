@@ -104,7 +104,7 @@ public class EmployeeAddPopUpFormController implements Initializable {
     }
 
     @FXML
-    void btnAddOnAction(ActionEvent event) throws IOException, SQLException {
+    void btnAddOnAction(ActionEvent event) throws SQLException {
         EmployeeDto employeeDto = new EmployeeDto();
 
         ArrayList<String> list = employeeModel.getAllEmployeeId();
