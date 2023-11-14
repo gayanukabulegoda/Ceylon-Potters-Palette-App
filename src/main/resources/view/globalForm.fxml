@@ -166,7 +166,7 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Label layoutX="104.0" layoutY="77.0" text="Admin">
+            <Label fx:id="lblUser" layoutX="104.0" layoutY="77.0" text="Admin">
                <font>
                   <Font size="14.0" />
                </font>

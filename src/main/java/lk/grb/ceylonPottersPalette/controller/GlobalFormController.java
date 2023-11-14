@@ -1,5 +1,8 @@
 package lk.grb.ceylonPottersPalette.controller;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.util.Duration;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,6 +12,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.input.MouseEvent;
+import lk.grb.ceylonPottersPalette.model.UserModel;
 import lk.grb.ceylonPottersPalette.util.DateTimeUtil;
 import lk.grb.ceylonPottersPalette.util.Navigation;
 import lombok.SneakyThrows;
@@ -89,6 +93,9 @@ public class GlobalFormController implements Initializable {
 
     @FXML
     public Label lblTime;
+
+    @FXML
+    private Label lblUser;
 
     @FXML
     public Pane pagingPane;
@@ -257,17 +264,27 @@ public class GlobalFormController implements Initializable {
         imageView.setImage(new Image("assests/icon/" + path));
     }
 
+    private void updateClock() {
+        lblTime.setText(DateTimeUtil.timeNow());
+    }
+
     @SneakyThrows
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         btnSelected(paneBtnDashboard, lblDashboard, imgDashboard, "dashboardIcon2.png");
+
+        lblUser.setText(UserModel.getRole(user));
+
         try {
             Navigation.switchPaging(pagingPane, "dashboardForm.fxml");
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        lblTime.setText(DateTimeUtil.timeNow());
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> updateClock()));
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
+
         lblDate.setText(DateTimeUtil.dateNow());
     }
 }

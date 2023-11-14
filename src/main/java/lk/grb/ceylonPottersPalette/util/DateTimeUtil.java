@@ -33,7 +33,7 @@ public class DateTimeUtil {
 
     public static String timeNow() {
         SimpleDateFormat dateFormat=new SimpleDateFormat("hh:mm:ss");
-        System.out.println(dateFormat.format(new Date()));
+       // System.out.println(dateFormat.format(new Date()));
         return dateFormat.format(new Date()) ;
     }
     public static int getCountOfDayForYear(int year ){

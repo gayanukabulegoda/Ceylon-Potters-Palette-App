@@ -25,7 +25,9 @@ public class LoginFormController {
     void btnLogInOnAction(ActionEvent event) {
 
         try {
-            if (userModel.checkUsernameAndPassword(txtUsername.getText(), txtPassword.getText()).equals("grb")) {
+            String username = userModel.checkUsernameAndPassword(txtUsername.getText(), txtPassword.getText());
+
+            if (username.equals(txtUsername.getText())) {
                 GlobalFormController.user = txtUsername.getText();
                 Navigation.switchNavigation("globalForm.fxml", event);
             } else {
