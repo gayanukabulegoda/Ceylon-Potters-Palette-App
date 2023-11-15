@@ -87,7 +87,7 @@ public class Navigation {
     public static void imgPopUpBackground(String path) throws IOException {
         GlobalFormController.getInstance().imgPopUpBackground.setVisible(true);
 
-        if (path.equals("customerOrderAddPopUpForm.fxml")) {
+        if (path.equals("customerOrderAddPopUpForm.fxml") | path.equals("customerOrderViewPopUpForm.fxml")) {
             GlobalFormController.getInstance().orderPopUpPane.setVisible(true);
             switchPaging(GlobalFormController.getInstance().orderPopUpPane, path);
         }

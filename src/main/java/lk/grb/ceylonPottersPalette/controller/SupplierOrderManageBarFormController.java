@@ -19,9 +19,6 @@ public class SupplierOrderManageBarFormController {
     private Text date;
 
     @FXML
-    private ImageView deleteImg;
-
-    @FXML
     private Text id;
 
     @FXML
@@ -31,27 +28,9 @@ public class SupplierOrderManageBarFormController {
     private Text time;
 
     @FXML
-    private ImageView updateImg;
-
-    @FXML
     private ImageView viewImg;
 
     SupplierOrderModel supplierOrderModel = new SupplierOrderModel();
-
-    @FXML
-    void updateOnMouseClick(MouseEvent event) {
-
-    }
-
-    @FXML
-    void updateOnMouseEntered(MouseEvent event) {
-
-    }
-
-    @FXML
-    void updateOnMouseExited(MouseEvent event) {
-
-    }
 
     @FXML
     void viewDetailsOnMouseClick(MouseEvent event) {

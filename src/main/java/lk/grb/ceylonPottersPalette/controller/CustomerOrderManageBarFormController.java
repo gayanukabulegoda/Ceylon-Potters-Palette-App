@@ -24,16 +24,10 @@ public class CustomerOrderManageBarFormController {
     private Text date;
 
     @FXML
-    private ImageView deleteImg;
-
-    @FXML
     private Text id;
 
     @FXML
     private Text time;
-
-    @FXML
-    private ImageView updateImg;
 
     @FXML
     private ImageView viewImg;
@@ -41,23 +35,8 @@ public class CustomerOrderManageBarFormController {
     CustomerOrderModel customerOrderModel = new CustomerOrderModel();
 
     @FXML
-    void updateOnMouseClick(MouseEvent event) throws IOException {
-
-    }
-
-    @FXML
-    void updateOnMouseEntered(MouseEvent event) {
-
-    }
-
-    @FXML
-    void updateOnMouseExited(MouseEvent event) {
-
-    }
-
-    @FXML
-    void viewDetailsOnMouseClick(MouseEvent event) {
-
+    void viewDetailsOnMouseClick(MouseEvent event) throws IOException {
+        Navigation.imgPopUpBackground("customerOrderViewPopUpForm.fxml");
     }
 
     @FXML
