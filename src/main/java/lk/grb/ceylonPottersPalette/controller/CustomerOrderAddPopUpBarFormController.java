@@ -7,8 +7,13 @@ import javafx.scene.text.Text;
 import lk.grb.ceylonPottersPalette.dto.CustomerOrderDto;
 import lk.grb.ceylonPottersPalette.model.CustomerOrderDetailModel;
 import lk.grb.ceylonPottersPalette.model.ProductStockModel;
+import lk.grb.ceylonPottersPalette.util.Navigation;
 
+import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class CustomerOrderAddPopUpBarFormController {
 
@@ -33,8 +38,14 @@ public class CustomerOrderAddPopUpBarFormController {
     ProductStockModel productStockModel = new ProductStockModel();
 
     @FXML
-    void deleteOnMouseClick(MouseEvent event) {
+    void deleteOnMouseClick(MouseEvent event) throws IOException {
+        String[] x ={id.getText(),qty.getText()};
+        removeElement(CustomerOrderAddPopUpFormController.productList,x);
+        CustomerOrderAddPopUpFormController.getInstance().allCustomerOrderCartId();
+    }
 
+    private static boolean removeElement(List<String[]> list, String[] target) {
+        return list.removeIf(element -> Arrays.equals(element, target));
     }
 
     @FXML
@@ -49,7 +60,6 @@ public class CustomerOrderAddPopUpBarFormController {
 
     public void setData(String[] element) {
         try {
-
             String[] descriptionAndUnitPrice = productStockModel.descAndUnitPriceGet(element[0]);
 
             this.id.setText(element[0]);

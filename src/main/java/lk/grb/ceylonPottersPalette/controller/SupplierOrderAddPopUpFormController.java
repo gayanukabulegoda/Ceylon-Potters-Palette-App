@@ -104,7 +104,7 @@ public class SupplierOrderAddPopUpFormController implements Initializable {
     PlaceSupplierOrderModel placeSupplierOrderModel = new PlaceSupplierOrderModel();
     SupplierModel supplierModel = new SupplierModel();
     ItemStockModel itemStockModel = new ItemStockModel();
-    ArrayList<String[]> itemList = new ArrayList<>();
+    public static ArrayList<String[]> itemList = new ArrayList<>();
     ArrayList<String> idList;
 
     {
@@ -116,6 +116,16 @@ public class SupplierOrderAddPopUpFormController implements Initializable {
     }
 
     double netTotal = 0;
+
+    private static SupplierOrderAddPopUpFormController controller;
+
+    public SupplierOrderAddPopUpFormController() {
+        controller = this;
+    }
+
+    public static  SupplierOrderAddPopUpFormController getInstance() {
+        return controller;
+    }
 
     @FXML
     void btnAddNewSupplierOnAction(ActionEvent event) throws IOException {

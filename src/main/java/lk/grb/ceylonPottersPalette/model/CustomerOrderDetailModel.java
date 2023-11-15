@@ -1,13 +1,13 @@
 package lk.grb.ceylonPottersPalette.model;
 
 import lk.grb.ceylonPottersPalette.db.DbConnection;
-import lk.grb.ceylonPottersPalette.dto.CustomerDto;
 import lk.grb.ceylonPottersPalette.dto.CustomerOrderDto;
 import lk.grb.ceylonPottersPalette.util.SQLUtil;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class CustomerOrderDetailModel {
 
@@ -28,18 +28,19 @@ public class CustomerOrderDetailModel {
         return true;
     }
 
-    public CustomerOrderDto getData(String id) throws SQLException {
+    public static ArrayList<String[]> getData(String id) throws SQLException {
         ResultSet set = SQLUtil.execute("SELECT * FROM customer_Order_Detail WHERE customer_Order_Id=?", id);
 
-        CustomerOrderDto customerOrderDto = new CustomerOrderDto();
+        ArrayList<String[]> products = new ArrayList<>();
 
-        if (set.next()) {
-            customerOrderDto.setCustomer_Order_Id(set.getString(1));
-            customerOrderDto.setCustomer_Id(set.getString(2));
-            customerOrderDto.setTotal_Price(Double.parseDouble(set.getString(3)));
-            customerOrderDto.setDate(set.getString(4));
-            customerOrderDto.setTime(set.getString(5));
+        while (set.next()) {
+
+            String[] productIdAndQty = new String[2];
+            productIdAndQty[0] = set.getString(2);
+            productIdAndQty[1] = set.getString(3);
+
+            products.add(productIdAndQty);
         }
-        return customerOrderDto;
+        return products;
     }
 }
