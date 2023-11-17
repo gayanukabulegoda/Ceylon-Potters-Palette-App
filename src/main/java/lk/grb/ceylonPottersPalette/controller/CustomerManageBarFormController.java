@@ -70,8 +70,9 @@ public class CustomerManageBarFormController {
     }
 
     @FXML
-    void viewDetailsOnMouseClick(MouseEvent event) {
-
+    void viewDetailsOnMouseClick(MouseEvent event) throws IOException {
+        CustomerViewPopUpFormController.customerId = id.getText();
+        Navigation.imgPopUpBackground("customerViewPopUpForm.fxml");
     }
 
     @FXML
