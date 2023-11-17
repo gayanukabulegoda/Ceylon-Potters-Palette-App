@@ -28,7 +28,7 @@ public class CustomerOrderDetailModel {
         return true;
     }
 
-    public static ArrayList<String[]> getData(String id) throws SQLException {
+    public ArrayList<String[]> getData(String id) throws SQLException {
         ResultSet set = SQLUtil.execute("SELECT * FROM customer_Order_Detail WHERE customer_Order_Id=?", id);
 
         ArrayList<String[]> products = new ArrayList<>();

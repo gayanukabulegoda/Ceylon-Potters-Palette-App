@@ -36,6 +36,8 @@ public class CustomerOrderManageBarFormController {
 
     @FXML
     void viewDetailsOnMouseClick(MouseEvent event) throws IOException {
+        CustomerOrderViewPopUpFormController.customerOrderId = id.getText();
+        CustomerOrderViewPopUpFormController.customerId = customerId.getText();
         Navigation.imgPopUpBackground("customerOrderViewPopUpForm.fxml");
     }
 

@@ -11,14 +11,15 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="729.0" prefWidth="1269.0" style="-fx-background-color: white; -fx-background-radius: 16;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.grb.ceylonPottersPalette.controller.CustomerOrderViewPopUpFormController">
+<AnchorPane prefHeight="729.0" prefWidth="1269.0" style="-fx-background-color: white; -fx-background-radius: 16;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.grb.ceylonPottersPalette.controller.SupplierOrderViewPopUpFormController">
    <children>
       <Pane layoutX="954.0" layoutY="25.0" prefHeight="680.0" prefWidth="294.0" style="-fx-background-color: white; -fx-background-radius: 16; -fx-border-color: E8E8E8; -fx-border-width: 1; -fx-border-radius: 16;">
          <children>
             <Label layoutX="86.0" layoutY="35.0" text="ORDER DETAILS" textFill="#151619">
                <font>
                   <Font size="15.0" />
-               </font></Label>
+               </font>
+            </Label>
             <Label fx:id="lblOrderId" layoutX="31.0" layoutY="135.0" text="Order ID" textFill="#727374" />
             <Line endX="100.0" layoutX="129.0" layoutY="156.5" startX="-100.0" stroke="#727374" />
             <Label fx:id="lblOrderDate" layoutX="31.0" layoutY="231.0" text="Order Date" textFill="#727374" />
@@ -26,15 +27,15 @@
             <Label fx:id="lblOrderTime" layoutX="31.0" layoutY="328.0" text="Order Time" textFill="#727374" />
             <Line endX="100.0" layoutX="129.0" layoutY="350.0" startX="-100.0" stroke="#727374" />
             <Line endX="100.0" layoutX="147.0" layoutY="668.0" startX="-100.0" stroke="#ae7c5a" />
-            <Label fx:id="lblCustomerId" layoutX="31.0" layoutY="425.0" text="Customer ID" textFill="#727374" />
+            <Label fx:id="lblSupplierId" layoutX="31.0" layoutY="425.0" text="Supplier ID" textFill="#727374" />
             <Line endX="100.0" layoutX="129.0" layoutY="447.0" startX="-100.0" stroke="#727374" />
             <Label layoutX="31.0" layoutY="102.0" text="Order ID :" textFill="#727374" />
             <Label layoutX="31.0" layoutY="198.0" text="Order Date :" textFill="#727374" />
             <Label layoutX="31.0" layoutY="296.0" text="Order Time :" textFill="#727374" />
-            <Label layoutX="31.0" layoutY="394.0" text="Customer ID :" textFill="#727374" />
-            <Label fx:id="lblCustomerName" layoutX="31.0" layoutY="523.0" text="Customer Name" textFill="#727374" />
+            <Label layoutX="31.0" layoutY="394.0" text="Supplier ID :" textFill="#727374" />
+            <Label fx:id="lblSupplierName" layoutX="31.0" layoutY="523.0" text="Supplier Name" textFill="#727374" />
             <Line endX="100.0" layoutX="129.0" layoutY="545.0" startX="-100.0" stroke="#727374" />
-            <Label layoutX="31.0" layoutY="492.0" text="Customer Name :" textFill="#727374" />
+            <Label layoutX="31.0" layoutY="492.0" text="Supplier Name :" textFill="#727374" />
             <ImageView fx:id="imgFlower2" fitHeight="33.0" fitWidth="30.0" layoutX="96.0" layoutY="628.0" pickOnBounds="true" preserveRatio="true" rotate="27.5">
                <image>
                   <Image url="@../assests/img/logoFlowerBrown.png" />
@@ -55,7 +56,7 @@
       <Pane layoutX="26.0" layoutY="25.0" prefHeight="680.0" prefWidth="915.0" style="-fx-background-color: white; -fx-background-radius: 16; -fx-border-color: E8E8E8; -fx-border-width: 1; -fx-border-radius: 16;">
          <children>
             <Line endX="755.1853637695312" endY="0.9999923706054688" layoutX="146.0" layoutY="56.0" startX="-132.0906982421875" startY="0.9999923706054688" stroke="#b8b8b8" />
-            <Label layoutX="24.0" layoutY="24.0" prefHeight="20.0" prefWidth="121.0" text="Product ID">
+            <Label layoutX="42.0" layoutY="24.0" prefHeight="20.0" prefWidth="121.0" text="Item ID">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
@@ -82,7 +83,7 @@
             </Label>
             <ScrollPane layoutX="13.0" layoutY="60.0" prefHeight="495.0" prefWidth="888.0" style="-fx-background-color: white;">
                <content>
-                  <VBox fx:id="vBoxCustomerOrder" prefHeight="492.0" prefWidth="885.0" style="-fx-background-color: white;" />
+                  <VBox fx:id="vBoxSupplierOrder" prefHeight="492.0" prefWidth="885.0" style="-fx-background-color: white;" />
                </content>
             </ScrollPane>
             <Label layoutX="28.0" layoutY="584.0" text="Net Total :" textFill="#151619">

@@ -8,6 +8,7 @@ import lk.grb.ceylonPottersPalette.util.SQLUtil;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class SupplierOrderDetailModel {
 
@@ -41,5 +42,21 @@ public class SupplierOrderDetailModel {
             supplierOrderDto.setTime(set.getString(5));
         }
         return supplierOrderDto;
+    }
+
+    public ArrayList<String[]> getDataAsAnArray(String id) throws SQLException {
+        ResultSet set = SQLUtil.execute("SELECT * FROM supplier_Order_Detail WHERE supplier_Order_Id=?", id);
+
+        ArrayList<String[]> items = new ArrayList<>();
+
+        while (set.next()) {
+
+            String[] itemIdAndQuantity = new String[2];
+            itemIdAndQuantity[0] = set.getString(2);
+            itemIdAndQuantity[1] = set.getString(3);
+
+            items.add(itemIdAndQuantity);
+        }
+        return items;
     }
 }

@@ -91,7 +91,7 @@ public class Navigation {
             GlobalFormController.getInstance().orderPopUpPane.setVisible(true);
             switchPaging(GlobalFormController.getInstance().orderPopUpPane, path);
         }
-        else if (path.equals("supplierOrderAddPopUpForm.fxml")) {
+        else if (path.equals("supplierOrderAddPopUpForm.fxml") | path.equals("supplierOrderViewPopUpForm.fxml")) {
             GlobalFormController.getInstance().orderPopUpPane.setVisible(true);
             switchPaging(GlobalFormController.getInstance().orderPopUpPane, path);
         }
