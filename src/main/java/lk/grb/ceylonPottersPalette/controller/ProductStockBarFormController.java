@@ -73,8 +73,9 @@ public class ProductStockBarFormController {
     }
 
     @FXML
-    void viewDetailsOnMouseClick(MouseEvent event) {
-
+    void viewDetailsOnMouseClick(MouseEvent event) throws IOException {
+        ProductViewPopUpFormController.productId = id.getText();
+        Navigation.imgPopUpBackground("productViewPopUpForm.fxml");
     }
 
     @FXML

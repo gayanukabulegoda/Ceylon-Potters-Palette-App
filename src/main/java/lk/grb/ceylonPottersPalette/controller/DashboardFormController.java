@@ -31,6 +31,7 @@ public class DashboardFormController {
 
     @FXML
     void btnEmployeePaymentOnAction(ActionEvent event) throws IOException {
+        GlobalFormController.getInstance().btnEmployeeOnAction(event);
         Navigation.switchPaging(GlobalFormController.getInstance().pagingPane, "employeeSalaryForm.fxml");
     }
 }

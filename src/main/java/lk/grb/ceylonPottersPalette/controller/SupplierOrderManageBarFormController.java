@@ -32,6 +32,9 @@ public class SupplierOrderManageBarFormController {
     @FXML
     private ImageView viewImg;
 
+    @FXML
+    private ImageView reportImg;
+
     SupplierOrderModel supplierOrderModel = new SupplierOrderModel();
 
     @FXML
@@ -48,6 +51,21 @@ public class SupplierOrderManageBarFormController {
 
     @FXML
     void viewOnMouseExited(MouseEvent event) {
+
+    }
+
+    @FXML
+    void reportOnMouseClick(MouseEvent event) {
+
+    }
+
+    @FXML
+    void reportOnMouseEntered(MouseEvent event) {
+
+    }
+
+    @FXML
+    void reportOnMouseExited(MouseEvent event) {
 
     }
 

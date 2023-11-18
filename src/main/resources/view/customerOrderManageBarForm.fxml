@@ -31,14 +31,19 @@
                   <Font name="SansSerif Regular" size="16.0" />
                </font>
             </Text>
-            <Text fx:id="time" layoutX="787.0" layoutY="44.0" opacity="0.68" strokeType="OUTSIDE" strokeWidth="0.0" text="Time" wrappingWidth="277.674995303154">
+            <Text fx:id="time" layoutX="787.0" layoutY="44.0" opacity="0.68" strokeType="OUTSIDE" strokeWidth="0.0" text="Time" wrappingWidth="262.220405459404">
                <font>
                   <Font name="SansSerif Regular" size="16.0" />
                </font>
             </Text>
-            <ImageView fx:id="viewImg" fitHeight="25.0" fitWidth="25.0" onMouseClicked="#viewDetailsOnMouseClick" onMouseEntered="#viewOnMouseEntered" onMouseExited="#viewOnMouseExited" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="viewImg" fitHeight="25.0" fitWidth="32.0" onMouseClicked="#viewDetailsOnMouseClick" onMouseEntered="#viewOnMouseEntered" onMouseExited="#viewOnMouseExited" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assests/icon/viewIcon.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="reportImg" fitHeight="25.0" fitWidth="26.0" layoutX="1327.0" layoutY="25.0" onMouseClicked="#reportOnMouseClick" onMouseEntered="#reportOnMouseEntered" onMouseExited="#reportOnMouseExited" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assests/icon/reportIcon.png" />
                </image>
             </ImageView>
          </children>

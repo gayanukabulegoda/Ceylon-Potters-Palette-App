@@ -19,6 +19,8 @@ public class LoginFormController {
     @FXML
     private TextField txtUsername;
 
+    public static String password;
+
     UserModel userModel = new UserModel();
 
     @FXML
@@ -29,6 +31,8 @@ public class LoginFormController {
 
             if (username.equals(txtUsername.getText())) {
                 GlobalFormController.user = txtUsername.getText();
+
+                password = txtPassword.getText();
                 Navigation.switchNavigation("globalForm.fxml", event);
             } else {
                 new Alert(Alert.AlertType.ERROR, "Invalid Username Or Password!!").show();
@@ -44,7 +48,7 @@ public class LoginFormController {
     }
 
     @FXML
-    void hlinkForgotPasswordOnAction(ActionEvent event) {
+    void hyperForgotPasswordOnAction(ActionEvent event) {
 
     }
 }

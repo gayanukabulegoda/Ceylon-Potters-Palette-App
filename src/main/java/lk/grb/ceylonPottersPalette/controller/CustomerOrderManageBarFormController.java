@@ -32,6 +32,9 @@ public class CustomerOrderManageBarFormController {
     @FXML
     private ImageView viewImg;
 
+    @FXML
+    private ImageView reportImg;
+
     CustomerOrderModel customerOrderModel = new CustomerOrderModel();
 
     @FXML
@@ -48,6 +51,21 @@ public class CustomerOrderManageBarFormController {
 
     @FXML
     void viewOnMouseExited(MouseEvent event) {
+
+    }
+
+    @FXML
+    void reportOnMouseClick(MouseEvent event) {
+
+    }
+
+    @FXML
+    void reportOnMouseEntered(MouseEvent event) {
+
+    }
+
+    @FXML
+    void reportOnMouseExited(MouseEvent event) {
 
     }
 

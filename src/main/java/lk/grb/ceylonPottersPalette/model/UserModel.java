@@ -1,5 +1,7 @@
 package lk.grb.ceylonPottersPalette.model;
 
+import lk.grb.ceylonPottersPalette.dto.CustomerDto;
+import lk.grb.ceylonPottersPalette.dto.UserDto;
 import lk.grb.ceylonPottersPalette.util.SQLUtil;
 
 import java.sql.ResultSet;
@@ -29,5 +31,14 @@ public class UserModel {
         } else {
             return "No";
         }
+    }
+
+    public boolean update(UserDto userDto) throws SQLException {
+        return SQLUtil.execute("UPDATE user SET " +
+                        "password=? " +
+                        "WHERE user_Name=?",
+                userDto.getPassword(),
+                userDto.getUser_Name()
+        );
     }
 }
