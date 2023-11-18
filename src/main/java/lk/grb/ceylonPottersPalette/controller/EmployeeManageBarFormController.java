@@ -72,8 +72,9 @@ public class EmployeeManageBarFormController {
     }
 
     @FXML
-    void viewDetailsOnMouseClick(MouseEvent event) {
-
+    void viewDetailsOnMouseClick(MouseEvent event) throws IOException {
+        EmployeeViewPopUpFormController.employeeId = id.getText();
+        Navigation.imgPopUpBackground("employeeViewPopUpForm.fxml");
     }
 
     @FXML

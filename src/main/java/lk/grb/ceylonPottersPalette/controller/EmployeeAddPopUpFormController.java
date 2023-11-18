@@ -119,6 +119,9 @@ public class EmployeeAddPopUpFormController implements Initializable {
         employeeDto.setContact_No(txtContactNo.getText());
         employeeDto.setEmail(txtEmail.getText());
         employeeDto.setRole(getRole());
+        employeeDto.setDate(DateTimeUtil.dateNow());
+        employeeDto.setTime(DateTimeUtil.timeNow());
+        employeeDto.setUserName(GlobalFormController.user);
 
         boolean save = employeeModel.save(employeeDto);
 

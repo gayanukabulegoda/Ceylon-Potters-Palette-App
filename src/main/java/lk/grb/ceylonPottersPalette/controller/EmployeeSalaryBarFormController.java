@@ -56,8 +56,9 @@ public class EmployeeSalaryBarFormController {
     }
 
     @FXML
-    void viewDetailsOnMouseClick(MouseEvent event) {
-
+    void viewDetailsOnMouseClick(MouseEvent event) throws IOException {
+        EmployeeSalaryViewPopUpFormController.salaryId = salary_Id;
+        Navigation.imgPopUpBackground("employeeSalaryViewPopUpForm.fxml");
     }
 
     @FXML

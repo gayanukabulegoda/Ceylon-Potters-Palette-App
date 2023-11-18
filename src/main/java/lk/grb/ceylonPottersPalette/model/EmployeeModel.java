@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class EmployeeModel {
 
     public boolean save(EmployeeDto employeeDTO) throws SQLException {
-        return SQLUtil.execute("INSERT INTO employee VALUES (?,?,?,?,?,?,?,?,?,?)",
+        return SQLUtil.execute("INSERT INTO employee VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)",
                 employeeDTO.getEmployee_Id(),
                 employeeDTO.getFirst_Name(),
                 employeeDTO.getLast_Name(),
@@ -22,7 +22,10 @@ public class EmployeeModel {
                 employeeDTO.getCity(),
                 employeeDTO.getContact_No(),
                 employeeDTO.getEmail(),
-                employeeDTO.getRole());
+                employeeDTO.getRole(),
+                employeeDTO.getDate(),
+                employeeDTO.getTime(),
+                employeeDTO.getUserName());
     }
 
     public EmployeeDto getData(String id) throws SQLException {
@@ -41,6 +44,9 @@ public class EmployeeModel {
             employeeDTO.setContact_No(set.getString(8));
             employeeDTO.setEmail(set.getString(9));
             employeeDTO.setRole(set.getString(10));
+            employeeDTO.setDate(set.getString(11));
+            employeeDTO.setTime(set.getString(12));
+            employeeDTO.setUserName(set.getString(13));
         }
         return employeeDTO;
     }

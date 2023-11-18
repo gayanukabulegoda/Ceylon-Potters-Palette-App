@@ -70,8 +70,9 @@ public class SupplierManageBarFormController {
     }
 
     @FXML
-    void viewDetailsOnMouseClick(MouseEvent event) {
-
+    void viewDetailsOnMouseClick(MouseEvent event) throws IOException {
+        SupplierViewPopUpFormController.supplierId = id.getText();
+        Navigation.imgPopUpBackground("supplierViewPopUpForm.fxml");
     }
 
     @FXML

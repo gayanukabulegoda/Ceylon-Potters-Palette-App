@@ -13,7 +13,10 @@ CREATE TABLE employee(
                          city VARCHAR(30) NOT NULL,
                          contact_No VARCHAR(14) UNIQUE NOT NULL,
                          email VARCHAR(100) UNIQUE NOT NULL,
-                         role VARCHAR(30) NOT NULL
+                         role VARCHAR(30) NOT NULL,
+                         date DATE NOT NULL,
+                         time TIME NOT NULL,
+                         user_Name VARCHAR(20) NOT NULL
 );
 
 CREATE TABLE user(
@@ -22,6 +25,8 @@ CREATE TABLE user(
                      employee_Id VARCHAR(6) NOT NULL,
                      CONSTRAINT FOREIGN KEY (employee_Id) REFERENCES employee(employee_Id) ON DELETE CASCADE ON UPDATE CASCADE
 );
+
+ALTER TABLE employee ADD CONSTRAINT user_Name FOREIGN KEY(user_Name) REFERENCES user(user_Name) ON DELETE CASCADE ON UPDATE CASCADE;
 
 CREATE TABLE customer(
                          customer_Id VARCHAR(10) PRIMARY KEY,
@@ -121,24 +126,25 @@ CREATE TABLE attendance(
                            CONSTRAINT FOREIGN KEY(employee_Id) REFERENCES employee(employee_Id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-INSERT INTO employee (employee_Id, first_Name, last_Name, nic, house_No, street, city, contact_No, email, role)
-VALUES ('E001', 'John', 'Doe', '1234567890123', '123', 'Main Street', 'Cityville', '+1234567890', 'john.doe@example.com', 'Manager');
+
+INSERT INTO employee (employee_Id, first_Name, last_Name, nic, house_No, street, city, contact_No, email, role, date, time, user_Name)
+VALUES ('E001', 'John', 'Doe', '1234567890123', '123', 'Main Street', 'Cityville', '+1234567890', 'john.doe@example.com', 'Manager', '2023-11-12', '10:15:00', 'rgb');
 
 
-INSERT INTO employee (employee_Id, first_Name, last_Name, nic, house_No, street, city, contact_No, email, role)
-VALUES ('E002', 'Jane', 'Smith', '2345678901234', '456', 'Broadway', 'Towntown', '+9876543210', 'jane.smith@example.com', 'Clerk');
+INSERT INTO employee (employee_Id, first_Name, last_Name, nic, house_No, street, city, contact_No, email, role, date, time, user_Name)
+VALUES ('E002', 'Jane', 'Smith', '2345678901234', '456', 'Broadway', 'Towntown', '+9876543210', 'jane.smith@example.com', 'Clerk', '2023-11-12', '10:15:00', 'rgb');
 
 
-INSERT INTO employee (employee_Id, first_Name, last_Name, nic, house_No, street, city, contact_No, email, role)
-VALUES ('E003', 'Alice', 'Johnson', '3456789012345', '789', 'Park Avenue', 'Villageton', '+1122334455', 'alice.johnson@example.com', 'Salesperson');
+INSERT INTO employee (employee_Id, first_Name, last_Name, nic, house_No, street, city, contact_No, email, role, date, time, user_Name)
+VALUES ('E003', 'Alice', 'Johnson', '3456789012345', '789', 'Park Avenue', 'Villageton', '+1122334455', 'alice.johnson@example.com', 'Salesperson', '2023-11-12', '10:15:00', 'rgb');
 
 
-INSERT INTO employee (employee_Id, first_Name, last_Name, nic, house_No, street, city, contact_No, email, role)
-VALUES ('E004', 'Bob', 'Williams', '4567890123456', '1011', 'Sunset Boulevard', 'Cityscape', '+9988776655', 'bob.williams@example.com', 'Technician');
+INSERT INTO employee (employee_Id, first_Name, last_Name, nic, house_No, street, city, contact_No, email, role, date, time, user_Name)
+VALUES ('E004', 'Bob', 'Williams', '4567890123456', '1011', 'Sunset Boulevard', 'Cityscape', '+9988776655', 'bob.williams@example.com', 'Technician', '2023-11-12', '10:15:00', 'rgb');
 
 
-INSERT INTO employee (employee_Id, first_Name, last_Name, nic, house_No, street, city, contact_No, email, role)
-VALUES ('E005', 'Eva', 'Miller', '5678901234567', '1314', 'Ocean Drive', 'Seaville', '+1125334455', 'eva.miller@example.com', 'Intern');
+INSERT INTO employee (employee_Id, first_Name, last_Name, nic, house_No, street, city, contact_No, email, role, date, time, user_Name)
+VALUES ('E005', 'Eva', 'Miller', '5678901234567', '1314', 'Ocean Drive', 'Seaville', '+1125334455', 'eva.miller@example.com', 'Intern', '2023-11-12', '10:15:00', 'rgb');
 
 
 

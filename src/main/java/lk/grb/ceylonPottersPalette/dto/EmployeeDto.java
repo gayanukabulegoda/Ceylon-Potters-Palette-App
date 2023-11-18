@@ -21,4 +21,7 @@ public class EmployeeDto {
     private String contact_No;
     private String email;
     private String role;
+    private String date;
+    private String time;
+    private String userName;
 }

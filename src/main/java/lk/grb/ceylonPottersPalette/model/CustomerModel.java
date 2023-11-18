@@ -32,6 +32,8 @@ public class CustomerModel {
             customerDTO.setName(set.getString(2));
             customerDTO.setContact_No(set.getString(3));
             customerDTO.setEmail(set.getString(4));
+            customerDTO.setDate(set.getString(5));
+            customerDTO.setTime(set.getString(6));
             customerDTO.setUser_Name(set.getString(7));
         }
         return customerDTO;
