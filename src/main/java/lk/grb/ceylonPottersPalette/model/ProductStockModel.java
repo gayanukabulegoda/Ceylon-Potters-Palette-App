@@ -173,4 +173,17 @@ public class ProductStockModel {
 
         return set;
     }
+
+    public String getQtyTotal(String id) throws SQLException {
+
+        String sql = ("SELECT qty FROM product_Stock WHERE product_Id=?");
+        PreparedStatement statement = DbConnection.getInstance().getConnection().prepareStatement(sql);
+        statement.setString(1,id);
+
+        ResultSet resultSet = statement.executeQuery();
+        if (resultSet.next()) {
+            return resultSet.getString(1);
+        }
+        return null;
+    }
 }
