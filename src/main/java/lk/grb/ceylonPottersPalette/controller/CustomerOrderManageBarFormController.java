@@ -107,7 +107,7 @@ public class CustomerOrderManageBarFormController {
         JasperReport jasperReport = JasperCompileManager.compileReport(load);
         JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, hashMap, DbConnection.getInstance().getConnection());
         JasperViewer.viewReport(jasperPrint, false);
-        JasperExportManager.exportReportToPdfFile(jasperPrint, "/home/gayanuka/Documents/Jasper Reports/Report PDFs/"+id.getText()+".pdf");
+        JasperExportManager.exportReportToPdfFile(jasperPrint,"/home/gayanuka/Documents/Jasper Reports/Customer_Report_PDFs/"+id.getText()+".pdf");
     }
 
     @FXML
