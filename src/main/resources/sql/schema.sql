@@ -226,3 +226,18 @@ VALUES ('I005', 'Water', 50.80, 60);
 delete from attendance where attendance_Id = 'A0010';
 
 select attendance_Id from attendance order by attendance_Id desc limit 1;
+
+SELECT
+    cod.product_Id,
+    p.description,
+    cod.product_Quantity,
+    p.unit_Price,
+    p.category
+FROM
+    customer_Order co
+        JOIN
+    customer_Order_Detail cod ON co.customer_Order_Id = cod.customer_Order_Id
+        JOIN
+    product_Stock p ON p.product_Id = cod.product_Id
+WHERE
+    co.customer_Order_Id = 'CO - 1';
