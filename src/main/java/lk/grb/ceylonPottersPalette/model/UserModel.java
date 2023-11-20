@@ -49,4 +49,25 @@ public class UserModel {
                 userDto.getPassword(),
                 userDto.getEmployeeId());
     }
+    public String getEmployeeId(String userName) throws SQLException {
+        ResultSet set = SQLUtil.execute("SELECT employee_Id FROM user WHERE user_Name=?", userName);
+
+
+        if (set.next()) {
+            return set.getString(1);
+        } else {
+            return "null";
+        }
+    }
+
+    public String getUserName(String employeeId) throws SQLException {
+        ResultSet set = SQLUtil.execute("SELECT user_Name FROM user WHERE employee_Id=?", employeeId);
+
+
+        if (set.next()) {
+            return set.getString(1);
+        } else {
+            return "null";
+        }
+    }
 }

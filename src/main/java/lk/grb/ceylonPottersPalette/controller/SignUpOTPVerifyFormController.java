@@ -24,7 +24,7 @@ public class SignUpOTPVerifyFormController implements Initializable {
     public static String employeeId;
     public static String otp;
 
-    EmployeeModel employeeModel = new EmployeeModel();
+    //EmployeeModel employeeModel = new EmployeeModel();
     SendEmail sendEmail = new SendEmail();
 
     @FXML
@@ -42,7 +42,6 @@ public class SignUpOTPVerifyFormController implements Initializable {
         else {
             new Alert(Alert.AlertType.ERROR, "Wrong OTP !! Try Again").show();
         }
-
     }
 
     public String generateOTP(int otpLength) {
@@ -66,7 +65,7 @@ public class SignUpOTPVerifyFormController implements Initializable {
         otp = generateOTP(6);
 
         try {
-            EmployeeDto employeeDto = employeeModel.getData(employeeId);
+            //EmployeeDto employeeDto = employeeModel.getData(employeeId);
             String email = "ceylonpotterspallet@gmail.com";
             String subject = "OTP Verification";
             String body = otp;
@@ -74,7 +73,7 @@ public class SignUpOTPVerifyFormController implements Initializable {
             String[] detail = {email, subject, body};
             sendEmail.sendMail(detail);
 
-        } catch (SQLException | MessagingException e) {
+        } catch (MessagingException e) {
             throw new RuntimeException(e);
         }
     }
