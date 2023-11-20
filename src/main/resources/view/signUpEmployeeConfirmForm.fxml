@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="572.0" prefWidth="929.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.grb.ceylonPottersPalette.controller.SignUpEmployeeConfirmFormController">
+   <children>
+      <ImageView fitHeight="579.0" fitWidth="936.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assests/img/SignUpEmployeeConfirmPage.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="42.0" fitWidth="42.0" layoutX="7.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assests/img/backIconImg.png" />
+         </image>
+      </ImageView>
+      <JFXButton layoutX="7.0" layoutY="5.0" minHeight="42.0" onAction="#btnBackOnAction" prefWidth="42.0" style="-fx-background-radius: 100;" text=" " />
+      <JFXButton alignment="CENTER" buttonType="RAISED" layoutX="558.0" layoutY="393.0" onAction="#btnConfirmOnAction" prefHeight="42.0" prefWidth="267.0" style="-fx-background-radius: 12; -fx-background-color: C56E33;" text="CONFIRM" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </JFXButton>
+      <Hyperlink layoutX="749.0" layoutY="517.0" onAction="#hyperLogInOnAction" text="Log In" textFill="#151619" />
+      <Text fill="#3d3e3e" layoutX="591.0" layoutY="534.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Already have Account ?" />
+      <TextField fx:id="txtEmployeeId" layoutX="558.0" layoutY="315.0" prefHeight="42.0" prefWidth="267.0" promptText="  Employee ID" style="-fx-background-radius: 12;">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+         <font>
+            <Font size="15.0" />
+         </font>
+      </TextField>
+   </children>
+</AnchorPane>

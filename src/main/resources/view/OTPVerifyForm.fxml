@@ -46,5 +46,11 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </JFXButton>
+      <ImageView fitHeight="42.0" fitWidth="42.0" layoutX="7.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assests/img/backIconImg.png" />
+         </image>
+      </ImageView>
+      <JFXButton layoutX="7.0" layoutY="5.0" minHeight="42.0" onAction="#btnBackIconOnAction" prefWidth="42.0" style="-fx-background-radius: 100;" text=" " />
    </children>
 </AnchorPane>

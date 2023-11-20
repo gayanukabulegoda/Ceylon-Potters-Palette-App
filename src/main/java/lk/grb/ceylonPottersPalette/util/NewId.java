@@ -27,23 +27,23 @@ public class NewId {
         // Generate the new ID based on the type
         switch (getType) {
             case EMPLOYEE:
-                return "E - " + maxIdNum;
+                return "E-00" + maxIdNum;
             case SUPPLIER:
-                return "S - " + maxIdNum;
+                return "S-00" + maxIdNum;
             case CUSTOMER:
-                return "C - " + maxIdNum;
+                return "C-00 " + maxIdNum;
             case PRODUCT_STOCK:
-                return "P - " + maxIdNum;
+                return "P-00 " + maxIdNum;
             case ITEM_STOCK:
-                return "I - " + maxIdNum;
+                return "I-00 " + maxIdNum;
             case ATTENDANCE_ID:
-                return "A - " + maxIdNum;
+                return "A-00 " + maxIdNum;
             case CUSTOMER_ORDER:
-                return "CO - " + maxIdNum;
+                return "CO-0 " + maxIdNum;
             case SUPPLIER_ORDER:
-                return "SO - " + maxIdNum;
+                return "SO-0 " + maxIdNum;
             case SALARY_ID:
-                return "SI - " + maxIdNum;
+                return "SI-0 " + maxIdNum;
             default:
                 return null;
         }

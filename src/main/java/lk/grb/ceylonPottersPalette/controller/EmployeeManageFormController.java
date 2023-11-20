@@ -75,6 +75,15 @@ public class EmployeeManageFormController implements Initializable {
         Navigation.switchPaging(GlobalFormController.getInstance().pagingPane, "employeeSalaryForm.fxml");
     }
 
+    @FXML
+    void txtSearchOnAction(ActionEvent event) {
+
+    }
+
+    public void validateId() {
+
+    }
+
     public void allEmployeeId() throws SQLException {
 
         vBoxEmployeeManage.getChildren().clear();

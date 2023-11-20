@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="572.0" prefWidth="929.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.grb.ceylonPottersPalette.controller.SignUpFormController">
+   <children>
+      <ImageView fitHeight="579.0" fitWidth="936.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assests/img/SignUpPage.png" />
+         </image>
+      </ImageView>
+      <PasswordField fx:id="txtPassword" layoutX="560.0" layoutY="351.0" prefHeight="43.0" prefWidth="267.0" promptText=" Password" style="-fx-background-radius: 12;">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+         <font>
+            <Font size="15.0" />
+         </font>
+      </PasswordField>
+      <ImageView fitHeight="42.0" fitWidth="42.0" layoutX="7.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assests/img/backIconImg.png" />
+         </image>
+      </ImageView>
+      <JFXButton layoutX="7.0" layoutY="5.0" minHeight="42.0" onAction="#btnBackOnAction" prefWidth="42.0" style="-fx-background-radius: 100;" text=" " />
+      <JFXButton alignment="CENTER" buttonType="RAISED" layoutX="560.0" layoutY="418.0" onAction="#btnSignUpOnAction" prefHeight="42.0" prefWidth="267.0" style="-fx-background-radius: 12; -fx-background-color: C56E33;" text="Sign Up" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </JFXButton>
+      <TextField fx:id="txtUsername" layoutX="560.0" layoutY="293.0" prefHeight="42.0" prefWidth="267.0" promptText="  Username" style="-fx-background-radius: 12;">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+         <font>
+            <Font size="15.0" />
+         </font>
+      </TextField>
+   </children>
+</AnchorPane>

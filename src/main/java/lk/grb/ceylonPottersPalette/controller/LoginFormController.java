@@ -48,7 +48,12 @@ public class LoginFormController {
     }
 
     @FXML
-    void hyperForgotPasswordOnAction(ActionEvent event) {
+    void hyperForgotPasswordOnAction(ActionEvent event) throws IOException {
+        Navigation.switchNavigation("forgotPasswordForm.fxml",event);
+    }
 
+    @FXML
+    void hyperSignUpOnAction(ActionEvent event) throws IOException {
+        Navigation.switchNavigation("signUpEmployeeConfirmForm.fxml", event);
     }
 }

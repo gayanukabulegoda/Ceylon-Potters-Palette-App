@@ -1,6 +1,7 @@
 package lk.grb.ceylonPottersPalette.model;
 
 import lk.grb.ceylonPottersPalette.dto.CustomerDto;
+import lk.grb.ceylonPottersPalette.dto.ItemStockDto;
 import lk.grb.ceylonPottersPalette.dto.UserDto;
 import lk.grb.ceylonPottersPalette.util.SQLUtil;
 
@@ -40,5 +41,12 @@ public class UserModel {
                 userDto.getPassword(),
                 userDto.getUser_Name()
         );
+    }
+
+    public boolean save(UserDto userDto) throws SQLException {
+        return SQLUtil.execute("INSERT INTO user VALUES (?,?,?)",
+                userDto.getUser_Name(),
+                userDto.getPassword(),
+                userDto.getEmployeeId());
     }
 }
