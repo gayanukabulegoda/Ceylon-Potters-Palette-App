@@ -68,5 +68,20 @@
          </font>
       </TextField>
       <JFXButton fx:id="btnCloseIcon" layoutX="519.0" layoutY="54.0" onAction="#btnCloseIconOnAction" prefHeight="48.0" prefWidth="48.0" style="-fx-background-radius: 12;" text=" " />
+      <Label fx:id="lblCustomerNameAlert" layoutX="103.0" layoutY="211.0" textFill="RED">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblCustomerEmailAlert" layoutX="103.0" layoutY="345.0" textFill="RED">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblContactNoAlert" layoutX="103.0" layoutY="278.0" textFill="RED">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

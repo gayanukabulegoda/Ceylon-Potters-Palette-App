@@ -55,6 +55,15 @@ public class ItemAddPopUpFormController {
     @FXML
     private TextField txtUnitPrice;
 
+    @FXML
+    private Label lblDescriptionAlert;
+
+    @FXML
+    private Label lblQtyAlert;
+
+    @FXML
+    private Label lblUnitPriceAlert;
+
     ItemStockModel itemStockModel = new ItemStockModel();
 
     @FXML

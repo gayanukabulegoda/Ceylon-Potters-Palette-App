@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -51,5 +52,15 @@
       <JFXButton layoutX="7.0" layoutY="5.0" minHeight="42.0" onAction="#btnPowerOffOnAction" prefWidth="42.0" style="-fx-background-radius: 100;" text=" " />
       <Hyperlink layoutX="760.0" layoutY="518.0" onAction="#hyperSignUpOnAction" text="Sign Up" textFill="#151619" />
       <Text fill="#3d3e3e" layoutX="564.0" layoutY="535.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Don’t have an account?  Let’s" />
+      <Label fx:id="lblUserNameAlert" layoutX="570.0" layoutY="312.0" textFill="RED">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblPasswordAlert" layoutX="570.0" layoutY="372.0" textFill="RED">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

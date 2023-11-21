@@ -55,6 +55,15 @@ public class ItemUpdatePopUpFormController implements Initializable {
     @FXML
     private Pane updateBtnPane;
 
+    @FXML
+    private Label lblDescriptionAlert;
+
+    @FXML
+    private Label lblQtyAlert;
+
+    @FXML
+    private Label lblUnitPriceAlert;
+
     public static String itemId;
 
     ItemStockModel itemStockModel = new ItemStockModel();

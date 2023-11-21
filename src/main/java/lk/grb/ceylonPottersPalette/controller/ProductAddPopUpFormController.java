@@ -60,6 +60,18 @@ public class ProductAddPopUpFormController {
     @FXML
     private TextField txtUnitPrice;
 
+    @FXML
+    private Label lblCategoryAlert;
+
+    @FXML
+    private Label lblDescriptionAlert;
+
+    @FXML
+    private Label lblQtyAlert;
+
+    @FXML
+    private Label lblUnitPriceAlert;
+
     public static int producedTotalProductQuantity;
 
     ProductStockModel productStockModel = new ProductStockModel();

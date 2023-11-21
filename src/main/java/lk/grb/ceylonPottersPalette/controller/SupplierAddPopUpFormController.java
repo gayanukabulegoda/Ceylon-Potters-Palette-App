@@ -55,6 +55,15 @@ public class SupplierAddPopUpFormController {
     @FXML
     private TextField txtSupplierName;
 
+    @FXML
+    private Label lblContactNoAlert;
+
+    @FXML
+    private Label lblSupplierEmailAlert;
+
+    @FXML
+    private Label lblSupplierNameAlert;
+
     SupplierModel supplierModel = new SupplierModel();
     @FXML
     void btnAddOnAction(ActionEvent event) throws SQLException {

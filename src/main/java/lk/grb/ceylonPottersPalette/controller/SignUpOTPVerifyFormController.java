@@ -2,6 +2,7 @@ package lk.grb.ceylonPottersPalette.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
@@ -21,6 +22,10 @@ public class SignUpOTPVerifyFormController implements Initializable {
 
     @FXML
     private TextField txtOTP;
+
+    @FXML
+    private Label lblOtpAlert;
+
     public static String employeeId;
     public static String otp;
 

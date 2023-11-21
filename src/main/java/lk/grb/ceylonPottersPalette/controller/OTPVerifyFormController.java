@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import lk.grb.ceylonPottersPalette.dto.EmployeeDto;
 import lk.grb.ceylonPottersPalette.model.EmployeeModel;
@@ -21,6 +22,9 @@ public class OTPVerifyFormController implements Initializable {
 
     @FXML
     private TextField txtOTP;
+
+    @FXML
+    private Label lblOtpAlert;
 
     public static String otp;
     public static String employeeId;

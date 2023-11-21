@@ -18,6 +18,7 @@ import lk.grb.ceylonPottersPalette.util.NewId;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 public class CredentialChangePopUpFormController {
 
@@ -57,6 +58,15 @@ public class CredentialChangePopUpFormController {
     @FXML
     private PasswordField txtNewPassword;
 
+    @FXML
+    private Label lblConfirmPwAlert;
+
+    @FXML
+    private Label lblCurrentPwAlert;
+
+    @FXML
+    private Label lblNewPwAlert;
+
     UserModel userModel = new UserModel();
 
     @FXML
@@ -86,6 +96,7 @@ public class CredentialChangePopUpFormController {
             String confirmPassword = txtConfirmPassword.getText();
 
             if (confirmPassword.equals(newPassword)) {
+                lblConfirmPwAlert.setText(" ");
                 userDto.setPassword(txtConfirmPassword.getText());
                 LoginFormController.password = txtConfirmPassword.getText();
                 updated = userModel.update(userDto);
@@ -96,21 +107,53 @@ public class CredentialChangePopUpFormController {
                 }
 
             } else {
-                new Alert(Alert.AlertType.ERROR, "New Password & it's Confirmation Doesn't Match!!!").show();
+                lblConfirmPwAlert.setText("New Password & it's Confirmation Doesn't Match!!!");
             }
         } else {
-            new Alert(Alert.AlertType.ERROR, "Your Current Password is Invalid!!!").show();
+            lblCurrentPwAlert.setText("Invalid Password!!");
         }
     }
 
     @FXML
     void txtCurrentPassword(ActionEvent event) {
-        txtNewPassword.setEditable(true);
-        txtConfirmPassword.setEditable(true);
+        if(LoginFormController.password.equals(txtCurrentPassword.getText())){
+            lblCurrentPwAlert.setText(" ");
+            txtNewPassword.setEditable(true);
+            txtConfirmPassword.setEditable(true);
+        }
+        else {
+            lblCurrentPwAlert.setText("Invalid Password!!");
+        }
     }
 
     @FXML
     void txtConfirmPasswordOnAction(ActionEvent event) {
-        btnSave.setVisible(true);
+        if (txtNewPassword.getText().equals(txtConfirmPassword.getText())) {
+            lblConfirmPwAlert.setText(" ");
+            btnSave.setVisible(true);
+        }
+        else {
+            lblConfirmPwAlert.setText("New Password & Confirmation Doesn't Match!!");
+        }
+    }
+
+    @FXML
+    void txtNewPasswordOnAction(ActionEvent event) {
+        if(validateNewPassword()) {
+            lblNewPwAlert.setText(" ");
+        }
+    }
+
+    private boolean validateNewPassword() {
+        String password = txtNewPassword.getText();
+
+        boolean idValidate = Pattern.matches(".{6,}", password);
+
+        if (!idValidate) {
+            lblNewPwAlert.setText("Invalid Password!!\nPassword should contain at least 6 characters");
+            return false;
+        }
+        lblNewPwAlert.setText(" ");
+        return true;
     }
 }

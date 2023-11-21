@@ -96,6 +96,15 @@ public class CustomerOrderAddPopUpFormController implements Initializable {
     @FXML
     private VBox vBoxCustomerOrder;
 
+    @FXML
+    private Label lblCmbCustomerIdAlert;
+
+    @FXML
+    private Label lblCmbProductIdAlert;
+
+    @FXML
+    private Label lblQtyAlert;
+
     CustomerOrderModel customerOrderModel = new CustomerOrderModel();
     CustomerModel customerModel = new CustomerModel();
     ProductStockModel productStockModel = new ProductStockModel();

@@ -69,6 +69,15 @@ public class EmployeeSalaryUpdatePopUpFormController implements Initializable {
     @FXML
     private Pane updateBtnPane;
 
+    @FXML
+    private Label lblCmbEmployeeIdAlert;
+
+    @FXML
+    private Label lblSalaryAlert;
+
+    @FXML
+    private Label lblBonusAlert;
+
     public static String salaryId;
 
     EmployeeModel employeeModel = new EmployeeModel();

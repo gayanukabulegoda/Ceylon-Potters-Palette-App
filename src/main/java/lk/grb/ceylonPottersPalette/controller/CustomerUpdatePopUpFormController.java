@@ -58,6 +58,15 @@ public class CustomerUpdatePopUpFormController implements Initializable {
     @FXML
     private Pane updateBtnPane;
 
+    @FXML
+    private Label lblContactNoAlert;
+
+    @FXML
+    private Label lblCustomerEmailAlert;
+
+    @FXML
+    private Label lblCustomerNameAlert;
+
     public static String customerId;
 
     CustomerModel customerModel = new CustomerModel();

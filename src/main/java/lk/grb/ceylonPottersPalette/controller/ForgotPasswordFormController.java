@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Label;
 import lk.grb.ceylonPottersPalette.model.EmployeeModel;
 import lk.grb.ceylonPottersPalette.model.UserModel;
 import lk.grb.ceylonPottersPalette.util.Navigation;
@@ -15,6 +16,9 @@ public class ForgotPasswordFormController {
 
     @FXML
     private TextField txtUsername;
+
+    @FXML
+    private Label lblUserNameAlert;
 
     UserModel userModel = new UserModel();
 

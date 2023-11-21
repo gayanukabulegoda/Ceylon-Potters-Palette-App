@@ -77,6 +77,33 @@ public class EmployeeAddPopUpFormController implements Initializable {
     @FXML
     private TextField txtStreet;
 
+    @FXML
+    private Label lblCityAlert;
+
+    @FXML
+    private Label lblCmbRoleAlert;
+
+    @FXML
+    private Label lblContactNoAlert;
+
+    @FXML
+    private Label lblEmailAlert;
+
+    @FXML
+    private Label lblFirstNameAlert;
+
+    @FXML
+    private Label lblHouseNoAlert;
+
+    @FXML
+    private Label lblLastNameAlert;
+
+    @FXML
+    private Label lblNicAlert;
+
+    @FXML
+    private Label lblStreetAlert;
+
     public static EmployeeAddPopUpFormController controller;
     EmployeeModel employeeModel = new EmployeeModel();
 

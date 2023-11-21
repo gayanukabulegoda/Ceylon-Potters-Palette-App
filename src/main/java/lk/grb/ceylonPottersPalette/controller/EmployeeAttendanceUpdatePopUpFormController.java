@@ -24,6 +24,9 @@ public class EmployeeAttendanceUpdatePopUpFormController implements Initializabl
     private JFXButton btnCloseIcon;
 
     @FXML
+    private Label lblCmbEmployeeIdAlert;
+
+    @FXML
     private JFXButton btnMarkAttendance;
 
     @FXML

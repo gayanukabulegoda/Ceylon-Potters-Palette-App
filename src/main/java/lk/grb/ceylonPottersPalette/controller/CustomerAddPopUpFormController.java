@@ -3,6 +3,7 @@ package lk.grb.ceylonPottersPalette.controller;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -15,6 +16,7 @@ import lk.grb.ceylonPottersPalette.util.NewId;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 public class CustomerAddPopUpFormController {
 
@@ -54,6 +56,15 @@ public class CustomerAddPopUpFormController {
     @FXML
     private TextField txtCustomerName;
 
+    @FXML
+    private Label lblContactNoAlert;
+
+    @FXML
+    private Label lblCustomerEmailAlert;
+
+    @FXML
+    private Label lblCustomerNameAlert;
+
     CustomerModel customerModel = new CustomerModel();
 
     @FXML
@@ -86,5 +97,29 @@ public class CustomerAddPopUpFormController {
     @FXML
     void btnCloseIconOnAction(ActionEvent event) {
         Navigation.closePane();
+    }
+
+    private boolean validateCustomer() {
+
+        String name = txtCustomerName.getText();
+
+        boolean nameValidate = Pattern.matches("[A-Za-z\\s]+", name);
+
+        if (!nameValidate) {
+            new Alert(Alert.AlertType.ERROR, "Invalid Customer Name!!").show();
+            return false;
+        }
+
+        String contactNo = txtContactNo.getText();
+
+        boolean contactNoValidate = Pattern.matches("[A-Za-z\\s]+", name);
+
+        if (!nameValidate) {
+            new Alert(Alert.AlertType.ERROR, "Invalid Customer Name!!").show();
+            return false;
+        }
+
+
+        return true;
     }
 }

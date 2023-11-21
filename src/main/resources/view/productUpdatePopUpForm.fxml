@@ -73,5 +73,25 @@
             <Font size="15.0" />
          </font>
       </TextField>
+      <Label fx:id="lblDescriptionAlert" layoutX="59.0" layoutY="199.0" textFill="RED">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblUnitPriceAlert" layoutX="59.0" layoutY="271.0" textFill="RED">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblCategoryAlert" layoutX="331.0" layoutY="199.0" textFill="RED">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblQtyAlert" layoutX="331.0" layoutY="271.0" textFill="RED">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

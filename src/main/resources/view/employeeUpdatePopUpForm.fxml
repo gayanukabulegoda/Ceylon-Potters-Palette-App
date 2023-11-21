@@ -95,5 +95,50 @@
          </font>
       </TextField>
       <JFXButton fx:id="btnCloseIcon" layoutX="519.0" layoutY="54.0" onAction="#btnCloseIconOnAction" prefHeight="48.0" prefWidth="48.0" style="-fx-background-radius: 12;" text=" " />
+      <Label fx:id="lblFirstNameAlert" layoutX="60.0" layoutY="194.0" textFill="RED">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblLastNameAlert" layoutX="335.0" layoutY="194.0" textFill="RED">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblEmailAlert" layoutX="336.0" layoutY="260.0" textFill="RED">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblCmbRoleAlert" layoutX="336.0" layoutY="329.0" textFill="RED">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblCityAlert" layoutX="454.0" layoutY="394.0" textFill="RED">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblContactNoAlert" layoutX="60.0" layoutY="261.0" textFill="RED">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblNicAlert" layoutX="60.0" layoutY="327.0" textFill="RED">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblHouseNoAlert" layoutX="60.0" layoutY="395.0" textFill="RED">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblStreetAlert" layoutX="196.0" layoutY="394.0" textFill="RED">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

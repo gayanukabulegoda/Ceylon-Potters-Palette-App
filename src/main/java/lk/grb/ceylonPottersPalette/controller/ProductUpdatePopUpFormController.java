@@ -58,6 +58,18 @@ public class ProductUpdatePopUpFormController implements Initializable {
     @FXML
     private Pane updateBtnPane;
 
+    @FXML
+    private Label lblCategoryAlert;
+
+    @FXML
+    private Label lblDescriptionAlert;
+
+    @FXML
+    private Label lblQtyAlert;
+
+    @FXML
+    private Label lblUnitPriceAlert;
+
     public static String productId;
 
     ProductStockModel productStockModel = new ProductStockModel();

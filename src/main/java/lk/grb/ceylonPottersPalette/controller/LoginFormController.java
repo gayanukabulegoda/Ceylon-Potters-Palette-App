@@ -2,6 +2,7 @@ package lk.grb.ceylonPottersPalette.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -18,6 +19,12 @@ public class LoginFormController {
 
     @FXML
     private TextField txtUsername;
+
+    @FXML
+    private Label lblPasswordAlert;
+
+    @FXML
+    private Label lblUserNameAlert;
 
     public static String password;
 

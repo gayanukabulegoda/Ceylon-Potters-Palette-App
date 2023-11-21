@@ -71,6 +71,15 @@ public class EmployeeSalaryPopUpFormController implements Initializable {
     @FXML
     private TextField txtSalary;
 
+    @FXML
+    private Label lblCmbEmployeeIdAlert;
+
+    @FXML
+    private Label lblSalaryAlert;
+
+    @FXML
+    private Label lblBonusAlert;
+
     EmployeeModel employeeModel = new EmployeeModel();
     EmployeeSalaryModel employeeSalaryModel = new EmployeeSalaryModel();
     EmployeeAttendanceModel employeeAttendanceModel = new EmployeeAttendanceModel();

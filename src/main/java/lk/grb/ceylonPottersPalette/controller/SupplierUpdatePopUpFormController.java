@@ -56,6 +56,15 @@ public class SupplierUpdatePopUpFormController implements Initializable {
     @FXML
     private Pane updateBtnPane;
 
+    @FXML
+    private Label lblContactNoAlert;
+
+    @FXML
+    private Label lblSupplierEmailAlert;
+
+    @FXML
+    private Label lblSupplierNameAlert;
+
     public static String supplierId;
 
     SupplierModel supplierModel = new SupplierModel();

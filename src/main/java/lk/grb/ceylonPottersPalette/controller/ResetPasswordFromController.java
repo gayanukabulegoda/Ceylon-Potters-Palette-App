@@ -2,6 +2,7 @@ package lk.grb.ceylonPottersPalette.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import lk.grb.ceylonPottersPalette.dto.UserDto;
@@ -19,6 +20,12 @@ public class ResetPasswordFromController {
 
     @FXML
     private PasswordField txtNewPassword;
+
+    @FXML
+    private Label lblConfirmPwAlert;
+
+    @FXML
+    private Label lblNewPwAlert;
 
     UserModel userModel = new UserModel();
     EmployeeModel employeeModel = new EmployeeModel();

@@ -58,6 +58,21 @@
                </children>
             </Pane>
             <JFXButton fx:id="btnAddToCart" layoutX="24.0" layoutY="602.0" onAction="#btnAddToCartOnAction" prefHeight="54.0" prefWidth="259.0" style="-fx-background-radius: 12;" text=" " />
+            <Label fx:id="lblCmbSupplierAlert" layoutX="28.0" layoutY="246.0" textFill="RED">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblItemIdAlert" layoutX="29.0" layoutY="357.0" textFill="RED">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblQtyAlert" layoutX="38.0" layoutY="567.0" textFill="RED">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
       <Pane layoutX="26.0" layoutY="25.0" prefHeight="680.0" prefWidth="915.0" style="-fx-background-color: white; -fx-background-radius: 16; -fx-border-color: E8E8E8; -fx-border-width: 1; -fx-border-radius: 16;">

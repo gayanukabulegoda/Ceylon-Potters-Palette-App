@@ -100,6 +100,15 @@ public class SupplierOrderAddPopUpFormController implements Initializable {
     @FXML
     private VBox vBoxCustomerOrder;
 
+    @FXML
+    private Label lblQtyAlert;
+
+    @FXML
+    private Label lblItemIdAlert;
+
+    @FXML
+    private Label lblCmbSupplierAlert;
+
     SupplierOrderModel supplierOrderModel = new SupplierOrderModel();
     PlaceSupplierOrderModel placeSupplierOrderModel = new PlaceSupplierOrderModel();
     SupplierModel supplierModel = new SupplierModel();
