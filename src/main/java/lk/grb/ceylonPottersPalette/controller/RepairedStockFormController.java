@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
@@ -19,6 +20,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.regex.Pattern;
 
 public class RepairedStockFormController implements Initializable {
 
@@ -69,6 +71,31 @@ public class RepairedStockFormController implements Initializable {
     @FXML
     void btnRepairStockOnAction(ActionEvent event) {
 
+    }
+
+    @FXML
+    void txtSearchOnAction(ActionEvent event) throws IOException, SQLException {
+
+        if (!validateId()) {
+            new Alert(Alert.AlertType.ERROR, "Invalid Id! Id Should be in the format 'P-001' !!").show();
+            return;
+        }
+
+        ProductStockModel productStockModel = new ProductStockModel();
+        ArrayList<String> allProductId = productStockModel.getAllProductId();
+
+        for (int i = 0; i < allProductId.size(); i++) {
+            if (txtSearch.getText().equals(allProductId.get(i))) {
+                ProductViewPopUpFormController.productId = txtSearch.getText();
+                Navigation.imgPopUpBackground("productViewPopUpForm.fxml");
+                return;
+            }
+        }
+        new Alert(Alert.AlertType.ERROR, "Invalid Id! Id Should be in the format 'P-001' !!").show();
+    }
+
+    private boolean validateId() {
+        return Pattern.matches("(P-00)\\d+", txtSearch.getText());
     }
 
     public void allRepairedProductId() throws SQLException {

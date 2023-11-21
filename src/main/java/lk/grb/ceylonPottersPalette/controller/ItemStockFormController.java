@@ -5,10 +5,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import lk.grb.ceylonPottersPalette.model.EmployeeSalaryModel;
 import lk.grb.ceylonPottersPalette.model.ItemStockModel;
 import lk.grb.ceylonPottersPalette.model.SupplierModel;
 import lk.grb.ceylonPottersPalette.util.Navigation;
@@ -18,6 +20,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.regex.Pattern;
 
 public class ItemStockFormController implements Initializable {
 
@@ -73,6 +76,31 @@ public class ItemStockFormController implements Initializable {
     @FXML
     void btnRepairStockOnAction(ActionEvent event) throws IOException {
         Navigation.switchPaging(GlobalFormController.getInstance().pagingPane, "repairedStockForm.fxml");
+    }
+
+    @FXML
+    void txtSearchOnAction(ActionEvent event) throws IOException, SQLException {
+
+        if (!validateId()) {
+            new Alert(Alert.AlertType.ERROR, "Invalid Id! Id Should be in the format 'I-001' !!").show();
+            return;
+        }
+
+        ItemStockModel itemStockModel = new ItemStockModel();
+        ArrayList<String> allItemId = itemStockModel.getAllItemId();
+
+        for (int i = 0; i < allItemId.size(); i++) {
+            if (txtSearch.getText().equals(allItemId.get(i))) {
+                ItemViewPopUpFormController.itemId = txtSearch.getText();
+                Navigation.imgPopUpBackground("itemViewPopUpForm.fxml");
+                return;
+            }
+        }
+        new Alert(Alert.AlertType.ERROR, "Invalid Id! Id Should be in the format 'I-001' !!").show();
+    }
+
+    private boolean validateId() {
+        return Pattern.matches("(I-00)\\d+", txtSearch.getText());
     }
 
     public void allItemId() throws SQLException {

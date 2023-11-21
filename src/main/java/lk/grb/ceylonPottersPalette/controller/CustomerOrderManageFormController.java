@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
@@ -19,6 +20,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.regex.Pattern;
 
 public class CustomerOrderManageFormController implements Initializable {
     @FXML
@@ -62,6 +64,31 @@ public class CustomerOrderManageFormController implements Initializable {
     @FXML
     void btnSupplierOrdersOnAction(ActionEvent event) throws IOException {
         Navigation.switchPaging(GlobalFormController.getInstance().pagingPane, "supplierOrderManageForm.fxml");
+    }
+
+    @FXML
+    void txtSearchOnAction(ActionEvent event) throws IOException, SQLException {
+
+        if (!validateId()) {
+            new Alert(Alert.AlertType.ERROR, "Invalid Id! Id Should be in the format 'CO-01' !!").show();
+            return;
+        }
+
+        CustomerOrderModel customerOrderModel = new CustomerOrderModel();
+        ArrayList<String> allCustomerOrderId = customerOrderModel.getAllCustomerOrderId();
+
+        for (int i = 0; i < allCustomerOrderId.size(); i++) {
+            if (txtSearch.getText().equals(allCustomerOrderId.get(i))) {
+                CustomerOrderViewPopUpFormController.customerOrderId = txtSearch.getText();
+                Navigation.imgPopUpBackground("customerOrderViewPopUpForm.fxml");
+                return;
+            }
+        }
+        new Alert(Alert.AlertType.ERROR, "Invalid Id! Id Should be in the format 'CO-01' !!").show();
+    }
+
+    private boolean validateId() {
+        return Pattern.matches("(CO-0)\\d+", txtSearch.getText());
     }
 
     public void allCustomerOrderId() throws SQLException {

@@ -5,9 +5,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import lk.grb.ceylonPottersPalette.model.CustomerModel;
+import lk.grb.ceylonPottersPalette.model.EmployeeModel;
 import lk.grb.ceylonPottersPalette.util.Navigation;
 
 import java.io.IOException;
@@ -15,6 +17,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.regex.Pattern;
 
 public class CustomerManageFormController implements Initializable {
 
@@ -39,6 +42,30 @@ public class CustomerManageFormController implements Initializable {
     @FXML
     void btnAddCustomerOnAction(ActionEvent event) throws IOException {
         Navigation.imgPopUpBackground("customerAddPopUpForm.fxml");
+    }
+
+    @FXML
+    void txtSearchOnAction(ActionEvent event) throws IOException, SQLException {
+
+        if (!validateId()) {
+            new Alert(Alert.AlertType.ERROR, "Invalid Id! Id Should be in the format 'C-001' !!").show();
+            return;
+        }
+
+        ArrayList<String> allCustomerId = customerModel.getAllCustomerId();
+
+        for (int i = 0; i < allCustomerId.size(); i++) {
+            if (txtSearch.getText().equals(allCustomerId.get(i))) {
+                CustomerViewPopUpFormController.customerId = txtSearch.getText();
+                Navigation.imgPopUpBackground("customerViewPopUpForm.fxml");
+                return;
+            }
+        }
+        new Alert(Alert.AlertType.ERROR, "Invalid Id! Id Should be in the format 'C-001' !!").show();
+    }
+
+    private boolean validateId() {
+        return Pattern.matches("(C-00)\\d{1,}", txtSearch.getText());
     }
 
     public void allCustomerId() throws SQLException {

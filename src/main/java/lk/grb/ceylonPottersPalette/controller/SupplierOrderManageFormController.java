@@ -5,10 +5,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import lk.grb.ceylonPottersPalette.model.SupplierModel;
 import lk.grb.ceylonPottersPalette.model.SupplierOrderModel;
 import lk.grb.ceylonPottersPalette.util.Navigation;
 
@@ -17,6 +19,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.regex.Pattern;
 
 public class SupplierOrderManageFormController implements Initializable {
 
@@ -61,6 +64,31 @@ public class SupplierOrderManageFormController implements Initializable {
     @FXML
     void btnSupplierOrdersOnAction(ActionEvent event) {
 
+    }
+
+    @FXML
+    void txtSearchOnAction(ActionEvent event) throws IOException, SQLException {
+
+        if (!validateId()) {
+            new Alert(Alert.AlertType.ERROR, "Invalid Id! Id Should be in the format 'SO-01' !!").show();
+            return;
+        }
+
+        SupplierOrderModel supplierOrderModel = new SupplierOrderModel();
+        ArrayList<String> allSupplierOrderId = supplierOrderModel.getAllSupplierOrderId();
+
+        for (int i = 0; i < allSupplierOrderId.size(); i++) {
+            if (txtSearch.getText().equals(allSupplierOrderId.get(i))) {
+                SupplierOrderViewPopUpFormController.supplierOrderId = txtSearch.getText();
+                Navigation.imgPopUpBackground("supplierOrderViewPopUpForm.fxml");
+                return;
+            }
+        }
+        new Alert(Alert.AlertType.ERROR, "Invalid Id! Id Should be in the format 'SO-01' !!").show();
+    }
+
+    private boolean validateId() {
+        return Pattern.matches("(SO-0)\\d+", txtSearch.getText());
     }
 
     public void allSupplierOrderId() throws SQLException {

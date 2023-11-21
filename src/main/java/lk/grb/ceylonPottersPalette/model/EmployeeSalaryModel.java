@@ -69,6 +69,16 @@ public class EmployeeSalaryModel {
         return list;
     }
 
+    public ArrayList<String> getAllEmployeeId() throws SQLException {
+        ResultSet resultSet = SQLUtil.execute("SELECT employee_Id FROM salary");
+        ArrayList<String> list = new ArrayList<>();
+
+        while (resultSet.next()) {
+            list.add(resultSet.getString(1));
+        }
+        return list;
+    }
+
     public double getSalaryTotal() throws SQLException {
         ResultSet resultSet = SQLUtil.execute("SELECT SUM(total_Payment) FROM salary");
 
@@ -76,5 +86,14 @@ public class EmployeeSalaryModel {
             return resultSet.getDouble(1);
         }
         return 0.0;
+    }
+
+    public String getSalaryId(String employeeId) throws SQLException {
+        ResultSet resultSet = SQLUtil.execute("SELECT salary_Id FROM salary WHERE employee_Id=?", employeeId);
+
+        if (resultSet.next()) {
+            return resultSet.getString(1);
+        }
+        return null;
     }
 }
