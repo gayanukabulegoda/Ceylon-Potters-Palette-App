@@ -111,7 +111,8 @@ public class EmployeeSalaryPopUpFormController implements Initializable {
     @FXML
     void cmbEmployeeIdOnAction(ActionEvent event) throws SQLException {
         lblEmployeeName.setText(employeeModel.getEmployeeName(String.valueOf(cmbEmployeeId.getSelectionModel().getSelectedItem())));
-        lblWorkedDays.setText(employeeAttendanceModel.workedDayCount(cmbEmployeeId.getSelectionModel().getSelectedItem(), (LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM")) + "%")));
+        lblWorkedDays.setText(employeeAttendanceModel.workedDayCount(cmbEmployeeId.getSelectionModel().getSelectedItem()));
+        //lblWorkedDays.setText(employeeAttendanceModel.workedDayCount(cmbEmployeeId.getSelectionModel().getSelectedItem(), (LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM")) + "%")));
     }
 
     public void setDataInComboBox() throws SQLException {

@@ -52,7 +52,7 @@ public class DashboardFormController implements Initializable {
             ArrayList<String> allProductId = productStockModel.getAllProductId();
 
             for (int i = 0; i < allProductId.size(); i++) {
-                qtyTotal += Integer.parseInt(productStockModel.getQtyTotal(allProductId.get(i)));
+                qtyTotal = Integer.parseInt(productStockModel.getQtyTotal(allProductId.get(i)));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

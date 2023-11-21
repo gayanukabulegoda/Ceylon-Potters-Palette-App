@@ -31,19 +31,19 @@ public class NewId {
             case SUPPLIER:
                 return "S-00" + maxIdNum;
             case CUSTOMER:
-                return "C-00 " + maxIdNum;
+                return "C-00" + maxIdNum;
             case PRODUCT_STOCK:
-                return "P-00 " + maxIdNum;
+                return "P-00" + maxIdNum;
             case ITEM_STOCK:
-                return "I-00 " + maxIdNum;
+                return "I-00" + maxIdNum;
             case ATTENDANCE_ID:
-                return "A-00 " + maxIdNum;
+                return "A-00" + maxIdNum;
             case CUSTOMER_ORDER:
-                return "CO-0 " + maxIdNum;
+                return "CO-0" + maxIdNum;
             case SUPPLIER_ORDER:
-                return "SO-0 " + maxIdNum;
+                return "SO-0" + maxIdNum;
             case SALARY_ID:
-                return "SI-0 " + maxIdNum;
+                return "SI-0" + maxIdNum;
             default:
                 return null;
         }

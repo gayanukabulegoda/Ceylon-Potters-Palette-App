@@ -61,14 +61,14 @@ public class EmployeeAttendanceModel {
         return list;
     }
 
-    public String workedDayCount(String id, String date) throws SQLException {
-        String sql = "SELECT COUNT(*) AS work_days FROM attendance WHERE employee_Id = ? AND date LIKE ?";
+    public String workedDayCount(String id) throws SQLException {
+        String sql = "SELECT COUNT(*) AS work_days FROM attendance WHERE employee_Id = ? AND MONTH(date) = MONTH(CURDATE())";
 
         Connection connection = DbConnection.getInstance().getConnection();
         PreparedStatement pstm = connection.prepareStatement(sql);
 
         pstm.setString(1,id);
-        pstm.setString(2,date);
+        //pstm.setString(2,date);
 
         ResultSet resultSet = pstm.executeQuery();
 
