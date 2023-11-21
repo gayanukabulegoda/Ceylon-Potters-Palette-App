@@ -17,7 +17,7 @@
             <Image url="@../assests/img/SignUpPage.png" />
          </image>
       </ImageView>
-      <PasswordField fx:id="txtPassword" layoutX="560.0" layoutY="351.0" prefHeight="43.0" prefWidth="267.0" promptText=" Password" style="-fx-background-radius: 12;">
+      <PasswordField fx:id="txtPassword" layoutX="560.0" layoutY="351.0" onMouseClicked="#txtPasswordOnMouseClicked" prefHeight="43.0" prefWidth="267.0" promptText=" Password" style="-fx-background-radius: 12;">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor>
@@ -39,7 +39,7 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </JFXButton>
-      <TextField fx:id="txtUsername" layoutX="560.0" layoutY="293.0" prefHeight="42.0" prefWidth="267.0" promptText="  Username" style="-fx-background-radius: 12;">
+      <TextField fx:id="txtUsername" layoutX="560.0" layoutY="293.0" onMouseClicked="#txtUserNameOnMouseClicked" prefHeight="42.0" prefWidth="267.0" promptText="  Username" style="-fx-background-radius: 12;">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor>

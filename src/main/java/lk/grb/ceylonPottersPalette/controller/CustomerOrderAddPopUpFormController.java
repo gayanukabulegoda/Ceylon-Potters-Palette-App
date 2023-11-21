@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -24,6 +25,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.regex.Pattern;
 
 public class CustomerOrderAddPopUpFormController implements Initializable {
 
@@ -142,16 +144,55 @@ public class CustomerOrderAddPopUpFormController implements Initializable {
     @FXML
     void btnAddToCartOnAction(ActionEvent event) {
 
-        String[] products = {String.valueOf(cmbProductId.getSelectionModel().getSelectedItem()), txtProductQty.getText()};
+        if (validateCustomerOrder()) {
 
-        productList.add(products);
+            String[] products = {String.valueOf(cmbProductId.getSelectionModel().getSelectedItem()), txtProductQty.getText()};
 
-        allCustomerOrderCartId();
+            productList.add(products);
 
-        netTotal += (Integer.parseInt(txtProductQty.getText())) * (Double.parseDouble(lblUnitPrice.getText()));
-        lblNetTotal.setText(String.valueOf(netTotal));
+            allCustomerOrderCartId();
 
-        txtProductQty.clear();
+            netTotal += (Integer.parseInt(txtProductQty.getText())) * (Double.parseDouble(lblUnitPrice.getText()));
+            lblNetTotal.setText(String.valueOf(netTotal));
+
+            txtProductQty.clear();
+        }
+    }
+
+    private boolean validateCustomerOrder() {
+
+        if ((cmbCustomerId.getSelectionModel().getSelectedItem()) == null) {
+            lblCmbCustomerIdAlert.setText("Invalid!!");
+            return false;
+        }
+
+        if ((cmbProductId.getSelectionModel().getSelectedItem()) == null) {
+            lblCmbProductIdAlert.setText("Invalid!!");
+            return false;
+        }
+
+        boolean qtyValidate = Pattern.matches("([0-9])", txtProductQty.getText());
+
+        if (!qtyValidate) {
+            lblQtyAlert.setText("Invalid!!");
+            return false;
+        }
+        return true;
+    }
+
+    @FXML
+    void cmbProductIdOnMouseClick(MouseEvent event) {
+        lblCmbProductIdAlert.setText(" ");
+    }
+
+    @FXML
+    void txtQtyOnMouseClick(MouseEvent event) {
+        lblQtyAlert.setText(" ");
+    }
+
+    @FXML
+    void cmbCustomerIdOnMouseClick(MouseEvent event) {
+        lblCmbCustomerIdAlert.setText(" ");
     }
 
     @FXML

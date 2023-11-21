@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.input.MouseEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
@@ -19,6 +20,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.regex.Pattern;
 
 public class EmployeeAttendanceMarkPopUpController implements Initializable {
 
@@ -60,21 +62,37 @@ public class EmployeeAttendanceMarkPopUpController implements Initializable {
     @FXML
     void btnMarkAttendanceOnAction(ActionEvent event) throws SQLException {
 
-        EmployeeAttendanceDto employeeAttendanceDto = new EmployeeAttendanceDto();
+        if (validateEmployeeAttendance()) {
+            EmployeeAttendanceDto employeeAttendanceDto = new EmployeeAttendanceDto();
 
-        ArrayList<String> list = employeeAttendanceModel.getAllAttendanceId();
+            ArrayList<String> list = employeeAttendanceModel.getAllAttendanceId();
 
-        employeeAttendanceDto.setAttendance_Id(NewId.newId(list, NewId.GetType.ATTENDANCE_ID));
-        employeeAttendanceDto.setEmployee_Id(cmbEmployeeId.getSelectionModel().getSelectedItem());
-        employeeAttendanceDto.setDate(DateTimeUtil.dateNow());
-        employeeAttendanceDto.setTime(DateTimeUtil.timeNow());
+            employeeAttendanceDto.setAttendance_Id(NewId.newId(list, NewId.GetType.ATTENDANCE_ID));
+            employeeAttendanceDto.setEmployee_Id(cmbEmployeeId.getSelectionModel().getSelectedItem());
+            employeeAttendanceDto.setDate(DateTimeUtil.dateNow());
+            employeeAttendanceDto.setTime(DateTimeUtil.timeNow());
 
-        boolean save = employeeAttendanceModel.save(employeeAttendanceDto);
+            boolean save = employeeAttendanceModel.save(employeeAttendanceDto);
 
-        if (save) {
-            Navigation.closePane();
-            EmployeeAttendanceFormController.getInstance().allAttendanceId();
+            if (save) {
+                Navigation.closePane();
+                EmployeeAttendanceFormController.getInstance().allAttendanceId();
+            }
         }
+    }
+
+    private boolean validateEmployeeAttendance() {
+
+        if ((cmbEmployeeId.getSelectionModel().getSelectedItem()) == null) {
+            lblCmbEmployeeIdAlert.setText("Invalid!!");
+            return false;
+        }
+        return true;
+    }
+
+    @FXML
+    void cmbEmployeeIdOnMouseClicked(MouseEvent event) {
+        lblCmbEmployeeIdAlert.setText(" ");
     }
 
     @FXML

@@ -3,6 +3,7 @@ package lk.grb.ceylonPottersPalette.controller;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -16,6 +17,7 @@ import lk.grb.ceylonPottersPalette.util.NewId;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 public class ItemAddPopUpFormController {
 
@@ -68,21 +70,64 @@ public class ItemAddPopUpFormController {
 
     @FXML
     void btnAddOnAction(ActionEvent event) throws SQLException {
-        ItemStockDto itemStockDto = new ItemStockDto();
 
-        ArrayList<String> list = itemStockModel.getAllItemId();
+        if(validateItem()) {
+            ItemStockDto itemStockDto = new ItemStockDto();
 
-        itemStockDto.setItem_Id(NewId.newId(list, NewId.GetType.ITEM_STOCK));
-        itemStockDto.setDescription(txtDescription.getText());
-        itemStockDto.setUnit_Price(Double.parseDouble(txtUnitPrice.getText()));
-        itemStockDto.setQty_On_Hand(Integer.parseInt(txtQuantity.getText()));
+            ArrayList<String> list = itemStockModel.getAllItemId();
 
-        boolean saved = itemStockModel.save(itemStockDto);
+            itemStockDto.setItem_Id(NewId.newId(list, NewId.GetType.ITEM_STOCK));
+            itemStockDto.setDescription(txtDescription.getText());
+            itemStockDto.setUnit_Price(Double.parseDouble(txtUnitPrice.getText()));
+            itemStockDto.setQty_On_Hand(Integer.parseInt(txtQuantity.getText()));
 
-        if (saved) {
-            Navigation.closePane();
-            ItemStockFormController.getInstance().allItemId();
+            boolean saved = itemStockModel.save(itemStockDto);
+
+            if (saved) {
+                Navigation.closePane();
+                ItemStockFormController.getInstance().allItemId();
+            }
         }
+    }
+
+    private boolean validateItem() {
+
+        boolean unitPriceValidate = Pattern.matches("(\\d.+)", txtUnitPrice.getText());
+
+        if (!unitPriceValidate) {
+            lblUnitPriceAlert.setText("Invalid!!");
+            return false;
+        }
+
+        boolean descriptionValidate = Pattern.matches("[A-Za-z\\s]{2,12}", txtDescription.getText());
+
+        if (!descriptionValidate) {
+            lblDescriptionAlert.setText("Invalid!!");
+            return false;
+        }
+
+        boolean qtyValidate = Pattern.matches("(\\d.+)", txtQuantity.getText());
+
+        if (!qtyValidate) {
+            lblQtyAlert.setText("Invalid!!");
+            return false;
+        }
+        return true;
+    }
+
+    @FXML
+    void txtDescriptionOnMouseClicked(MouseEvent event) {
+        lblDescriptionAlert.setText(" ");
+    }
+
+    @FXML
+    void txtQuantityOnMouseClicked(MouseEvent event) {
+        lblQtyAlert.setText(" ");
+    }
+
+    @FXML
+    void txtUnitPriceOnMouseClicked(MouseEvent event) {
+        lblUnitPriceAlert.setText(" ");
     }
 
     @FXML

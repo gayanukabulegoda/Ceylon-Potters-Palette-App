@@ -24,7 +24,7 @@
             <Line endX="100.0" layoutX="129.0" layoutY="139.0" startX="-100.0" stroke="#727374" />
             <Label fx:id="lblCustomerName" layoutX="31.0" layoutY="167.0" text="Customer Name" textFill="#727374" />
             <Line endX="100.0" layoutX="129.0" layoutY="189.0" startX="-100.0" stroke="#727374" />
-            <JFXComboBox fx:id="cmbCustomerId" focusColor="#e8e8e8" layoutX="17.0" layoutY="205.0" onAction="#cmbCustomerIdOnAction" prefHeight="42.0" prefWidth="214.0" promptText="   Customer ID" style="-fx-background-color: white; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: E8E8E8; -fx-border-width: 1;" unFocusColor="#e8e8e8" />
+            <JFXComboBox fx:id="cmbCustomerId" focusColor="#e8e8e8" layoutX="17.0" layoutY="205.0" onAction="#cmbCustomerIdOnAction" onMouseClicked="#cmbCustomerIdOnMouseClick" prefHeight="42.0" prefWidth="214.0" promptText="   Customer ID" style="-fx-background-color: white; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: E8E8E8; -fx-border-width: 1;" unFocusColor="#e8e8e8" />
             <Pane fx:id="btnAddNewCustomerPane" layoutX="239.0" layoutY="203.0" prefHeight="45.0" prefWidth="45.0" style="-fx-background-color: white; -fx-background-radius: 12; -fx-border-color: E8E8E8; -fx-border-radius: 12; -fx-border-width: 1;">
                <children>
                   <ImageView fx:id="btnAddNewCustomerIcon" fitHeight="24.0" fitWidth="24.0" layoutX="11.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
@@ -36,14 +36,14 @@
             </Pane>
             <JFXButton fx:id="btnAddNewCustomer" layoutX="239.0" layoutY="203.0" onAction="#btnAddNewCustomerOnAction" prefHeight="45.0" prefWidth="45.0" style="-fx-background-radius: 12;" text=" " />
             <Label layoutX="24.0" layoutY="272.0" text="PRODUCT DETAILS" textFill="#151619" />
-            <JFXComboBox fx:id="cmbProductId" focusColor="#e8e8e8" layoutX="17.0" layoutY="315.0" onAction="#cmbProductIdOnAction" prefHeight="42.0" prefWidth="260.0" promptText="   Product ID" style="-fx-background-color: white; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: E8E8E8; -fx-border-width: 1;" unFocusColor="#e8e8e8" />
+            <JFXComboBox fx:id="cmbProductId" focusColor="#e8e8e8" layoutX="17.0" layoutY="315.0" onAction="#cmbProductIdOnAction" onMouseClicked="#cmbProductIdOnMouseClick" prefHeight="42.0" prefWidth="260.0" promptText="   Product ID" style="-fx-background-color: white; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: E8E8E8; -fx-border-width: 1;" unFocusColor="#e8e8e8" />
             <Label fx:id="lblDescription" layoutX="31.0" layoutY="380.0" text="Description" textFill="#727374" />
             <Line endX="100.0" layoutX="129.0" layoutY="403.0" startX="-100.0" stroke="#727374" />
             <Label fx:id="lblUnitPrice" layoutX="31.0" layoutY="432.0" text="Unit Price" textFill="#727374" />
             <Line endX="100.0" layoutX="129.0" layoutY="454.0" startX="-100.0" stroke="#727374" />
             <Label fx:id="lblQtyOnHand" layoutX="31.0" layoutY="482.0" text="QTY On Hand" textFill="#727374" />
             <Line endX="100.0" layoutX="129.0" layoutY="504.0" startX="-100.0" stroke="#727374" />
-            <TextField fx:id="txtProductQty" layoutX="24.0" layoutY="527.0" prefHeight="42.0" prefWidth="246.0" promptText="Product Qty" style="-fx-background-color: white; -fx-background-radius: 12; -fx-border-color: E8E8E8; -fx-border-width: 1; -fx-border-radius: 12;">
+            <TextField fx:id="txtProductQty" layoutX="24.0" layoutY="527.0" onMouseClicked="#txtQtyOnMouseClick" prefHeight="42.0" prefWidth="246.0" promptText="Product Qty" style="-fx-background-color: white; -fx-background-radius: 12; -fx-border-color: E8E8E8; -fx-border-width: 1; -fx-border-radius: 12;">
                <font>
                   <Font size="15.0" />
                </font>

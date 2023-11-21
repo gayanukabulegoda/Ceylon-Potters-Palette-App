@@ -53,17 +53,17 @@
       </Pane>
       <JFXButton fx:id="btnCancel" layoutX="48.0" layoutY="448.0" onAction="#btnCancelOnAction" prefHeight="54.0" prefWidth="259.0" style="-fx-background-radius: 12;" text=" " />
       <JFXButton fx:id="btnAdd" layoutX="320.0" layoutY="448.0" onAction="#btnAddOnAction" prefHeight="54.0" prefWidth="259.0" style="-fx-background-radius: 12;" text=" " />
-      <TextField fx:id="txtSalary" layoutX="54.0" layoutY="239.0" onAction="#txtSalaryOnAction" prefHeight="42.0" prefWidth="218.0" promptText="Salary" style="-fx-background-color: white; -fx-background-radius: 12; -fx-border-color: E8E8E8; -fx-border-width: 1; -fx-border-radius: 12;">
+      <TextField fx:id="txtSalary" layoutX="54.0" layoutY="239.0" onAction="#txtSalaryOnAction" onMouseClicked="#txtSalaryOnMouseClicked" prefHeight="42.0" prefWidth="218.0" promptText="Salary" style="-fx-background-color: white; -fx-background-radius: 12; -fx-border-color: E8E8E8; -fx-border-width: 1; -fx-border-radius: 12;">
          <font>
             <Font size="15.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtBonus" editable="false" layoutX="54.0" layoutY="311.0" onAction="#txtBonusOnAction" prefHeight="42.0" prefWidth="218.0" promptText="Bonus" style="-fx-background-color: white; -fx-background-radius: 12; -fx-border-color: E8E8E8; -fx-border-width: 1; -fx-border-radius: 12;">
+      <TextField fx:id="txtBonus" editable="false" layoutX="54.0" layoutY="311.0" onAction="#txtBonusOnAction" onMouseClicked="#txtBonusOnMouseClicked" prefHeight="42.0" prefWidth="218.0" promptText="Bonus" style="-fx-background-color: white; -fx-background-radius: 12; -fx-border-color: E8E8E8; -fx-border-width: 1; -fx-border-radius: 12;">
          <font>
             <Font size="15.0" />
          </font>
       </TextField>
-      <JFXComboBox fx:id="cmbEmployeeId" focusColor="#e8e8e8" layoutX="54.0" layoutY="167.0" onAction="#cmbEmployeeIdOnAction" prefHeight="42.0" prefWidth="218.0" promptText="   Employee ID" style="-fx-background-color: white; -fx-background-radius: 12; -fx-border-color: E8E8E8; -fx-border-width: 1; -fx-border-radius: 12;" unFocusColor="#e8e8e8" />
+      <JFXComboBox fx:id="cmbEmployeeId" focusColor="#e8e8e8" layoutX="54.0" layoutY="167.0" onAction="#cmbEmployeeIdOnAction" onMouseClicked="#cmbEmployeeIdOnMouseClicked" prefHeight="42.0" prefWidth="218.0" promptText="   Employee ID" style="-fx-background-color: white; -fx-background-radius: 12; -fx-border-color: E8E8E8; -fx-border-width: 1; -fx-border-radius: 12;" unFocusColor="#e8e8e8" />
       <Label fx:id="lblEmployeeName" layoutX="317.0" layoutY="179.0" text="Employee Name" textFill="#909090">
          <font>
             <Font size="14.0" />

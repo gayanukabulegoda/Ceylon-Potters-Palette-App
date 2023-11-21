@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.input.MouseEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -28,6 +29,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.regex.Pattern;
 
 public class SupplierOrderAddPopUpFormController implements Initializable {
 
@@ -146,16 +148,55 @@ public class SupplierOrderAddPopUpFormController implements Initializable {
     @FXML
     void btnAddToCartOnAction(ActionEvent event) {
 
-        String[] items = {String.valueOf(cmbItemId.getSelectionModel().getSelectedItem()), txtItemQty.getText()};
+        if (validateSupplierOrder()) {
 
-        itemList.add(items);
+            String[] items = {String.valueOf(cmbItemId.getSelectionModel().getSelectedItem()), txtItemQty.getText()};
 
-        allSupplierOrderCartId();
+            itemList.add(items);
 
-        netTotal += (Integer.parseInt(txtItemQty.getText())) * (Double.parseDouble(lblUnitPrice.getText()));
-        lblNetTotal.setText(String.valueOf(netTotal));
+            allSupplierOrderCartId();
 
-        txtItemQty.clear();
+            netTotal += (Integer.parseInt(txtItemQty.getText())) * (Double.parseDouble(lblUnitPrice.getText()));
+            lblNetTotal.setText(String.valueOf(netTotal));
+
+            txtItemQty.clear();
+        }
+    }
+
+    private boolean validateSupplierOrder() {
+
+        if ((cmbSupplierId.getSelectionModel().getSelectedItem()) == null) {
+            lblCmbSupplierAlert.setText("Invalid!!");
+            return false;
+        }
+
+        if ((cmbItemId.getSelectionModel().getSelectedItem()) == null) {
+            lblItemIdAlert.setText("Invalid!!");
+            return false;
+        }
+
+        boolean qtyValidate = Pattern.matches("([0-9])", txtItemQty.getText());
+
+        if (!qtyValidate) {
+            lblQtyAlert.setText("Invalid!!");
+            return false;
+        }
+        return true;
+    }
+
+    @FXML
+    void cmbSupplierIdOnMouseClicked(MouseEvent event) {
+        lblCmbSupplierAlert.setText(" ");
+    }
+
+    @FXML
+    void txtItemQtyOnMouseClicked(MouseEvent event) {
+        lblQtyAlert.setText(" ");
+    }
+
+    @FXML
+    void cmbItemIdOnMouseClicked(MouseEvent event) {
+        lblItemIdAlert.setText(" ");
     }
 
     @FXML

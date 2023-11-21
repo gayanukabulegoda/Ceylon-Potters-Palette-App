@@ -2,6 +2,7 @@ package lk.grb.ceylonPottersPalette.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Label;
@@ -11,6 +12,7 @@ import lk.grb.ceylonPottersPalette.util.Navigation;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.regex.Pattern;
 
 public class ForgotPasswordFormController {
 
@@ -31,17 +33,34 @@ public class ForgotPasswordFormController {
     @FXML
     void btnResetPasswordOnAction(ActionEvent event) throws IOException, SQLException {
 
-        String employeeId = userModel.getEmployeeId(txtUsername.getText());
+        if(validateUserName()) {
+            String employeeId = userModel.getEmployeeId(txtUsername.getText());
 
-        if(userModel.getUserName(employeeId).equals(txtUsername.getText())) {
+            if (userModel.getUserName(employeeId).equals(txtUsername.getText())) {
 
-            OTPVerifyFormController.employeeId = employeeId;
+                OTPVerifyFormController.employeeId = employeeId;
 
-            Navigation.close(event);
-            Navigation.switchNavigation("OTPVerifyForm.fxml", event);
+                Navigation.close(event);
+                Navigation.switchNavigation("OTPVerifyForm.fxml", event);
+            } else {
+                new Alert(Alert.AlertType.ERROR, "Invalid UserName!! Try Again!!").show();
+            }
         }
-        else {
-            new Alert(Alert.AlertType.ERROR, "Invalid UserName!! Try Again!!").show();
+    }
+
+    private boolean validateUserName() {
+
+        boolean userNameValidate = Pattern.matches("([A-Za-z])", txtUsername.getText());
+
+        if (!userNameValidate) {
+            lblUserNameAlert.setText("Invalid!!");
+            return false;
         }
+        return true;
+    }
+
+    @FXML
+    void userNameOnMouseClicked(MouseEvent event) {
+        lblUserNameAlert.setText(" ");
     }
 }

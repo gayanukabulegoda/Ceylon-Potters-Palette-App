@@ -3,6 +3,7 @@ package lk.grb.ceylonPottersPalette.controller;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -18,6 +19,7 @@ import lk.grb.ceylonPottersPalette.util.NewId;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 public class ProductAddPopUpFormController {
 
@@ -79,25 +81,81 @@ public class ProductAddPopUpFormController {
 
     @FXML
     void btnAddOnAction(ActionEvent event) throws SQLException {
-        ProductStockDto productStockDto = new ProductStockDto();
 
-        ArrayList<String> list = productStockModel.getAllProductId();
+        if(validateProduct()) {
+            ProductStockDto productStockDto = new ProductStockDto();
 
-        productStockDto.setProduct_Id(NewId.newId(list, NewId.GetType.PRODUCT_STOCK));
-        productStockDto.setDescription(txtDescription.getText());
-        productStockDto.setQty_On_Hand(Integer.parseInt(txtQuantity.getText()));
-        productStockDto.setUnit_Price(Double.parseDouble(txtUnitPrice.getText()));
-        productStockDto.setCategory(txtCategory.getText());
+            ArrayList<String> list = productStockModel.getAllProductId();
 
-        producedTotalProductQuantity += productStockDto.getQty_On_Hand();
-        productStockDto.setQty(producedTotalProductQuantity);
+            productStockDto.setProduct_Id(NewId.newId(list, NewId.GetType.PRODUCT_STOCK));
+            productStockDto.setDescription(txtDescription.getText());
+            productStockDto.setQty_On_Hand(Integer.parseInt(txtQuantity.getText()));
+            productStockDto.setUnit_Price(Double.parseDouble(txtUnitPrice.getText()));
+            productStockDto.setCategory(txtCategory.getText());
 
-        boolean saved = productStockTransactionModel.saveProduct(productStockDto);
+            producedTotalProductQuantity += productStockDto.getQty_On_Hand();
+            productStockDto.setQty(producedTotalProductQuantity);
 
-        if (saved) {
-            Navigation.closePane();
-            ProductStockFormController.getInstance().allProductId();
+            boolean saved = productStockTransactionModel.saveProduct(productStockDto);
+
+            if (saved) {
+                Navigation.closePane();
+                ProductStockFormController.getInstance().allProductId();
+            }
         }
+    }
+
+    private boolean validateProduct() {
+
+        boolean unitPriceValidate = Pattern.matches("(\\d.+)", txtUnitPrice.getText());
+
+        if (!unitPriceValidate) {
+            lblUnitPriceAlert.setText("Invalid!!");
+            return false;
+        }
+
+        boolean descriptionValidate = Pattern.matches("[A-Za-z\\s]{2,12}", txtDescription.getText());
+
+        if (!descriptionValidate) {
+            lblDescriptionAlert.setText("Invalid!!");
+            return false;
+        }
+
+        boolean qtyValidate = Pattern.matches("(\\d.+)", txtQuantity.getText());
+
+        if (!qtyValidate) {
+            lblQtyAlert.setText("Invalid!!");
+            return false;
+        }
+
+        boolean categoryValidate = Pattern.matches("[A-Za-z\\s]{2,12}", txtQuantity.getText());
+
+        if (!categoryValidate) {
+            lblCategoryAlert.setText("Invalid!!");
+            return false;
+        }
+
+        return true;
+    }
+
+    @FXML
+    void txtCategoryOnMouseClicked(MouseEvent event) {
+        lblCategoryAlert.setText(" ");
+    }
+
+    @FXML
+    void txtDescriptionOnMouseClicked(MouseEvent event) {
+        lblDescriptionAlert.setText(" ");
+    }
+
+    @FXML
+    void txtQtyOnMouseClicked(MouseEvent event) {
+        lblQtyAlert.setText(" ");
+    }
+
+    @FXML
+    void txtUnitPriceOnMouseClicked(MouseEvent event) {
+        lblUnitPriceAlert.setText(" ");
     }
 
     @FXML

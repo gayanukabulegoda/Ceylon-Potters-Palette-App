@@ -3,6 +3,7 @@ package lk.grb.ceylonPottersPalette.controller;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -16,6 +17,7 @@ import lk.grb.ceylonPottersPalette.util.NewId;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 public class SupplierAddPopUpFormController {
 
@@ -68,25 +70,66 @@ public class SupplierAddPopUpFormController {
     @FXML
     void btnAddOnAction(ActionEvent event) throws SQLException {
 
-        SupplierDto supplierDto = new SupplierDto();
+        if(validateSupplier()) {
+            SupplierDto supplierDto = new SupplierDto();
 
-        ArrayList<String> list = supplierModel.getAllSupplierId();
+            ArrayList<String> list = supplierModel.getAllSupplierId();
 
-        supplierDto.setSupplier_Id(NewId.newId(list, NewId.GetType.SUPPLIER));
-        supplierDto.setName(txtSupplierName.getText());
-        supplierDto.setEmail(txtSupplierEmail.getText());
-        supplierDto.setContact_No(txtContactNo.getText());
-        supplierDto.setTime(DateTimeUtil.timeNow());
-        supplierDto.setDate(DateTimeUtil.dateNow());
-        supplierDto.setUser_Name(GlobalFormController.user);
+            supplierDto.setSupplier_Id(NewId.newId(list, NewId.GetType.SUPPLIER));
+            supplierDto.setName(txtSupplierName.getText());
+            supplierDto.setEmail(txtSupplierEmail.getText());
+            supplierDto.setContact_No(txtContactNo.getText());
+            supplierDto.setTime(DateTimeUtil.timeNow());
+            supplierDto.setDate(DateTimeUtil.dateNow());
+            supplierDto.setUser_Name(GlobalFormController.user);
 
-        boolean saved = supplierModel.save(supplierDto);
+            boolean saved = supplierModel.save(supplierDto);
 
-        if (saved) {
-            Navigation.closePane();
-            SupplierManageFormController.getInstance().allSupplierId();
+            if (saved) {
+                Navigation.closePane();
+                SupplierManageFormController.getInstance().allSupplierId();
+            }
+        }
+    }
+
+    private boolean validateSupplier() {
+
+        boolean nameValidate = Pattern.matches("[A-Za-z\\s]{3,12}", txtSupplierName.getText());
+
+        if (!nameValidate) {
+            lblSupplierNameAlert.setText("Invalid!!");
+            return false;
         }
 
+        boolean contactNoValidate = Pattern.matches("([0]\\d{1,9})", txtContactNo.getText());
+
+        if (!contactNoValidate) {
+            lblContactNoAlert.setText("Invalid!!");
+            return false;
+        }
+
+        boolean emailValidate = Pattern.matches("([A-Za-z0-9]{3,}\\\\@[A-Za-z]{3,}\\\\.[A-Za-z]{1,})", txtSupplierEmail.getText());
+
+        if (!emailValidate) {
+            lblSupplierEmailAlert.setText("Invalid!!");
+            return false;
+        }
+        return true;
+    }
+
+    @FXML
+    void txtContactNoOnMouseClicked(MouseEvent event) {
+        lblContactNoAlert.setText(" ");
+    }
+
+    @FXML
+    void txtSupplierEmailOnMouseClicked(MouseEvent event) {
+        lblSupplierEmailAlert.setText(" ");
+    }
+
+    @FXML
+    void txtSupplierNameOnMouseClicked(MouseEvent event) {
+        lblSupplierNameAlert.setText(" ");
     }
 
     @FXML

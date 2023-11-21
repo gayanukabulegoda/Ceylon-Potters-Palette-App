@@ -13,6 +13,7 @@ import lk.grb.ceylonPottersPalette.model.CustomerModel;
 import lk.grb.ceylonPottersPalette.util.DateTimeUtil;
 import lk.grb.ceylonPottersPalette.util.Navigation;
 import lk.grb.ceylonPottersPalette.util.NewId;
+import javafx.scene.input.MouseEvent;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -73,19 +74,22 @@ public class CustomerAddPopUpFormController {
 
         ArrayList<String> list = customerModel.getAllCustomerId();
 
-        customerDto.setCustomer_Id(NewId.newId(list, NewId.GetType.CUSTOMER));
-        customerDto.setName(txtCustomerName.getText());
-        customerDto.setContact_No(txtContactNo.getText());
-        customerDto.setEmail(txtCustomerEmail.getText());
-        customerDto.setTime(DateTimeUtil.timeNow());
-        customerDto.setDate(DateTimeUtil.dateNow());
-        customerDto.setUser_Name(GlobalFormController.user);
+        if (validateCustomer()) {
 
-        boolean saved = customerModel.save(customerDto);
+            customerDto.setCustomer_Id(NewId.newId(list, NewId.GetType.CUSTOMER));
+            customerDto.setName(txtCustomerName.getText());
+            customerDto.setContact_No(txtContactNo.getText());
+            customerDto.setEmail(txtCustomerEmail.getText());
+            customerDto.setTime(DateTimeUtil.timeNow());
+            customerDto.setDate(DateTimeUtil.dateNow());
+            customerDto.setUser_Name(GlobalFormController.user);
 
-        if (saved) {
-            Navigation.closePane();
-            CustomerManageFormController.getInstance().allCustomerId();
+            boolean saved = customerModel.save(customerDto);
+
+            if (saved) {
+                Navigation.closePane();
+                CustomerManageFormController.getInstance().allCustomerId();
+            }
         }
     }
 
@@ -101,25 +105,41 @@ public class CustomerAddPopUpFormController {
 
     private boolean validateCustomer() {
 
-        String name = txtCustomerName.getText();
-
-        boolean nameValidate = Pattern.matches("[A-Za-z\\s]+", name);
+        boolean nameValidate = Pattern.matches("[A-Za-z\\s]{3,12}", txtCustomerName.getText());
 
         if (!nameValidate) {
-            new Alert(Alert.AlertType.ERROR, "Invalid Customer Name!!").show();
+            lblCustomerNameAlert.setText("Invalid!!");
             return false;
         }
 
-        String contactNo = txtContactNo.getText();
+        boolean contactNoValidate = Pattern.matches("([0]\\d{1,9})", txtContactNo.getText());
 
-        boolean contactNoValidate = Pattern.matches("[A-Za-z\\s]+", name);
-
-        if (!nameValidate) {
-            new Alert(Alert.AlertType.ERROR, "Invalid Customer Name!!").show();
+        if (!contactNoValidate) {
+            lblContactNoAlert.setText("Invalid!!");
             return false;
         }
 
+        boolean emailValidate = Pattern.matches("([A-Za-z0-9]{3,}\\\\@[A-Za-z]{3,}\\.[A-Za-z]{1,})", txtCustomerEmail.getText());
 
+        if (!emailValidate) {
+            lblCustomerEmailAlert.setText("Invalid!!");
+            return false;
+        }
         return true;
+    }
+
+    @FXML
+    void contactNoOnMouseClick(MouseEvent event) {
+        lblContactNoAlert.setText(" ");
+    }
+
+    @FXML
+    void customerNameOnMouseClick(MouseEvent event) {
+        lblCustomerNameAlert.setText(" ");
+    }
+
+    @FXML
+    void emailOnMouseClick(MouseEvent event) {
+        lblCustomerEmailAlert.setText(" ");
     }
 }

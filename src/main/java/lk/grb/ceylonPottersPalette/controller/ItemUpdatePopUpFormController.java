@@ -3,6 +3,7 @@ package lk.grb.ceylonPottersPalette.controller;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.input.MouseEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -16,6 +17,7 @@ import lk.grb.ceylonPottersPalette.util.Navigation;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.regex.Pattern;
 
 public class ItemUpdatePopUpFormController implements Initializable {
 
@@ -81,19 +83,61 @@ public class ItemUpdatePopUpFormController implements Initializable {
     @FXML
     void btnUpdateOnAction(ActionEvent event) throws SQLException {
 
-        ItemStockDto itemStockDto = new ItemStockDto();
+        if(validateItem()) {
+            ItemStockDto itemStockDto = new ItemStockDto();
 
-        itemStockDto.setItem_Id(itemId);
-        itemStockDto.setDescription(txtDescription.getText());
-        itemStockDto.setUnit_Price(Double.parseDouble(txtUnitPrice.getText()));
-        itemStockDto.setQty_On_Hand(Integer.parseInt(txtQuantity.getText()));
+            itemStockDto.setItem_Id(itemId);
+            itemStockDto.setDescription(txtDescription.getText());
+            itemStockDto.setUnit_Price(Double.parseDouble(txtUnitPrice.getText()));
+            itemStockDto.setQty_On_Hand(Integer.parseInt(txtQuantity.getText()));
 
-        boolean updated = itemStockModel.updateFromPopUp(itemStockDto);
+            boolean updated = itemStockModel.updateFromPopUp(itemStockDto);
 
-        if (updated) {
-            Navigation.closePane();
-            ItemStockFormController.getInstance().allItemId();
+            if (updated) {
+                Navigation.closePane();
+                ItemStockFormController.getInstance().allItemId();
+            }
         }
+    }
+
+    private boolean validateItem() {
+
+        boolean unitPriceValidate = Pattern.matches("(\\d.+)", txtUnitPrice.getText());
+
+        if (!unitPriceValidate) {
+            lblUnitPriceAlert.setText("Invalid!!");
+            return false;
+        }
+
+        boolean descriptionValidate = Pattern.matches("[A-Za-z\\s]{2,12}", txtDescription.getText());
+
+        if (!descriptionValidate) {
+            lblDescriptionAlert.setText("Invalid!!");
+            return false;
+        }
+
+        boolean qtyValidate = Pattern.matches("(\\d.+)", txtQuantity.getText());
+
+        if (!qtyValidate) {
+            lblQtyAlert.setText("Invalid!!");
+            return false;
+        }
+        return true;
+    }
+
+    @FXML
+    void txtDescriptionOnMouseClicked(MouseEvent event) {
+        lblDescriptionAlert.setText(" ");
+    }
+
+    @FXML
+    void txtQuantityOnMouseClicked(MouseEvent event) {
+        lblQtyAlert.setText(" ");
+    }
+
+    @FXML
+    void txtUnitPriceOnMouseClicked(MouseEvent event) {
+        lblUnitPriceAlert.setText(" ");
     }
 
     public void setData() {

@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import lk.grb.ceylonPottersPalette.dto.CustomerDto;
@@ -19,6 +20,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.regex.Pattern;
 
 public class CustomerUpdatePopUpFormController implements Initializable {
 
@@ -84,21 +86,24 @@ public class CustomerUpdatePopUpFormController implements Initializable {
     @FXML
     void btnUpdateOnAction(ActionEvent event) throws SQLException {
 
-        CustomerDto customerDto = new CustomerDto();
+        if (validateCustomer()) {
 
-        customerDto.setCustomer_Id(CustomerUpdatePopUpFormController.customerId);
-        customerDto.setName(txtCustomerName.getText());
-        customerDto.setContact_No(txtContactNo.getText());
-        customerDto.setEmail(txtCustomerEmail.getText());
-        customerDto.setDate(customerDto.getDate());
-        customerDto.setTime(customerDto.getTime());
-        customerDto.setUser_Name(customerDto.getUser_Name());
+            CustomerDto customerDto = new CustomerDto();
 
-        boolean updated = customerModel.update(customerDto);
+            customerDto.setCustomer_Id(CustomerUpdatePopUpFormController.customerId);
+            customerDto.setName(txtCustomerName.getText());
+            customerDto.setContact_No(txtContactNo.getText());
+            customerDto.setEmail(txtCustomerEmail.getText());
+            customerDto.setDate(customerDto.getDate());
+            customerDto.setTime(customerDto.getTime());
+            customerDto.setUser_Name(customerDto.getUser_Name());
 
-        if (updated) {
-            Navigation.closePane();
-            CustomerManageFormController.getInstance().allCustomerId();
+            boolean updated = customerModel.update(customerDto);
+
+            if (updated) {
+                Navigation.closePane();
+                CustomerManageFormController.getInstance().allCustomerId();
+            }
         }
     }
 
@@ -114,6 +119,46 @@ public class CustomerUpdatePopUpFormController implements Initializable {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    private boolean validateCustomer() {
+
+        boolean nameValidate = Pattern.matches("[A-Za-z\\s]{3,12}", txtCustomerName.getText());
+
+        if (!nameValidate) {
+            lblCustomerNameAlert.setText("Invalid!!");
+            return false;
+        }
+
+        boolean contactNoValidate = Pattern.matches("([0]\\d{1,9})", txtContactNo.getText());
+
+        if (!contactNoValidate) {
+            lblContactNoAlert.setText("Invalid!!");
+            return false;
+        }
+
+        boolean emailValidate = Pattern.matches("([A-Za-z0-9]{3,}\\\\@[A-Za-z]{3,}\\\\.[A-Za-z]{1,})", txtCustomerEmail.getText());
+
+        if (!emailValidate) {
+            lblCustomerEmailAlert.setText("Invalid!!");
+            return false;
+        }
+        return true;
+    }
+
+    @FXML
+    void contactNoOnMouseClick(MouseEvent event) {
+        lblContactNoAlert.setText(" ");
+    }
+
+    @FXML
+    void customerNameOnMouseClick(MouseEvent event) {
+        lblCustomerNameAlert.setText(" ");
+    }
+
+    @FXML
+    void emailOnMouseClick(MouseEvent event) {
+        lblCustomerEmailAlert.setText(" ");
     }
 
     @Override

@@ -2,6 +2,7 @@ package lk.grb.ceylonPottersPalette.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.control.Label;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
@@ -11,6 +12,7 @@ import lk.grb.ceylonPottersPalette.util.Navigation;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.regex.Pattern;
 
 public class LoginFormController {
 
@@ -32,21 +34,50 @@ public class LoginFormController {
 
     @FXML
     void btnLogInOnAction(ActionEvent event) {
+        if(validateCredentials()) {
+            try {
+                String username = userModel.checkUsernameAndPassword(txtUsername.getText(), txtPassword.getText());
 
-        try {
-            String username = userModel.checkUsernameAndPassword(txtUsername.getText(), txtPassword.getText());
+                if (username.equals(txtUsername.getText())) {
+                    GlobalFormController.user = txtUsername.getText();
 
-            if (username.equals(txtUsername.getText())) {
-                GlobalFormController.user = txtUsername.getText();
-
-                password = txtPassword.getText();
-                Navigation.switchNavigation("globalForm.fxml", event);
-            } else {
-                new Alert(Alert.AlertType.ERROR, "Invalid Username Or Password!!").show();
+                    password = txtPassword.getText();
+                    Navigation.switchNavigation("globalForm.fxml", event);
+                } else {
+                    new Alert(Alert.AlertType.ERROR, "Invalid Username Or Password!!").show();
+                }
+            } catch (SQLException | ClassNotFoundException | IOException e) {
+                throw new RuntimeException(e);
             }
-        } catch (SQLException | ClassNotFoundException | IOException e) {
-            throw new RuntimeException(e);
         }
+    }
+
+    private boolean validateCredentials() {
+
+        boolean userNameValidate = Pattern.matches("([A-Za-z])", txtUsername.getText());
+
+        if (!userNameValidate) {
+            lblUserNameAlert.setText("Invalid!!");
+            return false;
+        }
+
+        boolean passwordValidate = Pattern.matches(".{6,25}", txtPassword.getText());
+
+        if (!passwordValidate) {
+            lblPasswordAlert.setText("Invalid!!");
+            return false;
+        }
+        return true;
+    }
+
+    @FXML
+    void txtPasswordOnMouseClicked(MouseEvent event) {
+        lblPasswordAlert.setText(" ");
+    }
+
+    @FXML
+    void txtUserNameOnMouseClicked(MouseEvent event) {
+        lblUserNameAlert.setText(" ");
     }
 
     @FXML

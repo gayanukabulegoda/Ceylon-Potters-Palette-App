@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.input.MouseEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
@@ -60,19 +61,35 @@ public class EmployeeAttendanceUpdatePopUpFormController implements Initializabl
     @FXML
     void btnUpdateAttendanceOnAction(ActionEvent event) throws SQLException {
 
-        EmployeeAttendanceDto employeeAttendanceDto = new EmployeeAttendanceDto();
+        if (validateEmployeeAttendance()) {
+            EmployeeAttendanceDto employeeAttendanceDto = new EmployeeAttendanceDto();
 
-        employeeAttendanceDto.setAttendance_Id(employeeAttendanceId);
-        employeeAttendanceDto.setEmployee_Id(cmbEmployeeId.getSelectionModel().getSelectedItem());
-        employeeAttendanceDto.setDate(employeeAttendanceDto.getDate());
-        employeeAttendanceDto.setTime(employeeAttendanceDto.getTime());
+            employeeAttendanceDto.setAttendance_Id(employeeAttendanceId);
+            employeeAttendanceDto.setEmployee_Id(cmbEmployeeId.getSelectionModel().getSelectedItem());
+            employeeAttendanceDto.setDate(employeeAttendanceDto.getDate());
+            employeeAttendanceDto.setTime(employeeAttendanceDto.getTime());
 
-        boolean updated = employeeAttendanceModel.update(employeeAttendanceDto);
+            boolean updated = employeeAttendanceModel.update(employeeAttendanceDto);
 
-        if (updated) {
-            Navigation.closePane();
-            EmployeeAttendanceFormController.getInstance().allAttendanceId();
+            if (updated) {
+                Navigation.closePane();
+                EmployeeAttendanceFormController.getInstance().allAttendanceId();
+            }
         }
+    }
+
+    private boolean validateEmployeeAttendance() {
+
+        if ((cmbEmployeeId.getSelectionModel().getSelectedItem()) == null) {
+            lblCmbEmployeeIdAlert.setText("Invalid!!");
+            return false;
+        }
+        return true;
+    }
+
+    @FXML
+    void cmbEmployeeIdOnMouseClicked(MouseEvent event) {
+        lblCmbEmployeeIdAlert.setText(" ");
     }
 
     @FXML

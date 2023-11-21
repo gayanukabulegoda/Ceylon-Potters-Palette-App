@@ -3,6 +3,7 @@ package lk.grb.ceylonPottersPalette.controller;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.input.MouseEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -17,6 +18,7 @@ import lk.grb.ceylonPottersPalette.util.Navigation;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.regex.Pattern;
 
 public class SupplierUpdatePopUpFormController implements Initializable {
 
@@ -82,19 +84,61 @@ public class SupplierUpdatePopUpFormController implements Initializable {
     @FXML
     void btnUpdateOnAction(ActionEvent event) throws SQLException {
 
-        SupplierDto supplierDto = new SupplierDto();
+        if(validateSupplier()) {
+            SupplierDto supplierDto = new SupplierDto();
 
-        supplierDto.setSupplier_Id(supplierId);
-        supplierDto.setName(txtSupplierName.getText());
-        supplierDto.setContact_No(txtContactNo.getText());
-        supplierDto.setEmail(txtSupplierEmail.getText());
+            supplierDto.setSupplier_Id(supplierId);
+            supplierDto.setName(txtSupplierName.getText());
+            supplierDto.setContact_No(txtContactNo.getText());
+            supplierDto.setEmail(txtSupplierEmail.getText());
 
-        boolean updated = supplierModel.update(supplierDto);
+            boolean updated = supplierModel.update(supplierDto);
 
-        if (updated) {
-            Navigation.closePane();
-            SupplierManageFormController.getInstance().allSupplierId();
+            if (updated) {
+                Navigation.closePane();
+                SupplierManageFormController.getInstance().allSupplierId();
+            }
         }
+    }
+
+    private boolean validateSupplier() {
+
+        boolean nameValidate = Pattern.matches("[A-Za-z\\s]{3,12}", txtSupplierName.getText());
+
+        if (!nameValidate) {
+            lblSupplierNameAlert.setText("Invalid!!");
+            return false;
+        }
+
+        boolean contactNoValidate = Pattern.matches("([0]\\d{1,9})", txtContactNo.getText());
+
+        if (!contactNoValidate) {
+            lblContactNoAlert.setText("Invalid!!");
+            return false;
+        }
+
+        boolean emailValidate = Pattern.matches("([A-Za-z0-9]{3,}\\\\@[A-Za-z]{3,}\\\\.[A-Za-z]{1,})", txtSupplierEmail.getText());
+
+        if (!emailValidate) {
+            lblSupplierEmailAlert.setText("Invalid!!");
+            return false;
+        }
+        return true;
+    }
+
+    @FXML
+    void txtContactNoOnMouseClicked(MouseEvent event) {
+        lblContactNoAlert.setText(" ");
+    }
+
+    @FXML
+    void txtSupplierEmailOnMouseClicked(MouseEvent event) {
+        lblSupplierEmailAlert.setText(" ");
+    }
+
+    @FXML
+    void txtSupplierNameOnMouseClicked(MouseEvent event) {
+        lblSupplierNameAlert.setText(" ");
     }
 
     public void setData() {

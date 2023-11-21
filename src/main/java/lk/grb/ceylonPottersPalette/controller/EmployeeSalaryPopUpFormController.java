@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.input.MouseEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -23,6 +24,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.regex.Pattern;
 
 public class EmployeeSalaryPopUpFormController implements Initializable {
 
@@ -87,24 +89,64 @@ public class EmployeeSalaryPopUpFormController implements Initializable {
     @FXML
     void btnAddOnAction(ActionEvent event) throws SQLException {
 
-        EmployeeSalaryDto employeeSalaryDto = new EmployeeSalaryDto();
+        if(validateEmployeeSalary()) {
+            EmployeeSalaryDto employeeSalaryDto = new EmployeeSalaryDto();
 
-        ArrayList<String> list = employeeSalaryModel.getAllSalaryId();
+            ArrayList<String> list = employeeSalaryModel.getAllSalaryId();
 
-        employeeSalaryDto.setSalary_Id(NewId.newId(list, NewId.GetType.SALARY_ID));
-        employeeSalaryDto.setEmployee_Id(cmbEmployeeId.getSelectionModel().getSelectedItem());
-        employeeSalaryDto.setWorked_Day_Count(Integer.parseInt(lblWorkedDays.getText()));
-        employeeSalaryDto.setSalary(Double.parseDouble(txtSalary.getText()));
-        employeeSalaryDto.setBonus(Double.parseDouble(txtBonus.getText()));
-        employeeSalaryDto.setTotal_Payment(Double.parseDouble(lblTotalAmount.getText()));
-        employeeSalaryDto.setDate(DateTimeUtil.dateNow());
-        employeeSalaryDto.setTime(DateTimeUtil.timeNow());
+            employeeSalaryDto.setSalary_Id(NewId.newId(list, NewId.GetType.SALARY_ID));
+            employeeSalaryDto.setEmployee_Id(cmbEmployeeId.getSelectionModel().getSelectedItem());
+            employeeSalaryDto.setWorked_Day_Count(Integer.parseInt(lblWorkedDays.getText()));
+            employeeSalaryDto.setSalary(Double.parseDouble(txtSalary.getText()));
+            employeeSalaryDto.setBonus(Double.parseDouble(txtBonus.getText()));
+            employeeSalaryDto.setTotal_Payment(Double.parseDouble(lblTotalAmount.getText()));
+            employeeSalaryDto.setDate(DateTimeUtil.dateNow());
+            employeeSalaryDto.setTime(DateTimeUtil.timeNow());
 
-        boolean save = employeeSalaryModel.save(employeeSalaryDto);
-        if (save) {
-            Navigation.closePane();
-            EmployeeSalaryFormController.getInstance().allSalaryId();
+            boolean save = employeeSalaryModel.save(employeeSalaryDto);
+            if (save) {
+                Navigation.closePane();
+                EmployeeSalaryFormController.getInstance().allSalaryId();
+            }
         }
+    }
+
+    private boolean validateEmployeeSalary() {
+
+        if ((cmbEmployeeId.getSelectionModel().getSelectedItem()) == null) {
+            lblCmbEmployeeIdAlert.setText("Invalid!!");
+            return false;
+        }
+
+        boolean salaryValidate = Pattern.matches("(\\d.+)", txtSalary.getText());
+
+        if (!salaryValidate) {
+            lblSalaryAlert.setText("Invalid!!");
+            return false;
+        }
+
+        boolean bonusValidate = Pattern.matches("(\\d.+)", txtBonus.getText());
+
+        if (!bonusValidate) {
+            lblBonusAlert.setText("Invalid!!");
+            return false;
+        }
+        return true;
+    }
+
+    @FXML
+    void txtSalaryOnMouseClicked(MouseEvent event) {
+        lblSalaryAlert.setText(" ");
+    }
+
+    @FXML
+    void txtBonusOnMouseClicked(MouseEvent event) {
+        lblBonusAlert.setText(" ");
+    }
+
+    @FXML
+    void cmbEmployeeIdOnMouseClicked(MouseEvent event) {
+        lblCmbEmployeeIdAlert.setText(" ");
     }
 
     @FXML

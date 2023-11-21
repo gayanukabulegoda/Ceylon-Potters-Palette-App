@@ -147,7 +147,7 @@ public class CredentialChangePopUpFormController {
     private boolean validateNewPassword() {
         String password = txtNewPassword.getText();
 
-        boolean idValidate = Pattern.matches(".{6,}", password);
+        boolean idValidate = Pattern.matches(".{6,25}", password);
 
         if (!idValidate) {
             lblNewPwAlert.setText("Invalid Password!!\nPassword should contain at least 6 characters");

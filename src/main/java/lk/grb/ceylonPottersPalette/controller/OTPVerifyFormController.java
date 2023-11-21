@@ -2,6 +2,7 @@ package lk.grb.ceylonPottersPalette.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.input.MouseEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
@@ -17,6 +18,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.Random;
 import java.util.ResourceBundle;
+import java.util.regex.Pattern;
 
 public class OTPVerifyFormController implements Initializable {
 
@@ -45,14 +47,32 @@ public class OTPVerifyFormController implements Initializable {
     @FXML
     void btnVerifyOnAction(ActionEvent event) throws IOException {
 
-        if (otp.equals(txtOTP.getText())) {
-            Navigation.close(event);
-            Navigation.switchNavigation("resetPasswordFrom.fxml",event);
+        if(validateOtp()) {
+
+            if (otp.equals(txtOTP.getText())) {
+                Navigation.close(event);
+                Navigation.switchNavigation("resetPasswordFrom.fxml", event);
+            } else {
+                new Alert(Alert.AlertType.ERROR, "Wrong OTP !! Try Again").show();
+            }
         }
-        else {
-            new Alert(Alert.AlertType.ERROR, "Wrong OTP !! Try Again").show();
+    }
+
+    private boolean validateOtp() {
+
+        boolean otpValidate = Pattern.matches("[0-9]{6}", txtOTP.getText());
+
+        if (!otpValidate) {
+            lblOtpAlert.setText("Invalid!!");
+            return false;
         }
 
+        return true;
+    }
+
+    @FXML
+    void txtOtpOnMouseClicked(MouseEvent event) {
+        lblOtpAlert.setText(" ");
     }
 
     public String generateOTP(int otpLength) {
