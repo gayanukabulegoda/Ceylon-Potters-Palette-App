@@ -133,4 +133,15 @@ public class ItemStockModel {
 
         return set;
     }
+
+    public String getAvailableClayStock() throws SQLException {
+        ResultSet resultSet = SQLUtil.execute("SELECT qty_On_Hand " +
+                "FROM item_Stock " +
+                "WHERE description like '%Clay'");
+
+        if (resultSet.next()) {
+            return resultSet.getString(1);
+        }
+        return null;
+    }
 }

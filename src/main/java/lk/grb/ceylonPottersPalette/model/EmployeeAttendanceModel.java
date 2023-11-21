@@ -77,4 +77,15 @@ public class EmployeeAttendanceModel {
         }
         return null;
     }
+
+    public String getTodayAttendance() throws SQLException {
+        ResultSet resultSet = SQLUtil.execute("SELECT COUNT(*) " +
+                "FROM attendance " +
+                "WHERE date = CURDATE()");
+
+        if (resultSet.next()) {
+            return resultSet.getString(1);
+        }
+        return null;
+    }
 }

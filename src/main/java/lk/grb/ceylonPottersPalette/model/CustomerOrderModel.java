@@ -43,4 +43,13 @@ public class CustomerOrderModel {
         }
         return list;
     }
+
+    public String getAllSales() throws SQLException {
+        ResultSet resultSet = SQLUtil.execute("SELECT COUNT(*) FROM customer_Order");
+
+        if (resultSet.next()) {
+            return resultSet.getString(1);
+        }
+        return null;
+    }
 }
