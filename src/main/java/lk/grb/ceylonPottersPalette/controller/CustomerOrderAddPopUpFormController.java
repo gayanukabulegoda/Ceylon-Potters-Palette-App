@@ -162,19 +162,19 @@ public class CustomerOrderAddPopUpFormController implements Initializable {
     private boolean validateCustomerOrder() {
 
         if ((cmbCustomerId.getSelectionModel().getSelectedItem()) == null) {
-            lblCmbCustomerIdAlert.setText("Invalid!!");
+            lblCmbCustomerIdAlert.setText("Please Select a Customer!!");
             return false;
         }
 
         if ((cmbProductId.getSelectionModel().getSelectedItem()) == null) {
-            lblCmbProductIdAlert.setText("Invalid!!");
+            lblCmbProductIdAlert.setText("Please Select a Product!!");
             return false;
         }
 
-        boolean qtyValidate = Pattern.matches("([0-9])", txtProductQty.getText());
+        boolean qtyValidate = Pattern.matches("([0-9]+)", txtProductQty.getText());
 
         if (!qtyValidate) {
-            lblQtyAlert.setText("Invalid!!");
+            lblQtyAlert.setText("Enter the Product Quantity!!");
             return false;
         }
         return true;

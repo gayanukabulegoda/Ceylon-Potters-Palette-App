@@ -166,19 +166,19 @@ public class SupplierOrderAddPopUpFormController implements Initializable {
     private boolean validateSupplierOrder() {
 
         if ((cmbSupplierId.getSelectionModel().getSelectedItem()) == null) {
-            lblCmbSupplierAlert.setText("Invalid!!");
+            lblCmbSupplierAlert.setText("Please Select a Supplier!!");
             return false;
         }
 
         if ((cmbItemId.getSelectionModel().getSelectedItem()) == null) {
-            lblItemIdAlert.setText("Invalid!!");
+            lblItemIdAlert.setText("Please Select an Item!!");
             return false;
         }
 
-        boolean qtyValidate = Pattern.matches("([0-9])", txtItemQty.getText());
+        boolean qtyValidate = Pattern.matches("([0-9]+)", txtItemQty.getText());
 
         if (!qtyValidate) {
-            lblQtyAlert.setText("Invalid!!");
+            lblQtyAlert.setText("Enter the Item Quantity!!");
             return false;
         }
         return true;

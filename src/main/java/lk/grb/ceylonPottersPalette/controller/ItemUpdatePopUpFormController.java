@@ -105,21 +105,21 @@ public class ItemUpdatePopUpFormController implements Initializable {
         boolean unitPriceValidate = Pattern.matches("(\\d.+)", txtUnitPrice.getText());
 
         if (!unitPriceValidate) {
-            lblUnitPriceAlert.setText("Invalid!!");
+            lblUnitPriceAlert.setText("Invalid Unit Price!!");
             return false;
         }
 
-        boolean descriptionValidate = Pattern.matches("[A-Za-z\\s]{2,12}", txtDescription.getText());
+        boolean descriptionValidate = Pattern.matches("[A-Za-z\\s]{3,}", txtDescription.getText());
 
         if (!descriptionValidate) {
-            lblDescriptionAlert.setText("Invalid!!");
+            lblDescriptionAlert.setText("Invalid Description!!");
             return false;
         }
 
         boolean qtyValidate = Pattern.matches("(\\d.+)", txtQuantity.getText());
 
         if (!qtyValidate) {
-            lblQtyAlert.setText("Invalid!!");
+            lblQtyAlert.setText("Invalid Quantity!!");
             return false;
         }
         return true;

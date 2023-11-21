@@ -67,7 +67,7 @@ public class ResetPasswordFromController {
 
         boolean confirmPasswordValidate = Pattern.matches(".{6,25}", txtConfirmPassword.getText());
 
-        if (!confirmPasswordValidate) {
+        if ((!confirmPasswordValidate) | (!txtNewPassword.getText().equals(txtConfirmPassword.getText()))) {
             lblConfirmPwAlert.setText("Invalid Password Confirmation!!");
             return false;
         }

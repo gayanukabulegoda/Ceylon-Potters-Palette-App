@@ -57,7 +57,7 @@ public class SignUpOTPVerifyFormController implements Initializable {
         boolean otpValidate = Pattern.matches("[0-9]{6}", txtOTP.getText());
 
         if (!otpValidate) {
-            lblOtpAlert.setText("Invalid!!");
+            lblOtpAlert.setText("Wrong OTP!! Try Again!!");
             return false;
         }
         return true;

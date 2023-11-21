@@ -100,7 +100,7 @@ public class DashboardFormController implements Initializable {
 
         vBoxOrders.getChildren().clear();
         CustomerOrderModel customerOrderModel1 = new CustomerOrderModel();
-        ArrayList<String> list = customerOrderModel1.getAllCustomerOrderId();
+        ArrayList<String> list = customerOrderModel1.getAllCustomerOrderIdS();
 
         for (int i = 0; i < list.size(); i++) {
             loadDataTable(list.get(i));
@@ -182,7 +182,7 @@ public class DashboardFormController implements Initializable {
             ArrayList<String> allProductId = productStockModel.getAllProductId();
 
             for (int i = 0; i < allProductId.size(); i++) {
-                qtyTotal = Integer.parseInt(productStockModel.getQtyTotal(allProductId.get(i)));
+                qtyTotal =+ Integer.parseInt(productStockModel.getQtyTotal(allProductId.get(i)));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -202,7 +202,7 @@ public class DashboardFormController implements Initializable {
         }
 
         try {
-            lblTodaySales.setText("0" + customerOrderModel.getAllSales());
+            lblTodaySales.setText("0" + customerOrderModel.getTodaySales());
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

@@ -44,8 +44,18 @@ public class CustomerOrderModel {
         return list;
     }
 
-    public String getAllSales() throws SQLException {
-        ResultSet resultSet = SQLUtil.execute("SELECT COUNT(*) FROM customer_Order");
+    public ArrayList<String> getAllCustomerOrderIdS() throws SQLException {
+        ResultSet resultSet = SQLUtil.execute("SELECT customer_Order_Id FROM customer_Order ORDER BY CAST(Substring(customer_Order_Id, 3) AS UNSIGNED)");
+        ArrayList<String> list = new ArrayList<>();
+
+        while (resultSet.next()) {
+            list.add(resultSet.getString(1));
+        }
+        return list;
+    }
+
+    public String getTodaySales() throws SQLException {
+        ResultSet resultSet = SQLUtil.execute("SELECT COUNT(*) FROM customer_Order WHERE DATE(date) = CURDATE()");
 
         if (resultSet.next()) {
             return resultSet.getString(1);

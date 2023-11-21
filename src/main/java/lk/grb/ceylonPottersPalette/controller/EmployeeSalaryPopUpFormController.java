@@ -114,21 +114,21 @@ public class EmployeeSalaryPopUpFormController implements Initializable {
     private boolean validateEmployeeSalary() {
 
         if ((cmbEmployeeId.getSelectionModel().getSelectedItem()) == null) {
-            lblCmbEmployeeIdAlert.setText("Invalid!!");
+            lblCmbEmployeeIdAlert.setText("Select an Employee!!");
             return false;
         }
 
         boolean salaryValidate = Pattern.matches("(\\d.+)", txtSalary.getText());
 
         if (!salaryValidate) {
-            lblSalaryAlert.setText("Invalid!!");
+            lblSalaryAlert.setText("Invalid Salary!!");
             return false;
         }
 
         boolean bonusValidate = Pattern.matches("(\\d.+)", txtBonus.getText());
 
         if (!bonusValidate) {
-            lblBonusAlert.setText("Invalid!!");
+            lblBonusAlert.setText("Invalid Bonus!!");
             return false;
         }
         return true;

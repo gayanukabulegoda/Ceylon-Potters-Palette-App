@@ -154,7 +154,7 @@
          <children>
             <ScrollPane layoutX="13.0" layoutY="72.0" prefHeight="533.0" prefWidth="256.0" style="-fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: white;">
                <content>
-                  <VBox fx:id="vBoxOrders" prefHeight="514.0" prefWidth="251.0" spacing="4.0" style="-fx-background-color: white; -fx-border-color: white;" />
+                  <VBox fx:id="vBoxOrders" alignment="TOP_CENTER" prefHeight="514.0" prefWidth="251.0" spacing="4.0" style="-fx-background-color: white; -fx-border-color: white;" />
                </content>
             </ScrollPane>
             <Label layoutX="100.0" layoutY="21.0" text="Orders" textFill="#c56e33">

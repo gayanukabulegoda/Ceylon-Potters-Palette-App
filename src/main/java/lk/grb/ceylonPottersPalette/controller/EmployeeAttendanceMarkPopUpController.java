@@ -84,7 +84,7 @@ public class EmployeeAttendanceMarkPopUpController implements Initializable {
     private boolean validateEmployeeAttendance() {
 
         if ((cmbEmployeeId.getSelectionModel().getSelectedItem()) == null) {
-            lblCmbEmployeeIdAlert.setText("Invalid!!");
+            lblCmbEmployeeIdAlert.setText("Select an Employee!!");
             return false;
         }
         return true;

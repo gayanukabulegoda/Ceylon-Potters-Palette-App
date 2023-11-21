@@ -106,21 +106,21 @@ public class SupplierUpdatePopUpFormController implements Initializable {
         boolean nameValidate = Pattern.matches("[A-Za-z\\s]{3,12}", txtSupplierName.getText());
 
         if (!nameValidate) {
-            lblSupplierNameAlert.setText("Invalid!!");
+            lblSupplierNameAlert.setText("Invalid Supplier Name!!");
             return false;
         }
 
         boolean contactNoValidate = Pattern.matches("([0]\\d{1,9})", txtContactNo.getText());
 
         if (!contactNoValidate) {
-            lblContactNoAlert.setText("Invalid!!");
+            lblContactNoAlert.setText("Invalid Contact Number!!");
             return false;
         }
 
-        boolean emailValidate = Pattern.matches("([A-Za-z0-9]{3,}\\\\@[A-Za-z]{3,}\\\\.[A-Za-z]{1,})", txtSupplierEmail.getText());
+        boolean emailValidate = Pattern.matches("([A-Za-z0-9]{3,}@[A-Za-z]{3,}\\.[A-Za-z]{1,})", txtSupplierEmail.getText());
 
         if (!emailValidate) {
-            lblSupplierEmailAlert.setText("Invalid!!");
+            lblSupplierEmailAlert.setText("Invalid Email Address!!");
             return false;
         }
         return true;

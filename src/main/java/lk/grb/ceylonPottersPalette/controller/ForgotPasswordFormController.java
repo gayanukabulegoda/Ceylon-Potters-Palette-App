@@ -50,10 +50,10 @@ public class ForgotPasswordFormController {
 
     private boolean validateUserName() {
 
-        boolean userNameValidate = Pattern.matches("([A-Za-z])", txtUsername.getText());
+        boolean userNameValidate = Pattern.matches("([A-Za-z]+)", txtUsername.getText());
 
         if (!userNameValidate) {
-            lblUserNameAlert.setText("Invalid!!");
+            lblUserNameAlert.setText("Invalid Username!!");
             return false;
         }
         return true;

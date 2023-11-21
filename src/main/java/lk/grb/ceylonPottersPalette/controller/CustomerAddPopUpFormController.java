@@ -108,21 +108,22 @@ public class CustomerAddPopUpFormController {
         boolean nameValidate = Pattern.matches("[A-Za-z\\s]{3,12}", txtCustomerName.getText());
 
         if (!nameValidate) {
-            lblCustomerNameAlert.setText("Invalid!!");
+            lblCustomerNameAlert.setText("Invalid Customer Name!!");
             return false;
         }
 
         boolean contactNoValidate = Pattern.matches("([0]\\d{1,9})", txtContactNo.getText());
 
         if (!contactNoValidate) {
-            lblContactNoAlert.setText("Invalid!!");
+            lblContactNoAlert.setText("Invalid Contact Number!!");
             return false;
         }
 
-        boolean emailValidate = Pattern.matches("([A-Za-z0-9]{3,}\\\\@[A-Za-z]{3,}\\.[A-Za-z]{1,})", txtCustomerEmail.getText());
+        boolean emailValidate = Pattern.matches("([A-Za-z0-9]{3,}@[A-Za-z]{3,}\\.[A-Za-z]{1,})", txtCustomerEmail.getText());
 
         if (!emailValidate) {
-            lblCustomerEmailAlert.setText("Invalid!!");
+            lblCustomerEmailAlert.setText("Invalid Email Address!!");
+
             return false;
         }
         return true;

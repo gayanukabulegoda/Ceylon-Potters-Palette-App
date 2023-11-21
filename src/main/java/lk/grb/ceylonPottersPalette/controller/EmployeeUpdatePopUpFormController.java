@@ -156,54 +156,54 @@ public class EmployeeUpdatePopUpFormController implements Initializable {
 
         boolean validateFirstName = Pattern.matches("([A-Z][a-z]{2,})", txtFirstName.getText());
         if (!validateFirstName) {
-            lblFirstNameAlert.setText("Invalid!!");
+            lblFirstNameAlert.setText("Invalid First name!!");
             return false;
         }
 
         boolean validateLastName = Pattern.matches("([A-Z][a-z]{2,})", txtLastName.getText());
         if (!validateLastName) {
-            lblLastNameAlert.setText("Invalid!!");
+            lblLastNameAlert.setText("Invalid Last Name!!");
             return false;
         }
 
-        boolean validateNic = Pattern.matches("(\\d{1,9}V) | (\\d{1,12})", txtNic.getText());
+        boolean validateNic = Pattern.matches("([\\dV]{10,12})", txtNic.getText());
         if (!validateNic) {
-            lblNicAlert.setText("Invalid!!");
+            lblNicAlert.setText("Invalid NIC!!");
             return false;
         }
 
         if ((cmbRole.getSelectionModel().getSelectedItem()) == null) {
-            lblCmbRoleAlert.setText("Invalid!!");
+            lblCmbRoleAlert.setText("Select a Role!!");
             return false;
         }
 
         boolean validateContactNo = Pattern.matches("([0]\\d{1,9})", txtContactNo.getText());
         if (!validateContactNo) {
-            lblContactNoAlert.setText("Invalid!!");
+            lblContactNoAlert.setText("Invalid Contact Number!!");
             return false;
         }
 
-        boolean validateEmail = Pattern.matches("([A-Za-z0-9]{3,}\\@[A-Za-z]{3,}\\.[A-Za-z]{1,}) | \\s", txtEmail.getText());
+        boolean validateEmail = Pattern.matches("([A-Za-z0-9]{3,}@[A-Za-z]{3,}\\.[A-Za-z]{1,})", txtEmail.getText());
         if (!validateEmail) {
-            lblEmailAlert.setText("Invalid!!");
+            lblEmailAlert.setText("Invalid Email!!");
             return false;
         }
 
         boolean validateHouseNo = Pattern.matches("([\\d]{1,})", txtHouseNo.getText());
         if (!validateHouseNo) {
-            lblHouseNoAlert.setText("Invalid!!");
+            lblHouseNoAlert.setText("Invalid House No!!");
             return false;
         }
 
-        boolean validateStreet = Pattern.matches("([A-Za-z\\s]{3,})", txtStreet.getText());
+        boolean validateStreet = Pattern.matches("[A-Za-z\\s]{3,}", txtStreet.getText());
         if (!validateStreet) {
-            lblStreetAlert.setText("Invalid!!");
+            lblStreetAlert.setText("Invalid Street Name!!");
             return false;
         }
 
-        boolean validateCity = Pattern.matches("([A-Za-z\\s]{3,})", txtCity.getText());
+        boolean validateCity = Pattern.matches("[A-Za-z\\s]{3,}", txtCity.getText());
         if (!validateCity) {
-            lblCityAlert.setText("Invalid!!");
+            lblCityAlert.setText("Invalid City Name!!");
             return false;
         }
         return true;
