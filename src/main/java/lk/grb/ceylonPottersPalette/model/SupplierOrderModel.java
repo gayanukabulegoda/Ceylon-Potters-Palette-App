@@ -44,4 +44,13 @@ public class SupplierOrderModel {
         }
         return list;
     }
+
+    public double getOrderTotal() throws SQLException {
+        ResultSet resultSet = SQLUtil.execute("SELECT SUM(total_Price) FROM supplier_Order");
+
+        if (resultSet.next()) {
+            return resultSet.getDouble(1);
+        }
+        return 0.0;
+    }
 }

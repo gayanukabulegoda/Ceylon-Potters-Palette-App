@@ -68,4 +68,13 @@ public class EmployeeSalaryModel {
         }
         return list;
     }
+
+    public double getSalaryTotal() throws SQLException {
+        ResultSet resultSet = SQLUtil.execute("SELECT SUM(total_Payment) FROM salary");
+
+        if (resultSet.next()) {
+            return resultSet.getDouble(1);
+        }
+        return 0.0;
+    }
 }

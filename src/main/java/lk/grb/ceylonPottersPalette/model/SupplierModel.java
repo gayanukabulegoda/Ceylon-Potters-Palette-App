@@ -78,4 +78,13 @@ public class SupplierModel {
         }
         return null;
     }
+
+    public String getSupplierCount() throws SQLException {
+        ResultSet resultSet = SQLUtil.execute("SELECT COUNT(*) FROM supplier");
+
+        if (resultSet.next()) {
+            return resultSet.getString(1);
+        }
+        return null;
+    }
 }

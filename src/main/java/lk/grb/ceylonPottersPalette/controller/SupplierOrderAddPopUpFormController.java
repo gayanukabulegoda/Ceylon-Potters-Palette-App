@@ -104,7 +104,7 @@ public class SupplierOrderAddPopUpFormController implements Initializable {
     PlaceSupplierOrderModel placeSupplierOrderModel = new PlaceSupplierOrderModel();
     SupplierModel supplierModel = new SupplierModel();
     ItemStockModel itemStockModel = new ItemStockModel();
-    public static ArrayList<String[]> itemList = new ArrayList<>();
+    public static ArrayList<String[]> itemList;
     ArrayList<String> idList;
 
     {
@@ -121,6 +121,7 @@ public class SupplierOrderAddPopUpFormController implements Initializable {
 
     public SupplierOrderAddPopUpFormController() {
         controller = this;
+        itemList = new ArrayList<>();
     }
 
     public static  SupplierOrderAddPopUpFormController getInstance() {

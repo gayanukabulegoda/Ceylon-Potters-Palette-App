@@ -52,4 +52,13 @@ public class CustomerOrderModel {
         }
         return null;
     }
+
+    public double getOrderTotal() throws SQLException {
+        ResultSet resultSet = SQLUtil.execute("SELECT SUM(total_Price) FROM customer_Order");
+
+        if (resultSet.next()) {
+            return resultSet.getDouble(1);
+        }
+        return 0.0;
+    }
 }

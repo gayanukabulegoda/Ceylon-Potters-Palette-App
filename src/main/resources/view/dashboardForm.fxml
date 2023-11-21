@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
@@ -35,17 +36,78 @@
       </Pane>
       <Pane layoutX="428.0" layoutY="65.0" prefHeight="727.0" prefWidth="732.0" style="-fx-background-color: white; -fx-background-radius: 16;">
          <children>
-            <ImageView fitHeight="501.0" fitWidth="626.0" layoutX="53.0" layoutY="197.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assests/img/salesChart.png" />
-               </image>
-            </ImageView>
-            <Label layoutX="185.0" layoutY="69.0" text="Sales - November " textFill="#973f04">
-               <font>
-                  <Font size="40.0" />
-               </font>
-            </Label>
-            <Line endX="145.7294921875" layoutX="446.0" layoutY="125.0" startX="-318.90618896484375" stroke="#973f04" strokeLineCap="ROUND" strokeWidth="2.0" />
+            <Pane layoutX="15.0" layoutY="14.0" prefHeight="700.0" prefWidth="703.0" style="-fx-background-color: white; -fx-background-radius: 16; -fx-border-color: E8E8E8; -fx-border-radius: 16;">
+               <children>
+                  <Pane layoutX="23.0" layoutY="21.0" prefHeight="144.0" prefWidth="314.0" style="-fx-background-color: white; -fx-background-radius: 16; -fx-border-color: E8E8E8; -fx-border-radius: 16;">
+                     <children>
+                        <Label layoutX="101.0" layoutY="112.0" text="Our Customers" textFill="#727374">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Line endX="-174.36257934570312" endY="164.18295288085938" layoutX="197.0" layoutY="-36.0" startX="-174.36257934570312" startY="56.09162902832031" stroke="#c56e33" strokeLineCap="ROUND" strokeWidth="2.0" />
+                        <Line endX="-174.36257934570312" endY="164.18295288085938" layoutX="467.0" layoutY="-36.0" startX="-174.36257934570312" startY="56.09162902832031" stroke="#c56e33" strokeLineCap="ROUND" strokeWidth="2.0" />
+                        <Label fx:id="lblCustomerNo" layoutX="85.0" layoutY="28.0" text="0019" textFill="#c56e33">
+                           <font>
+                              <Font name="System Bold" size="52.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="365.0" layoutY="21.0" prefHeight="144.0" prefWidth="314.0" style="-fx-background-color: white; -fx-background-radius: 16; -fx-border-color: E8E8E8; -fx-border-radius: 16;">
+                     <children>
+                        <Label layoutX="106.0" layoutY="111.0" text="Our Suppliers" textFill="#727374">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Line endX="-174.36257934570312" endY="164.18295288085938" layoutX="197.0" layoutY="-36.0" startX="-174.36257934570312" startY="56.09162902832031" stroke="#c56e33" strokeLineCap="ROUND" strokeWidth="2.0" />
+                        <Line endX="-174.36257934570312" endY="164.18295288085938" layoutX="467.0" layoutY="-36.0" startX="-174.36257934570312" startY="56.09162902832031" stroke="#c56e33" strokeLineCap="ROUND" strokeWidth="2.0" />
+                        <Label fx:id="lblSupplierNo" layoutX="85.0" layoutY="30.0" text="0019" textFill="#c56e33">
+                           <font>
+                              <Font name="System Bold" size="52.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Line endX="-81.54278564453125" layoutX="368.0" layoutY="210.0" startX="-350.9982604980469" stroke="#973f04" strokeLineCap="ROUND" strokeWidth="2.0" />
+                  <ImageView fx:id="imgFlower2" fitHeight="33.0" fitWidth="30.0" layoutX="303.0" layoutY="193.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assests/img/logoFlowerBrown.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="imgFlower1" fitHeight="33.0" fitWidth="30.0" layoutX="337.0" layoutY="193.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assests/img/logoFlowerBrown.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="imgFlower3" fitHeight="33.0" fitWidth="30.0" layoutX="371.0" layoutY="193.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assests/img/logoFlowerBrown.png" />
+                     </image>
+                  </ImageView>
+                  <Line endX="-81.54278564453125" layoutX="768.0" layoutY="209.0" startX="-350.9982604980469" stroke="#973f04" strokeLineCap="ROUND" strokeWidth="2.0" />
+                  <JFXButton layoutX="365.0" layoutY="21.0" onAction="#btnSuppliersOnAction" prefHeight="146.0" prefWidth="314.0" style="-fx-background-radius: 16; -fx-border-radius: 16;" text=" " textFill="#727374" wrapText="true">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton layoutX="23.0" layoutY="21.0" onAction="#btnCustomersOnAction" prefHeight="146.0" prefWidth="314.0" style="-fx-background-radius: 16; -fx-border-radius: 16;" text=" " textFill="#727374" wrapText="true">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </JFXButton>
+                  <Pane layoutX="15.0" layoutY="242.0" prefHeight="444.0" prefWidth="673.0" style="-fx-background-color: white; -fx-border-radius: 16; -fx-border-color: E8E8E8; -fx-background-radius: 16;">
+                     <children>
+                        <Pane fx:id="piChartPane" layoutX="87.0" layoutY="17.0" prefHeight="427.0" prefWidth="500.0">
+                           <children>
+                              <PieChart fx:id="pieChart" layoutX="2.0" layoutY="22.0" />
+                           </children>
+                        </Pane>
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
          </children>
       </Pane>
       <Pane layoutX="31.0" layoutY="390.0" prefHeight="144.0" prefWidth="358.0" style="-fx-background-color: white; -fx-background-radius: 16;">
@@ -92,7 +154,7 @@
          <children>
             <ScrollPane layoutX="13.0" layoutY="72.0" prefHeight="533.0" prefWidth="256.0" style="-fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: white;">
                <content>
-                  <VBox fx:id="vBoxOrders" prefHeight="514.0" prefWidth="251.0" style="-fx-background-color: white; -fx-border-color: white;" />
+                  <VBox fx:id="vBoxOrders" prefHeight="514.0" prefWidth="251.0" spacing="4.0" style="-fx-background-color: white; -fx-border-color: white;" />
                </content>
             </ScrollPane>
             <Label layoutX="100.0" layoutY="21.0" text="Orders" textFill="#c56e33">

@@ -78,4 +78,13 @@ public class CustomerModel {
         }
         return null;
     }
+
+    public String getCustomerCount() throws SQLException {
+        ResultSet resultSet = SQLUtil.execute("SELECT COUNT(*) FROM customer");
+
+        if (resultSet.next()) {
+            return resultSet.getString(1);
+        }
+        return null;
+    }
 }
