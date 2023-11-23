@@ -33,7 +33,7 @@
          </children>
       </Pane>
       <Line endX="147.1839599609375" layoutX="290.0" layoutY="325.0" startX="-100.0" stroke="#ae7c5a" />
-      <JFXButton fx:id="btnCloseIcon" layoutX="519.0" layoutY="54.0" onAction="#btnCloseIconOnAction" prefHeight="48.0" prefWidth="48.0" style="-fx-background-radius: 12;" text=" " />
+      <JFXButton fx:id="btnCloseIcon" layoutX="519.0" layoutY="54.0" onAction="#btnCloseIconOnAction" onMouseEntered="#btnCloseIconOnMouseEntered" onMouseExited="#btnCloseIconOnMouseExited" prefHeight="48.0" prefWidth="48.0" style="-fx-background-radius: 12;" text=" " />
       <Text layoutX="80.0" layoutY="201.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Are You Sure ?">
          <font>
             <Font size="24.0" />
@@ -48,7 +48,7 @@
             </Label>
          </children>
       </Pane>
-      <JFXButton fx:id="btnCancel" layoutX="46.0" layoutY="243.0" onAction="#btnCancelOnAction" prefHeight="54.0" prefWidth="259.0" style="-fx-background-radius: 12;" text=" " />
+      <JFXButton fx:id="btnCancel" layoutX="46.0" layoutY="243.0" onAction="#btnCancelOnAction" onMouseEntered="#btnCancelOnMouseEntered" onMouseExited="#btnCancelOnMouseExited" prefHeight="54.0" prefWidth="259.0" style="-fx-background-radius: 12;" text=" " />
       <Pane fx:id="confirmBtnPane" layoutX="326.0" layoutY="243.0" prefHeight="54.0" prefWidth="259.0" style="-fx-background-radius: 12; -fx-background-color: C56E33;">
          <children>
             <Label fx:id="lblConfirm" layoutX="88.0" layoutY="17.0" text="CONFIRM" textFill="WHITE">
@@ -58,6 +58,6 @@
             </Label>
          </children>
       </Pane>
-      <JFXButton fx:id="btnConfirm" layoutX="326.0" layoutY="243.0" onAction="#btnConfirmOnAction" prefHeight="54.0" prefWidth="259.0" style="-fx-background-radius: 12;" text=" " />
+      <JFXButton fx:id="btnConfirm" layoutX="326.0" layoutY="243.0" onAction="#btnConfirmOnAction" onMouseEntered="#btnConfirmOnMouseEntered" onMouseExited="#btnConfirmOnMouseExited" prefHeight="54.0" prefWidth="259.0" style="-fx-background-radius: 12;" text=" " />
    </children>
 </AnchorPane>

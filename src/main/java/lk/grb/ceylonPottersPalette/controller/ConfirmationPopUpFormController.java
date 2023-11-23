@@ -3,11 +3,14 @@ package lk.grb.ceylonPottersPalette.controller;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import lk.grb.ceylonPottersPalette.model.*;
 import lk.grb.ceylonPottersPalette.util.Navigation;
+import lk.grb.ceylonPottersPalette.util.StyleUtil;
 
 import java.sql.SQLException;
 
@@ -85,5 +88,35 @@ public class ConfirmationPopUpFormController {
             ItemStockFormController.getInstance().allItemId();
         }
         Navigation.closePane();
+    }
+
+    @FXML
+    void btnCloseIconOnMouseEntered(MouseEvent event) {
+        StyleUtil.closeIconBtnSelected(closeIconPane, imgCloseIcon);
+    }
+
+    @FXML
+    void btnCloseIconOnMouseExited(MouseEvent event) {
+        StyleUtil.closeIconBtnUnselected(closeIconPane, imgCloseIcon);
+    }
+
+    @FXML
+    void btnCancelOnMouseEntered(MouseEvent event) {
+        StyleUtil.cancelBtnSelected(cancelBtnPane, lblCancel);
+    }
+
+    @FXML
+    void btnCancelOnMouseExited(MouseEvent event) {
+        StyleUtil.cancelBtnUnselected(cancelBtnPane, lblCancel);
+    }
+
+    @FXML
+    void btnConfirmOnMouseEntered(MouseEvent event) {
+        StyleUtil.confirmORSaveBtnSelected(confirmBtnPane);
+    }
+
+    @FXML
+    void btnConfirmOnMouseExited(MouseEvent event) {
+        StyleUtil.confirmORSaveBtnUnselected(confirmBtnPane);
     }
 }
