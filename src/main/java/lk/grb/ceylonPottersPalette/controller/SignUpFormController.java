@@ -7,11 +7,13 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import lk.grb.ceylonPottersPalette.dto.EmployeeDto;
+
+import com.jfoenix.controls.JFXButton;
 import lk.grb.ceylonPottersPalette.dto.UserDto;
 import lk.grb.ceylonPottersPalette.model.EmployeeModel;
 import lk.grb.ceylonPottersPalette.model.UserModel;
 import lk.grb.ceylonPottersPalette.util.Navigation;
+import lk.grb.ceylonPottersPalette.util.StyleUtil;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -30,6 +32,9 @@ public class SignUpFormController {
 
     @FXML
     private TextField txtUsername;
+
+    @FXML
+    private JFXButton btnSignUp;
 
     UserModel userModel = new UserModel();
 
@@ -85,5 +90,15 @@ public class SignUpFormController {
             return false;
         }
         return true;
+    }
+
+    @FXML
+    void btnSignUpOnMouseEntered(MouseEvent event) {
+        StyleUtil.signUpOrLogInBtnSelected(btnSignUp);
+    }
+
+    @FXML
+    void btnSignUpOnMouseExited(MouseEvent event) {
+        StyleUtil.signUpOrLogInBtnUnselected(btnSignUp);
     }
 }

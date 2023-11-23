@@ -31,7 +31,7 @@
          </image>
       </ImageView>
       <JFXButton layoutX="7.0" layoutY="5.0" minHeight="42.0" onAction="#btnBackOnAction" prefWidth="42.0" style="-fx-background-radius: 100;" text=" " />
-      <JFXButton alignment="CENTER" buttonType="RAISED" layoutX="560.0" layoutY="418.0" onAction="#btnSignUpOnAction" prefHeight="42.0" prefWidth="267.0" style="-fx-background-radius: 12; -fx-background-color: C56E33;" text="Sign Up" textFill="WHITE">
+      <JFXButton fx:id="btnSignUp" alignment="CENTER" buttonType="RAISED" layoutX="560.0" layoutY="418.0" onAction="#btnSignUpOnAction" onMouseEntered="#btnSignUpOnMouseEntered" onMouseExited="#btnSignUpOnMouseExited" prefHeight="42.0" prefWidth="267.0" style="-fx-background-radius: 12; -fx-background-color: C56E33;" text="Sign Up" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>

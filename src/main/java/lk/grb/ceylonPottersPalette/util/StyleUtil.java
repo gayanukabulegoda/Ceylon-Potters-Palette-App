@@ -1,5 +1,6 @@
 package lk.grb.ceylonPottersPalette.util;
 
+import com.jfoenix.controls.JFXButton;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -19,6 +20,20 @@ public class StyleUtil {
                 "-fx-background-color: white;" +
                         "-fx-background-radius: 12px;");
         imageView.setImage(new Image("assests/icon/closeIcon.png"));
+    }
+
+    public static void addNewCustomerORSupplierBtnSelected(Pane pane, ImageView imageView) {
+        pane.setStyle(
+                "-fx-background-color: #FFDDC5;" +
+                        "-fx-background-radius: 12px;");
+        imageView.setImage(new Image("assests/icon/addIcon2.png"));
+    }
+
+    public static void addNewCustomerORSupplierBtnUnselected(Pane pane, ImageView imageView) {
+        pane.setStyle(
+                "-fx-background-color: white;" +
+                        "-fx-background-radius: 12px;");
+        imageView.setImage(new Image("assests/icon/addIcon.png"));
     }
 
     public static void cancelBtnSelected(Pane pane, Label label) {
@@ -43,6 +58,90 @@ public class StyleUtil {
 
     public static void confirmORSaveBtnUnselected(Pane pane) {
         pane.setStyle(
+                "-fx-background-color: #C56E33;" +
+                        "-fx-background-radius: 12px;");
+    }
+
+    public static void updateImgSelected(ImageView imageView) {
+        imageView.setImage(new Image("assests/icon/editIcon2.png"));
+        imageView.setScaleX(1.3);
+        imageView.setScaleY(1.3);
+    }
+
+    public static void updateImgUnselected(ImageView imageView) {
+        imageView.setImage(new Image("assests/icon/editIcon.png"));
+        imageView.setScaleX(1.0);
+        imageView.setScaleY(1.0);
+    }
+
+    public static void deleteImgSelected(ImageView imageView) {
+        imageView.setImage(new Image("assests/icon/deleteIcon2.png"));
+        imageView.setScaleX(1.3);
+        imageView.setScaleY(1.3);
+    }
+
+    public static void deleteImgUnselected(ImageView imageView) {
+        imageView.setImage(new Image("assests/icon/deleteIcon.png"));
+        imageView.setScaleX(1.0);
+        imageView.setScaleY(1.0);
+    }
+
+    public static void viewImgSelected(ImageView imageView) {
+        imageView.setImage(new Image("assests/icon/viewIcon2.png"));
+        imageView.setScaleX(1.2);
+        imageView.setScaleY(1.2);
+    }
+
+    public static void viewImgUnselected(ImageView imageView) {
+        imageView.setImage(new Image("assests/icon/viewIcon.png"));
+        imageView.setScaleX(1.0);
+        imageView.setScaleY(1.0);
+    }
+
+    public static void viewReportImgSelected(ImageView imageView) {
+        imageView.setImage(new Image("assests/icon/reportIcon2.png"));
+        imageView.setScaleX(1.3);
+        imageView.setScaleY(1.3);
+    }
+
+    public static void viewReportImgUnselected(ImageView imageView) {
+        imageView.setImage(new Image("assests/icon/reportIcon.png"));
+        imageView.setScaleX(1.0);
+        imageView.setScaleY(1.0);
+    }
+
+    public static void repairedBtnImgSelected(ImageView imageView) {
+        imageView.setImage(new Image("assests/img/btnRepairedProducts2.png"));
+        imageView.setScaleX(1.2);
+        imageView.setScaleY(1.2);
+    }
+
+    public static void repairedBtnImgImgUnselected(ImageView imageView) {
+        imageView.setImage(new Image("assests/img/btnRepairedProducts.png"));
+        imageView.setScaleX(1.0);
+        imageView.setScaleY(1.0);
+    }
+
+    public static void repairedUpdateBtnImgSelected(ImageView imageView) {
+        imageView.setImage(new Image("assests/img/btnRepairedUpdate2.png"));
+        imageView.setScaleX(1.2);
+        imageView.setScaleY(1.2);
+    }
+
+    public static void repairedUpdateBtnImgUnselected(ImageView imageView) {
+        imageView.setImage(new Image("assests/img/btnRepairedUpdate.png"));
+        imageView.setScaleX(1.0);
+        imageView.setScaleY(1.0);
+    }
+
+    public static void signUpOrLogInBtnSelected(JFXButton button) {
+        button.setStyle(
+                "-fx-background-color: #885D40;" +
+                        "-fx-background-radius: 12px;");
+    }
+
+    public static void signUpOrLogInBtnUnselected(JFXButton button) {
+        button.setStyle(
                 "-fx-background-color: #C56E33;" +
                         "-fx-background-radius: 12px;");
     }

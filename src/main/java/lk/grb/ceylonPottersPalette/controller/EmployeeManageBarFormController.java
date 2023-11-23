@@ -7,6 +7,7 @@ import javafx.scene.text.Text;
 import lk.grb.ceylonPottersPalette.dto.EmployeeDto;
 import lk.grb.ceylonPottersPalette.model.EmployeeModel;
 import lk.grb.ceylonPottersPalette.util.Navigation;
+import lk.grb.ceylonPottersPalette.util.StyleUtil;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -47,12 +48,12 @@ public class EmployeeManageBarFormController {
 
     @FXML
     void deleteOnMouseEntered(MouseEvent event) {
-
+        StyleUtil.deleteImgSelected(deleteImg);
     }
 
     @FXML
     void deleteOnMouseExited(MouseEvent event) {
-
+        StyleUtil.deleteImgUnselected(deleteImg);
     }
 
     @FXML
@@ -63,12 +64,12 @@ public class EmployeeManageBarFormController {
 
     @FXML
     void updateOnMouseEntered(MouseEvent event) {
-
+        StyleUtil.updateImgSelected(updateImg);
     }
 
     @FXML
     void updateOnMouseExited(MouseEvent event) {
-
+        StyleUtil.updateImgUnselected(updateImg);
     }
 
     @FXML
@@ -79,12 +80,12 @@ public class EmployeeManageBarFormController {
 
     @FXML
     void viewOnMouseEntered(MouseEvent event) {
-
+        StyleUtil.viewImgSelected(viewImg);
     }
 
     @FXML
     void viewOnMouseExited(MouseEvent event) {
-
+        StyleUtil.viewImgUnselected(viewImg);
     }
 
     public void setData(String id) {

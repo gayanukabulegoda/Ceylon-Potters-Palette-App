@@ -10,6 +10,7 @@ import lk.grb.ceylonPottersPalette.dto.SupplierDto;
 import lk.grb.ceylonPottersPalette.model.EmployeeModel;
 import lk.grb.ceylonPottersPalette.model.EmployeeSalaryModel;
 import lk.grb.ceylonPottersPalette.util.Navigation;
+import lk.grb.ceylonPottersPalette.util.StyleUtil;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -47,12 +48,12 @@ public class EmployeeSalaryBarFormController {
 
     @FXML
     void updateOnMouseEntered(MouseEvent event) {
-
+        StyleUtil.updateImgSelected(updateImg);
     }
 
     @FXML
     void updateOnMouseExited(MouseEvent event) {
-
+        StyleUtil.updateImgUnselected(updateImg);
     }
 
     @FXML
@@ -63,12 +64,12 @@ public class EmployeeSalaryBarFormController {
 
     @FXML
     void viewOnMouseEntered(MouseEvent event) {
-
+        StyleUtil.viewImgSelected(viewImg);
     }
 
     @FXML
     void viewOnMouseExited(MouseEvent event) {
-
+        StyleUtil.viewImgUnselected(viewImg);
     }
 
     public void setData(String id) {

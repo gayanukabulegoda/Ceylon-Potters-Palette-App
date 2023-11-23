@@ -8,6 +8,7 @@ import lk.grb.ceylonPottersPalette.dto.CustomerOrderDto;
 import lk.grb.ceylonPottersPalette.model.CustomerOrderDetailModel;
 import lk.grb.ceylonPottersPalette.model.ProductStockModel;
 import lk.grb.ceylonPottersPalette.util.Navigation;
+import lk.grb.ceylonPottersPalette.util.StyleUtil;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -50,12 +51,12 @@ public class CustomerOrderAddPopUpBarFormController {
 
     @FXML
     void deleteOnMouseEntered(MouseEvent event) {
-
+        StyleUtil.deleteImgSelected(deleteImg);
     }
 
     @FXML
     void deleteOnMouseExited(MouseEvent event) {
-
+        StyleUtil.deleteImgUnselected(deleteImg);
     }
 
     public void setData(String[] element) {

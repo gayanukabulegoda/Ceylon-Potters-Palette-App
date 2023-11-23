@@ -3,7 +3,7 @@ package lk.grb.ceylonPottersPalette.controller;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.image.ImageView;
@@ -14,6 +14,7 @@ import lk.grb.ceylonPottersPalette.model.UserModel;
 import lk.grb.ceylonPottersPalette.util.DateTimeUtil;
 import lk.grb.ceylonPottersPalette.util.Navigation;
 import lk.grb.ceylonPottersPalette.util.NewId;
+import lk.grb.ceylonPottersPalette.util.StyleUtil;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -155,5 +156,35 @@ public class CredentialChangePopUpFormController {
         }
         lblNewPwAlert.setText(" ");
         return true;
+    }
+
+    @FXML
+    void btnSaveOnMouseEntered(MouseEvent event) {
+        StyleUtil.confirmORSaveBtnSelected(SaveBtnPane);
+    }
+
+    @FXML
+    void btnSaveOnMouseExited(MouseEvent event) {
+        StyleUtil.confirmORSaveBtnUnselected(SaveBtnPane);
+    }
+
+    @FXML
+    void btnCloseIconOnMouseEntered(MouseEvent event) {
+        StyleUtil.closeIconBtnSelected(closeIconPane, imgCloseIcon);
+    }
+
+    @FXML
+    void btnCloseIconOnMouseExited(MouseEvent event) {
+        StyleUtil.closeIconBtnUnselected(closeIconPane, imgCloseIcon);
+    }
+
+    @FXML
+    void btnCancelOnMouseEntered(MouseEvent event) {
+        StyleUtil.confirmORSaveBtnSelected(SaveBtnPane);
+    }
+
+    @FXML
+    void btnCancelOnMouseExited(MouseEvent event) {
+        StyleUtil.confirmORSaveBtnUnselected(SaveBtnPane);
     }
 }

@@ -8,6 +8,7 @@ import lk.grb.ceylonPottersPalette.dto.ItemStockDto;
 import lk.grb.ceylonPottersPalette.dto.SupplierDto;
 import lk.grb.ceylonPottersPalette.model.ItemStockModel;
 import lk.grb.ceylonPottersPalette.util.Navigation;
+import lk.grb.ceylonPottersPalette.util.StyleUtil;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -45,12 +46,12 @@ public class ItemStockBarFormController {
 
     @FXML
     void deleteOnMouseEntered(MouseEvent event) {
-
+        StyleUtil.deleteImgSelected(deleteImg);
     }
 
     @FXML
     void deleteOnMouseExited(MouseEvent event) {
-
+        StyleUtil.deleteImgUnselected(deleteImg);
     }
 
     @FXML
@@ -61,12 +62,12 @@ public class ItemStockBarFormController {
 
     @FXML
     void updateOnMouseEntered(MouseEvent event) {
-
+        StyleUtil.updateImgSelected(updateImg);
     }
 
     @FXML
     void updateOnMouseExited(MouseEvent event) {
-
+        StyleUtil.updateImgUnselected(updateImg);
     }
 
     @FXML
@@ -77,12 +78,12 @@ public class ItemStockBarFormController {
 
     @FXML
     void viewOnMouseEntered(MouseEvent event) {
-
+        StyleUtil.viewImgSelected(viewImg);
     }
 
     @FXML
     void viewOnMouseExited(MouseEvent event) {
-
+        StyleUtil.viewImgUnselected(viewImg);
     }
 
     public void setData(String id) {

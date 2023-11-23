@@ -15,6 +15,7 @@ import lk.grb.ceylonPottersPalette.model.CustomerModel;
 import lk.grb.ceylonPottersPalette.util.DateTimeUtil;
 import lk.grb.ceylonPottersPalette.util.Navigation;
 import lk.grb.ceylonPottersPalette.util.NewId;
+import lk.grb.ceylonPottersPalette.util.StyleUtil;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -159,6 +160,36 @@ public class CustomerUpdatePopUpFormController implements Initializable {
     @FXML
     void emailOnMouseClick(MouseEvent event) {
         lblCustomerEmailAlert.setText(" ");
+    }
+
+    @FXML
+    void btnCloseIconOnMouseEntered(MouseEvent event) {
+        StyleUtil.closeIconBtnSelected(closeIconPane, imgCloseIcon);
+    }
+
+    @FXML
+    void btnCloseIconOnMouseExited(MouseEvent event) {
+        StyleUtil.closeIconBtnUnselected(closeIconPane, imgCloseIcon);
+    }
+
+    @FXML
+    void btnCancelOnMouseEntered(MouseEvent event) {
+        StyleUtil.cancelBtnSelected(cancelBtnPane, lblCancel);
+    }
+
+    @FXML
+    void btnCancelOnMouseExited(MouseEvent event) {
+        StyleUtil.cancelBtnUnselected(cancelBtnPane, lblCancel);
+    }
+
+    @FXML
+    void btnUpdateOnMouseEntered(MouseEvent event) {
+        StyleUtil.confirmORSaveBtnSelected(updateBtnPane);
+    }
+
+    @FXML
+    void btnUpdateOnMouseExited(MouseEvent event) {
+        StyleUtil.confirmORSaveBtnUnselected(updateBtnPane);
     }
 
     @Override

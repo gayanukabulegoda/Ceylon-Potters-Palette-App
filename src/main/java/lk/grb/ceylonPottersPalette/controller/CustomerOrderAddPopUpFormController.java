@@ -1,6 +1,5 @@
 package lk.grb.ceylonPottersPalette.controller;
 
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,6 +18,7 @@ import lk.grb.ceylonPottersPalette.model.*;
 import lk.grb.ceylonPottersPalette.util.DateTimeUtil;
 import lk.grb.ceylonPottersPalette.util.Navigation;
 import lk.grb.ceylonPottersPalette.util.NewId;
+import lk.grb.ceylonPottersPalette.util.StyleUtil;
 
 import java.io.IOException;
 import java.net.URL;
@@ -33,22 +33,10 @@ public class CustomerOrderAddPopUpFormController implements Initializable {
     private Pane AddToCartBtnPane;
 
     @FXML
-    private JFXButton btnAddNewCustomer;
-
-    @FXML
-    private ImageView btnAddNewCustomerIcon;
+    private ImageView btnAddNewCustomerIconImg;
 
     @FXML
     private Pane btnAddNewCustomerPane;
-
-    @FXML
-    private JFXButton btnAddToCart;
-
-    @FXML
-    private JFXButton btnCancel;
-
-    @FXML
-    private JFXButton btnPlaceOrder;
 
     @FXML
     private Pane cancelBtnPane;
@@ -58,9 +46,6 @@ public class CustomerOrderAddPopUpFormController implements Initializable {
 
     @FXML
     private JFXComboBox<String> cmbProductId;
-
-    @FXML
-    private Label lblAddToCart;
 
     @FXML
     private Label lblCancel;
@@ -79,9 +64,6 @@ public class CustomerOrderAddPopUpFormController implements Initializable {
 
     @FXML
     private Label lblOrderId;
-
-    @FXML
-    private Label lblPlaceOrder;
 
     @FXML
     private Label lblQtyOnHand;
@@ -238,6 +220,46 @@ public class CustomerOrderAddPopUpFormController implements Initializable {
         lblDescription.setText(productStockModel.getDescription(cmbProductId.getSelectionModel().getSelectedItem()));
         lblUnitPrice.setText(productStockModel.getUnitPrice(cmbProductId.getSelectionModel().getSelectedItem()));
         lblQtyOnHand.setText(productStockModel.getQtyOnHand(cmbProductId.getSelectionModel().getSelectedItem()));
+    }
+
+    @FXML
+    void btnPlaceOrderOnMouseEntered(MouseEvent event) {
+        StyleUtil.confirmORSaveBtnSelected(placeOrderPanel);
+    }
+
+    @FXML
+    void btnPlaceOrderOnMouseExited(MouseEvent event) {
+        StyleUtil.confirmORSaveBtnUnselected(placeOrderPanel);
+    }
+
+    @FXML
+    void btnCancelOnMouseEntered(MouseEvent event) {
+        StyleUtil.cancelBtnSelected(cancelBtnPane, lblCancel);
+    }
+
+    @FXML
+    void btnCancelOnMouseExited(MouseEvent event) {
+        StyleUtil.cancelBtnUnselected(cancelBtnPane, lblCancel);
+    }
+
+    @FXML
+    void btnAddToCartOnMouseEntered(MouseEvent event) {
+        StyleUtil.confirmORSaveBtnSelected(AddToCartBtnPane);
+    }
+
+    @FXML
+    void btnAddToCartOnMouseExited(MouseEvent event) {
+        StyleUtil.confirmORSaveBtnUnselected(AddToCartBtnPane);
+    }
+
+    @FXML
+    void btnAddNewCustomerOnMouseEntered(MouseEvent event) {
+        StyleUtil.addNewCustomerORSupplierBtnSelected(btnAddNewCustomerPane, btnAddNewCustomerIconImg);
+    }
+
+    @FXML
+    void btnAddNewCustomerOnMouseExited(MouseEvent event) {
+        StyleUtil.addNewCustomerORSupplierBtnUnselected(btnAddNewCustomerPane, btnAddNewCustomerIconImg);
     }
 
     public void setProductDataInComboBox() throws SQLException {

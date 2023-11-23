@@ -13,6 +13,7 @@ import lk.grb.ceylonPottersPalette.model.CustomerOrderDetailModel;
 import lk.grb.ceylonPottersPalette.model.CustomerOrderModel;
 import lk.grb.ceylonPottersPalette.model.ProductStockModel;
 import lk.grb.ceylonPottersPalette.util.Navigation;
+import lk.grb.ceylonPottersPalette.util.StyleUtil;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.design.JRDesignQuery;
 import net.sf.jasperreports.engine.design.JasperDesign;
@@ -60,12 +61,12 @@ public class CustomerOrderManageBarFormController {
 
     @FXML
     void viewOnMouseEntered(MouseEvent event) {
-
+        StyleUtil.viewImgSelected(viewImg);
     }
 
     @FXML
     void viewOnMouseExited(MouseEvent event) {
-
+        StyleUtil.viewImgUnselected(viewImg);
     }
 
     @FXML
@@ -112,12 +113,12 @@ public class CustomerOrderManageBarFormController {
 
     @FXML
     void reportOnMouseEntered(MouseEvent event) {
-
+        StyleUtil.viewReportImgSelected(reportImg);
     }
 
     @FXML
     void reportOnMouseExited(MouseEvent event) {
-
+        StyleUtil.viewReportImgUnselected(reportImg);
     }
 
     public void setData(String id) {

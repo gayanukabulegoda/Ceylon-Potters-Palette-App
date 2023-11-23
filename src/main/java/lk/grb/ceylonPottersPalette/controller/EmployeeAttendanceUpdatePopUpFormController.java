@@ -13,6 +13,7 @@ import lk.grb.ceylonPottersPalette.dto.EmployeeAttendanceDto;
 import lk.grb.ceylonPottersPalette.model.EmployeeAttendanceModel;
 import lk.grb.ceylonPottersPalette.model.EmployeeModel;
 import lk.grb.ceylonPottersPalette.util.Navigation;
+import lk.grb.ceylonPottersPalette.util.StyleUtil;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -100,6 +101,26 @@ public class EmployeeAttendanceUpdatePopUpFormController implements Initializabl
     public void setDataInComboBox() throws SQLException {
         ArrayList<String> roles = employeeModel.getAllEmployeeId();
         cmbEmployeeId.getItems().addAll(roles);
+    }
+
+    @FXML
+    void btnUpdateAttendanceOnMouseEntered(MouseEvent event) {
+        StyleUtil.confirmORSaveBtnSelected(updateAttendaceBtnPane);
+    }
+
+    @FXML
+    void btnUpdateAttendanceOnMouseExited(MouseEvent event) {
+        StyleUtil.confirmORSaveBtnUnselected(updateAttendaceBtnPane);
+    }
+
+    @FXML
+    void btnCloseIconOnMouseEntered(MouseEvent event) {
+        StyleUtil.closeIconBtnSelected(closeIconPane, imgCloseIcon);
+    }
+
+    @FXML
+    void btnCloseIconOnMouseExited(MouseEvent event) {
+        StyleUtil.closeIconBtnUnselected(closeIconPane, imgCloseIcon);
     }
 
     public void setData() {

@@ -10,7 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.CacheHint;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -24,6 +24,7 @@ import lk.grb.ceylonPottersPalette.model.CustomerModel;
 import lk.grb.ceylonPottersPalette.model.CustomerOrderDetailModel;
 import lk.grb.ceylonPottersPalette.model.CustomerOrderModel;
 import lk.grb.ceylonPottersPalette.util.Navigation;
+import lk.grb.ceylonPottersPalette.util.StyleUtil;
 
 import java.io.IOException;
 import java.net.URL;
@@ -82,6 +83,16 @@ public class CustomerOrderViewPopUpFormController implements Initializable {
     @FXML
     void btnCloseOnAction(ActionEvent event) {
         Navigation.closeOrderPopUpPane();
+    }
+
+    @FXML
+    void btnCloseOnMouseEntered(MouseEvent event) {
+        StyleUtil.confirmORSaveBtnSelected(btnClosePane);
+    }
+
+    @FXML
+    void btnCloseOnMouseExited(MouseEvent event) {
+        StyleUtil.confirmORSaveBtnUnselected(btnClosePane);
     }
 
     public void start() {

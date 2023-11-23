@@ -17,6 +17,7 @@ import lk.grb.ceylonPottersPalette.model.EmployeeSalaryModel;
 import lk.grb.ceylonPottersPalette.util.DateTimeUtil;
 import lk.grb.ceylonPottersPalette.util.Navigation;
 import lk.grb.ceylonPottersPalette.util.NewId;
+import lk.grb.ceylonPottersPalette.util.StyleUtil;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -191,6 +192,36 @@ public class EmployeeSalaryPopUpFormController implements Initializable {
         if (txtSalary.getText().isEmpty()) {
             txtSalary.setText(String.valueOf(0.00));
         }
+    }
+
+    @FXML
+    void btnAddOnMouseEntered(MouseEvent event) {
+        StyleUtil.confirmORSaveBtnSelected(AddBtnPane);
+    }
+
+    @FXML
+    void btnAddOnMouseExited(MouseEvent event) {
+        StyleUtil.confirmORSaveBtnUnselected(AddBtnPane);
+    }
+
+    @FXML
+    void btnCloseIconOnMouseEntered(MouseEvent event) {
+        StyleUtil.closeIconBtnSelected(closeIconPane, imgCloseIcon);
+    }
+
+    @FXML
+    void btnCloseIconOnMouseExited(MouseEvent event) {
+        StyleUtil.closeIconBtnUnselected(closeIconPane, imgCloseIcon);
+    }
+
+    @FXML
+    void btnCancelOnMouseEntered(MouseEvent event) {
+        StyleUtil.cancelBtnSelected(cancelBtnPane, lblCancel);
+    }
+
+    @FXML
+    void btnCancelOnMouseExited(MouseEvent event) {
+        StyleUtil.cancelBtnUnselected(cancelBtnPane, lblCancel);
     }
 
     @Override

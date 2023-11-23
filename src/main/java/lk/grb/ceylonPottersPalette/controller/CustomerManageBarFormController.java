@@ -1,13 +1,16 @@
 package lk.grb.ceylonPottersPalette.controller;
 
 import javafx.fxml.FXML;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import lk.grb.ceylonPottersPalette.dto.CustomerDto;
 import lk.grb.ceylonPottersPalette.dto.SupplierDto;
 import lk.grb.ceylonPottersPalette.model.CustomerModel;
 import lk.grb.ceylonPottersPalette.util.Navigation;
+import lk.grb.ceylonPottersPalette.util.StyleUtil;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -45,12 +48,12 @@ public class CustomerManageBarFormController {
 
     @FXML
     void deleteOnMouseEntered(MouseEvent event) {
-
+        StyleUtil.deleteImgSelected(deleteImg);
     }
 
     @FXML
     void deleteOnMouseExited(MouseEvent event) {
-
+        StyleUtil.deleteImgUnselected(deleteImg);
     }
 
     @FXML
@@ -61,12 +64,12 @@ public class CustomerManageBarFormController {
 
     @FXML
     void updateOnMouseEntered(MouseEvent event) {
-
+        StyleUtil.updateImgSelected(updateImg);
     }
 
     @FXML
     void updateOnMouseExited(MouseEvent event) {
-
+        StyleUtil.updateImgUnselected(updateImg);
     }
 
     @FXML
@@ -77,12 +80,12 @@ public class CustomerManageBarFormController {
 
     @FXML
     void viewOnMouseEntered(MouseEvent event) {
-
+        StyleUtil.viewImgSelected(viewImg);
     }
 
     @FXML
     void viewOnMouseExited(MouseEvent event) {
-
+        StyleUtil.viewImgUnselected(viewImg);
     }
 
     public void setData(String id) {

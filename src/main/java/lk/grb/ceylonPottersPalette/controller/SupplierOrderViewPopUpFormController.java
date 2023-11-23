@@ -11,6 +11,7 @@ import javafx.scene.CacheHint;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
@@ -20,6 +21,7 @@ import lk.grb.ceylonPottersPalette.model.SupplierModel;
 import lk.grb.ceylonPottersPalette.model.SupplierOrderDetailModel;
 import lk.grb.ceylonPottersPalette.model.SupplierOrderModel;
 import lk.grb.ceylonPottersPalette.util.Navigation;
+import lk.grb.ceylonPottersPalette.util.StyleUtil;
 
 import java.io.IOException;
 import java.net.URL;
@@ -78,6 +80,16 @@ public class SupplierOrderViewPopUpFormController implements Initializable {
     @FXML
     void btnCloseOnAction(ActionEvent event) {
         Navigation.closeOrderPopUpPane();
+    }
+
+    @FXML
+    void btnCloseOnMouseEntered(MouseEvent event) {
+        StyleUtil.confirmORSaveBtnSelected(btnClosePane);
+    }
+
+    @FXML
+    void btnCloseOnMouseExited(MouseEvent event) {
+        StyleUtil.confirmORSaveBtnUnselected(btnClosePane);
     }
 
     public void start() {

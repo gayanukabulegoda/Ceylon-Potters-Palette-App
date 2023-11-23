@@ -27,14 +27,14 @@
             <JFXComboBox fx:id="cmbSupplierId" focusColor="#e8e8e8" layoutX="17.0" layoutY="205.0" onAction="#cmbSupplierIdOnAction" onMouseClicked="#cmbSupplierIdOnMouseClicked" prefHeight="42.0" prefWidth="214.0" promptText="   Supplier ID" style="-fx-background-color: white; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: E8E8E8; -fx-border-width: 1;" unFocusColor="#e8e8e8" />
             <Pane fx:id="btnAddNewSupplierPane" layoutX="239.0" layoutY="203.0" prefHeight="45.0" prefWidth="45.0" style="-fx-background-color: white; -fx-background-radius: 12; -fx-border-color: E8E8E8; -fx-border-radius: 12; -fx-border-width: 1;">
                <children>
-                  <ImageView fx:id="btnAddNewSupplierIcon" fitHeight="24.0" fitWidth="24.0" layoutX="11.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="btnAddNewSupplierIconImg" fitHeight="24.0" fitWidth="24.0" layoutX="11.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../assests/icon/addIcon.png" />
                      </image>
                   </ImageView>
                </children>
             </Pane>
-            <JFXButton fx:id="btnAddNewSupplier" layoutX="239.0" layoutY="203.0" onAction="#btnAddNewSupplierOnAction" prefHeight="45.0" prefWidth="45.0" style="-fx-background-radius: 12;" text=" " />
+            <JFXButton fx:id="btnAddNewSupplier" layoutX="239.0" layoutY="203.0" onAction="#btnAddNewSupplierOnAction" onMouseEntered="#btnAddNewSupplierOnMouseEntered" onMouseExited="#btnAddNewSupplierOnMouseExited" prefHeight="45.0" prefWidth="45.0" style="-fx-background-radius: 12;" text=" " />
             <Label layoutX="24.0" layoutY="272.0" text="ITEM DETAILS" textFill="#151619" />
             <JFXComboBox fx:id="cmbItemId" focusColor="#e8e8e8" layoutX="17.0" layoutY="315.0" onAction="#cmbItemIdOnAction" onMouseClicked="#cmbItemIdOnMouseClicked" prefHeight="42.0" prefWidth="260.0" promptText="   Item ID" style="-fx-background-color: white; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: E8E8E8; -fx-border-width: 1;" unFocusColor="#e8e8e8" />
             <Label fx:id="lblDescription" layoutX="31.0" layoutY="380.0" text="Description" textFill="#727374" />
@@ -57,7 +57,7 @@
                   </Label>
                </children>
             </Pane>
-            <JFXButton fx:id="btnAddToCart" layoutX="24.0" layoutY="602.0" onAction="#btnAddToCartOnAction" prefHeight="54.0" prefWidth="259.0" style="-fx-background-radius: 12;" text=" " />
+            <JFXButton fx:id="btnAddToCart" layoutX="24.0" layoutY="602.0" onAction="#btnAddToCartOnAction" onMouseEntered="#btnAddToCartOnMouseEntered" onMouseExited="#btnAddToCartOnMouseExited" prefHeight="54.0" prefWidth="259.0" style="-fx-background-radius: 12;" text=" " />
             <Label fx:id="lblCmbSupplierAlert" layoutX="28.0" layoutY="246.0" textFill="RED">
                <font>
                   <Font size="11.0" />
@@ -137,7 +137,7 @@
                   </Label>
                </children>
             </Pane>
-            <JFXButton fx:id="btnPlaceOrder" layoutX="583.0" layoutY="602.0" onAction="#btnPlaceOrderOnAction" prefHeight="54.0" prefWidth="240.0" style="-fx-background-radius: 12;" text=" " />
+            <JFXButton fx:id="btnPlaceOrder" layoutX="583.0" layoutY="602.0" onAction="#btnPlaceOrderOnAction" onMouseEntered="#btnPlaceOrderOnMouseEntered" onMouseExited="#btnPlaceOrderOnMouseExited" prefHeight="54.0" prefWidth="240.0" style="-fx-background-radius: 12;" text=" " />
             <Pane fx:id="cancelBtnPane" layoutX="328.0" layoutY="602.0" prefHeight="54.0" prefWidth="240.0" style="-fx-background-radius: 12;">
                <children>
                   <Label fx:id="lblCancel" layoutX="85.0" layoutY="17.0" text="CANCEL" textFill="#c56e33">
@@ -147,7 +147,7 @@
                   </Label>
                </children>
             </Pane>
-            <JFXButton fx:id="btnCancel" layoutX="328.0" layoutY="602.0" onAction="#btnCancelOnAction" prefHeight="54.0" prefWidth="240.0" style="-fx-background-radius: 12;" text=" " />
+            <JFXButton fx:id="btnCancel" layoutX="328.0" layoutY="602.0" onAction="#btnCancelOnAction" onMouseEntered="#btnCancelOnMouseEntered" onMouseExited="#btnCancelOnMouseExited" prefHeight="54.0" prefWidth="240.0" style="-fx-background-radius: 12;" text=" " />
          </children>
       </Pane>
    </children>

@@ -11,6 +11,7 @@ import lk.grb.ceylonPottersPalette.dto.SupplierOrderDto;
 import lk.grb.ceylonPottersPalette.model.SupplierModel;
 import lk.grb.ceylonPottersPalette.model.SupplierOrderModel;
 import lk.grb.ceylonPottersPalette.util.Navigation;
+import lk.grb.ceylonPottersPalette.util.StyleUtil;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.design.JRDesignQuery;
 import net.sf.jasperreports.engine.design.JasperDesign;
@@ -57,12 +58,12 @@ public class SupplierOrderManageBarFormController {
 
     @FXML
     void viewOnMouseEntered(MouseEvent event) {
-
+        StyleUtil.viewImgSelected(viewImg);
     }
 
     @FXML
     void viewOnMouseExited(MouseEvent event) {
-
+        StyleUtil.viewImgUnselected(viewImg);
     }
 
     @FXML
@@ -108,12 +109,12 @@ public class SupplierOrderManageBarFormController {
 
     @FXML
     void reportOnMouseEntered(MouseEvent event) {
-
+        StyleUtil.viewReportImgSelected(reportImg);
     }
 
     @FXML
     void reportOnMouseExited(MouseEvent event) {
-
+        StyleUtil.viewReportImgUnselected(reportImg);
     }
 
     public void setData(String id) {

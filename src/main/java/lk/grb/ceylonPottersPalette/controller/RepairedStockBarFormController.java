@@ -9,6 +9,7 @@ import lk.grb.ceylonPottersPalette.dto.RepairStockDto;
 import lk.grb.ceylonPottersPalette.model.ProductStockModel;
 import lk.grb.ceylonPottersPalette.model.RepairStockModel;
 import lk.grb.ceylonPottersPalette.util.Navigation;
+import lk.grb.ceylonPottersPalette.util.StyleUtil;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -45,12 +46,12 @@ public class RepairedStockBarFormController {
 
     @FXML
     void imgRepairedOnMouseEntered(MouseEvent event) {
-
+        StyleUtil.repairedBtnImgSelected(imgRepaired);
     }
 
     @FXML
     void imgRepairedOnMouseExited(MouseEvent event) {
-
+        StyleUtil.repairedBtnImgImgUnselected(imgRepaired);
     }
 
     @FXML
@@ -61,12 +62,12 @@ public class RepairedStockBarFormController {
 
     @FXML
     void imgUpdateOnMouseEntered(MouseEvent event) {
-
+        StyleUtil.repairedUpdateBtnImgSelected(imgUpdate);
     }
 
     @FXML
     void imgUpdateOnMouseExited(MouseEvent event) {
-
+        StyleUtil.repairedUpdateBtnImgUnselected(imgUpdate);
     }
 
     public void setData(String id) {

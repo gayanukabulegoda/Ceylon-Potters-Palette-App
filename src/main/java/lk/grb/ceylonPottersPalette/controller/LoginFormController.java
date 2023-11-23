@@ -7,8 +7,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import com.jfoenix.controls.JFXButton;
 import lk.grb.ceylonPottersPalette.model.UserModel;
 import lk.grb.ceylonPottersPalette.util.Navigation;
+import lk.grb.ceylonPottersPalette.util.StyleUtil;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -27,6 +29,9 @@ public class LoginFormController {
 
     @FXML
     private Label lblUserNameAlert;
+
+    @FXML
+    private JFXButton btnLogIn;
 
     public static String password;
 
@@ -93,5 +98,15 @@ public class LoginFormController {
     @FXML
     void hyperSignUpOnAction(ActionEvent event) throws IOException {
         Navigation.switchNavigation("signUpEmployeeConfirmForm.fxml", event);
+    }
+
+    @FXML
+    void btnLogInOnMouseEntered(MouseEvent event) {
+        StyleUtil.signUpOrLogInBtnSelected(btnLogIn);
+    }
+
+    @FXML
+    void btnLogInOnMouseExited(MouseEvent event) {
+        StyleUtil.signUpOrLogInBtnUnselected(btnLogIn);
     }
 }

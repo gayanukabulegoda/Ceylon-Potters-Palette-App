@@ -14,6 +14,7 @@ import lk.grb.ceylonPottersPalette.model.UserModel;
 import lk.grb.ceylonPottersPalette.util.DateTimeUtil;
 import lk.grb.ceylonPottersPalette.util.Navigation;
 import lk.grb.ceylonPottersPalette.util.NewId;
+import lk.grb.ceylonPottersPalette.util.StyleUtil;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -140,5 +141,35 @@ public class SupplierAddPopUpFormController {
     @FXML
     void btnCloseIconOnAction(ActionEvent event) {
         Navigation.closePane();
+    }
+
+    @FXML
+    void btnAddOnMouseEntered(MouseEvent event) {
+        StyleUtil.confirmORSaveBtnSelected(AddBtnPane);
+    }
+
+    @FXML
+    void btnAddOnMouseExited(MouseEvent event) {
+        StyleUtil.confirmORSaveBtnUnselected(AddBtnPane);
+    }
+
+    @FXML
+    void btnCloseIconOnMouseEntered(MouseEvent event) {
+        StyleUtil.closeIconBtnSelected(closeIconPane, imgCloseIcon);
+    }
+
+    @FXML
+    void btnCloseIconOnMouseExited(MouseEvent event) {
+        StyleUtil.closeIconBtnUnselected(closeIconPane, imgCloseIcon);
+    }
+
+    @FXML
+    void btnCancelOnMouseEntered(MouseEvent event) {
+        StyleUtil.cancelBtnSelected(cancelBtnPane, lblCancel);
+    }
+
+    @FXML
+    void btnCancelOnMouseExited(MouseEvent event) {
+        StyleUtil.cancelBtnUnselected(cancelBtnPane, lblCancel);
     }
 }

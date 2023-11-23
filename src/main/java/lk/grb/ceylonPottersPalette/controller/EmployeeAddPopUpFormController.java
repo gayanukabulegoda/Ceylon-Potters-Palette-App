@@ -15,6 +15,7 @@ import lk.grb.ceylonPottersPalette.model.EmployeeModel;
 import lk.grb.ceylonPottersPalette.util.DateTimeUtil;
 import lk.grb.ceylonPottersPalette.util.Navigation;
 import lk.grb.ceylonPottersPalette.util.NewId;
+import lk.grb.ceylonPottersPalette.util.StyleUtil;
 
 import java.io.IOException;
 import java.net.URL;
@@ -276,8 +277,33 @@ public class EmployeeAddPopUpFormController implements Initializable {
     }
 
     @FXML
-    void cmbRoleOnAction(ActionEvent event) {
+    void btnAddOnMouseEntered(MouseEvent event) {
+        StyleUtil.confirmORSaveBtnSelected(AddBtnPane);
+    }
 
+    @FXML
+    void btnAddOnMouseExited(MouseEvent event) {
+        StyleUtil.confirmORSaveBtnUnselected(AddBtnPane);
+    }
+
+    @FXML
+    void btnCloseIconOnMouseEntered(MouseEvent event) {
+        StyleUtil.closeIconBtnSelected(closeIconPane, imgCloseIcon);
+    }
+
+    @FXML
+    void btnCloseIconOnMouseExited(MouseEvent event) {
+        StyleUtil.closeIconBtnUnselected(closeIconPane, imgCloseIcon);
+    }
+
+    @FXML
+    void btnCancelOnMouseEntered(MouseEvent event) {
+        StyleUtil.cancelBtnSelected(cancelBtnPane, lblCancel);
+    }
+
+    @FXML
+    void btnCancelOnMouseExited(MouseEvent event) {
+        StyleUtil.cancelBtnUnselected(cancelBtnPane, lblCancel);
     }
 
     @Override

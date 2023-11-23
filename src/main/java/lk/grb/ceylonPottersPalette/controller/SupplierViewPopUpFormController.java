@@ -7,10 +7,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-import lk.grb.ceylonPottersPalette.dto.CustomerDto;
+import javafx.scene.input.MouseEvent;
 import lk.grb.ceylonPottersPalette.dto.SupplierDto;
 import lk.grb.ceylonPottersPalette.model.SupplierModel;
 import lk.grb.ceylonPottersPalette.util.Navigation;
+import lk.grb.ceylonPottersPalette.util.StyleUtil;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -66,6 +67,26 @@ public class SupplierViewPopUpFormController implements Initializable {
     @FXML
     void btnCloseOnAction(ActionEvent event) {
         Navigation.closePane();
+    }
+
+    @FXML
+    void btnCloseIconOnMouseEntered(MouseEvent event) {
+        StyleUtil.closeIconBtnSelected(closeIconPane, imgCloseIcon);
+    }
+
+    @FXML
+    void btnCloseIconOnMouseExited(MouseEvent event) {
+        StyleUtil.closeIconBtnUnselected(closeIconPane, imgCloseIcon);
+    }
+
+    @FXML
+    void btnCloseOnMouseEntered(MouseEvent event) {
+        StyleUtil.confirmORSaveBtnSelected(btnClosePane);
+    }
+
+    @FXML
+    void btnCloseOnMouseExited(MouseEvent event) {
+        StyleUtil.confirmORSaveBtnUnselected(btnClosePane);
     }
 
     public void setData() throws SQLException {

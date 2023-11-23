@@ -7,9 +7,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-import lk.grb.ceylonPottersPalette.dto.RepairStockDto;
+import javafx.scene.input.MouseEvent;
 import lk.grb.ceylonPottersPalette.model.UpdateRepairStockModel;
 import lk.grb.ceylonPottersPalette.util.Navigation;
+import lk.grb.ceylonPottersPalette.util.StyleUtil;
 
 import java.sql.SQLException;
 
@@ -62,5 +63,25 @@ public class RepairedStockBarUpdateBtnPopUpFormController {
     @FXML
     void txtEnterQuantityOnAction(ActionEvent event) {
 
+    }
+
+    @FXML
+    void btnCloseIconOnMouseEntered(MouseEvent event) {
+        StyleUtil.closeIconBtnSelected(closeIconPane, imgCloseIcon);
+    }
+
+    @FXML
+    void btnCloseIconOnMouseExited(MouseEvent event) {
+        StyleUtil.closeIconBtnUnselected(closeIconPane, imgCloseIcon);
+    }
+
+    @FXML
+    void btnUpdateOnMouseEntered(MouseEvent event) {
+        StyleUtil.confirmORSaveBtnSelected(updateBtnPane);
+    }
+
+    @FXML
+    void btnUpdateOnMouseExited(MouseEvent event) {
+        StyleUtil.confirmORSaveBtnUnselected(updateBtnPane);
     }
 }

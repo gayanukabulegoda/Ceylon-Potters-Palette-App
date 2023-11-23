@@ -13,6 +13,7 @@ import javafx.scene.layout.Pane;
 import lk.grb.ceylonPottersPalette.dto.EmployeeDto;
 import lk.grb.ceylonPottersPalette.model.EmployeeModel;
 import lk.grb.ceylonPottersPalette.util.Navigation;
+import lk.grb.ceylonPottersPalette.util.StyleUtil;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -255,8 +256,33 @@ public class EmployeeUpdatePopUpFormController implements Initializable {
     }
 
     @FXML
-    void cmbRoleOnAction(ActionEvent event) {
+    void btnUpdateOnMouseEntered(MouseEvent event) {
+        StyleUtil.confirmORSaveBtnSelected(updateBtnPane);
+    }
 
+    @FXML
+    void btnUpdateOnMouseExited(MouseEvent event) {
+        StyleUtil.confirmORSaveBtnUnselected(updateBtnPane);
+    }
+
+    @FXML
+    void btnCloseIconOnMouseEntered(MouseEvent event) {
+        StyleUtil.closeIconBtnSelected(closeIconPane, imgCloseIcon);
+    }
+
+    @FXML
+    void btnCloseIconOnMouseExited(MouseEvent event) {
+        StyleUtil.closeIconBtnUnselected(closeIconPane, imgCloseIcon);
+    }
+
+    @FXML
+    void btnCancelOnMouseEntered(MouseEvent event) {
+        StyleUtil.cancelBtnSelected(cancelBtnPane, lblCancel);
+    }
+
+    @FXML
+    void btnCancelOnMouseExited(MouseEvent event) {
+        StyleUtil.cancelBtnUnselected(cancelBtnPane, lblCancel);
     }
 
     public void setDataInComboBox() {

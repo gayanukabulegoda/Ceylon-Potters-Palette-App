@@ -109,7 +109,7 @@
                   </Label>
                </children>
             </Pane>
-            <JFXButton fx:id="btnClose" layoutX="470.0" layoutY="599.0" onAction="#btnCloseOnAction" prefHeight="54.0" prefWidth="349.0" style="-fx-background-radius: 12;" text=" " />
+            <JFXButton fx:id="btnClose" layoutX="470.0" layoutY="599.0" onAction="#btnCloseOnAction" onMouseEntered="#btnCloseOnMouseEntered" onMouseExited="#btnCloseOnMouseExited" prefHeight="54.0" prefWidth="349.0" style="-fx-background-radius: 12;" text=" " />
          </children>
       </Pane>
    </children>

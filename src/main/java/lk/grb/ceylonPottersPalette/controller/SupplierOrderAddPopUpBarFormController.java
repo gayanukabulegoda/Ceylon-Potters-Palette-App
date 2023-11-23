@@ -5,6 +5,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import lk.grb.ceylonPottersPalette.model.ItemStockModel;
+import lk.grb.ceylonPottersPalette.util.StyleUtil;
 
 import java.sql.SQLException;
 import java.util.Arrays;
@@ -45,12 +46,12 @@ public class SupplierOrderAddPopUpBarFormController {
 
     @FXML
     void deleteOnMouseEntered(MouseEvent event) {
-
+        StyleUtil.deleteImgSelected(deleteImg);
     }
 
     @FXML
     void deleteOnMouseExited(MouseEvent event) {
-
+        StyleUtil.deleteImgUnselected(deleteImg);
     }
 
     public void setData(String[] element) {

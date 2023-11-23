@@ -15,6 +15,7 @@ import lk.grb.ceylonPottersPalette.model.EmployeeModel;
 import lk.grb.ceylonPottersPalette.util.DateTimeUtil;
 import lk.grb.ceylonPottersPalette.util.Navigation;
 import lk.grb.ceylonPottersPalette.util.NewId;
+import lk.grb.ceylonPottersPalette.util.StyleUtil;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -104,6 +105,27 @@ public class EmployeeAttendanceMarkPopUpController implements Initializable {
         ArrayList<String> roles = employeeModel.getAllEmployeeId();
         cmbEmployeeId.getItems().addAll(roles);
     }
+
+    @FXML
+    void btnMarkAttendanceOnMouseEntered(MouseEvent event) {
+        StyleUtil.confirmORSaveBtnSelected(markAttendaceBtnPane);
+    }
+
+    @FXML
+    void btnMarkAttendanceOnMouseExited(MouseEvent event) {
+        StyleUtil.confirmORSaveBtnUnselected(markAttendaceBtnPane);
+    }
+
+    @FXML
+    void btnCloseIconOnMouseEntered(MouseEvent event) {
+        StyleUtil.closeIconBtnSelected(closeIconPane, imgCloseIcon);
+    }
+
+    @FXML
+    void btnCloseIconOnMouseExited(MouseEvent event) {
+        StyleUtil.closeIconBtnUnselected(closeIconPane, imgCloseIcon);
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {

@@ -35,7 +35,7 @@
             <Font size="15.0" />
          </font>
       </PasswordField>
-      <JFXButton alignment="CENTER" buttonType="RAISED" layoutX="561.0" layoutY="421.0" onAction="#btnLogInOnAction" prefHeight="42.0" prefWidth="267.0" style="-fx-background-radius: 12; -fx-background-color: C56E33;" text="LOGIN" textFill="WHITE">
+      <JFXButton fx:id="btnLogIn" alignment="CENTER" buttonType="RAISED" layoutX="561.0" layoutY="421.0" onAction="#btnLogInOnAction" onMouseEntered="#btnLogInOnMouseEntered" onMouseExited="#btnLogInOnMouseExited" prefHeight="42.0" prefWidth="267.0" style="-fx-background-radius: 12; -fx-background-color: C56E33;" text="LOGIN" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>

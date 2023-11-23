@@ -23,6 +23,7 @@ import lk.grb.ceylonPottersPalette.model.SupplierOrderModel;
 import lk.grb.ceylonPottersPalette.util.DateTimeUtil;
 import lk.grb.ceylonPottersPalette.util.Navigation;
 import lk.grb.ceylonPottersPalette.util.NewId;
+import lk.grb.ceylonPottersPalette.util.StyleUtil;
 
 import java.io.IOException;
 import java.net.URL;
@@ -40,7 +41,7 @@ public class SupplierOrderAddPopUpFormController implements Initializable {
     private JFXButton btnAddNewSupplier;
 
     @FXML
-    private ImageView btnAddNewSupplierIcon;
+    private ImageView btnAddNewSupplierIconImg;
 
     @FXML
     private Pane btnAddNewSupplierPane;
@@ -247,6 +248,46 @@ public class SupplierOrderAddPopUpFormController implements Initializable {
     public void setSupplierDataInComboBox() throws SQLException {
         ArrayList<String> roles = supplierModel.getAllSupplierId();
         cmbSupplierId.getItems().addAll(roles);
+    }
+
+    @FXML
+    void btnPlaceOrderOnMouseEntered(MouseEvent event) {
+        StyleUtil.confirmORSaveBtnSelected(placeOrderPanel);
+    }
+
+    @FXML
+    void btnPlaceOrderOnMouseExited(MouseEvent event) {
+        StyleUtil.confirmORSaveBtnUnselected(placeOrderPanel);
+    }
+
+    @FXML
+    void btnCancelOnMouseEntered(MouseEvent event) {
+        StyleUtil.cancelBtnSelected(cancelBtnPane, lblCancel);
+    }
+
+    @FXML
+    void btnCancelOnMouseExited(MouseEvent event) {
+        StyleUtil.cancelBtnUnselected(cancelBtnPane, lblCancel);
+    }
+
+    @FXML
+    void btnAddToCartOnMouseEntered(MouseEvent event) {
+        StyleUtil.confirmORSaveBtnSelected(AddToCartBtnPane);
+    }
+
+    @FXML
+    void btnAddToCartOnMouseExited(MouseEvent event) {
+        StyleUtil.confirmORSaveBtnUnselected(AddToCartBtnPane);
+    }
+
+    @FXML
+    void btnAddNewSupplierOnMouseEntered(MouseEvent event) {
+        StyleUtil.addNewCustomerORSupplierBtnSelected(btnAddNewSupplierPane, btnAddNewSupplierIconImg);
+    }
+
+    @FXML
+    void btnAddNewSupplierOnMouseExited(MouseEvent event) {
+        StyleUtil.addNewCustomerORSupplierBtnUnselected(btnAddNewSupplierPane, btnAddNewSupplierIconImg);
     }
 
     public void allSupplierOrderCartId() {
