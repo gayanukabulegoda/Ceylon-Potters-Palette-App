@@ -17,8 +17,8 @@
             <Image url="@../assests/img/OTPVerifyPage.png" />
          </image>
       </ImageView>
-      <Pane layoutX="579.0" layoutY="387.0" prefHeight="42.0" prefWidth="54.0" style="-fx-background-radius: 12; -fx-background-color: white; -fx-border-color: C56E33; -fx-border-radius: 12; -fx-border-width: 2;" />
-      <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="594.0" layoutY="396.0" pickOnBounds="true" preserveRatio="true">
+      <Pane fx:id="btnBackPane" layoutX="579.0" layoutY="387.0" prefHeight="42.0" prefWidth="54.0" style="-fx-background-radius: 12; -fx-background-color: white; -fx-border-color: C56E33; -fx-border-radius: 12; -fx-border-width: 2;" />
+      <ImageView fx:id="btnBackImg" fitHeight="24.0" fitWidth="24.0" layoutX="594.0" layoutY="396.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assests/icon/logoutIcon.png" />
          </image>
@@ -31,7 +31,7 @@
             <Font size="15.0" />
          </font>
       </TextField>
-      <JFXButton alignment="CENTER" buttonType="RAISED" layoutX="652.0" layoutY="387.0" onAction="#btnVerifyOnAction" prefHeight="42.0" prefWidth="142.0" style="-fx-background-radius: 12; -fx-background-color: C56E33;" text="VERIFY" textFill="WHITE">
+      <JFXButton fx:id="btnVerify" alignment="CENTER" buttonType="RAISED" layoutX="652.0" layoutY="387.0" onAction="#btnVerifyOnAction" onMouseEntered="#btnVerifyOnMouseEntered" onMouseExited="#btnVerifyOnMouseExited" prefHeight="42.0" prefWidth="142.0" style="-fx-background-radius: 12; -fx-background-color: C56E33;" text="VERIFY" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -39,7 +39,7 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </JFXButton>
-      <JFXButton alignment="CENTER" layoutX="579.0" layoutY="387.0" onAction="#btnBackOnAction" prefHeight="42.0" prefWidth="54.0" style="-fx-background-radius: 12;" text=" " textFill="#c56e33">
+      <JFXButton alignment="CENTER" layoutX="579.0" layoutY="387.0" onAction="#btnBackOnAction" onMouseEntered="#btnBackOnMouseEntered" onMouseExited="#btnBackOnMouseExited" prefHeight="42.0" prefWidth="54.0" style="-fx-background-radius: 12;" text=" " textFill="#c56e33">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>

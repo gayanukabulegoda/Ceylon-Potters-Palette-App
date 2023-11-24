@@ -1,16 +1,20 @@
 package lk.grb.ceylonPottersPalette.controller;
 
+import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
+import javafx.scene.image.ImageView;
 import javafx.scene.control.TextField;
 import lk.grb.ceylonPottersPalette.dto.EmployeeDto;
 import lk.grb.ceylonPottersPalette.model.EmployeeModel;
 import lk.grb.ceylonPottersPalette.util.Navigation;
 import lk.grb.ceylonPottersPalette.util.SendEmail;
+import lk.grb.ceylonPottersPalette.util.StyleUtil;
 
 import javax.mail.MessagingException;
 import java.io.IOException;
@@ -28,6 +32,15 @@ public class OTPVerifyFormController implements Initializable {
     @FXML
     private Label lblOtpAlert;
 
+    @FXML
+    private ImageView btnBackImg;
+
+    @FXML
+    private Pane btnBackPane;
+
+    @FXML
+    private JFXButton btnVerify;
+
     public static String otp;
     public static String employeeId;
     EmployeeModel employeeModel = new EmployeeModel();
@@ -42,6 +55,26 @@ public class OTPVerifyFormController implements Initializable {
     void btnBackOnAction(ActionEvent event) throws IOException {
         Navigation.close(event);
         Navigation.switchNavigation("forgotPasswordForm.fxml",event);
+    }
+
+    @FXML
+    void btnVerifyOnMouseEntered(MouseEvent event) {
+        StyleUtil.signUpOrLogInBtnSelected(btnVerify);
+    }
+
+    @FXML
+    void btnVerifyOnMouseExited(MouseEvent event) {
+        StyleUtil.signUpOrLogInBtnUnselected(btnVerify);
+    }
+
+    @FXML
+    void btnBackOnMouseEntered(MouseEvent event) {
+        StyleUtil.otpBackBtnSelected(btnBackPane, btnBackImg);
+    }
+
+    @FXML
+    void btnBackOnMouseExited(MouseEvent event) {
+        StyleUtil.otpBackBtnUnselected(btnBackPane, btnBackImg);
     }
 
     @FXML

@@ -145,4 +145,26 @@ public class StyleUtil {
                 "-fx-background-color: #C56E33;" +
                         "-fx-background-radius: 12px;");
     }
+
+    public static void otpBackBtnSelected(Pane pane, ImageView imageView) {
+        pane.setStyle(
+                "-fx-background-color: #C56E33;" +
+                        "-fx-background-radius: 12px;" +
+                        "-fx-border-color: #C56E33;" +
+                        "-fx-border-radius: 12px;" +
+                        "-fx-border-width: 2px;");
+
+        imageView.setImage(new Image("assests/icon/logoutIcon3.png"));
+    }
+
+    public static void otpBackBtnUnselected(Pane pane, ImageView imageView) {
+        pane.setStyle(
+                "-fx-background-color: white;" +
+                        "-fx-background-radius: 12px;" +
+                        "-fx-border-color: #C56E33;" +
+                        "-fx-border-radius: 12px;" +
+                        "-fx-border-width: 2px;");
+
+        imageView.setImage(new Image("assests/icon/logoutIcon.png"));
+    }
 }
