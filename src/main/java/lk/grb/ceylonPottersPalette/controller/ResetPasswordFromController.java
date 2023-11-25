@@ -1,15 +1,21 @@
 package lk.grb.ceylonPottersPalette.controller;
 
+import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import com.jfoenix.controls.JFXButton;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.control.Label;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
+import javafx.scene.layout.Pane;
+import javafx.util.Duration;
 import lk.grb.ceylonPottersPalette.dto.UserDto;
 import lk.grb.ceylonPottersPalette.model.EmployeeModel;
 import lk.grb.ceylonPottersPalette.model.UserModel;
 import lk.grb.ceylonPottersPalette.util.Navigation;
+import lk.grb.ceylonPottersPalette.util.StyleUtil;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -28,6 +34,15 @@ public class ResetPasswordFromController {
 
     @FXML
     private Label lblNewPwAlert;
+
+    @FXML
+    private JFXButton btnResetPassword;
+
+    @FXML
+    private ImageView imgBackBtn;
+
+    @FXML
+    private Pane backPane;
 
     UserModel userModel = new UserModel();
     EmployeeModel employeeModel = new EmployeeModel();
@@ -88,5 +103,32 @@ public class ResetPasswordFromController {
     void btnBackOnAction(ActionEvent event) throws IOException {
         Navigation.close(event);
         Navigation.switchNavigation("loginForm.fxml", event);
+    }
+
+    @FXML
+    void btnResetPasswordOnMouseEntered(MouseEvent event) {
+        StyleUtil.signUpOrLogInBtnSelected(btnResetPassword);
+    }
+
+    @FXML
+    void btnResetPasswordOnMouseExited(MouseEvent event) {
+        StyleUtil.signUpOrLogInBtnUnselected(btnResetPassword);
+    }
+
+    @FXML
+    void btnBackOnMouseEntered(MouseEvent event) {
+        backPane.setVisible(true);
+        TranslateTransition transition = new TranslateTransition(Duration.seconds(0.2), backPane);
+        transition.setFromX(-backPane.getWidth()); // Slide in from the left
+        transition.setToX(0);
+        transition.play();
+
+        StyleUtil.powerOffOrBackBtnSelected(imgBackBtn);
+    }
+
+    @FXML
+    void btnBackOnMouseExited(MouseEvent event) {
+        backPane.setVisible(false);
+        StyleUtil.powerOffOrBackBtnUnselected(imgBackBtn);
     }
 }

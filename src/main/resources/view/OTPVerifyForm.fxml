@@ -47,16 +47,25 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </JFXButton>
-      <ImageView fitHeight="42.0" fitWidth="42.0" layoutX="7.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assests/img/backIconImg.png" />
-         </image>
-      </ImageView>
-      <JFXButton layoutX="7.0" layoutY="5.0" minHeight="42.0" onAction="#btnBackIconOnAction" prefWidth="42.0" style="-fx-background-radius: 100;" text=" " />
       <Label fx:id="lblOtpAlert" layoutX="590.0" layoutY="363.0" textFill="RED">
          <font>
             <Font size="11.0" />
          </font>
       </Label>
+      <Pane fx:id="backPane" layoutX="9.0" layoutY="8.0" prefHeight="37.0" prefWidth="115.0" style="-fx-background-color: FFE1E1; -fx-background-radius: 20;" visible="false">
+         <children>
+            <Label layoutX="57.0" layoutY="10.0" text="Back" textFill="#885d40">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <ImageView fx:id="imgBackBtn" fitHeight="42.0" fitWidth="42.0" layoutX="7.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assests/img/backIconImg.png" />
+         </image>
+      </ImageView>
+      <JFXButton fx:id="imgBaCkBtn" layoutX="7.0" layoutY="5.0" minHeight="42.0" onAction="#btnBackIconOnAction" onMouseEntered="#btnBackIconOnMouseEntered" onMouseExited="#btnBackIconOnMouseExited" prefWidth="42.0" style="-fx-background-radius: 100;" text=" " />
    </children>
 </AnchorPane>

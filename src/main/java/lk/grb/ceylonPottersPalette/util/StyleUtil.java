@@ -1,7 +1,9 @@
 package lk.grb.ceylonPottersPalette.util;
 
 import com.jfoenix.controls.JFXButton;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -166,5 +168,39 @@ public class StyleUtil {
                         "-fx-border-width: 2px;");
 
         imageView.setImage(new Image("assests/icon/logoutIcon.png"));
+    }
+
+    public static void hyperLinkSelected(Hyperlink hyperlink) {
+        hyperlink.setStyle(
+                "-fx-text-fill: #1351CB;");
+
+        hyperlink.setScaleX(1.1);
+        hyperlink.setScaleY(1.1);
+    }
+
+    public static void hyperLinkUnselected(Hyperlink hyperlink) {
+        hyperlink.setStyle(
+                "-fx-text-fill: #151619;");
+
+        hyperlink.setScaleX(1.0);
+        hyperlink.setScaleY(1.0);
+    }
+
+    public static void hyperLinkForgotPwUnselected(Hyperlink hyperlink) {
+        hyperlink.setStyle(
+                "-fx-text-fill: #6a6b6b;");
+
+        hyperlink.setScaleX(1.0);
+        hyperlink.setScaleY(1.0);
+    }
+
+    public static void powerOffOrBackBtnSelected(ImageView imageView) {
+        imageView.setScaleX(1.1);
+        imageView.setScaleY(1.1);
+    }
+
+    public static void powerOffOrBackBtnUnselected(ImageView imageView) {
+        imageView.setScaleX(1.0);
+        imageView.setScaleY(1.0);
     }
 }

@@ -47,7 +47,7 @@
                   </ImageView>
                </children>
             </Pane>
-            <JFXButton fx:id="btnSupplier" layoutX="24.0" layoutY="510.0" onAction="#btnSupplierOnAction" prefHeight="48.0" prefWidth="174.0" style="-fx-background-radius: 12;" text=" " textFill="#727374">
+            <JFXButton fx:id="btnSupplier" layoutX="24.0" layoutY="510.0" onAction="#btnSupplierOnAction" onMouseEntered="#btnSupplierOnMouseEntered" onMouseExited="#btnSupplierOnMouseExited" prefHeight="48.0" prefWidth="174.0" style="-fx-background-radius: 12;" text=" " textFill="#727374">
                <font>
                   <Font size="16.0" />
                </font>
@@ -66,7 +66,7 @@
                   </ImageView>
                </children>
             </Pane>
-            <JFXButton fx:id="btnEmployee" layoutX="24.0" layoutY="445.0" onAction="#btnEmployeeOnAction" prefHeight="48.0" prefWidth="174.0" style="-fx-background-radius: 12;" text=" " textFill="#727374">
+            <JFXButton fx:id="btnEmployee" layoutX="24.0" layoutY="445.0" onAction="#btnEmployeeOnAction" onMouseEntered="#btnEmployeeOnMouseEntered" onMouseExited="#btnEmployeeOnMouseExited" prefHeight="48.0" prefWidth="174.0" style="-fx-background-radius: 12;" text=" " textFill="#727374">
                <font>
                   <Font size="16.0" />
                </font>
@@ -85,7 +85,7 @@
                   </ImageView>
                </children>
             </Pane>
-            <JFXButton fx:id="btnCustomer" layoutX="24.0" layoutY="379.0" onAction="#btnCustomerOnAction" prefHeight="48.0" prefWidth="174.0" style="-fx-background-radius: 12;" text=" " textFill="#727374">
+            <JFXButton fx:id="btnCustomer" layoutX="24.0" layoutY="379.0" onAction="#btnCustomerOnAction" onMouseEntered="#btnCustomerOnMouseEntered" onMouseExited="#btnCustomerOnMouseExited" prefHeight="48.0" prefWidth="174.0" style="-fx-background-radius: 12;" text=" " textFill="#727374">
                <font>
                   <Font size="16.0" />
                </font>
@@ -104,7 +104,7 @@
                   </ImageView>
                </children>
             </Pane>
-            <JFXButton fx:id="btnStock" layoutX="23.0" layoutY="313.0" onAction="#btnStockOnAction" prefHeight="48.0" prefWidth="174.0" style="-fx-background-radius: 12;" text=" " textFill="#727374">
+            <JFXButton fx:id="btnStock" layoutX="23.0" layoutY="313.0" onAction="#btnStockOnAction" onMouseEntered="#btnStockOnMouseEntered" onMouseExited="#btnStockOnMouseExited" prefHeight="48.0" prefWidth="174.0" style="-fx-background-radius: 12;" text=" " textFill="#727374">
                <font>
                   <Font size="16.0" />
                </font>
@@ -123,7 +123,7 @@
                   </ImageView>
                </children>
             </Pane>
-            <JFXButton fx:id="btnSales" layoutX="23.0" layoutY="245.0" onAction="#btnSalesOnAction" prefHeight="48.0" prefWidth="174.0" style="-fx-background-radius: 12;" text=" " textFill="#727374">
+            <JFXButton fx:id="btnSales" layoutX="23.0" layoutY="245.0" onAction="#btnSalesOnAction" onMouseEntered="#btnSalesOnMouseEntered" onMouseExited="#btnSalesOnMouseExited" prefHeight="48.0" prefWidth="174.0" style="-fx-background-radius: 12;" text=" " textFill="#727374">
                <font>
                   <Font size="16.0" />
                </font>
@@ -142,7 +142,7 @@
                   </Label>
                </children>
             </Pane>
-            <JFXButton fx:id="btnDashboard" layoutX="24.0" layoutY="179.0" onAction="#btnDashboardOnAction" prefHeight="48.0" prefWidth="174.0" style="-fx-background-radius: 12;" text=" " textFill="#885d40">
+            <JFXButton fx:id="btnDashboard" layoutX="24.0" layoutY="179.0" onAction="#btnDashboardOnAction" onMouseEntered="#btnDashboardOnMouseEntered" onMouseExited="#btnDashboardOnMouseExited" prefHeight="48.0" prefWidth="174.0" style="-fx-background-radius: 12;" text=" " textFill="#885d40">
                <font>
                   <Font size="16.0" />
                </font>
@@ -154,7 +154,7 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="230.0" layoutY="-13.0" prefHeight="110.0" prefWidth="1515.0" style="-fx-background-color: white;">
+      <AnchorPane layoutX="230.0" layoutY="-13.0" prefHeight="110.0" prefWidth="1515.0" style="-fx-background-color: white; -fx-background-radius: 0 0 0 18;">
          <children>
             <ImageView fitHeight="68.0" fitWidth="429.0" layoutX="16.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -177,9 +177,9 @@
                   <Font name="System Bold" size="16.0" />
                </font>
             </Label>
-            <Label fx:id="lblDate" layoutX="1408.0" layoutY="69.0" text="Sep 02, 2023">
+            <Label fx:id="lblDate" layoutX="1389.0" layoutY="69.0" text="Sep 02, 2023">
                <font>
-                  <Font size="14.0" />
+                  <Font size="15.0" />
                </font>
             </Label>
          </children>

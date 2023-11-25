@@ -1,6 +1,7 @@
 package lk.grb.ceylonPottersPalette.controller;
 
 import com.jfoenix.controls.JFXButton;
+import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
@@ -10,6 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
+import javafx.util.Duration;
 import lk.grb.ceylonPottersPalette.dto.EmployeeDto;
 import lk.grb.ceylonPottersPalette.model.EmployeeModel;
 import lk.grb.ceylonPottersPalette.util.Navigation;
@@ -36,7 +38,13 @@ public class SignUpOTPVerifyFormController implements Initializable {
     private ImageView btnBackImg;
 
     @FXML
+    private ImageView imgBackBtn;
+
+    @FXML
     private Pane btnBackPane;
+
+    @FXML
+    private Pane backPane;
 
     @FXML
     private JFXButton btnVerify;
@@ -70,6 +78,23 @@ public class SignUpOTPVerifyFormController implements Initializable {
     @FXML
     void btnBackOnMouseExited(MouseEvent event) {
         StyleUtil.otpBackBtnUnselected(btnBackPane, btnBackImg);
+    }
+
+    @FXML
+    void btnBackIconOnMouseEntered(MouseEvent event) {
+        backPane.setVisible(true);
+        TranslateTransition transition = new TranslateTransition(Duration.seconds(0.2), backPane);
+        transition.setFromX(-backPane.getWidth()); // Slide in from the left
+        transition.setToX(0);
+        transition.play();
+
+        StyleUtil.powerOffOrBackBtnSelected(imgBackBtn);
+    }
+
+    @FXML
+    void btnBackIconOnMouseExited(MouseEvent event) {
+        backPane.setVisible(false);
+        StyleUtil.powerOffOrBackBtnUnselected(imgBackBtn);
     }
 
     @FXML

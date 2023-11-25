@@ -9,6 +9,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -43,14 +44,8 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </JFXButton>
-      <Hyperlink contentDisplay="CENTER" layoutX="558.0" layoutY="386.0" onAction="#hyperForgotPasswordOnAction" text="Forgot Password ?" textFill="#6a6b6b" />
-      <ImageView fitHeight="42.0" fitWidth="42.0" layoutX="7.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assests/icon/powerOffIcon.png" />
-         </image>
-      </ImageView>
-      <JFXButton layoutX="7.0" layoutY="5.0" minHeight="42.0" onAction="#btnPowerOffOnAction" prefWidth="42.0" style="-fx-background-radius: 100;" text=" " />
-      <Hyperlink layoutX="760.0" layoutY="518.0" onAction="#hyperSignUpOnAction" text="Sign Up" textFill="#151619" />
+      <Hyperlink fx:id="hyperForgotPassword" contentDisplay="CENTER" layoutX="558.0" layoutY="386.0" onAction="#hyperForgotPasswordOnAction" onMouseEntered="#hyperForgotPasswordOnMouseEntered" onMouseExited="#hyperForgotPasswordOnMouseExited" text="Forgot Password ?" textFill="#6a6b6b" />
+      <Hyperlink fx:id="hyperSignUp" layoutX="760.0" layoutY="518.0" onAction="#hyperSignUpOnAction" onMouseEntered="#hyperSignUpOnMouseEntered" onMouseExited="#hyperSignUpOnMouseExited" text="Sign Up" textFill="#151619" />
       <Text fill="#3d3e3e" layoutX="564.0" layoutY="535.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Don’t have an account?  Let’s" />
       <Label fx:id="lblUserNameAlert" layoutX="570.0" layoutY="314.0" textFill="RED">
          <font>
@@ -62,5 +57,20 @@
             <Font size="11.0" />
          </font>
       </Label>
+      <Pane fx:id="powerOffPane" layoutX="9.0" layoutY="8.0" prefHeight="37.0" prefWidth="146.0" style="-fx-background-color: FFE1E1; -fx-background-radius: 20;" visible="false">
+         <children>
+            <Label layoutX="50.0" layoutY="10.0" text="Power Off" textFill="#885d40">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <ImageView fx:id="imgPowerOff" fitHeight="42.0" fitWidth="42.0" layoutX="7.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assests/icon/powerOffIcon.png" />
+         </image>
+      </ImageView>
+      <JFXButton layoutX="7.0" layoutY="5.0" minHeight="42.0" onAction="#btnPowerOffOnAction" onMouseEntered="#btnPowerOffOnMouseEntered" onMouseExited="#btnPowerOffOnMouseExited" prefWidth="42.0" style="-fx-background-radius: 100;" text=" " />
    </children>
 </AnchorPane>

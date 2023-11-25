@@ -128,7 +128,12 @@ public class GlobalFormController implements Initializable {
     public Pane orderPopUpPane;
 
     public static String user;
-
+    private boolean dashboardButtonSelected = false;
+    private boolean salesButtonSelected = false;
+    private boolean stockButtonSelected = false;
+    private boolean customerButtonSelected = false;
+    private boolean employeeButtonSelected = false;
+    private boolean supplierBttonSelected = false;
     private static GlobalFormController controller;
 
     public GlobalFormController() {
@@ -139,8 +144,20 @@ public class GlobalFormController implements Initializable {
         return controller;
     }
 
+    private void buttonUnSelected() {
+        dashboardButtonSelected = false;
+        salesButtonSelected = false;
+        stockButtonSelected = false;
+        customerButtonSelected = false;
+        employeeButtonSelected = false;
+        supplierBttonSelected = false;
+    }
+
     @FXML
     void btnCustomerOnAction(ActionEvent event) throws IOException {
+        buttonUnSelected();
+        customerButtonSelected = true;
+
         btnUnselected(paneBtnDashboard, lblDashboard, imgDashboard, "dashboardIcon.png");
         btnUnselected(paneBtnSales, lblSales, imgSales, "salesIcon.png");
         btnUnselected(paneBtnStock, lblStock, imgStock, "stockIcon.png");
@@ -153,6 +170,9 @@ public class GlobalFormController implements Initializable {
 
     @FXML
     void btnDashboardOnAction(ActionEvent event) throws IOException {
+        buttonUnSelected();
+        dashboardButtonSelected = true;
+
         btnSelected(paneBtnDashboard, lblDashboard, imgDashboard, "dashboardIcon2.png");
         btnUnselected(paneBtnSales, lblSales, imgSales, "salesIcon.png");
         btnUnselected(paneBtnStock, lblStock, imgStock, "stockIcon.png");
@@ -165,6 +185,9 @@ public class GlobalFormController implements Initializable {
 
     @FXML
     void btnEmployeeOnAction(ActionEvent event) throws IOException {
+        buttonUnSelected();
+        employeeButtonSelected = true;
+
         btnUnselected(paneBtnDashboard, lblDashboard, imgDashboard, "dashboardIcon.png");
         btnUnselected(paneBtnSales, lblSales, imgSales, "salesIcon.png");
         btnUnselected(paneBtnStock, lblStock, imgStock, "stockIcon.png");
@@ -177,6 +200,9 @@ public class GlobalFormController implements Initializable {
 
     @FXML
     void btnSalesOnAction(ActionEvent event) throws IOException {
+        buttonUnSelected();
+        salesButtonSelected = true;
+
         btnUnselected(paneBtnDashboard, lblDashboard, imgDashboard, "dashboardIcon.png");
         btnSelected(paneBtnSales, lblSales, imgSales, "salesIcon2.png");
         btnUnselected(paneBtnStock, lblStock, imgStock, "stockIcon.png");
@@ -189,6 +215,9 @@ public class GlobalFormController implements Initializable {
 
     @FXML
     void btnStockOnAction(ActionEvent event) throws IOException {
+        buttonUnSelected();
+        stockButtonSelected = true;
+
         btnUnselected(paneBtnDashboard, lblDashboard, imgDashboard, "dashboardIcon.png");
         btnUnselected(paneBtnSales, lblSales, imgSales, "salesIcon.png");
         btnSelected(paneBtnStock, lblStock, imgStock, "stockIcon2.png");
@@ -201,6 +230,9 @@ public class GlobalFormController implements Initializable {
 
     @FXML
     void btnSupplierOnAction(ActionEvent event) throws IOException {
+        buttonUnSelected();
+        supplierBttonSelected = true;
+
         btnUnselected(paneBtnDashboard, lblDashboard, imgDashboard, "dashboardIcon.png");
         btnUnselected(paneBtnSales, lblSales, imgSales, "salesIcon.png");
         btnUnselected(paneBtnStock, lblStock, imgStock, "stockIcon.png");
@@ -227,7 +259,79 @@ public class GlobalFormController implements Initializable {
     void btnLogOutOnMouseExited(MouseEvent event) {
         btnUnselected(paneBtnLogOut, lblLogOut, imgLogOut, "logoutIcon2.png");
     }
-    
+
+    @FXML
+    void btnDashboardOnMouseEntered(MouseEvent event) {
+        if(!dashboardButtonSelected) allBtnHoverCss(paneBtnDashboard,
+                lblDashboard, imgDashboard, "dashboardIcon2.png");
+    }
+
+    @FXML
+    void btnDashboardOnMouseExited(MouseEvent event) {
+        if(!dashboardButtonSelected) btnUnselected(paneBtnDashboard,
+                lblDashboard, imgDashboard, "dashboardIcon.png");
+    }
+
+    @FXML
+    void btnSalesOnMouseEntered(MouseEvent event) {
+        if(!salesButtonSelected) allBtnHoverCss(paneBtnSales,
+                lblSales, imgSales, "salesIcon2.png");
+    }
+
+    @FXML
+    void btnSalesOnMouseExited(MouseEvent event) {
+        if(!salesButtonSelected) btnUnselected(paneBtnSales,
+                lblSales, imgSales, "salesIcon.png");
+    }
+
+    @FXML
+    void btnStockOnMouseEntered(MouseEvent event) {
+        if(!stockButtonSelected) allBtnHoverCss(paneBtnStock,
+                lblStock, imgStock, "stockIcon2.png");
+    }
+
+    @FXML
+    void btnStockOnMouseExited(MouseEvent event) {
+        if(!stockButtonSelected) btnUnselected(paneBtnStock,
+                lblStock, imgStock, "stockIcon.png");
+    }
+
+    @FXML
+    void btnCustomerOnMouseEntered(MouseEvent event) {
+        if(!customerButtonSelected) allBtnHoverCss(paneBtnCustomer,
+                lblCustomer, imgCustomer, "customerIcon2.png");
+    }
+
+    @FXML
+    void btnCustomerOnMouseExited(MouseEvent event) {
+        if(!customerButtonSelected) btnUnselected(paneBtnCustomer,
+                lblCustomer, imgCustomer, "customerIcon.png");
+    }
+
+    @FXML
+    void btnEmployeeOnMouseEntered(MouseEvent event) {
+        if(!employeeButtonSelected) allBtnHoverCss(paneBtnEmployee,
+                lblEmployee, imgEmployee, "employeeIcon2.png");
+    }
+
+    @FXML
+    void btnEmployeeOnMouseExited(MouseEvent event) {
+        if(!employeeButtonSelected) btnUnselected(paneBtnEmployee,
+                lblEmployee, imgEmployee, "employeeIcon.png");
+    }
+
+    @FXML
+    void btnSupplierOnMouseEntered(MouseEvent event) {
+        if(!supplierBttonSelected) allBtnHoverCss(paneBtnSupplier,
+                lblSupplier, imgSupplier, "supplierIcon2.png");
+    }
+
+    @FXML
+    void btnSupplierOnMouseExited(MouseEvent event) {
+        if(!supplierBttonSelected) btnUnselected(paneBtnSupplier,
+                lblSupplier, imgSupplier, "supplierIcon.png");
+    }
+
     void btnSelected(Pane pane, Label label, ImageView imageView, String path) {
         pane.setStyle(
                 "-fx-background-color: #FFDDC5;" +
@@ -271,6 +375,7 @@ public class GlobalFormController implements Initializable {
     @SneakyThrows
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        dashboardButtonSelected = true;
         btnSelected(paneBtnDashboard, lblDashboard, imgDashboard, "dashboardIcon2.png");
 
         lblUser.setText(UserModel.getRole(user));
@@ -285,6 +390,6 @@ public class GlobalFormController implements Initializable {
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
 
-        lblDate.setText(DateTimeUtil.dateNow());
+        lblDate.setText(DateTimeUtil.dateNowFormatted());
     }
 }

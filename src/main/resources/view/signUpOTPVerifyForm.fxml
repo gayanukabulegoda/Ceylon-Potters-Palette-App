@@ -17,12 +17,6 @@
             <Image url="@../assests/img/SignUpOTPVerifyPage.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="42.0" fitWidth="42.0" layoutX="7.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assests/img/backIconImg.png" />
-         </image>
-      </ImageView>
-      <JFXButton layoutX="7.0" layoutY="5.0" minHeight="42.0" onAction="#btnBackOnAction" prefWidth="42.0" style="-fx-background-radius: 100;" text=" " />
       <Pane fx:id="btnBackPane" layoutX="586.0" layoutY="397.0" prefHeight="42.0" prefWidth="54.0" style="-fx-background-radius: 12; -fx-background-color: white; -fx-border-color: C56E33; -fx-border-radius: 12; -fx-border-width: 2;" />
       <ImageView fx:id="btnBackImg" fitHeight="24.0" fitWidth="24.0" layoutX="601.0" layoutY="406.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -58,5 +52,20 @@
             <Font size="11.0" />
          </font>
       </Label>
+      <Pane fx:id="backPane" layoutX="9.0" layoutY="8.0" prefHeight="37.0" prefWidth="115.0" style="-fx-background-color: FFE1E1; -fx-background-radius: 20;" visible="false">
+         <children>
+            <Label layoutX="57.0" layoutY="10.0" text="Back" textFill="#885d40">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <ImageView fx:id="imgBackBtn" fitHeight="42.0" fitWidth="42.0" layoutX="7.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assests/img/backIconImg.png" />
+         </image>
+      </ImageView>
+      <JFXButton layoutX="7.0" layoutY="5.0" minHeight="42.0" onAction="#btnBackOnAction" onMouseEntered="#btnBackIconOnMouseEntered" onMouseExited="#btnBackIconOnMouseExited" prefWidth="42.0" style="-fx-background-radius: 100;" text=" " />
    </children>
 </AnchorPane>

@@ -1,13 +1,18 @@
 package lk.grb.ceylonPottersPalette.controller;
 
+import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.layout.Pane;
+import javafx.scene.image.ImageView;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.control.Label;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import com.jfoenix.controls.JFXButton;
+import javafx.util.Duration;
 import lk.grb.ceylonPottersPalette.model.UserModel;
 import lk.grb.ceylonPottersPalette.util.Navigation;
 import lk.grb.ceylonPottersPalette.util.StyleUtil;
@@ -31,7 +36,19 @@ public class LoginFormController {
     private Label lblUserNameAlert;
 
     @FXML
+    private Pane powerOffPane;
+
+    @FXML
     private JFXButton btnLogIn;
+
+    @FXML
+    private ImageView imgPowerOff;
+
+    @FXML
+    private Hyperlink hyperForgotPassword;
+
+    @FXML
+    private Hyperlink hyperSignUp;
 
     public static String password;
 
@@ -108,5 +125,42 @@ public class LoginFormController {
     @FXML
     void btnLogInOnMouseExited(MouseEvent event) {
         StyleUtil.signUpOrLogInBtnUnselected(btnLogIn);
+    }
+
+    @FXML
+    void hyperSignUpOnMouseEntered(MouseEvent event) {
+        StyleUtil.hyperLinkSelected(hyperSignUp);
+    }
+
+    @FXML
+    void hyperSignUpOnMouseExited(MouseEvent event) {
+        StyleUtil.hyperLinkUnselected(hyperSignUp);
+    }
+
+    @FXML
+    void hyperForgotPasswordOnMouseEntered(MouseEvent event) {
+        StyleUtil.hyperLinkSelected(hyperForgotPassword);
+    }
+
+    @FXML
+    void hyperForgotPasswordOnMouseExited(MouseEvent event) {
+        StyleUtil.hyperLinkForgotPwUnselected(hyperForgotPassword);
+    }
+
+    @FXML
+    void btnPowerOffOnMouseEntered(MouseEvent event) {
+        powerOffPane.setVisible(true);
+        TranslateTransition transition = new TranslateTransition(Duration.seconds(0.2), powerOffPane);
+        transition.setFromX(-powerOffPane.getWidth()); // Slide in from the left
+        transition.setToX(0);
+        transition.play();
+
+        StyleUtil.powerOffOrBackBtnSelected(imgPowerOff);
+    }
+
+    @FXML
+    void btnPowerOffOnMouseExited(MouseEvent event) {
+        powerOffPane.setVisible(false);
+        StyleUtil.powerOffOrBackBtnUnselected(imgPowerOff);
     }
 }

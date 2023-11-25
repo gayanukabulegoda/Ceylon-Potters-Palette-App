@@ -15,6 +15,11 @@ public class DateTimeUtil {
         return format.format(new Date());
     }
 
+    public static String dateNowFormatted() {
+        SimpleDateFormat format = new SimpleDateFormat("MMM dd, yyyy");
+        return format.format(new Date());
+    }
+
     public static String yearNow() {
         SimpleDateFormat format = new SimpleDateFormat("yyyy");
         return format.format(new Date());
@@ -32,10 +37,10 @@ public class DateTimeUtil {
     }
 
     public static String timeNow() {
-        SimpleDateFormat dateFormat=new SimpleDateFormat("hh:mm:ss");
-       // System.out.println(dateFormat.format(new Date()));
+        SimpleDateFormat dateFormat=new SimpleDateFormat("HH:mm:ss"); //In 24hr Format
         return dateFormat.format(new Date()) ;
     }
+
     public static int getCountOfDayForYear(int year ){
         return Year.of(year).length();
     }

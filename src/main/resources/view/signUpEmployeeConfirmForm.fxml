@@ -8,6 +8,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -18,21 +19,7 @@
             <Image url="@../assests/img/SignUpEmployeeConfirmPage.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="42.0" fitWidth="42.0" layoutX="7.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assests/img/backIconImg.png" />
-         </image>
-      </ImageView>
-      <JFXButton layoutX="7.0" layoutY="5.0" minHeight="42.0" onAction="#btnBackOnAction" prefWidth="42.0" style="-fx-background-radius: 100;" text=" " />
-      <JFXButton alignment="CENTER" buttonType="RAISED" layoutX="558.0" layoutY="393.0" onAction="#btnConfirmOnAction" prefHeight="42.0" prefWidth="267.0" style="-fx-background-radius: 12; -fx-background-color: C56E33;" text="CONFIRM" textFill="WHITE">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-      </JFXButton>
-      <Hyperlink layoutX="749.0" layoutY="517.0" onAction="#hyperLogInOnAction" text="Log In" textFill="#151619" />
+      <Hyperlink fx:id="hyperLogIn" layoutX="749.0" layoutY="517.0" onAction="#hyperLogInOnAction" onMouseEntered="#hyperLogInOnMouseEntered" onMouseExited="#hyperLogInOnMouseExited" text="Log In" textFill="#151619" />
       <Text fill="#3d3e3e" layoutX="591.0" layoutY="534.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Already have Account ?" />
       <TextField fx:id="txtEmployeeId" layoutX="558.0" layoutY="315.0" onMouseClicked="#txtEmployeeIdOnMouseClicked" prefHeight="42.0" prefWidth="267.0" promptText="  Employee ID" style="-fx-background-radius: 12;">
          <cursor>
@@ -47,5 +34,28 @@
             <Font size="11.0" />
          </font>
       </Label>
+      <Pane fx:id="backPane" layoutX="9.0" layoutY="8.0" prefHeight="37.0" prefWidth="115.0" style="-fx-background-color: FFE1E1; -fx-background-radius: 20;" visible="false">
+         <children>
+            <Label layoutX="57.0" layoutY="10.0" text="Back" textFill="#885d40">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <ImageView fx:id="imgBackBtn" fitHeight="42.0" fitWidth="42.0" layoutX="7.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assests/img/backIconImg.png" />
+         </image>
+      </ImageView>
+      <JFXButton layoutX="7.0" layoutY="5.0" minHeight="42.0" onAction="#btnBackOnAction" onMouseEntered="#btnBackOnMouseEntered" onMouseExited="#btnBackOnMouseExited" prefWidth="42.0" style="-fx-background-radius: 100;" text=" " />
+      <JFXButton fx:id="btnConfirm" alignment="CENTER" buttonType="RAISED" layoutX="558.0" layoutY="393.0" onAction="#btnConfirmOnAction" onMouseEntered="#btnConfirmOnMouseEntered" onMouseExited="#btnConfirmOnMouseExited" prefHeight="42.0" prefWidth="267.0" style="-fx-background-radius: 12; -fx-background-color: C56E33;" text="CONFIRM" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>
