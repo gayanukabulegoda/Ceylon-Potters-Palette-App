@@ -48,24 +48,24 @@ public class CustomerManageFormController implements Initializable {
     void txtSearchOnAction(ActionEvent event) throws IOException, SQLException {
 
         if (!validateId()) {
-            new Alert(Alert.AlertType.ERROR, "Invalid Id! Id Should be in the format 'C-001' !!").show();
+            new Alert(Alert.AlertType.ERROR, "Invalid Contact No!!").show();
             return;
         }
 
         ArrayList<String> allCustomerId = customerModel.getAllCustomerId();
 
         for (int i = 0; i < allCustomerId.size(); i++) {
-            if (txtSearch.getText().equals(allCustomerId.get(i))) {
-                CustomerViewPopUpFormController.customerId = txtSearch.getText();
+            if (txtSearch.getText().equals(customerModel.getCustomerContactNo(allCustomerId.get(i)))) {
+                CustomerViewPopUpFormController.customerId = customerModel.getAllCustomerId().get(i);
                 Navigation.imgPopUpBackground("customerViewPopUpForm.fxml");
                 return;
             }
         }
-        new Alert(Alert.AlertType.ERROR, "Invalid Id! Id Should be in the format 'C-001' !!").show();
+        new Alert(Alert.AlertType.ERROR, "Invalid Contact No!!").show();
     }
 
     private boolean validateId() {
-        return Pattern.matches("(C-00)\\d{1,}", txtSearch.getText());
+        return Pattern.matches("[0-9]{10}", txtSearch.getText());
     }
 
     public void allCustomerId() throws SQLException {

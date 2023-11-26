@@ -87,4 +87,13 @@ public class SupplierModel {
         }
         return null;
     }
+
+    public String getSupplierContactNo(String id) throws SQLException {
+        ResultSet resultSet = SQLUtil.execute("SELECT contact_No FROM supplier WHERE supplier_Id=?", id);
+
+        if (resultSet.next()) {
+            return resultSet.getString(1);
+        }
+        return null;
+    }
 }

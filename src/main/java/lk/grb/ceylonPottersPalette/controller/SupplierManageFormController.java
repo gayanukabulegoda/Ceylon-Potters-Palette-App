@@ -46,7 +46,7 @@ public class SupplierManageFormController implements Initializable {
     void txtSearchOnAction(ActionEvent event) throws IOException, SQLException {
 
         if (!validateId()) {
-            new Alert(Alert.AlertType.ERROR, "Invalid Id! Id Should be in the format 'S-001' !!").show();
+            new Alert(Alert.AlertType.ERROR, "Invalid Contact No!!").show();
             return;
         }
 

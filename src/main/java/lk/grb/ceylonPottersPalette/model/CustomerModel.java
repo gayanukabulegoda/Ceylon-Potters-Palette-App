@@ -87,4 +87,13 @@ public class CustomerModel {
         }
         return null;
     }
+
+    public String getCustomerContactNo(String id) throws SQLException {
+        ResultSet resultSet = SQLUtil.execute("SELECT contact_No FROM customer WHERE customer_Id=?", id);
+
+        if (resultSet.next()) {
+            return resultSet.getString(1);
+        }
+        return null;
+    }
 }
