@@ -67,6 +67,7 @@ public class SignUpFormController {
 
             if (saved) {
                 Navigation.close(event);
+                GlobalFormController.user = txtUsername.getText();
                 Navigation.switchNavigation("globalForm.fxml", event);
             } else {
                 new Alert(Alert.AlertType.ERROR, "Oops! Unable to Save Your Data!!").show();

@@ -180,11 +180,11 @@ public class CredentialChangePopUpFormController {
 
     @FXML
     void btnCancelOnMouseEntered(MouseEvent event) {
-        StyleUtil.confirmORSaveBtnSelected(SaveBtnPane);
+        StyleUtil.cancelBtnSelected(cancelBtnPane, lblCancel);
     }
 
     @FXML
     void btnCancelOnMouseExited(MouseEvent event) {
-        StyleUtil.confirmORSaveBtnUnselected(SaveBtnPane);
+        StyleUtil.cancelBtnUnselected(cancelBtnPane, lblCancel);
     }
 }

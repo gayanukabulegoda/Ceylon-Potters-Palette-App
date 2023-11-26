@@ -49,6 +49,11 @@ public class UserModel {
                 userDto.getPassword(),
                 userDto.getEmployeeId());
     }
+
+    public boolean delete(String userName) throws SQLException {
+        return SQLUtil.execute("DELETE FROM user WHERE user_Name=?", userName);
+    }
+
     public String getEmployeeId(String userName) throws SQLException {
         ResultSet set = SQLUtil.execute("SELECT employee_Id FROM user WHERE user_Name=?", userName);
 

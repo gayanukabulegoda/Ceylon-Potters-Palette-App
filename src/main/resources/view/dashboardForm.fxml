@@ -187,7 +187,7 @@
             <Line endX="-174.36257934570312" endY="164.18295288085938" layoutX="197.0" layoutY="-36.0" startX="-174.36257934570312" startY="56.09162902832031" stroke="#c56e33" strokeLineCap="ROUND" strokeWidth="2.0" />
          </children>
       </Pane>
-      <Pane layoutX="78.0" layoutY="742.0" prefHeight="86.0" prefWidth="266.0" style="-fx-background-radius: 20; -fx-background-color: white;">
+      <Pane layoutX="32.0" layoutY="742.0" prefHeight="86.0" prefWidth="256.0" style="-fx-background-radius: 20; -fx-background-color: white;">
          <children>
             <Line endX="-75.72579956054688" endY="289.8216552734375" layoutX="157.0" layoutY="-212.0" startX="-75.72579956054688" startY="224.18505859375" stroke="#973f04" strokeLineCap="ROUND" strokeWidth="2.0" />
             <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="17.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
@@ -202,7 +202,7 @@
             </Label>
          </children>
       </Pane>
-      <JFXButton layoutX="78.0" layoutY="742.0" onAction="#btnChangeCredentialsOnAction" prefHeight="86.0" prefWidth="266.0" style="-fx-background-radius: 20;" text=" " textFill="#727374" wrapText="true">
+      <JFXButton layoutX="32.0" layoutY="742.0" onAction="#btnChangeCredentialsOnAction" prefHeight="86.0" prefWidth="256.0" style="-fx-background-radius: 20;" text=" " textFill="#727374" wrapText="true">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
@@ -228,5 +228,23 @@
          </font>
       </JFXButton>
       <Pane layoutX="947.0" layoutY="554.0" prefHeight="15.0" prefWidth="523.0" rotate="90.0" style="-fx-background-color: white;" />
+      <Pane layoutX="302.0" layoutY="743.0" prefHeight="86.0" prefWidth="86.0" style="-fx-background-color: white; -fx-background-radius: 20;">
+         <children>
+            <Pane layoutX="8.0" layoutY="8.0" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: white; -fx-border-color: E8E8E8; -fx-background-radius: 20; -fx-border-radius: 20;">
+               <children>
+                  <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assests/icon/userDeleteIcon.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+      <JFXButton layoutX="302.0" layoutY="743.0" onAction="#btnDeleteUserOnAction" prefHeight="86.0" prefWidth="86.0" style="-fx-background-radius: 20;" text=" " textFill="#727374" wrapText="true">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>

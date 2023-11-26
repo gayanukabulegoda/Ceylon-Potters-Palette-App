@@ -96,6 +96,11 @@ public class DashboardFormController implements Initializable {
         GlobalFormController.getInstance().btnSupplierOnAction(event);
     }
 
+    @FXML
+    void btnDeleteUserOnAction(ActionEvent event) throws IOException {
+        Navigation.imgPopUpBackground("deleteUserForm.fxml");
+    }
+
     public void allOrderId() throws SQLException {
 
         vBoxOrders.getChildren().clear();

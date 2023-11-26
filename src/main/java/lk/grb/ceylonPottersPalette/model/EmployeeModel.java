@@ -102,4 +102,17 @@ public class EmployeeModel {
         }
         return null;
     }
+
+    public String getEmployeeRole(String id) throws SQLException {
+
+        String sql = ("SELECT role FROM employee WHERE employee_Id=?");
+        PreparedStatement statement = DbConnection.getInstance().getConnection().prepareStatement(sql);
+        statement.setString(1,id);
+
+        ResultSet resultSet = statement.executeQuery();
+        if (resultSet.next()) {
+            return resultSet.getString(1);
+        }
+        return null;
+    }
 }
