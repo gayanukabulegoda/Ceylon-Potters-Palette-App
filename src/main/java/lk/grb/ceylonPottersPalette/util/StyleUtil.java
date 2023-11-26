@@ -1,6 +1,7 @@
 package lk.grb.ceylonPottersPalette.util;
 
 import com.jfoenix.controls.JFXButton;
+import javafx.scene.Cursor;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -202,5 +203,26 @@ public class StyleUtil {
     public static void powerOffOrBackBtnUnselected(ImageView imageView) {
         imageView.setScaleX(1.0);
         imageView.setScaleY(1.0);
+    }
+
+    public static void dashboardCustomerAndSupplierBtnUnselected(Pane pane) {
+        pane.setStyle("-fx-border-color: #E8E8E8;" +
+                "-fx-background-color: white;" +
+                "-fx-border-radius: 20px;" +
+                "-fx-background-radius: 20px");
+    }
+
+    public static void credentialOrEmployeeManageBtnSelected(Pane pane) {
+        pane.setStyle("-fx-border-color: #cccccc;" +
+                            "-fx-background-color: white;" +
+                            "-fx-border-radius: 20px;" +
+                            "-fx-background-radius: 20px");
+    }
+
+    public static void credentialOrEmployeeManageUnselected(Pane pane) {
+        pane.setStyle("-fx-border-color: white;" +
+                            "-fx-background-color: white;" +
+                            "-fx-border-radius: 20px;" +
+                            "-fx-background-radius: 20px");
     }
 }

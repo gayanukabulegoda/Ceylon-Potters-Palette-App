@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
@@ -14,6 +15,15 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="885.0" prefWidth="1523.0" style="-fx-background-color: E8E8E8;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.grb.ceylonPottersPalette.controller.DashboardFormController">
    <children>
+      <Pane fx:id="deleteUserTextPane" layoutX="327.0" layoutY="808.0" prefHeight="41.0" prefWidth="185.0" style="-fx-background-color: white; -fx-background-radius: 0 12 25 25;" visible="false">
+         <children>
+            <Label layoutX="75.0" layoutY="12.0" text="Delete User" textFill="#973f04">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
       <Pane layoutX="31.0" layoutY="58.0" prefHeight="144.0" prefWidth="358.0" style="-fx-background-color: white; -fx-background-radius: 16;">
          <children>
             <ImageView fitHeight="96.0" fitWidth="96.0" layoutX="44.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
@@ -38,7 +48,7 @@
          <children>
             <Pane layoutX="15.0" layoutY="14.0" prefHeight="700.0" prefWidth="703.0" style="-fx-background-color: white; -fx-background-radius: 16; -fx-border-color: E8E8E8; -fx-border-radius: 16;">
                <children>
-                  <Pane layoutX="23.0" layoutY="21.0" prefHeight="144.0" prefWidth="314.0" style="-fx-background-color: white; -fx-background-radius: 16; -fx-border-color: E8E8E8; -fx-border-radius: 16;">
+                  <Pane fx:id="paneBtnCustomers" layoutX="23.0" layoutY="21.0" prefHeight="144.0" prefWidth="314.0" style="-fx-background-color: white; -fx-background-radius: 16; -fx-border-color: E8E8E8; -fx-border-radius: 16;">
                      <children>
                         <Label layoutX="101.0" layoutY="112.0" text="Our Customers" textFill="#727374">
                            <font>
@@ -54,7 +64,7 @@
                         </Label>
                      </children>
                   </Pane>
-                  <Pane layoutX="365.0" layoutY="21.0" prefHeight="144.0" prefWidth="314.0" style="-fx-background-color: white; -fx-background-radius: 16; -fx-border-color: E8E8E8; -fx-border-radius: 16;">
+                  <Pane fx:id="paneBtnSuppliers" layoutX="365.0" layoutY="21.0" prefHeight="144.0" prefWidth="314.0" style="-fx-background-color: white; -fx-background-radius: 16; -fx-border-color: E8E8E8; -fx-border-radius: 16;">
                      <children>
                         <Label layoutX="106.0" layoutY="111.0" text="Our Suppliers" textFill="#727374">
                            <font>
@@ -75,27 +85,42 @@
                      <image>
                         <Image url="@../assests/img/logoFlowerBrown.png" />
                      </image>
+                     <cursor>
+                        <Cursor fx:constant="WAIT" />
+                     </cursor>
                   </ImageView>
                   <ImageView fx:id="imgFlower1" fitHeight="33.0" fitWidth="30.0" layoutX="337.0" layoutY="193.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../assests/img/logoFlowerBrown.png" />
                      </image>
+                     <cursor>
+                        <Cursor fx:constant="WAIT" />
+                     </cursor>
                   </ImageView>
                   <ImageView fx:id="imgFlower3" fitHeight="33.0" fitWidth="30.0" layoutX="371.0" layoutY="193.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../assests/img/logoFlowerBrown.png" />
                      </image>
+                     <cursor>
+                        <Cursor fx:constant="WAIT" />
+                     </cursor>
                   </ImageView>
                   <Line endX="-81.54278564453125" layoutX="768.0" layoutY="209.0" startX="-350.9982604980469" stroke="#973f04" strokeLineCap="ROUND" strokeWidth="2.0" />
-                  <JFXButton layoutX="365.0" layoutY="21.0" onAction="#btnSuppliersOnAction" prefHeight="146.0" prefWidth="314.0" style="-fx-background-radius: 16; -fx-border-radius: 16;" text=" " textFill="#727374" wrapText="true">
+                  <JFXButton layoutX="365.0" layoutY="21.0" onAction="#btnSuppliersOnAction" onMouseEntered="#btnSuppliersOnMouseEntered" onMouseExited="#btnSuppliersOnMouseExited" prefHeight="146.0" prefWidth="314.0" style="-fx-background-radius: 16; -fx-border-radius: 16;" text=" " textFill="#727374" wrapText="true">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </JFXButton>
-                  <JFXButton layoutX="23.0" layoutY="21.0" onAction="#btnCustomersOnAction" prefHeight="146.0" prefWidth="314.0" style="-fx-background-radius: 16; -fx-border-radius: 16;" text=" " textFill="#727374" wrapText="true">
+                  <JFXButton layoutX="23.0" layoutY="21.0" onAction="#btnCustomersOnAction" onMouseEntered="#btnCustomersOnMouseEntered" onMouseExited="#btnCustomersOnMouseExited" prefHeight="146.0" prefWidth="314.0" style="-fx-background-radius: 16; -fx-border-radius: 16;" text=" " textFill="#727374" wrapText="true">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </JFXButton>
                   <Pane layoutX="15.0" layoutY="242.0" prefHeight="444.0" prefWidth="673.0" style="-fx-background-color: white; -fx-border-radius: 16; -fx-border-color: E8E8E8; -fx-background-radius: 16;">
                      <children>
@@ -187,7 +212,7 @@
             <Line endX="-174.36257934570312" endY="164.18295288085938" layoutX="197.0" layoutY="-36.0" startX="-174.36257934570312" startY="56.09162902832031" stroke="#c56e33" strokeLineCap="ROUND" strokeWidth="2.0" />
          </children>
       </Pane>
-      <Pane layoutX="32.0" layoutY="742.0" prefHeight="86.0" prefWidth="256.0" style="-fx-background-radius: 20; -fx-background-color: white;">
+      <Pane fx:id="changeCredentialsPane" layoutX="32.0" layoutY="742.0" prefHeight="86.0" prefWidth="256.0" style="-fx-background-radius: 20; -fx-background-color: white;">
          <children>
             <Line endX="-75.72579956054688" endY="289.8216552734375" layoutX="157.0" layoutY="-212.0" startX="-75.72579956054688" startY="224.18505859375" stroke="#973f04" strokeLineCap="ROUND" strokeWidth="2.0" />
             <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="17.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
@@ -202,12 +227,15 @@
             </Label>
          </children>
       </Pane>
-      <JFXButton layoutX="32.0" layoutY="742.0" onAction="#btnChangeCredentialsOnAction" prefHeight="86.0" prefWidth="256.0" style="-fx-background-radius: 20;" text=" " textFill="#727374" wrapText="true">
+      <JFXButton layoutX="32.0" layoutY="742.0" onAction="#btnChangeCredentialsOnAction" onMouseEntered="#btnChangeCredentialsOnMouseEntered" onMouseExited="#btnChangeCredentialsOnMouseExited" prefHeight="86.0" prefWidth="256.0" style="-fx-background-radius: 20;" text=" " textFill="#727374" wrapText="true">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </JFXButton>
-      <Pane layoutX="1201.0" layoutY="65.0" prefHeight="134.0" prefWidth="283.0" style="-fx-background-radius: 20; -fx-background-color: white;">
+      <Pane fx:id="employeePaymentBtnPane" layoutX="1201.0" layoutY="65.0" prefHeight="134.0" prefWidth="283.0" style="-fx-background-radius: 20; -fx-background-color: white;">
          <children>
             <ImageView fitHeight="96.0" fitWidth="96.0" layoutX="22.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -222,15 +250,18 @@
             </Label>
          </children>
       </Pane>
-      <JFXButton layoutX="1201.0" layoutY="65.0" onAction="#btnEmployeePaymentOnAction" prefHeight="134.0" prefWidth="283.0" style="-fx-background-radius: 20;" text=" " textFill="#727374" wrapText="true">
+      <JFXButton layoutX="1201.0" layoutY="65.0" onAction="#btnEmployeePaymentOnAction" onMouseEntered="#btnEmployeePaymentOnMouseEntered" onMouseExited="#btnEmployeePaymentOnMouseExited" prefHeight="134.0" prefWidth="283.0" style="-fx-background-radius: 20;" text=" " textFill="#727374" wrapText="true">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </JFXButton>
       <Pane layoutX="947.0" layoutY="554.0" prefHeight="15.0" prefWidth="523.0" rotate="90.0" style="-fx-background-color: white;" />
       <Pane layoutX="302.0" layoutY="743.0" prefHeight="86.0" prefWidth="86.0" style="-fx-background-color: white; -fx-background-radius: 20;">
          <children>
-            <Pane layoutX="8.0" layoutY="8.0" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: white; -fx-border-color: E8E8E8; -fx-background-radius: 20; -fx-border-radius: 20;">
+            <Pane fx:id="deleteUserBtnInnerPane" layoutX="8.0" layoutY="8.0" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: white; -fx-border-color: E8E8E8; -fx-background-radius: 20; -fx-border-radius: 20;">
                <children>
                   <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -241,10 +272,13 @@
             </Pane>
          </children>
       </Pane>
-      <JFXButton layoutX="302.0" layoutY="743.0" onAction="#btnDeleteUserOnAction" prefHeight="86.0" prefWidth="86.0" style="-fx-background-radius: 20;" text=" " textFill="#727374" wrapText="true">
+      <JFXButton fx:id="btnDeleteUser" layoutX="302.0" layoutY="743.0" onAction="#btnDeleteUserOnAction" onMouseEntered="#btnDeleteUserOnMouseEntered" onMouseExited="#btnDeleteUserOnMouseExited" prefHeight="86.0" prefWidth="86.0" style="-fx-background-radius: 20;" text=" " textFill="#727374" wrapText="true">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </JFXButton>
    </children>
 </AnchorPane>

@@ -1,27 +1,26 @@
 package lk.grb.ceylonPottersPalette.controller;
 
-import javafx.animation.Interpolator;
-import javafx.animation.RotateTransition;
+import javafx.animation.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import com.jfoenix.controls.JFXButton;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.CacheHint;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.image.ImageView;
 
-import javafx.stage.Stage;
 import javafx.util.Duration;
-import lk.grb.ceylonPottersPalette.dto.ProductStockDto;
 import lk.grb.ceylonPottersPalette.model.*;
 import lk.grb.ceylonPottersPalette.util.Navigation;
+import lk.grb.ceylonPottersPalette.util.StyleUtil;
 
 import java.io.IOException;
 import java.net.URL;
@@ -30,6 +29,22 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class DashboardFormController implements Initializable {
+
+    @FXML
+    private JFXButton btnDeleteUser;
+
+    @FXML
+    private Pane changeCredentialsPane;
+
+    @FXML
+    private Pane employeePaymentBtnPane;
+
+    @FXML
+    private Pane paneBtnCustomers;
+
+    @FXML
+    private Pane paneBtnSuppliers;
+
     @FXML
     private Label lblAttendance;
 
@@ -62,6 +77,12 @@ public class DashboardFormController implements Initializable {
 
     @FXML
     private Pane piChartPane;
+
+    @FXML
+    private Pane deleteUserTextPane;
+
+    @FXML
+    private Pane deleteUserBtnInnerPane;
 
     @FXML
     private PieChart pieChart;
@@ -99,6 +120,75 @@ public class DashboardFormController implements Initializable {
     @FXML
     void btnDeleteUserOnAction(ActionEvent event) throws IOException {
         Navigation.imgPopUpBackground("deleteUserForm.fxml");
+    }
+
+    @FXML
+    void btnDeleteUserOnMouseEntered(MouseEvent event) {
+        deleteUserBtnInnerPane.setStyle("-fx-background-color: #E8E8E8;" +
+                                                "-fx-background-radius: 20px");
+        deleteUserTextPane.setVisible(true);
+        // Scale-in effect using ScaleTransition
+        ScaleTransition scaleTransition = new ScaleTransition(Duration.seconds(0.3), deleteUserTextPane);
+        scaleTransition.setFromX(0);
+        scaleTransition.setToX(1);
+        scaleTransition.setFromY(0);
+        scaleTransition.setToY(1);
+
+        // Slide-in effect using TranslateTransition
+        TranslateTransition translateTransition = new TranslateTransition(Duration.seconds(0.2), deleteUserTextPane);
+        translateTransition.setFromX(-deleteUserTextPane.getWidth()); // Start from the left of the pane
+        translateTransition.setToX(0);
+
+        scaleTransition.play();
+        translateTransition.play();
+    }
+
+    @FXML
+    void btnDeleteUserOnMouseExited(MouseEvent event) {
+        deleteUserBtnInnerPane.setStyle("-fx-border-color: #E8E8E8;" +
+                "-fx-border-radius: 20px");
+
+        deleteUserTextPane.setVisible(false);
+    }
+
+    @FXML
+    void btnEmployeePaymentOnMouseEntered(MouseEvent event) {
+        StyleUtil.credentialOrEmployeeManageBtnSelected(employeePaymentBtnPane);
+    }
+
+    @FXML
+    void btnEmployeePaymentOnMouseExited(MouseEvent event) {
+        StyleUtil.credentialOrEmployeeManageUnselected(employeePaymentBtnPane);
+    }
+
+    @FXML
+    void btnChangeCredentialsOnMouseEntered(MouseEvent event) {
+        StyleUtil.credentialOrEmployeeManageBtnSelected(changeCredentialsPane);
+    }
+
+    @FXML
+    void btnChangeCredentialsOnMouseExited(MouseEvent event) {
+        StyleUtil.credentialOrEmployeeManageUnselected(changeCredentialsPane);
+    }
+
+    @FXML
+    void btnSuppliersOnMouseEntered(MouseEvent event) {
+        StyleUtil.credentialOrEmployeeManageBtnSelected(paneBtnSuppliers);
+    }
+
+    @FXML
+    void btnSuppliersOnMouseExited(MouseEvent event) {
+        StyleUtil.dashboardCustomerAndSupplierBtnUnselected(paneBtnSuppliers);
+    }
+
+    @FXML
+    void btnCustomersOnMouseEntered(MouseEvent event) {
+        StyleUtil.credentialOrEmployeeManageBtnSelected(paneBtnCustomers);
+    }
+
+    @FXML
+    void btnCustomersOnMouseExited(MouseEvent event) {
+        StyleUtil.dashboardCustomerAndSupplierBtnUnselected(paneBtnCustomers);
     }
 
     public void allOrderId() throws SQLException {
