@@ -92,6 +92,7 @@ public class SupplierOrderManageFormController implements Initializable {
         for (int i = 0; i < allSupplierOrderId.size(); i++) {
             if (txtSearch.getText().equals(allSupplierOrderId.get(i))) {
                 SupplierOrderViewPopUpFormController.supplierOrderId = txtSearch.getText();
+                SupplierOrderViewPopUpFormController.supplierId = supplierOrderModel.getSupplierIdForOrder(txtSearch.getText());
                 Navigation.imgPopUpBackground("supplierOrderViewPopUpForm.fxml");
                 txtSearch.clear();
                 return;

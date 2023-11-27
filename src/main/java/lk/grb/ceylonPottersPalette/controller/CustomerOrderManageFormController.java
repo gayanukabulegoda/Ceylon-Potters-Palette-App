@@ -90,6 +90,7 @@ public class CustomerOrderManageFormController implements Initializable {
         for (int i = 0; i < allCustomerOrderId.size(); i++) {
             if (txtSearch.getText().equals(allCustomerOrderId.get(i))) {
                 CustomerOrderViewPopUpFormController.customerOrderId = txtSearch.getText();
+                CustomerOrderViewPopUpFormController.customerId = customerOrderModel.getCustomerIdForOrder(txtSearch.getText());
                 Navigation.imgPopUpBackground("customerOrderViewPopUpForm.fxml");
                 txtSearch.clear();
                 return;

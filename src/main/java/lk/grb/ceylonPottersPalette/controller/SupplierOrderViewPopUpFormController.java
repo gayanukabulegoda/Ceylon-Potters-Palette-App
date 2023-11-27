@@ -146,14 +146,14 @@ public class SupplierOrderViewPopUpFormController implements Initializable {
     public void setData() throws SQLException {
 
         SupplierOrderDto supplierOrderDto = supplierOrderModel.getData(supplierOrderId);
-        SupplierDto supplierDto = supplierModel.getData(supplierId);
+        String supplierName = supplierModel.getSupplierName(supplierId);
         ArrayList<String[]> list = supplierOrderDetailModel.getDataAsAnArray(supplierOrderId);
 
         lblOrderId.setText(supplierOrderDto.getSupplier_Order_Id());
         lblOrderDate.setText(supplierOrderDto.getDate());
         lblOrderTime.setText(supplierOrderDto.getTime());
         lblSupplierId.setText(supplierOrderDto.getSupplier_Id());
-        lblSupplierName.setText(supplierDto.getName());
+        lblSupplierName.setText(supplierName);
         lblNetTotal.setText(String.valueOf(supplierOrderDto.getTotal_Price()));
 
         allSupplierOrderCartId(list);

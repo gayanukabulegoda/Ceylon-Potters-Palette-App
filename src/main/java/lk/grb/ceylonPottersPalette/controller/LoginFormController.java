@@ -163,4 +163,9 @@ public class LoginFormController {
         powerOffPane.setVisible(false);
         StyleUtil.powerOffOrBackBtnUnselected(imgPowerOff);
     }
+
+    @FXML
+    void txtPasswordOnAction(ActionEvent event) {
+        btnLogInOnAction(event);
+    }
 }

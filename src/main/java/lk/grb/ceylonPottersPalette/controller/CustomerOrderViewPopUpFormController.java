@@ -149,14 +149,14 @@ public class CustomerOrderViewPopUpFormController implements Initializable {
     public void setData() throws SQLException {
 
         CustomerOrderDto customerOrderDto = customerOrderModel.getData(customerOrderId);
-        CustomerDto customerDto = customerModel.getData(customerId);
+        String customerName = customerModel.getCustomerName(customerId);
         ArrayList<String[]> list = customerOrderDetailModel.getData(customerOrderId);
 
         lblOrderId.setText(customerOrderDto.getCustomer_Order_Id());
         lblOrderDate.setText(customerOrderDto.getDate());
         lblOrderTime.setText(customerOrderDto.getTime());
         lblCustomerId.setText(customerOrderDto.getCustomer_Id());
-        lblCustomerName.setText(customerDto.getName());
+        lblCustomerName.setText(customerName);
         lblNetTotal.setText(String.valueOf(customerOrderDto.getTotal_Price()));
 
         allCustomerOrderCartId(list);
@@ -165,6 +165,7 @@ public class CustomerOrderViewPopUpFormController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         start();
+
         try {
             setData();
         } catch (SQLException e) {

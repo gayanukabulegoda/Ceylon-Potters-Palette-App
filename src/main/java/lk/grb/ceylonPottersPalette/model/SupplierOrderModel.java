@@ -69,6 +69,16 @@ public class SupplierOrderModel {
         return list;
     }
 
+    public String getSupplierIdForOrder(String id) throws SQLException {
+        ResultSet resultSet = SQLUtil.execute("SELECT supplier_Id FROM supplier_Order " +
+                "WHERE supplier_Order_Id = ?", id);
+
+        if (resultSet.next()) {
+            return resultSet.getString(1);
+        }
+        return null;
+    }
+
     public double getOrderTotal() throws SQLException {
         ResultSet resultSet = SQLUtil.execute("SELECT SUM(total_Price) FROM supplier_Order");
 

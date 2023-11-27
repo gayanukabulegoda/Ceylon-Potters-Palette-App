@@ -78,6 +78,16 @@ public class CustomerOrderModel {
         return list;
     }
 
+    public String getCustomerIdForOrder(String id) throws SQLException {
+        ResultSet resultSet = SQLUtil.execute("SELECT customer_Id FROM customer_Order " +
+                "WHERE customer_Order_Id = ?", id);
+
+        if (resultSet.next()) {
+            return resultSet.getString(1);
+        }
+        return null;
+    }
+
     public String getTodaySales() throws SQLException {
         ResultSet resultSet = SQLUtil.execute("SELECT COUNT(*) FROM customer_Order WHERE DATE(date) = CURDATE()");
 

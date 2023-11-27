@@ -128,6 +128,14 @@ public class CustomerOrderAddPopUpFormController implements Initializable {
 
         if (validateCustomerOrder()) {
 
+//            for (int i = 0; i < productList.size(); i++) {
+//                if (productList.get(i)[0].equals(String.valueOf(cmbProductId.getSelectionModel().getSelectedItem()))) {
+//                    productList.get(i)[1] += Integer.parseInt(txtProductQty.getText());
+//
+//                    return;
+//                }
+//            }
+
             String[] products = {String.valueOf(cmbProductId.getSelectionModel().getSelectedItem()), txtProductQty.getText()};
 
             productList.add(products);
