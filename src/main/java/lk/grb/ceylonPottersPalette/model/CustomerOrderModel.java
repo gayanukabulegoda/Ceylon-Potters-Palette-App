@@ -54,6 +54,30 @@ public class CustomerOrderModel {
         return list;
     }
 
+    public ArrayList<String> getSelectedAllCustomerOrderId(String id) throws SQLException {
+        ResultSet resultSet = SQLUtil.execute("SELECT customer_Order_Id FROM customer_Order " +
+                "WHERE customer_Id = ? ORDER BY date desc, time desc", id);
+
+        ArrayList<String> list = new ArrayList<>();
+
+        while (resultSet.next()) {
+            list.add(resultSet.getString(1));
+        }
+        return list;
+    }
+
+    public ArrayList<String> getCustomerId(String id) throws SQLException {
+        ResultSet resultSet = SQLUtil.execute("SELECT customer_Id FROM customer_Order " +
+                "WHERE customer_Order_Id = ? ORDER BY date desc, time desc", id);
+
+        ArrayList<String> list = new ArrayList<>();
+
+        while (resultSet.next()) {
+            list.add(resultSet.getString(1));
+        }
+        return list;
+    }
+
     public String getTodaySales() throws SQLException {
         ResultSet resultSet = SQLUtil.execute("SELECT COUNT(*) FROM customer_Order WHERE DATE(date) = CURDATE()");
 

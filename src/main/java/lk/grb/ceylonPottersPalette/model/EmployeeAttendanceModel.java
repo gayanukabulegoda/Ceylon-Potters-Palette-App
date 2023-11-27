@@ -51,12 +51,21 @@ public class EmployeeAttendanceModel {
     }
 
     public ArrayList<String> getAllAttendanceId() throws SQLException {
-        ResultSet resultSet = SQLUtil.execute("SELECT attendance_Id FROM attendance ORDER BY attendance_Id");
+        ResultSet resultSet = SQLUtil.execute("SELECT attendance_Id FROM attendance ORDER BY date desc, time desc");
         ArrayList<String> list = new ArrayList<>();
 
         while (resultSet.next()) {
             list.add(resultSet.getString(1));
-            System.out.println(resultSet.getString(1));
+        }
+        return list;
+    }
+
+    public ArrayList<String> getSelectedAllAttendanceId(String id) throws SQLException {
+        ResultSet resultSet = SQLUtil.execute("SELECT attendance_Id FROM attendance WHERE employee_Id = ? ORDER BY date desc, time desc", id);
+        ArrayList<String> list = new ArrayList<>();
+
+        while (resultSet.next()) {
+            list.add(resultSet.getString(1));
         }
         return list;
     }

@@ -115,4 +115,13 @@ public class EmployeeModel {
         }
         return null;
     }
+
+    public String getEmployeeContactNo(String id) throws SQLException {
+        ResultSet resultSet = SQLUtil.execute("SELECT contact_No FROM employee WHERE employee_Id=?", id);
+
+        if (resultSet.next()) {
+            return resultSet.getString(1);
+        }
+        return null;
+    }
 }

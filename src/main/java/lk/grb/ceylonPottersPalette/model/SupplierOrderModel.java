@@ -45,6 +45,30 @@ public class SupplierOrderModel {
         return list;
     }
 
+    public ArrayList<String> getSelectedAllSupplierOrderId(String id) throws SQLException {
+        ResultSet resultSet = SQLUtil.execute("SELECT supplier_Order_Id FROM supplier_Order " +
+                "WHERE supplier_Id = ? ORDER BY date desc, time desc", id);
+
+        ArrayList<String> list = new ArrayList<>();
+
+        while (resultSet.next()) {
+            list.add(resultSet.getString(1));
+        }
+        return list;
+    }
+
+    public ArrayList<String> getSupplierId(String id) throws SQLException {
+        ResultSet resultSet = SQLUtil.execute("SELECT supplier_Id FROM supplier_Order " +
+                "WHERE supplier_Order_Id = ? ORDER BY date desc, time desc", id);
+
+        ArrayList<String> list = new ArrayList<>();
+
+        while (resultSet.next()) {
+            list.add(resultSet.getString(1));
+        }
+        return list;
+    }
+
     public double getOrderTotal() throws SQLException {
         ResultSet resultSet = SQLUtil.execute("SELECT SUM(total_Price) FROM supplier_Order");
 

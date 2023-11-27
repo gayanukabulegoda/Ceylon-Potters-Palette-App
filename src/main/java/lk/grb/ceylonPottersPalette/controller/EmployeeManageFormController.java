@@ -82,7 +82,7 @@ public class EmployeeManageFormController implements Initializable {
     void txtSearchOnAction(ActionEvent event) throws IOException, SQLException {
 
         if (!validateId()) {
-            new Alert(Alert.AlertType.ERROR, "Invalid Id! Id Should be in the format 'E-001' !!").show();
+            new Alert(Alert.AlertType.ERROR, "Invalid Contact No!!").show();
             return;
         }
 
@@ -90,17 +90,18 @@ public class EmployeeManageFormController implements Initializable {
         ArrayList<String> allEmployeeId = employeeModel.getAllEmployeeId();
 
         for (int i = 0; i < allEmployeeId.size(); i++) {
-            if (txtSearch.getText().equals(allEmployeeId.get(i))) {
-                EmployeeViewPopUpFormController.employeeId = txtSearch.getText();
+            if (txtSearch.getText().equals(employeeModel.getEmployeeContactNo(allEmployeeId.get(i)))) {
+                EmployeeViewPopUpFormController.employeeId = allEmployeeId.get(i);
                 Navigation.imgPopUpBackground("employeeViewPopUpForm.fxml");
+                txtSearch.clear();
                 return;
             }
         }
-        new Alert(Alert.AlertType.ERROR, "Invalid Id! Id Should be in the format 'E-001' !!").show();
+        new Alert(Alert.AlertType.ERROR, "Invalid Contact No!!").show();
     }
 
     private boolean validateId() {
-        return Pattern.matches("(E-00)\\d{1,}", txtSearch.getText());
+        return Pattern.matches("[0-9]{10}", txtSearch.getText());
     }
 
     public void allEmployeeId() throws SQLException {

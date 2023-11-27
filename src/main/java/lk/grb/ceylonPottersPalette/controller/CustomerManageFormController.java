@@ -56,8 +56,9 @@ public class CustomerManageFormController implements Initializable {
 
         for (int i = 0; i < allCustomerId.size(); i++) {
             if (txtSearch.getText().equals(customerModel.getCustomerContactNo(allCustomerId.get(i)))) {
-                CustomerViewPopUpFormController.customerId = customerModel.getAllCustomerId().get(i);
+                CustomerViewPopUpFormController.customerId = allCustomerId.get(i);
                 Navigation.imgPopUpBackground("customerViewPopUpForm.fxml");
+                txtSearch.clear();
                 return;
             }
         }

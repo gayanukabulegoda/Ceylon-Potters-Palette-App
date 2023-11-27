@@ -76,8 +76,8 @@ public class RepairedStockFormController implements Initializable {
     @FXML
     void txtSearchOnAction(ActionEvent event) throws IOException, SQLException {
 
-        if (!validateId()) {
-            new Alert(Alert.AlertType.ERROR, "Invalid Id! Id Should be in the format 'P-001' !!").show();
+        if (!validateName()) {
+            new Alert(Alert.AlertType.ERROR, "Wrong Name! Try again!!").show();
             return;
         }
 
@@ -85,17 +85,18 @@ public class RepairedStockFormController implements Initializable {
         ArrayList<String> allProductId = productStockModel.getAllProductId();
 
         for (int i = 0; i < allProductId.size(); i++) {
-            if (txtSearch.getText().equals(allProductId.get(i))) {
-                ProductViewPopUpFormController.productId = txtSearch.getText();
+            if (txtSearch.getText().equals(productStockModel.getDescription(allProductId.get(i)))) {
+                ProductViewPopUpFormController.productId = allProductId.get(i);
+                txtSearch.clear();
                 Navigation.imgPopUpBackground("productViewPopUpForm.fxml");
                 return;
             }
         }
-        new Alert(Alert.AlertType.ERROR, "Invalid Id! Id Should be in the format 'P-001' !!").show();
+        new Alert(Alert.AlertType.ERROR, "Wrong Name! Try again!!").show();
     }
 
-    private boolean validateId() {
-        return Pattern.matches("(P-00)\\d+", txtSearch.getText());
+    private boolean validateName() {
+        return Pattern.matches("[A-Za-z\\s]{3,}", txtSearch.getText());
     }
 
     public void allRepairedProductId() throws SQLException {

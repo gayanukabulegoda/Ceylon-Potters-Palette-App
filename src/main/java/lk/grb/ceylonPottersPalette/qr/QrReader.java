@@ -15,7 +15,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 
-public class ReadQr {
+public class QrReader {
 
     private static Webcam webcam;
 
@@ -52,7 +52,7 @@ public class ReadQr {
                 //luminanceSource enhances the bufferedImage to reduce blur
                 LuminanceSource source = new BufferedImageLuminanceSource(image);
 
-                //binaryBitmap get encorded Qr and decoded via multiFormatReader
+                //binaryBitmap get encoded Qr and decoded via multiFormatReader
                 BinaryBitmap binaryBitmap = new BinaryBitmap(new HybridBinarizer(source));
                 Result result = new MultiFormatReader().decode(binaryBitmap);
 

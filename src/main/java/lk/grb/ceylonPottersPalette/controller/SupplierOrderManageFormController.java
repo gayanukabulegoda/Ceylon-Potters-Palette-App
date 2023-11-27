@@ -10,6 +10,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import lk.grb.ceylonPottersPalette.model.CustomerModel;
+import lk.grb.ceylonPottersPalette.model.CustomerOrderModel;
 import lk.grb.ceylonPottersPalette.model.SupplierModel;
 import lk.grb.ceylonPottersPalette.model.SupplierOrderModel;
 import lk.grb.ceylonPottersPalette.util.Navigation;
@@ -67,28 +69,64 @@ public class SupplierOrderManageFormController implements Initializable {
     }
 
     @FXML
+    void btnRefreshTableOnAction(ActionEvent event) {
+        try {
+            allSupplierOrderId();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
     void txtSearchOnAction(ActionEvent event) throws IOException, SQLException {
 
-        if (!validateId()) {
-            new Alert(Alert.AlertType.ERROR, "Invalid Id! Id Should be in the format 'SO-01' !!").show();
+        if (!(validateId() | validateContactNo())) {
+            new Alert(Alert.AlertType.ERROR, "Invalid Contact No Or Order ID!!").show();
             return;
         }
 
         SupplierOrderModel supplierOrderModel = new SupplierOrderModel();
         ArrayList<String> allSupplierOrderId = supplierOrderModel.getAllSupplierOrderId();
+        SupplierModel supplierModel = new SupplierModel();
 
         for (int i = 0; i < allSupplierOrderId.size(); i++) {
             if (txtSearch.getText().equals(allSupplierOrderId.get(i))) {
                 SupplierOrderViewPopUpFormController.supplierOrderId = txtSearch.getText();
                 Navigation.imgPopUpBackground("supplierOrderViewPopUpForm.fxml");
+                txtSearch.clear();
                 return;
             }
+
+            ArrayList<String> supplierIds = supplierOrderModel.getSupplierId(allSupplierOrderId.get(i));
+
+            for (int j = 0; j < supplierIds.size(); j++) {
+                if (txtSearch.getText().equals(supplierModel.getSupplierContactNo(supplierIds.get(j)))) {
+                    allSelectedSupplierOrderId(supplierIds.get(j));
+                    txtSearch.clear();
+                    return;
+                }
+            }
         }
-        new Alert(Alert.AlertType.ERROR, "Invalid Id! Id Should be in the format 'SO-01' !!").show();
+        new Alert(Alert.AlertType.ERROR, "Invalid Contact No Or Order ID!!").show();
     }
 
     private boolean validateId() {
         return Pattern.matches("(SO-0)\\d+", txtSearch.getText());
+    }
+
+    private boolean validateContactNo() {
+        return Pattern.matches("[0-9]{10}", txtSearch.getText());
+    }
+
+    public void allSelectedSupplierOrderId(String id) throws SQLException {
+
+        vBoxSupplierOrders.getChildren().clear();
+        SupplierOrderModel supplierOrderModel = new SupplierOrderModel();
+        ArrayList<String> list = supplierOrderModel.getSelectedAllSupplierOrderId(id);
+
+        for (int i = 0; i < list.size(); i++) {
+            loadDataTable(list.get(i));
+        }
     }
 
     public void allSupplierOrderId() throws SQLException {

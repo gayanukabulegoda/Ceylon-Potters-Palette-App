@@ -21,7 +21,6 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-import java.util.regex.Pattern;
 
 public class EmployeeAttendanceMarkPopUpController implements Initializable {
 
@@ -53,7 +52,7 @@ public class EmployeeAttendanceMarkPopUpController implements Initializable {
     private Pane markAttendaceBtnPane;
 
     EmployeeModel employeeModel = new EmployeeModel();
-    EmployeeAttendanceModel employeeAttendanceModel = new EmployeeAttendanceModel();
+    public static EmployeeAttendanceModel employeeAttendanceModel = new EmployeeAttendanceModel();
 
     @FXML
     void btnCloseIconOnAction(ActionEvent event) {
@@ -79,6 +78,25 @@ public class EmployeeAttendanceMarkPopUpController implements Initializable {
                 Navigation.closePane();
                 EmployeeAttendanceFormController.getInstance().allAttendanceId();
             }
+        }
+    }
+
+    public static void markAttendanceOViaQr(String id) throws SQLException {
+
+        EmployeeAttendanceDto employeeAttendanceDto = new EmployeeAttendanceDto();
+
+        ArrayList<String> list = employeeAttendanceModel.getAllAttendanceId();
+
+        employeeAttendanceDto.setAttendance_Id(NewId.newId(list, NewId.GetType.ATTENDANCE_ID));
+        employeeAttendanceDto.setEmployee_Id(id);
+        employeeAttendanceDto.setDate(DateTimeUtil.dateNow());
+        employeeAttendanceDto.setTime(DateTimeUtil.timeNow());
+
+        boolean save = employeeAttendanceModel.save(employeeAttendanceDto);
+
+        if (save) {
+            //Navigation.closePane();
+            EmployeeAttendanceFormController.getInstance().allAttendanceId();
         }
     }
 

@@ -55,21 +55,21 @@
             </ScrollPane>
          </children>
       </AnchorPane>
-      <Pane layoutX="1203.0" layoutY="24.0" prefHeight="46.0" prefWidth="300.0" style="-fx-background-color: white; -fx-background-radius: 12;">
+      <Pane layoutX="1159.0" layoutY="25.0" prefHeight="46.0" prefWidth="300.0" style="-fx-background-color: white; -fx-background-radius: 12;">
          <children>
-            <TextField fx:id="txtSearch" layoutX="40.0" onAction="#txtSearchOnAction" prefHeight="46.0" prefWidth="258.0" promptText="Search by ID" style="-fx-background-color: white; -fx-background-radius: 12;">
+            <TextField fx:id="txtSearch" layoutX="40.0" onAction="#txtSearchOnAction" prefHeight="46.0" prefWidth="258.0" promptText="Search by Contact No" style="-fx-background-color: white; -fx-background-radius: 12;">
                <font>
                   <Font size="16.0" />
                </font>
             </TextField>
          </children>
       </Pane>
-      <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="1218.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="1174.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assests/icon/searchIcon.png" />
          </image>
       </ImageView>
-      <Pane layoutX="1009.0" layoutY="24.0" prefHeight="46.0" prefWidth="179.0" style="-fx-background-color: white; -fx-background-radius: 12;">
+      <Pane layoutX="973.0" layoutY="25.0" prefHeight="46.0" prefWidth="179.0" style="-fx-background-color: white; -fx-background-radius: 12;">
          <children>
             <Label layoutX="45.0" layoutY="13.0" text=" Add Salary">
                <font>
@@ -83,7 +83,7 @@
             </ImageView>
          </children>
       </Pane>
-      <JFXButton layoutX="1009.0" layoutY="24.0" onAction="#btnAddSalaryOnAction" prefHeight="46.0" prefWidth="179.0" style="-fx-background-radius: 12;" text=" ">
+      <JFXButton layoutX="973.0" layoutY="25.0" onAction="#btnAddSalaryOnAction" prefHeight="46.0" prefWidth="179.0" style="-fx-background-radius: 12;" text=" ">
          <font>
             <Font size="16.0" />
          </font>
@@ -138,6 +138,20 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
+      </JFXButton>
+      <Pane layoutX="1466.0" layoutY="25.0" prefHeight="46.0" prefWidth="46.0" style="-fx-background-color: white; -fx-background-radius: 12;">
+         <children>
+            <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="11.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assests/icon/refreshTableIcon.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <JFXButton layoutX="1466.0" layoutY="25.0" onAction="#btnRefreshTableOnAction" prefHeight="46.0" prefWidth="46.0" style="-fx-background-radius: 12;" text=" ">
+         <font>
+            <Font size="16.0" />
+         </font>
       </JFXButton>
    </children>
 </AnchorPane>

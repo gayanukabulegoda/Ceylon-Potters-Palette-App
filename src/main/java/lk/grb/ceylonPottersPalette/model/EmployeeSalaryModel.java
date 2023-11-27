@@ -69,6 +69,16 @@ public class EmployeeSalaryModel {
         return list;
     }
 
+    public ArrayList<String> getSelectedAllSalaryId(String id) throws SQLException {
+        ResultSet resultSet = SQLUtil.execute("SELECT salary_Id FROM salary WHERE employee_Id = ? ORDER BY salary_Id desc", id);
+        ArrayList<String> list = new ArrayList<>();
+
+        while (resultSet.next()) {
+            list.add(resultSet.getString(1));
+        }
+        return list;
+    }
+
     public ArrayList<String> getAllEmployeeId() throws SQLException {
         ResultSet resultSet = SQLUtil.execute("SELECT employee_Id FROM salary");
         ArrayList<String> list = new ArrayList<>();

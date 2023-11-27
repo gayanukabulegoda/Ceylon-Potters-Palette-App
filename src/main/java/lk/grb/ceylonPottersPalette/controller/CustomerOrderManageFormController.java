@@ -62,6 +62,15 @@ public class CustomerOrderManageFormController implements Initializable {
     }
 
     @FXML
+    void btnRefreshTableOnAction(ActionEvent event) {
+        try {
+            allCustomerOrderId();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
     void btnSupplierOrdersOnAction(ActionEvent event) throws IOException {
         Navigation.switchPaging(GlobalFormController.getInstance().pagingPane, "supplierOrderManageForm.fxml");
     }
@@ -69,26 +78,53 @@ public class CustomerOrderManageFormController implements Initializable {
     @FXML
     void txtSearchOnAction(ActionEvent event) throws IOException, SQLException {
 
-        if (!validateId()) {
-            new Alert(Alert.AlertType.ERROR, "Invalid Id! Id Should be in the format 'CO-01' !!").show();
+        if (!(validateId() | validateContactNo())) {
+            new Alert(Alert.AlertType.ERROR, "Invalid Contact No Or Order ID!!").show();
             return;
         }
 
         CustomerOrderModel customerOrderModel = new CustomerOrderModel();
+        CustomerModel customerModel = new CustomerModel();
         ArrayList<String> allCustomerOrderId = customerOrderModel.getAllCustomerOrderId();
 
         for (int i = 0; i < allCustomerOrderId.size(); i++) {
             if (txtSearch.getText().equals(allCustomerOrderId.get(i))) {
                 CustomerOrderViewPopUpFormController.customerOrderId = txtSearch.getText();
                 Navigation.imgPopUpBackground("customerOrderViewPopUpForm.fxml");
+                txtSearch.clear();
                 return;
             }
+
+            ArrayList<String> customerIds = customerOrderModel.getCustomerId(allCustomerOrderId.get(i));
+
+            for (int j = 0; j < customerIds.size(); j++) {
+                if (txtSearch.getText().equals(customerModel.getCustomerContactNo(customerIds.get(j)))) {
+                    allSelectedCustomerOrderId(customerIds.get(j));
+                    txtSearch.clear();
+                    return;
+                }
+            }
         }
-        new Alert(Alert.AlertType.ERROR, "Invalid Id! Id Should be in the format 'CO-01' !!").show();
+        new Alert(Alert.AlertType.ERROR, "Invalid Contact No Or Order ID!!").show();
     }
 
     private boolean validateId() {
         return Pattern.matches("(CO-0)\\d+", txtSearch.getText());
+    }
+
+    private boolean validateContactNo() {
+        return Pattern.matches("[0-9]{10}", txtSearch.getText());
+    }
+
+    public void allSelectedCustomerOrderId(String id) throws SQLException {
+
+        vBoxCustomerOrders.getChildren().clear();
+        CustomerOrderModel customerOrderModel = new CustomerOrderModel();
+        ArrayList<String> list = customerOrderModel.getSelectedAllCustomerOrderId(id);
+
+        for (int i = 0; i < list.size(); i++) {
+            loadDataTable(list.get(i));
+        }
     }
 
     public void allCustomerOrderId() throws SQLException {

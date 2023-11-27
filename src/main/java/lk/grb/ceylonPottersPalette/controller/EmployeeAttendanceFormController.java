@@ -10,10 +10,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import lk.grb.ceylonPottersPalette.model.CustomerOrderModel;
 import lk.grb.ceylonPottersPalette.model.EmployeeAttendanceModel;
 import lk.grb.ceylonPottersPalette.model.EmployeeModel;
-import lk.grb.ceylonPottersPalette.model.SupplierModel;
+import lk.grb.ceylonPottersPalette.model.EmployeeSalaryModel;
+import lk.grb.ceylonPottersPalette.qr.QrReader;
 import lk.grb.ceylonPottersPalette.util.Navigation;
 
 import java.io.IOException;
@@ -65,10 +65,19 @@ public class EmployeeAttendanceFormController implements Initializable {
     }
 
     @FXML
+    void btnRefreshTableOnAction(ActionEvent event) {
+        try {
+            allAttendanceId();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
     void txtSearchOnAction(ActionEvent event) throws IOException, SQLException {
 
         if (!validateId()) {
-            new Alert(Alert.AlertType.ERROR, "Invalid Id! Id Should be in the format 'E-001' !!").show();
+            new Alert(Alert.AlertType.ERROR, "Invalid Contact No!!").show();
             return;
         }
 
@@ -76,17 +85,17 @@ public class EmployeeAttendanceFormController implements Initializable {
         ArrayList<String> allEmployeeId = employeeModel.getAllEmployeeId();
 
         for (int i = 0; i < allEmployeeId.size(); i++) {
-            if (txtSearch.getText().equals(allEmployeeId.get(i))) {
-                EmployeeViewPopUpFormController.employeeId = txtSearch.getText();
-                Navigation.imgPopUpBackground("employeeViewPopUpForm.fxml");
+            if (txtSearch.getText().equals(employeeModel.getEmployeeContactNo(allEmployeeId.get(i)))) {
+                allSelectedEmployeeSalaryId(allEmployeeId.get(i));
+                txtSearch.clear();
                 return;
             }
         }
-        new Alert(Alert.AlertType.ERROR, "Invalid Id! Id Should be in the format 'E-001' !!").show();
+        new Alert(Alert.AlertType.ERROR, "Invalid Contact No!!").show();
     }
 
     private boolean validateId() {
-        return Pattern.matches("(E-00)\\d{1,}", txtSearch.getText());
+        return Pattern.matches("[0-9]{10}", txtSearch.getText());
     }
 
     @FXML
@@ -102,6 +111,23 @@ public class EmployeeAttendanceFormController implements Initializable {
     @FXML
     void btnEnterIdOnAction(ActionEvent event) throws IOException {
         Navigation.imgPopUpBackground("employeeAttendanceMarkPopUp.fxml");
+    }
+
+    @FXML
+    void btnQrOnAction(ActionEvent event) throws SQLException {
+        String id = QrReader.readQr();
+        EmployeeAttendanceMarkPopUpController.markAttendanceOViaQr(id);
+    }
+
+    public void allSelectedEmployeeSalaryId(String id) throws SQLException {
+
+        vBoxEmployeeAttendance.getChildren().clear();
+        EmployeeAttendanceModel employeeAttendanceModel = new EmployeeAttendanceModel();
+        ArrayList<String> list = employeeAttendanceModel.getSelectedAllAttendanceId(id);
+
+        for (int i = 0; i < list.size(); i++) {
+            loadDataTable(list.get(i));
+        }
     }
 
     public void allAttendanceId() throws SQLException {

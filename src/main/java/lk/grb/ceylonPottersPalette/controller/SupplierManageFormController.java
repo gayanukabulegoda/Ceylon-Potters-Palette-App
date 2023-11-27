@@ -54,17 +54,18 @@ public class SupplierManageFormController implements Initializable {
         ArrayList<String> allSupplierId = supplierModel.getAllSupplierId();
 
         for (int i = 0; i < allSupplierId.size(); i++) {
-            if (txtSearch.getText().equals(allSupplierId.get(i))) {
-                SupplierViewPopUpFormController.supplierId = txtSearch.getText();
+            if (txtSearch.getText().equals(supplierModel.getSupplierContactNo(allSupplierId.get(i)))) {
+                SupplierViewPopUpFormController.supplierId = allSupplierId.get(i);
                 Navigation.imgPopUpBackground("supplierViewPopUpForm.fxml");
+                txtSearch.clear();
                 return;
             }
         }
-        new Alert(Alert.AlertType.ERROR, "Invalid Id! Id Should be in the format 'S-001' !!").show();
+        new Alert(Alert.AlertType.ERROR, "Invalid Contact No!!").show();
     }
 
     private boolean validateId() {
-        return Pattern.matches("(S-00)\\d+", txtSearch.getText());
+        return Pattern.matches("[0-9]{10}", txtSearch.getText());
     }
 
     public void allSupplierId() throws SQLException {

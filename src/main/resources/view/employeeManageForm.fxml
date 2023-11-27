@@ -61,7 +61,7 @@
          </children>
       </AnchorPane>
       <Pane layoutX="1203.0" layoutY="24.0" prefHeight="46.0" prefWidth="300.0" style="-fx-background-color: white; -fx-background-radius: 12;" />
-      <TextField fx:id="txtSearch" layoutX="1246.0" layoutY="24.0" onAction="#txtSearchOnAction" prefHeight="46.0" prefWidth="258.0" promptText="Search by ID" style="-fx-background-color: white; -fx-background-radius: 12;">
+      <TextField fx:id="txtSearch" layoutX="1246.0" layoutY="24.0" onAction="#txtSearchOnAction" prefHeight="46.0" prefWidth="258.0" promptText="Search by Contact No" style="-fx-background-color: white; -fx-background-radius: 12;">
          <font>
             <Font size="16.0" />
          </font>

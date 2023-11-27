@@ -14,7 +14,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 
-public class GenerateQr {
+public class QrGenerator {
 
     public static void generateQr(String id) throws IOException, WriterException {
         String input = id;
@@ -22,6 +22,7 @@ public class GenerateQr {
         String charset = StandardCharsets.UTF_8.name();
         Map<EncodeHintType, Object> hints = new HashMap<>();
         hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
+
         generateQrCode(input, path + input + ".png", charset, hints, 400, 400);
     }
 

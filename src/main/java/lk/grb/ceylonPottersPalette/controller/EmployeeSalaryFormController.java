@@ -79,29 +79,38 @@ public class EmployeeSalaryFormController implements Initializable {
     }
 
     @FXML
+    void btnRefreshTableOnAction(ActionEvent event) {
+        try {
+            allSalaryId();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
     void txtSearchOnAction(ActionEvent event) throws IOException, SQLException {
 
         if (!validateId()) {
-            new Alert(Alert.AlertType.ERROR, "Invalid Id! Id Should be in the format 'E-001' !!").show();
+            new Alert(Alert.AlertType.ERROR, "Invalid Contact No!!").show();
             return;
         }
 
         EmployeeSalaryModel employeeSalaryModel = new EmployeeSalaryModel();
+        EmployeeModel employeeModel = new EmployeeModel();
         ArrayList<String> allEmployeeId = employeeSalaryModel.getAllEmployeeId();
 
         for (int i = 0; i < allEmployeeId.size(); i++) {
-            if (txtSearch.getText().equals(allEmployeeId.get(i))) {
-                String salaryId = employeeSalaryModel.getSalaryId(txtSearch.getText());
-                EmployeeSalaryViewPopUpFormController.salaryId = salaryId;
-                Navigation.imgPopUpBackground("employeeSalaryViewPopUpForm.fxml");
+            if (txtSearch.getText().equals(employeeModel.getEmployeeContactNo(allEmployeeId.get(i)))) {
+                allSelectedEmployeeSalaryId(allEmployeeId.get(i));
+                txtSearch.clear();
                 return;
             }
         }
-        new Alert(Alert.AlertType.ERROR, "Invalid Id! Id Should be in the format 'E-001' !!").show();
+        new Alert(Alert.AlertType.ERROR, "Invalid Contact No!!").show();
     }
 
     private boolean validateId() {
-        return Pattern.matches("(E-00)\\d+", txtSearch.getText());
+        return Pattern.matches("[0-9]{10}", txtSearch.getText());
     }
 
     public void allSalaryId() throws SQLException {
@@ -109,6 +118,17 @@ public class EmployeeSalaryFormController implements Initializable {
         vBoxEmployeeSalary.getChildren().clear();
         EmployeeSalaryModel employeeSalaryModel = new EmployeeSalaryModel();
         ArrayList<String> list = employeeSalaryModel.getAllSalaryId();
+
+        for (int i = 0; i < list.size(); i++) {
+            loadDataTable(list.get(i));
+        }
+    }
+
+    public void allSelectedEmployeeSalaryId(String id) throws SQLException {
+
+        vBoxEmployeeSalary.getChildren().clear();
+        EmployeeSalaryModel employeeSalaryModel = new EmployeeSalaryModel();
+        ArrayList<String> list = employeeSalaryModel.getSelectedAllSalaryId(id);
 
         for (int i = 0; i < list.size(); i++) {
             loadDataTable(list.get(i));
