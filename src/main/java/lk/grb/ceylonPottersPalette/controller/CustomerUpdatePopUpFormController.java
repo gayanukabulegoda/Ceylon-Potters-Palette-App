@@ -6,16 +6,15 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import lk.grb.ceylonPottersPalette.dto.CustomerDto;
 import lk.grb.ceylonPottersPalette.dto.EmployeeDto;
 import lk.grb.ceylonPottersPalette.model.CustomerModel;
-import lk.grb.ceylonPottersPalette.util.DateTimeUtil;
-import lk.grb.ceylonPottersPalette.util.Navigation;
-import lk.grb.ceylonPottersPalette.util.NewId;
-import lk.grb.ceylonPottersPalette.util.StyleUtil;
+import lk.grb.ceylonPottersPalette.util.*;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -85,7 +84,7 @@ public class CustomerUpdatePopUpFormController implements Initializable {
     }
 
     @FXML
-    void btnUpdateOnAction(ActionEvent event) throws SQLException {
+    void btnUpdateOnAction() throws SQLException {
 
         if (validateCustomer()) {
 
@@ -123,28 +122,65 @@ public class CustomerUpdatePopUpFormController implements Initializable {
     }
 
     private boolean validateCustomer() {
+        boolean result = true;
 
-        boolean nameValidate = Pattern.matches("[A-Za-z\\s]{3,12}", txtCustomerName.getText());
-
-        if (!nameValidate) {
+        if (RegExPatterns.namePattern(txtCustomerName.getText())) {
             lblCustomerNameAlert.setText("Invalid Customer Name!!");
-            return false;
+            result = false;
         }
 
-        boolean contactNoValidate = Pattern.matches("([0]\\d{1,9})", txtContactNo.getText());
+        if (RegExPatterns.emailPattern(txtCustomerEmail.getText())) {
+            lblCustomerEmailAlert.setText("Invalid Email Address!!");
+            result = false;
+        }
 
-        if (!contactNoValidate) {
+        if (RegExPatterns.contactNoPattern(txtContactNo.getText())) {
             lblContactNoAlert.setText("Invalid Contact Number!!");
-            return false;
+            result = false;
         }
+        return result;
+    }
 
-        boolean emailValidate = Pattern.matches("([A-Za-z0-9]{3,}@[A-Za-z]{3,}\\.[A-Za-z]{1,})", txtCustomerEmail.getText());
+    @FXML
+    void txtCustomerNameOnKeyPressed(KeyEvent event) {
+        lblCustomerNameAlert.setText(" ");
 
-        if (!emailValidate) {
-            lblCustomerEmailAlert.setText("Invalid Customer Email!!");
-            return false;
+        if (event.getCode() == KeyCode.ENTER) {
+            if (RegExPatterns.namePattern(txtCustomerName.getText())) {
+                lblCustomerNameAlert.setText("Invalid Customer Name!!");
+                event.consume();
+            } else {
+                txtContactNo.requestFocus();
+            }
         }
-        return true;
+    }
+
+    @FXML
+    void txtContactNoOnKeyPressed(KeyEvent event) {
+        lblContactNoAlert.setText(" ");
+
+        if (event.getCode() == KeyCode.ENTER) {
+            if (RegExPatterns.contactNoPattern(txtContactNo.getText())) {
+                lblContactNoAlert.setText("Invalid Contact Number!!");
+                event.consume();
+            } else {
+                txtCustomerEmail.requestFocus();
+            }
+        }
+    }
+
+    @FXML
+    void txtEmailOnKeyPressed(KeyEvent event) throws SQLException {
+        lblCustomerEmailAlert.setText(" ");
+
+        if (event.getCode() == KeyCode.ENTER) {
+            if (RegExPatterns.emailPattern(txtCustomerEmail.getText())) {
+                lblCustomerEmailAlert.setText("Invalid Email Address!!");
+                event.consume();
+            } else {
+                btnUpdateOnAction();
+            }
+        }
     }
 
     @FXML

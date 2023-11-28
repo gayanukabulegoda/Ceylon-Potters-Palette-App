@@ -1,5 +1,6 @@
 package lk.grb.ceylonPottersPalette.controller;
 
+import com.google.zxing.WriterException;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import javafx.event.ActionEvent;
@@ -8,13 +9,17 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import lk.grb.ceylonPottersPalette.dto.EmployeeDto;
 import lk.grb.ceylonPottersPalette.model.EmployeeModel;
 import lk.grb.ceylonPottersPalette.util.Navigation;
+import lk.grb.ceylonPottersPalette.util.RegExPatterns;
 import lk.grb.ceylonPottersPalette.util.StyleUtil;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -128,7 +133,7 @@ public class EmployeeUpdatePopUpFormController implements Initializable {
     }
 
     @FXML
-    void btnUpdateOnAction(ActionEvent event) throws SQLException {
+    void btnUpdateOnAction() throws SQLException {
 
         if (validateEmployee()) {
             EmployeeDto employeeDto = new EmployeeDto();
@@ -154,60 +159,179 @@ public class EmployeeUpdatePopUpFormController implements Initializable {
     }
 
     private boolean validateEmployee() {
+        boolean result = true;
 
-        boolean validateFirstName = Pattern.matches("([A-Z][a-z]{2,})", txtFirstName.getText());
-        if (!validateFirstName) {
-            lblFirstNameAlert.setText("Invalid First name!!");
-            return false;
+        if (RegExPatterns.firstLastNamePattern(txtFirstName.getText())) {
+            lblFirstNameAlert.setText("Invalid First Name!!");
+            result = false;
         }
 
-        boolean validateLastName = Pattern.matches("([A-Z][a-z]{2,})", txtLastName.getText());
-        if (!validateLastName) {
+        if (RegExPatterns.firstLastNamePattern(txtLastName.getText())) {
             lblLastNameAlert.setText("Invalid Last Name!!");
-            return false;
+            result = false;
         }
 
-        boolean validateNic = Pattern.matches("([\\dV]{10,12})", txtNic.getText());
-        if (!validateNic) {
+        if (RegExPatterns.nicPattern(txtNic.getText())) {
             lblNicAlert.setText("Invalid NIC!!");
-            return false;
+            result = false;
         }
 
         if ((cmbRole.getSelectionModel().getSelectedItem()) == null) {
             lblCmbRoleAlert.setText("Select a Role!!");
-            return false;
+            result = false;
         }
 
-        boolean validateContactNo = Pattern.matches("([0]\\d{1,9})", txtContactNo.getText());
-        if (!validateContactNo) {
+        if (RegExPatterns.contactNoPattern(txtContactNo.getText())) {
             lblContactNoAlert.setText("Invalid Contact Number!!");
-            return false;
+            result = false;
         }
 
-        boolean validateEmail = Pattern.matches("([A-Za-z0-9]{3,}@[A-Za-z]{3,}\\.[A-Za-z]{1,})", txtEmail.getText());
-        if (!validateEmail) {
+        if (RegExPatterns.emailPattern(txtEmail.getText())) {
             lblEmailAlert.setText("Invalid Email!!");
-            return false;
+            result = false;
         }
 
-        boolean validateHouseNo = Pattern.matches("([\\d]{1,})", txtHouseNo.getText());
-        if (!validateHouseNo) {
+        if (RegExPatterns.houseNoPattern(txtHouseNo.getText())) {
             lblHouseNoAlert.setText("Invalid House No!!");
-            return false;
+            result = false;
         }
 
-        boolean validateStreet = Pattern.matches("[A-Za-z\\s]{3,}", txtStreet.getText());
-        if (!validateStreet) {
+        if (RegExPatterns.namePattern(txtStreet.getText())) {
             lblStreetAlert.setText("Invalid Street Name!!");
-            return false;
+            result = false;
         }
 
-        boolean validateCity = Pattern.matches("[A-Za-z\\s]{3,}", txtCity.getText());
-        if (!validateCity) {
+        if (RegExPatterns.namePattern(txtCity.getText())) {
             lblCityAlert.setText("Invalid City Name!!");
-            return false;
+            result = false;
         }
-        return true;
+        return result;
+    }
+
+    @FXML
+    void txtCityOnKeyPressed(KeyEvent event) throws SQLException, IOException, WriterException {
+        lblCityAlert.setText(" ");
+
+        if (event.getCode() == KeyCode.ENTER) {
+            if (RegExPatterns.namePattern(txtCity.getText())) {
+                lblCityAlert.setText("Invalid City Name!!");
+                event.consume();
+            } else {
+                btnUpdateOnAction();
+            }
+        }
+    }
+
+    @FXML
+    void txtContactNoOnKeyPressed(KeyEvent event) {
+        lblContactNoAlert.setText(" ");
+
+        if (event.getCode() == KeyCode.ENTER) {
+            if (RegExPatterns.contactNoPattern(txtContactNo.getText())) {
+                lblContactNoAlert.setText("Invalid Contact Number!!");
+                event.consume();
+            } else {
+                txtEmail.requestFocus();
+            }
+        }
+    }
+
+    @FXML
+    void txtEmailOnKeyPressed(KeyEvent event) {
+        lblEmailAlert.setText(" ");
+
+        if (event.getCode() == KeyCode.ENTER) {
+            if (RegExPatterns.emailPattern(txtEmail.getText())) {
+                lblEmailAlert.setText("Invalid Email!!");
+                event.consume();
+            } else {
+                txtNic.requestFocus();
+            }
+        }
+    }
+
+    @FXML
+    void txtFirstNameOnKeyPressed(KeyEvent event) {
+        lblFirstNameAlert.setText(" ");
+
+        if (event.getCode() == KeyCode.ENTER) {
+            if (RegExPatterns.firstLastNamePattern(txtFirstName.getText())) {
+                lblFirstNameAlert.setText("Invalid First Name!!");
+                event.consume();
+            } else {
+                txtLastName.requestFocus();
+            }
+        }
+    }
+
+    @FXML
+    void txtHouseNoOnKeyPressed(KeyEvent event) {
+        lblHouseNoAlert.setText(" ");
+
+        if (event.getCode() == KeyCode.ENTER) {
+            if (RegExPatterns.houseNoPattern(txtHouseNo.getText())) {
+                lblHouseNoAlert.setText("Invalid House No!!");
+                event.consume();
+            } else {
+                txtStreet.requestFocus();
+            }
+        }
+    }
+
+    @FXML
+    void txtLastNameOnKeyPressed(KeyEvent event) {
+        lblLastNameAlert.setText(" ");
+
+        if (event.getCode() == KeyCode.ENTER) {
+            if (RegExPatterns.firstLastNamePattern(txtLastName.getText())) {
+                lblLastNameAlert.setText("Invalid Last Name!!");
+                event.consume();
+            } else {
+                txtContactNo.requestFocus();
+            }
+        }
+    }
+
+    @FXML
+    void txtNicOnKeyPressed(KeyEvent event) {
+        lblNicAlert.setText(" ");
+
+        if (event.getCode() == KeyCode.ENTER) {
+            if (RegExPatterns.nicPattern(txtNic.getText())) {
+                lblNicAlert.setText("Invalid NIC!!");
+                event.consume();
+            } else {
+                cmbRole.requestFocus();
+            }
+        }
+    }
+
+    @FXML
+    void txtStreetOnKeyPressed(KeyEvent event) {
+        lblStreetAlert.setText(" ");
+
+        if (event.getCode() == KeyCode.ENTER) {
+            if (RegExPatterns.namePattern(txtStreet.getText())) {
+                lblStreetAlert.setText("Invalid Street Name!!");
+                event.consume();
+            } else {
+                txtCity.requestFocus();
+            }
+        }
+    }
+
+    @FXML
+    void cmbRoleOnKeyPressed(KeyEvent event) {
+        lblCmbRoleAlert.setText(" ");
+
+        if (event.getCode() == KeyCode.ENTER) {
+            if ((cmbRole.getSelectionModel().getSelectedItem()) == null) {
+                lblCmbRoleAlert.setText("Select a Role!!");
+                event.consume();
+            } else {
+                txtHouseNo.requestFocus();
+            }
+        }
     }
 
     @FXML

@@ -4,6 +4,8 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -15,6 +17,7 @@ import lk.grb.ceylonPottersPalette.model.EmployeeAttendanceModel;
 import lk.grb.ceylonPottersPalette.model.EmployeeModel;
 import lk.grb.ceylonPottersPalette.model.EmployeeSalaryModel;
 import lk.grb.ceylonPottersPalette.util.Navigation;
+import lk.grb.ceylonPottersPalette.util.RegExPatterns;
 import lk.grb.ceylonPottersPalette.util.StyleUtil;
 
 import java.net.URL;
@@ -98,7 +101,7 @@ public class EmployeeSalaryUpdatePopUpFormController implements Initializable {
     }
 
     @FXML
-    void btnUpdateOnAction(ActionEvent event) throws SQLException {
+    void btnUpdateOnAction() throws SQLException {
 
         if(validateEmployeeSalary()) {
             EmployeeSalaryDto employeeSalaryDto = new EmployeeSalaryDto();
@@ -122,26 +125,65 @@ public class EmployeeSalaryUpdatePopUpFormController implements Initializable {
     }
 
     private boolean validateEmployeeSalary() {
+        boolean result = true;
 
         if ((cmbEmployeeId.getSelectionModel().getSelectedItem()) == null) {
             lblCmbEmployeeIdAlert.setText("Select an Employee!!");
-            return false;
+            result = false;
         }
 
-        boolean salaryValidate = Pattern.matches("(\\d.+)", txtSalary.getText());
-
-        if (!salaryValidate) {
+        if (RegExPatterns.salaryOrBonusPattern(txtSalary.getText())) {
             lblSalaryAlert.setText("Invalid Salary!!");
-            return false;
+            result = false;
         }
 
-        boolean bonusValidate = Pattern.matches("(\\d.+)", txtBonus.getText());
-
-        if (!bonusValidate) {
+        if (RegExPatterns.salaryOrBonusPattern(txtBonus.getText())) {
             lblBonusAlert.setText("Invalid Bonus!!");
-            return false;
+            result = false;
         }
-        return true;
+        return result;
+    }
+
+    @FXML
+    void cmbEmployeeIdOnKeyPressed(KeyEvent event) {
+        lblCmbEmployeeIdAlert.setText(" ");
+
+        if (event.getCode() == KeyCode.ENTER) {
+            if ((cmbEmployeeId.getSelectionModel().getSelectedItem()) == null) {
+                lblCmbEmployeeIdAlert.setText("Select an Employee!!");
+                event.consume();
+            } else {
+                txtSalary.requestFocus();
+            }
+        }
+    }
+
+    @FXML
+    void txtSalaryOnKeyPressed(KeyEvent event) {
+        lblSalaryAlert.setText(" ");
+
+        if (event.getCode() == KeyCode.ENTER) {
+            if (RegExPatterns.salaryOrBonusPattern(txtSalary.getText())) {
+                lblSalaryAlert.setText("Invalid Salary!!");
+                event.consume();
+            } else {
+                txtBonus.requestFocus();
+            }
+        }
+    }
+
+    @FXML
+    void txtBonusOnKeyPressed(KeyEvent event) throws SQLException {
+        lblBonusAlert.setText(" ");
+
+        if (event.getCode() == KeyCode.ENTER) {
+            if (RegExPatterns.salaryOrBonusPattern(txtBonus.getText())) {
+                lblBonusAlert.setText("Invalid Bonus!!");
+                event.consume();
+            } else {
+                btnUpdateOnAction();
+            }
+        }
     }
 
     @FXML

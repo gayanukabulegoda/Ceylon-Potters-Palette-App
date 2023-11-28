@@ -42,7 +42,7 @@
          </children>
       </Pane>
       <JFXButton layoutX="146.0" layoutY="251.0" onAction="#btnMarkAttendanceOnAction" onMouseEntered="#btnMarkAttendanceOnMouseEntered" onMouseExited="#btnMarkAttendanceOnMouseExited" prefHeight="54.0" prefWidth="335.0" style="-fx-background-radius: 12;" text=" " />
-      <JFXComboBox fx:id="cmbEmployeeId" focusColor="#e8e8e8" layoutX="54.0" layoutY="167.0" onAction="#cmbEmployeeIdOnAction" onMouseClicked="#cmbEmployeeIdOnMouseClicked" prefHeight="42.0" prefWidth="218.0" promptText="   Employee ID" style="-fx-background-color: white; -fx-background-radius: 12; -fx-border-color: E8E8E8; -fx-border-width: 1; -fx-border-radius: 12;" unFocusColor="#e8e8e8" />
+      <JFXComboBox fx:id="cmbEmployeeId" focusColor="#e8e8e8" layoutX="54.0" layoutY="167.0" onAction="#cmbEmployeeIdOnAction" onKeyPressed="#cmbEmployeeIdOnKeyPressed" onMouseClicked="#cmbEmployeeIdOnMouseClicked" prefHeight="42.0" prefWidth="218.0" promptText="   Employee ID" style="-fx-background-color: white; -fx-background-radius: 12; -fx-border-color: E8E8E8; -fx-border-width: 1; -fx-border-radius: 12;" unFocusColor="#e8e8e8" />
       <Label fx:id="lblEmployeeName" layoutX="317.0" layoutY="179.0" text="Employee Name" textFill="#909090">
          <font>
             <Font size="14.0" />

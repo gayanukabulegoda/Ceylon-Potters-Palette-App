@@ -4,6 +4,8 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -60,7 +62,7 @@ public class EmployeeAttendanceUpdatePopUpFormController implements Initializabl
     }
 
     @FXML
-    void btnUpdateAttendanceOnAction(ActionEvent event) throws SQLException {
+    void btnUpdateAttendanceOnAction() throws SQLException {
 
         if (validateEmployeeAttendance()) {
             EmployeeAttendanceDto employeeAttendanceDto = new EmployeeAttendanceDto();
@@ -86,6 +88,20 @@ public class EmployeeAttendanceUpdatePopUpFormController implements Initializabl
             return false;
         }
         return true;
+    }
+
+    @FXML
+    void cmbEmployeeIdOnKeyPressed(KeyEvent event) throws SQLException {
+        lblCmbEmployeeIdAlert.setText(" ");
+
+        if (event.getCode() == KeyCode.ENTER) {
+            if ((cmbEmployeeId.getSelectionModel().getSelectedItem()) == null) {
+                lblCmbEmployeeIdAlert.setText("Select an Employee!!");
+                event.consume();
+            } else {
+                btnUpdateAttendanceOnAction();
+            }
+        }
     }
 
     @FXML

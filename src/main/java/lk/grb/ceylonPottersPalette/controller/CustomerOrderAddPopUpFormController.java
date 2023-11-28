@@ -6,6 +6,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
@@ -15,17 +17,13 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import lk.grb.ceylonPottersPalette.dto.CustomerOrderDto;
 import lk.grb.ceylonPottersPalette.model.*;
-import lk.grb.ceylonPottersPalette.util.DateTimeUtil;
-import lk.grb.ceylonPottersPalette.util.Navigation;
-import lk.grb.ceylonPottersPalette.util.NewId;
-import lk.grb.ceylonPottersPalette.util.StyleUtil;
+import lk.grb.ceylonPottersPalette.util.*;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-import java.util.regex.Pattern;
 
 public class CustomerOrderAddPopUpFormController implements Initializable {
 
@@ -124,17 +122,26 @@ public class CustomerOrderAddPopUpFormController implements Initializable {
     }
 
     @FXML
-    void btnAddToCartOnAction(ActionEvent event) {
+    void btnAddToCartOnAction() {
 
         if (validateCustomerOrder()) {
 
-//            for (int i = 0; i < productList.size(); i++) {
-//                if (productList.get(i)[0].equals(String.valueOf(cmbProductId.getSelectionModel().getSelectedItem()))) {
-//                    productList.get(i)[1] += Integer.parseInt(txtProductQty.getText());
-//
-//                    return;
-//                }
-//            }
+            for (int i = 0; i < productList.size(); i++) {
+                if (productList.get(i)[0].equals(String.valueOf(cmbProductId.getSelectionModel().getSelectedItem()))) {
+                    int qty = Integer.parseInt(productList.get(i)[1]);
+                    productList.get(i)[1] = String.valueOf(qty + Integer.parseInt(txtProductQty.getText()));
+
+                    double unitPrice = Double.parseDouble(lblUnitPrice.getText());
+                    int orderQty = Integer.parseInt(txtProductQty.getText());
+                    double netTotal = Double.parseDouble(lblNetTotal.getText());
+
+                    lblNetTotal.setText(String.valueOf(netTotal + (orderQty * unitPrice)));
+                    allCustomerOrderCartId();
+                    txtProductQty.clear();
+
+                    return;
+                }
+            }
 
             String[] products = {String.valueOf(cmbProductId.getSelectionModel().getSelectedItem()), txtProductQty.getText()};
 
@@ -150,24 +157,65 @@ public class CustomerOrderAddPopUpFormController implements Initializable {
     }
 
     private boolean validateCustomerOrder() {
+        boolean result = true;
 
         if ((cmbCustomerId.getSelectionModel().getSelectedItem()) == null) {
             lblCmbCustomerIdAlert.setText("Please Select a Customer!!");
-            return false;
+            result = false;
         }
 
         if ((cmbProductId.getSelectionModel().getSelectedItem()) == null) {
             lblCmbProductIdAlert.setText("Please Select a Product!!");
-            return false;
+            result = false;
         }
 
-        boolean qtyValidate = Pattern.matches("([0-9]+)", txtProductQty.getText());
-
-        if (!qtyValidate) {
+        if (RegExPatterns.qtyOrUnitPricePattern(txtProductQty.getText())) {
             lblQtyAlert.setText("Enter the Product Quantity!!");
-            return false;
+            result = false;
         }
-        return true;
+        return result;
+    }
+
+    @FXML
+    void txtQuantityOnKeyPressed(KeyEvent event) {
+        lblQtyAlert.setText(" ");
+
+        if (event.getCode() == KeyCode.ENTER) {
+            if (RegExPatterns.qtyOrUnitPricePattern(txtProductQty.getText())) {
+                lblQtyAlert.setText("Enter the Product Quantity!!");
+                event.consume();
+            } else {
+                btnAddToCartOnAction();
+            }
+        }
+    }
+
+    @FXML
+    void cmbCustomerIdOnKeyPressed(KeyEvent event) {
+        lblCmbCustomerIdAlert.setText(" ");
+
+        if (event.getCode() == KeyCode.ENTER) {
+            if ((cmbCustomerId.getSelectionModel().getSelectedItem()) == null) {
+                lblCmbCustomerIdAlert.setText("Please Select a Customer!!");
+                event.consume();
+            } else {
+                cmbProductId.requestFocus();
+            }
+        }
+    }
+
+    @FXML
+    void cmbCmbProductIdOnKeyPressed(KeyEvent event) {
+        lblCmbProductIdAlert.setText(" ");
+
+        if (event.getCode() == KeyCode.ENTER) {
+            if ((cmbProductId.getSelectionModel().getSelectedItem()) == null) {
+                lblCmbProductIdAlert.setText("Please Select a Product!!");
+                event.consume();
+            } else {
+                txtProductQty.requestFocus();
+            }
+        }
     }
 
     @FXML
@@ -225,6 +273,16 @@ public class CustomerOrderAddPopUpFormController implements Initializable {
 
     @FXML
     void cmbProductIdOnAction(ActionEvent event) throws SQLException {
+        for (int i = 0; i < productList.size(); i++) {
+            if(cmbProductId.getSelectionModel().getSelectedItem().equals(productList.get(i)[0])){
+                int qty = Integer.parseInt(productStockModel.getQtyOnHand(productList.get(i)[0]));
+                int orderedQty = Integer.parseInt(productList.get(i)[1]);
+                lblQtyOnHand.setText(String.valueOf(qty - orderedQty));
+                lblUnitPrice.setText(productStockModel.getUnitPrice(productList.get(i)[0]));
+                lblDescription.setText(productStockModel.getDescription(productList.get(i)[0]));
+                return;
+            }
+        }
         lblDescription.setText(productStockModel.getDescription(cmbProductId.getSelectionModel().getSelectedItem()));
         lblUnitPrice.setText(productStockModel.getUnitPrice(cmbProductId.getSelectionModel().getSelectedItem()));
         lblQtyOnHand.setText(productStockModel.getQtyOnHand(cmbProductId.getSelectionModel().getSelectedItem()));

@@ -53,43 +53,43 @@
          </children>
       </Pane>
       <JFXButton fx:id="btnCancel" layoutX="48.0" layoutY="448.0" onAction="#btnCancelOnAction" onMouseEntered="#btnCancelOnMouseEntered" onMouseExited="#btnCancelOnMouseExited" prefHeight="54.0" prefWidth="259.0" style="-fx-background-radius: 12;" text=" " />
-      <TextField fx:id="txtFirstName" layoutX="48.0" layoutY="153.0" onMouseClicked="#firstNameOnMouseClick" prefHeight="42.0" prefWidth="260.0" promptText="First name" style="-fx-background-color: white; -fx-background-radius: 12; -fx-border-color: E8E8E8; -fx-border-width: 1; -fx-border-radius: 12;">
+      <TextField fx:id="txtFirstName" layoutX="48.0" layoutY="153.0" onKeyPressed="#txtFirstNameOnKeyPressed" onMouseClicked="#firstNameOnMouseClick" prefHeight="42.0" prefWidth="260.0" promptText="First name" style="-fx-background-color: white; -fx-background-radius: 12; -fx-border-color: E8E8E8; -fx-border-width: 1; -fx-border-radius: 12;">
          <font>
             <Font size="15.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtLastName" layoutX="320.0" layoutY="153.0" onMouseClicked="#lastNameOnMouseClick" prefHeight="42.0" prefWidth="260.0" promptText="Last name" style="-fx-background-color: white; -fx-background-radius: 12; -fx-border-color: E8E8E8; -fx-border-width: 1; -fx-border-radius: 12;">
+      <TextField fx:id="txtLastName" layoutX="320.0" layoutY="153.0" onKeyPressed="#txtLastNameOnKeyPressed" onMouseClicked="#lastNameOnMouseClick" prefHeight="42.0" prefWidth="260.0" promptText="Last name" style="-fx-background-color: white; -fx-background-radius: 12; -fx-border-color: E8E8E8; -fx-border-width: 1; -fx-border-radius: 12;">
          <font>
             <Font size="15.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtEmail" layoutX="320.0" layoutY="220.0" onMouseClicked="#emailOnMouseClick" prefHeight="42.0" prefWidth="260.0" promptText="Email" style="-fx-background-color: white; -fx-background-radius: 12; -fx-border-color: E8E8E8; -fx-border-width: 1; -fx-border-radius: 12;">
+      <TextField fx:id="txtEmail" layoutX="320.0" layoutY="220.0" onKeyPressed="#txtEmailOnKeyPressed" onMouseClicked="#emailOnMouseClick" prefHeight="42.0" prefWidth="260.0" promptText="Email" style="-fx-background-color: white; -fx-background-radius: 12; -fx-border-color: E8E8E8; -fx-border-width: 1; -fx-border-radius: 12;">
          <font>
             <Font size="15.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtContactNo" layoutX="48.0" layoutY="220.0" onMouseClicked="#contactNoOnMouseClick" prefHeight="42.0" prefWidth="260.0" promptText="Contact No" style="-fx-background-color: white; -fx-background-radius: 12; -fx-border-color: E8E8E8; -fx-border-width: 1; -fx-border-radius: 12;">
+      <TextField fx:id="txtContactNo" layoutX="48.0" layoutY="220.0" onKeyPressed="#txtContactNoOnKeyPressed" onMouseClicked="#contactNoOnMouseClick" prefHeight="42.0" prefWidth="260.0" promptText="Contact No" style="-fx-background-color: white; -fx-background-radius: 12; -fx-border-color: E8E8E8; -fx-border-width: 1; -fx-border-radius: 12;">
          <font>
             <Font size="15.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtNic" layoutX="48.0" layoutY="287.0" onMouseClicked="#nicOnMouseClick" prefHeight="42.0" prefWidth="260.0" promptText="NIC" style="-fx-background-color: white; -fx-background-radius: 12; -fx-border-color: E8E8E8; -fx-border-width: 1; -fx-border-radius: 12;">
+      <TextField fx:id="txtNic" layoutX="48.0" layoutY="287.0" onKeyPressed="#txtNicOnKeyPressed" onMouseClicked="#nicOnMouseClick" prefHeight="42.0" prefWidth="260.0" promptText="NIC" style="-fx-background-color: white; -fx-background-radius: 12; -fx-border-color: E8E8E8; -fx-border-width: 1; -fx-border-radius: 12;">
          <font>
             <Font size="15.0" />
          </font>
       </TextField>
-      <JFXComboBox fx:id="cmbRole" focusColor="#e8e8e8" layoutX="320.0" layoutY="287.0" onMouseClicked="#cmbRoleOnMouseClick" prefHeight="42.0" prefWidth="260.0" promptText="   Role" style="-fx-background-color: white; -fx-background-radius: 12; -fx-border-color: E8E8E8; -fx-border-width: 1; -fx-border-radius: 12;" unFocusColor="#e8e8e8" />
-      <TextField fx:id="txtHouseNo" layoutX="48.0" layoutY="354.0" onMouseClicked="#houseNoOnMouseClick" prefHeight="42.0" prefWidth="120.0" promptText="House No" style="-fx-background-color: white; -fx-background-radius: 12; -fx-border-color: E8E8E8; -fx-border-width: 1; -fx-border-radius: 12;">
+      <JFXComboBox fx:id="cmbRole" focusColor="#e8e8e8" layoutX="320.0" layoutY="287.0" onKeyPressed="#cmbRoleOnKeyPressed" onMouseClicked="#cmbRoleOnMouseClick" prefHeight="42.0" prefWidth="260.0" promptText="   Role" style="-fx-background-color: white; -fx-background-radius: 12; -fx-border-color: E8E8E8; -fx-border-width: 1; -fx-border-radius: 12;" unFocusColor="#e8e8e8" />
+      <TextField fx:id="txtHouseNo" layoutX="48.0" layoutY="354.0" onKeyPressed="#txtHouseNoOnKeyPressed" onMouseClicked="#houseNoOnMouseClick" prefHeight="42.0" prefWidth="120.0" promptText="House No" style="-fx-background-color: white; -fx-background-radius: 12; -fx-border-color: E8E8E8; -fx-border-width: 1; -fx-border-radius: 12;">
          <font>
             <Font size="15.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtStreet" layoutX="180.0" layoutY="354.0" onMouseClicked="#streetOnMouseClick" prefHeight="42.0" prefWidth="249.0" promptText="Street" style="-fx-background-color: white; -fx-background-radius: 12; -fx-border-color: E8E8E8; -fx-border-width: 1; -fx-border-radius: 12;">
+      <TextField fx:id="txtStreet" layoutX="180.0" layoutY="354.0" onKeyPressed="#txtStreetOnKeyPressed" onMouseClicked="#streetOnMouseClick" prefHeight="42.0" prefWidth="249.0" promptText="Street" style="-fx-background-color: white; -fx-background-radius: 12; -fx-border-color: E8E8E8; -fx-border-width: 1; -fx-border-radius: 12;">
          <font>
             <Font size="15.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtCity" layoutX="441.0" layoutY="354.0" onMouseClicked="#cityOnMouseClick" prefHeight="42.0" prefWidth="140.0" promptText="City" style="-fx-background-color: white; -fx-background-radius: 12; -fx-border-color: E8E8E8; -fx-border-width: 1; -fx-border-radius: 12;">
+      <TextField fx:id="txtCity" layoutX="441.0" layoutY="354.0" onKeyPressed="#txtCityOnKeyPressed" onMouseClicked="#cityOnMouseClick" prefHeight="42.0" prefWidth="140.0" promptText="City" style="-fx-background-color: white; -fx-background-radius: 12; -fx-border-color: E8E8E8; -fx-border-width: 1; -fx-border-radius: 12;">
          <font>
             <Font size="15.0" />
          </font>

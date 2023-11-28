@@ -3,6 +3,8 @@ package lk.grb.ceylonPottersPalette.controller;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -14,6 +16,7 @@ import lk.grb.ceylonPottersPalette.dto.EmployeeDto;
 import lk.grb.ceylonPottersPalette.dto.SupplierDto;
 import lk.grb.ceylonPottersPalette.model.SupplierModel;
 import lk.grb.ceylonPottersPalette.util.Navigation;
+import lk.grb.ceylonPottersPalette.util.RegExPatterns;
 import lk.grb.ceylonPottersPalette.util.StyleUtil;
 
 import java.net.URL;
@@ -83,7 +86,7 @@ public class SupplierUpdatePopUpFormController implements Initializable {
     }
 
     @FXML
-    void btnUpdateOnAction(ActionEvent event) throws SQLException {
+    void btnUpdateOnAction() throws SQLException {
 
         if(validateSupplier()) {
             SupplierDto supplierDto = new SupplierDto();
@@ -104,27 +107,65 @@ public class SupplierUpdatePopUpFormController implements Initializable {
 
     private boolean validateSupplier() {
 
-        boolean nameValidate = Pattern.matches("[A-Za-z\\s]{3,12}", txtSupplierName.getText());
+        boolean result = true;
 
-        if (!nameValidate) {
+        if (RegExPatterns.namePattern(txtSupplierName.getText())) {
             lblSupplierNameAlert.setText("Invalid Supplier Name!!");
-            return false;
+            result = false;
         }
 
-        boolean contactNoValidate = Pattern.matches("([0]\\d{1,9})", txtContactNo.getText());
-
-        if (!contactNoValidate) {
+        if (RegExPatterns.contactNoPattern(txtContactNo.getText())) {
             lblContactNoAlert.setText("Invalid Contact Number!!");
-            return false;
+            result = false;
         }
 
-        boolean emailValidate = Pattern.matches("([A-Za-z0-9]{3,}@[A-Za-z]{3,}\\.[A-Za-z]{1,})", txtSupplierEmail.getText());
-
-        if (!emailValidate) {
+        if (RegExPatterns.emailPattern(txtSupplierEmail.getText())) {
             lblSupplierEmailAlert.setText("Invalid Email Address!!");
-            return false;
+            result = false;
         }
-        return true;
+        return result;
+    }
+
+    @FXML
+    void txtSupplierNameOnKeyPressed(KeyEvent event) {
+        lblSupplierNameAlert.setText(" ");
+
+        if (event.getCode() == KeyCode.ENTER) {
+            if (RegExPatterns.namePattern(txtSupplierName.getText())) {
+                lblSupplierNameAlert.setText("Invalid Supplier Name!!");
+                event.consume();
+            } else {
+                txtContactNo.requestFocus();
+            }
+        }
+    }
+
+    @FXML
+    void txtContactNoOnKeyPressed(KeyEvent event) {
+        lblContactNoAlert.setText(" ");
+
+        if (event.getCode() == KeyCode.ENTER) {
+            if (RegExPatterns.contactNoPattern(txtContactNo.getText())) {
+                lblContactNoAlert.setText("Invalid Contact Number!!");
+                event.consume();
+            } else {
+                txtSupplierEmail.requestFocus();
+            }
+        }
+    }
+
+    @FXML
+    void txtEmailOnKeyPressed(KeyEvent event) throws SQLException {
+        lblSupplierEmailAlert.setText(" ");
+
+        if (event.getCode() == KeyCode.ENTER) {
+            if (RegExPatterns.emailPattern(txtSupplierEmail.getText())) {
+                lblSupplierEmailAlert.setText("Invalid Email Address!!");
+                event.consume();
+            } else {
+                btnUpdateOnAction();
+            }
+        }
     }
 
     @FXML

@@ -3,6 +3,8 @@ package lk.grb.ceylonPottersPalette.controller;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -13,6 +15,7 @@ import lk.grb.ceylonPottersPalette.dto.ItemStockDto;
 import lk.grb.ceylonPottersPalette.dto.ProductStockDto;
 import lk.grb.ceylonPottersPalette.model.ItemStockModel;
 import lk.grb.ceylonPottersPalette.util.Navigation;
+import lk.grb.ceylonPottersPalette.util.RegExPatterns;
 import lk.grb.ceylonPottersPalette.util.StyleUtil;
 
 import java.net.URL;
@@ -82,7 +85,7 @@ public class ItemUpdatePopUpFormController implements Initializable {
     }
 
     @FXML
-    void btnUpdateOnAction(ActionEvent event) throws SQLException {
+    void btnUpdateOnAction() throws SQLException {
 
         if(validateItem()) {
             ItemStockDto itemStockDto = new ItemStockDto();
@@ -102,28 +105,65 @@ public class ItemUpdatePopUpFormController implements Initializable {
     }
 
     private boolean validateItem() {
+        boolean result = true;
 
-        boolean unitPriceValidate = Pattern.matches("(\\d.+)", txtUnitPrice.getText());
-
-        if (!unitPriceValidate) {
+        if (RegExPatterns.qtyOrUnitPricePattern(txtUnitPrice.getText())) {
             lblUnitPriceAlert.setText("Invalid Unit Price!!");
-            return false;
+            result = false;
         }
 
-        boolean descriptionValidate = Pattern.matches("[A-Za-z\\s]{3,}", txtDescription.getText());
-
-        if (!descriptionValidate) {
+        if (RegExPatterns.namePattern(txtDescription.getText())) {
             lblDescriptionAlert.setText("Invalid Description!!");
-            return false;
+            result = false;
         }
 
-        boolean qtyValidate = Pattern.matches("(\\d.+)", txtQuantity.getText());
-
-        if (!qtyValidate) {
+        if (RegExPatterns.qtyOrUnitPricePattern(txtQuantity.getText())) {
             lblQtyAlert.setText("Invalid Quantity!!");
-            return false;
+            result = false;
         }
-        return true;
+        return result;
+    }
+
+    @FXML
+    void txtDescriptionOnKeyPressed(KeyEvent event) {
+        lblDescriptionAlert.setText(" ");
+
+        if (event.getCode() == KeyCode.ENTER) {
+            if (RegExPatterns.namePattern(txtDescription.getText())) {
+                lblDescriptionAlert.setText("Invalid Description!!");
+                event.consume();
+            } else {
+                txtUnitPrice.requestFocus();
+            }
+        }
+    }
+
+    @FXML
+    void txtUnitPriceOnKeyPressed(KeyEvent event) {
+        lblUnitPriceAlert.setText(" ");
+
+        if (event.getCode() == KeyCode.ENTER) {
+            if (RegExPatterns.qtyOrUnitPricePattern(txtUnitPrice.getText())) {
+                lblUnitPriceAlert.setText("Invalid Unit Price!!");
+                event.consume();
+            } else {
+                txtQuantity.requestFocus();
+            }
+        }
+    }
+
+    @FXML
+    void txtQuantityOnKeyPressed(KeyEvent event) throws SQLException {
+        lblQtyAlert.setText(" ");
+
+        if (event.getCode() == KeyCode.ENTER) {
+            if (RegExPatterns.qtyOrUnitPricePattern(txtQuantity.getText())) {
+                lblQtyAlert.setText("Invalid Quantity!!");
+                event.consume();
+            } else {
+                btnUpdateOnAction();
+            }
+        }
     }
 
     @FXML

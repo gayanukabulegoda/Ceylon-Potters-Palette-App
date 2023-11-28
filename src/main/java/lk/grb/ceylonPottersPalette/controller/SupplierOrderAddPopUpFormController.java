@@ -4,6 +4,8 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -14,23 +16,18 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import lk.grb.ceylonPottersPalette.dto.SupplierDto;
 import lk.grb.ceylonPottersPalette.dto.SupplierOrderDto;
 import lk.grb.ceylonPottersPalette.model.ItemStockModel;
 import lk.grb.ceylonPottersPalette.model.PlaceSupplierOrderModel;
 import lk.grb.ceylonPottersPalette.model.SupplierModel;
 import lk.grb.ceylonPottersPalette.model.SupplierOrderModel;
-import lk.grb.ceylonPottersPalette.util.DateTimeUtil;
-import lk.grb.ceylonPottersPalette.util.Navigation;
-import lk.grb.ceylonPottersPalette.util.NewId;
-import lk.grb.ceylonPottersPalette.util.StyleUtil;
+import lk.grb.ceylonPottersPalette.util.*;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-import java.util.regex.Pattern;
 
 public class SupplierOrderAddPopUpFormController implements Initializable {
 
@@ -147,9 +144,26 @@ public class SupplierOrderAddPopUpFormController implements Initializable {
     }
 
     @FXML
-    void btnAddToCartOnAction(ActionEvent event) {
+    void btnAddToCartOnAction() {
 
         if (validateSupplierOrder()) {
+
+            for (int i = 0; i < itemList.size(); i++) {
+                if (itemList.get(i)[0].equals(String.valueOf(cmbItemId.getSelectionModel().getSelectedItem()))) {
+                    int qty = Integer.parseInt(itemList.get(i)[1]);
+                    itemList.get(i)[1] = String.valueOf(qty + Integer.parseInt(txtItemQty.getText()));
+
+                    double unitPrice = Double.parseDouble(lblUnitPrice.getText());
+                    int orderQty = Integer.parseInt(txtItemQty.getText());
+                    double netTotal = Double.parseDouble(lblNetTotal.getText());
+
+                    lblNetTotal.setText(String.valueOf(netTotal + (orderQty * unitPrice)));
+                    allSupplierOrderCartId();
+                    txtItemQty.clear();
+
+                    return;
+                }
+            }
 
             String[] items = {String.valueOf(cmbItemId.getSelectionModel().getSelectedItem()), txtItemQty.getText()};
 
@@ -165,24 +179,65 @@ public class SupplierOrderAddPopUpFormController implements Initializable {
     }
 
     private boolean validateSupplierOrder() {
+        boolean result = true;
 
         if ((cmbSupplierId.getSelectionModel().getSelectedItem()) == null) {
             lblCmbSupplierAlert.setText("Please Select a Supplier!!");
-            return false;
+            result = false;
         }
 
         if ((cmbItemId.getSelectionModel().getSelectedItem()) == null) {
             lblItemIdAlert.setText("Please Select an Item!!");
-            return false;
+            result = false;
         }
 
-        boolean qtyValidate = Pattern.matches("([0-9]+)", txtItemQty.getText());
-
-        if (!qtyValidate) {
+        if (RegExPatterns.qtyOrUnitPricePattern(txtItemQty.getText())) {
             lblQtyAlert.setText("Enter the Item Quantity!!");
-            return false;
+            result = false;
         }
-        return true;
+        return result;
+    }
+
+    @FXML
+    void txtQuantityOnKeyPressed(KeyEvent event) {
+        lblQtyAlert.setText(" ");
+
+        if (event.getCode() == KeyCode.ENTER) {
+            if (RegExPatterns.qtyOrUnitPricePattern(txtItemQty.getText())) {
+                lblQtyAlert.setText("Invalid Quantity!!");
+                event.consume();
+            } else {
+                btnAddToCartOnAction();
+            }
+        }
+    }
+
+    @FXML
+    void cmbSupplierIdOnKeyPressed(KeyEvent event) {
+        lblCmbSupplierAlert.setText(" ");
+
+        if (event.getCode() == KeyCode.ENTER) {
+            if ((cmbSupplierId.getSelectionModel().getSelectedItem()) == null) {
+                lblCmbSupplierAlert.setText("Please Select a Supplier!!");
+                event.consume();
+            } else {
+                cmbItemId.requestFocus();
+            }
+        }
+    }
+
+    @FXML
+    void cmbCmbItemIdOnKeyPressed(KeyEvent event) {
+        lblItemIdAlert.setText(" ");
+
+        if (event.getCode() == KeyCode.ENTER) {
+            if ((cmbItemId.getSelectionModel().getSelectedItem()) == null) {
+                lblItemIdAlert.setText("Please Select an Item!!");
+                event.consume();
+            } else {
+                txtItemQty.requestFocus();
+            }
+        }
     }
 
     @FXML
@@ -230,6 +285,16 @@ public class SupplierOrderAddPopUpFormController implements Initializable {
 
     @FXML
     void cmbItemIdOnAction(ActionEvent event) throws SQLException {
+        for (int i = 0; i < itemList.size(); i++) {
+            if(cmbItemId.getSelectionModel().getSelectedItem().equals(itemList.get(i)[0])){
+                int qty = Integer.parseInt(itemStockModel.getQtyOnHand(itemList.get(i)[0]));
+                int orderedQty = Integer.parseInt(itemList.get(i)[1]);
+                lblQtyOnHand.setText(String.valueOf(qty - orderedQty));
+                lblUnitPrice.setText(itemStockModel.getUnitPrice(itemList.get(i)[0]));
+                lblDescription.setText(itemStockModel.getDescription(itemList.get(i)[0]));
+                return;
+            }
+        }
         lblDescription.setText(itemStockModel.getDescription(cmbItemId.getSelectionModel().getSelectedItem()));
         lblUnitPrice.setText(itemStockModel.getUnitPrice(cmbItemId.getSelectionModel().getSelectedItem()));
         lblQtyOnHand.setText(itemStockModel.getQtyOnHand(cmbItemId.getSelectionModel().getSelectedItem()));

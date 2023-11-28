@@ -3,6 +3,8 @@ package lk.grb.ceylonPottersPalette.controller;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -10,15 +12,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import lk.grb.ceylonPottersPalette.dto.SupplierDto;
 import lk.grb.ceylonPottersPalette.model.SupplierModel;
-import lk.grb.ceylonPottersPalette.model.UserModel;
-import lk.grb.ceylonPottersPalette.util.DateTimeUtil;
-import lk.grb.ceylonPottersPalette.util.Navigation;
-import lk.grb.ceylonPottersPalette.util.NewId;
-import lk.grb.ceylonPottersPalette.util.StyleUtil;
+import lk.grb.ceylonPottersPalette.util.*;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.regex.Pattern;
 
 public class SupplierAddPopUpFormController {
 
@@ -69,7 +66,7 @@ public class SupplierAddPopUpFormController {
 
     SupplierModel supplierModel = new SupplierModel();
     @FXML
-    void btnAddOnAction(ActionEvent event) throws SQLException {
+    void btnAddOnAction() throws SQLException {
 
         if(validateSupplier()) {
             SupplierDto supplierDto = new SupplierDto();
@@ -94,28 +91,23 @@ public class SupplierAddPopUpFormController {
     }
 
     private boolean validateSupplier() {
+        boolean result = true;
 
-        boolean nameValidate = Pattern.matches("[A-Za-z\\s]{3,12}", txtSupplierName.getText());
-
-        if (!nameValidate) {
+        if (RegExPatterns.namePattern(txtSupplierName.getText())) {
             lblSupplierNameAlert.setText("Invalid Supplier Name!!");
-            return false;
+            result = false;
         }
 
-        boolean contactNoValidate = Pattern.matches("([0]\\d{1,9})", txtContactNo.getText());
-
-        if (!contactNoValidate) {
+        if (RegExPatterns.contactNoPattern(txtContactNo.getText())) {
             lblContactNoAlert.setText("Invalid Contact Number!!");
-            return false;
+            result = false;
         }
 
-        boolean emailValidate = Pattern.matches("([A-Za-z0-9]{3,}@[A-Za-z]{3,}\\.[A-Za-z]{1,})", txtSupplierEmail.getText());
-
-        if (!emailValidate) {
+        if (RegExPatterns.emailPattern(txtSupplierEmail.getText())) {
             lblSupplierEmailAlert.setText("Invalid Email Address!!");
-            return false;
+            result = false;
         }
-        return true;
+        return result;
     }
 
     @FXML
@@ -131,6 +123,48 @@ public class SupplierAddPopUpFormController {
     @FXML
     void txtSupplierNameOnMouseClicked(MouseEvent event) {
         lblSupplierNameAlert.setText(" ");
+    }
+
+    @FXML
+    void txtSupplierNameOnKeyPressed(KeyEvent event) {
+        lblSupplierNameAlert.setText(" ");
+
+        if (event.getCode() == KeyCode.ENTER) {
+            if (RegExPatterns.namePattern(txtSupplierName.getText())) {
+                lblSupplierNameAlert.setText("Invalid Supplier Name!!");
+                event.consume();
+            } else {
+                txtContactNo.requestFocus();
+            }
+        }
+    }
+
+    @FXML
+    void txtContactNoOnKeyPressed(KeyEvent event) {
+        lblContactNoAlert.setText(" ");
+
+        if (event.getCode() == KeyCode.ENTER) {
+            if (RegExPatterns.contactNoPattern(txtContactNo.getText())) {
+                lblContactNoAlert.setText("Invalid Contact Number!!");
+                event.consume();
+            } else {
+                txtSupplierEmail.requestFocus();
+            }
+        }
+    }
+
+    @FXML
+    void txtEmailOnKeyPressed(KeyEvent event) throws SQLException {
+        lblSupplierEmailAlert.setText(" ");
+
+        if (event.getCode() == KeyCode.ENTER) {
+            if (RegExPatterns.emailPattern(txtSupplierEmail.getText())) {
+                lblSupplierEmailAlert.setText("Invalid Email Address!!");
+                event.consume();
+            } else {
+                btnAddOnAction();
+            }
+        }
     }
 
     @FXML

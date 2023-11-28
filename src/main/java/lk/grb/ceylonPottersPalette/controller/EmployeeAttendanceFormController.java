@@ -168,8 +168,14 @@ public class EmployeeAttendanceFormController implements Initializable {
 
     @FXML
     void btnQrOnAction(ActionEvent event) throws SQLException {
-        String id = QrReader.readQr();
-        EmployeeAttendanceMarkPopUpController.markAttendanceOViaQr(id);
+        new Thread(()->{
+            String id = QrReader.readQr();
+            try {
+                EmployeeAttendanceMarkPopUpController.markAttendanceOViaQr(id);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }).start();
     }
 
     @FXML
