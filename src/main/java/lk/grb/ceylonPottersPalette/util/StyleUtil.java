@@ -225,4 +225,62 @@ public class StyleUtil {
                             "-fx-border-radius: 20px;" +
                             "-fx-background-radius: 20px");
     }
+
+    public static void addBtnSelected(Pane pane, Label label, ImageView imageView) {
+        pane.setStyle(
+                "-fx-background-color: #FFFFFF;" +
+                        "-fx-border-color: #C56E33;" +
+                        "-fx-border-radius: 12px;" +
+                        "-fx-background-radius: 12px;");
+
+        label.setStyle("-fx-text-fill: #885D40");
+
+        imageView.setImage(new Image("assests/icon/addIcon2.png"));
+    }
+
+    public static void addBtnUnselected(Pane pane, Label label, ImageView imageView) {
+        pane.setStyle(
+                "-fx-background-color: white;" +
+                        "-fx-background-radius: 12px;");
+
+        label.setStyle("-fx-text-fill: #3D3E3E");
+
+        imageView.setImage(new Image("assests/icon/addIcon.png"));
+    }
+
+    public static void refreshBtnSelected(Pane pane, ImageView imageView) {
+        pane.setStyle(
+                "-fx-background-color: #FFFFFF;" +
+                        "-fx-border-color: #C56E33;" +
+                        "-fx-border-radius: 12px;" +
+                        "-fx-background-radius: 12px;");
+
+        imageView.setImage(new Image("assests/icon/refreshTableIcon2.png"));
+    }
+
+    public static void refreshBtnUnselected(Pane pane, ImageView imageView) {
+        pane.setStyle(
+                "-fx-background-color: white;" +
+                        "-fx-background-radius: 12px;");
+
+        imageView.setImage(new Image("assests/icon/refreshTableIcon.png"));
+    }
+
+    public static void qrBtnSelected(Pane pane, ImageView imageView) {
+        pane.setStyle(
+                "-fx-background-color: #FFFFFF;" +
+                        "-fx-border-color: #C56E33;" +
+                        "-fx-border-radius: 12px;" +
+                        "-fx-background-radius: 12px;");
+
+        imageView.setImage(new Image("assests/icon/qrScanIcon2.png"));
+    }
+
+    public static void qrBtnUnselected(Pane pane, ImageView imageView) {
+        pane.setStyle(
+                "-fx-background-color: white;" +
+                        "-fx-background-radius: 12px;");
+
+        imageView.setImage(new Image("assests/icon/qrScanIcon.png"));
+    }
 }

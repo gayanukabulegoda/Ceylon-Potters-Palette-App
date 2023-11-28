@@ -8,9 +8,13 @@ import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
-import lk.grb.ceylonPottersPalette.model.ProductStockModel;
+import javafx.scene.image.ImageView;
+import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import lk.grb.ceylonPottersPalette.model.SupplierModel;
 import lk.grb.ceylonPottersPalette.util.Navigation;
+import lk.grb.ceylonPottersPalette.util.StyleUtil;
 
 import java.io.IOException;
 import java.net.URL;
@@ -20,6 +24,22 @@ import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
 public class SupplierManageFormController implements Initializable {
+
+
+    @FXML
+    private Pane addSupllierPane;
+
+    @FXML
+    private ImageView imgAdd;
+
+    @FXML
+    private Label lblAddSupplier;
+
+    @FXML
+    private Label lblSearchAlert;
+
+    @FXML
+    private Pane searchBarPane;
 
     @FXML
     private TextField txtSearch;
@@ -43,10 +63,25 @@ public class SupplierManageFormController implements Initializable {
     }
 
     @FXML
+    void btnAddSupplierOnMouseEntered(MouseEvent event) {
+        StyleUtil.addBtnSelected(addSupllierPane, lblAddSupplier, imgAdd);
+    }
+
+    @FXML
+    void btnAddSupplierOnMouseExited(MouseEvent event) {
+        StyleUtil.addBtnUnselected(addSupllierPane, lblAddSupplier, imgAdd);
+    }
+
+    @FXML
+    void txtSearchOnMouseClicked(MouseEvent event) {
+        lblSearchAlert.setText(" ");
+    }
+
+    @FXML
     void txtSearchOnAction(ActionEvent event) throws IOException, SQLException {
 
         if (!validateId()) {
-            new Alert(Alert.AlertType.ERROR, "Invalid Contact No!!").show();
+            lblSearchAlert.setText("Invalid Contact No!!");
             return;
         }
 
@@ -57,11 +92,12 @@ public class SupplierManageFormController implements Initializable {
             if (txtSearch.getText().equals(supplierModel.getSupplierContactNo(allSupplierId.get(i)))) {
                 SupplierViewPopUpFormController.supplierId = allSupplierId.get(i);
                 Navigation.imgPopUpBackground("supplierViewPopUpForm.fxml");
+                lblSearchAlert.setText(" ");
                 txtSearch.clear();
                 return;
             }
         }
-        new Alert(Alert.AlertType.ERROR, "Invalid Contact No!!").show();
+        lblSearchAlert.setText("Invalid Contact No!!");
     }
 
     private boolean validateId() {

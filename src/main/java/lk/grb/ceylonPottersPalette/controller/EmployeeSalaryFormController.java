@@ -10,10 +10,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import lk.grb.ceylonPottersPalette.model.EmployeeAttendanceModel;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import lk.grb.ceylonPottersPalette.model.EmployeeModel;
 import lk.grb.ceylonPottersPalette.model.EmployeeSalaryModel;
 import lk.grb.ceylonPottersPalette.util.Navigation;
+import lk.grb.ceylonPottersPalette.util.StyleUtil;
 
 import java.io.IOException;
 import java.net.URL;
@@ -25,13 +27,31 @@ import java.util.regex.Pattern;
 public class EmployeeSalaryFormController implements Initializable {
 
     @FXML
-    private Pane btnEmployeeAttendancePane1;
+    private Pane addSalaryPane;
+
+    @FXML
+    private Pane btnRefreshPane;
+
+    @FXML
+    private Pane btnEmployeeAttendancePane;
 
     @FXML
     private Pane btnEmployeeManagePane;
 
     @FXML
     private Pane btnEmployeeSalaryPane;
+
+    @FXML
+    private ImageView imgAdd;
+
+    @FXML
+    private ImageView imgRefresh;
+
+    @FXML
+    private Label lblAddSalary;
+
+    @FXML
+    private Label lblSearchAlert;
 
     @FXML
     private Label lblEmployeeAttendance;
@@ -64,6 +84,16 @@ public class EmployeeSalaryFormController implements Initializable {
     }
 
     @FXML
+    void btnAddSalaryOnMouseEntered(MouseEvent event) {
+        StyleUtil.addBtnSelected(addSalaryPane, lblAddSalary, imgAdd);
+    }
+
+    @FXML
+    void btnAddSalaryOnMouseExited(MouseEvent event) {
+        StyleUtil.addBtnUnselected(addSalaryPane, lblAddSalary, imgAdd);
+    }
+
+    @FXML
     void btnEmployeeAttendanceOnAction(ActionEvent event) throws IOException {
         Navigation.switchPaging(GlobalFormController.getInstance().pagingPane, "employeeAttendanceForm.fxml");
     }
@@ -71,11 +101,6 @@ public class EmployeeSalaryFormController implements Initializable {
     @FXML
     void btnEmployeeManageOnAction(ActionEvent event) throws IOException {
         Navigation.switchPaging(GlobalFormController.getInstance().pagingPane, "employeeManageForm.fxml");
-    }
-
-    @FXML
-    void btnEmployeeSalaryOnAction(ActionEvent event) {
-
     }
 
     @FXML
@@ -88,10 +113,25 @@ public class EmployeeSalaryFormController implements Initializable {
     }
 
     @FXML
+    void btnRefreshTableOnMouseEntered(MouseEvent event) {
+        StyleUtil.refreshBtnSelected(btnRefreshPane, imgRefresh);
+    }
+
+    @FXML
+    void btnRefreshTableOnMouseExited(MouseEvent event) {
+        StyleUtil.refreshBtnUnselected(btnRefreshPane, imgRefresh);
+    }
+
+    @FXML
+    void txtSearchOnMouseClicked(MouseEvent event) {
+        lblSearchAlert.setText(" ");
+    }
+
+    @FXML
     void txtSearchOnAction(ActionEvent event) throws IOException, SQLException {
 
         if (!validateId()) {
-            new Alert(Alert.AlertType.ERROR, "Invalid Contact No!!").show();
+            lblSearchAlert.setText("Invalid Contact No!!");
             return;
         }
 
@@ -102,11 +142,12 @@ public class EmployeeSalaryFormController implements Initializable {
         for (int i = 0; i < allEmployeeId.size(); i++) {
             if (txtSearch.getText().equals(employeeModel.getEmployeeContactNo(allEmployeeId.get(i)))) {
                 allSelectedEmployeeSalaryId(allEmployeeId.get(i));
+                lblSearchAlert.setText(" ");
                 txtSearch.clear();
                 return;
             }
         }
-        new Alert(Alert.AlertType.ERROR, "Invalid Contact No!!").show();
+        lblSearchAlert.setText("Invalid Contact No!!");
     }
 
     private boolean validateId() {

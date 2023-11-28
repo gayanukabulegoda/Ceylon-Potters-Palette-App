@@ -56,10 +56,13 @@
          </children>
       </AnchorPane>
       <Pane layoutX="1203.0" layoutY="24.0" prefHeight="46.0" prefWidth="300.0" style="-fx-background-color: white; -fx-background-radius: 12;" />
-      <TextField fx:id="txtSearch" layoutX="1246.0" layoutY="24.0" onAction="#txtSearchOnAction" prefHeight="46.0" prefWidth="258.0" promptText="Search by Name" style="-fx-background-color: white; -fx-background-radius: 12;">
+      <TextField fx:id="txtSearch" layoutX="1246.0" layoutY="24.0" onAction="#txtSearchOnAction" onMouseClicked="#txtSearchOnMouseClicked" prefHeight="46.0" prefWidth="258.0" promptText="Search by Name" style="-fx-background-color: white; -fx-background-radius: 12;">
          <font>
             <Font size="16.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
       </TextField>
       <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="1218.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -117,5 +120,10 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
+      <Label fx:id="lblSearchAlert" layoutX="1222.0" layoutY="72.0" textFill="RED">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

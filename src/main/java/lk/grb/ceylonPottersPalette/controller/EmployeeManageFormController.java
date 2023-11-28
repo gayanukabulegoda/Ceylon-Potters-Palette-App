@@ -10,10 +10,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import lk.grb.ceylonPottersPalette.dto.EmployeeDto;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import lk.grb.ceylonPottersPalette.model.EmployeeModel;
 import lk.grb.ceylonPottersPalette.model.SupplierModel;
 import lk.grb.ceylonPottersPalette.util.Navigation;
+import lk.grb.ceylonPottersPalette.util.StyleUtil;
 
 import java.io.IOException;
 import java.net.URL;
@@ -25,13 +27,25 @@ import java.util.regex.Pattern;
 public class EmployeeManageFormController implements Initializable {
 
     @FXML
-    private Pane btnEmployeeAttendancePane1;
+    private Pane addEmployeePane;
+
+    @FXML
+    private Pane btnEmployeeAttendancePane;
 
     @FXML
     private Pane btnEmployeeManagePane;
 
     @FXML
     private Pane btnEmployeeSalaryPane;
+
+    @FXML
+    private ImageView imgAdd;
+
+    @FXML
+    private Label lblAddEmployee;
+
+    @FXML
+    private Label lblSearchAlert;
 
     @FXML
     private Label lblEmployeeAttendance;
@@ -64,13 +78,18 @@ public class EmployeeManageFormController implements Initializable {
     }
 
     @FXML
-    void btnEmployeeAttendanceOnAction(ActionEvent event) throws IOException {
-        Navigation.switchPaging(GlobalFormController.getInstance().pagingPane, "employeeAttendanceForm.fxml");
+    void btnAddEmployeeOnMouseEntered(MouseEvent event) {
+        StyleUtil.addBtnSelected(addEmployeePane, lblAddEmployee, imgAdd);
     }
 
     @FXML
-    void btnEmployeeManageOnAction(ActionEvent event) {
+    void btnAddEmployeeOnMouseExited(MouseEvent event) {
+        StyleUtil.addBtnUnselected(addEmployeePane, lblAddEmployee, imgAdd);
+    }
 
+    @FXML
+    void btnEmployeeAttendanceOnAction(ActionEvent event) throws IOException {
+        Navigation.switchPaging(GlobalFormController.getInstance().pagingPane, "employeeAttendanceForm.fxml");
     }
 
     @FXML
@@ -79,10 +98,15 @@ public class EmployeeManageFormController implements Initializable {
     }
 
     @FXML
+    void txtSearchOnMouseClicked(MouseEvent event) {
+        lblSearchAlert.setText(" ");
+    }
+
+    @FXML
     void txtSearchOnAction(ActionEvent event) throws IOException, SQLException {
 
         if (!validateId()) {
-            new Alert(Alert.AlertType.ERROR, "Invalid Contact No!!").show();
+            lblSearchAlert.setText("Invalid Contact No!!");
             return;
         }
 
@@ -92,12 +116,13 @@ public class EmployeeManageFormController implements Initializable {
         for (int i = 0; i < allEmployeeId.size(); i++) {
             if (txtSearch.getText().equals(employeeModel.getEmployeeContactNo(allEmployeeId.get(i)))) {
                 EmployeeViewPopUpFormController.employeeId = allEmployeeId.get(i);
-                Navigation.imgPopUpBackground("employeeViewPopUpForm.fxml");
+                lblSearchAlert.setText(" ");
                 txtSearch.clear();
+                Navigation.imgPopUpBackground("employeeViewPopUpForm.fxml");
                 return;
             }
         }
-        new Alert(Alert.AlertType.ERROR, "Invalid Contact No!!").show();
+        lblSearchAlert.setText("Invalid Contact No!!");
     }
 
     private boolean validateId() {

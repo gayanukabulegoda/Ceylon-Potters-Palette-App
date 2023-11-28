@@ -10,11 +10,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import lk.grb.ceylonPottersPalette.model.CustomerModel;
-import lk.grb.ceylonPottersPalette.model.CustomerOrderModel;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import lk.grb.ceylonPottersPalette.model.SupplierModel;
 import lk.grb.ceylonPottersPalette.model.SupplierOrderModel;
 import lk.grb.ceylonPottersPalette.util.Navigation;
+import lk.grb.ceylonPottersPalette.util.StyleUtil;
 
 import java.io.IOException;
 import java.net.URL;
@@ -26,10 +27,28 @@ import java.util.regex.Pattern;
 public class SupplierOrderManageFormController implements Initializable {
 
     @FXML
+    private Pane addOrderPane;
+
+    @FXML
+    private Pane btnRefreshPane;
+
+    @FXML
     private Pane btnCustomerOrdersPane;
 
     @FXML
     private Pane btnSupplierOrdersPane;
+
+    @FXML
+    private ImageView imgAdd;
+
+    @FXML
+    private ImageView imgRefresh;
+
+    @FXML
+    private Label lblAddOrder;
+
+    @FXML
+    private Label lblSearchAlert;
 
     @FXML
     private Label lblCustomerOrders;
@@ -64,8 +83,13 @@ public class SupplierOrderManageFormController implements Initializable {
     }
 
     @FXML
-    void btnSupplierOrdersOnAction(ActionEvent event) {
+    void btnAddOrderOnMouseEntered(MouseEvent event) {
+        StyleUtil.addBtnSelected(addOrderPane, lblAddOrder, imgAdd);
+    }
 
+    @FXML
+    void btnAddOrderOnMouseExited(MouseEvent event) {
+        StyleUtil.addBtnUnselected(addOrderPane, lblAddOrder, imgAdd);
     }
 
     @FXML
@@ -78,10 +102,25 @@ public class SupplierOrderManageFormController implements Initializable {
     }
 
     @FXML
+    void btnRefreshTableOnMouseEntered(MouseEvent event) {
+        StyleUtil.refreshBtnSelected(btnRefreshPane, imgRefresh);
+    }
+
+    @FXML
+    void btnRefreshTableOnMouseExited(MouseEvent event) {
+        StyleUtil.refreshBtnUnselected(btnRefreshPane, imgRefresh);
+    }
+
+    @FXML
+    void txtSearchOnMouseClicked(MouseEvent event) {
+        lblSearchAlert.setText(" ");
+    }
+
+    @FXML
     void txtSearchOnAction(ActionEvent event) throws IOException, SQLException {
 
         if (!(validateId() | validateContactNo())) {
-            new Alert(Alert.AlertType.ERROR, "Invalid Contact No Or Order ID!!").show();
+            lblSearchAlert.setText("Invalid Contact No Or Order ID!!");
             return;
         }
 
@@ -93,6 +132,7 @@ public class SupplierOrderManageFormController implements Initializable {
             if (txtSearch.getText().equals(allSupplierOrderId.get(i))) {
                 SupplierOrderViewPopUpFormController.supplierOrderId = txtSearch.getText();
                 SupplierOrderViewPopUpFormController.supplierId = supplierOrderModel.getSupplierIdForOrder(txtSearch.getText());
+                lblSearchAlert.setText(" ");
                 Navigation.imgPopUpBackground("supplierOrderViewPopUpForm.fxml");
                 txtSearch.clear();
                 return;
@@ -103,12 +143,13 @@ public class SupplierOrderManageFormController implements Initializable {
             for (int j = 0; j < supplierIds.size(); j++) {
                 if (txtSearch.getText().equals(supplierModel.getSupplierContactNo(supplierIds.get(j)))) {
                     allSelectedSupplierOrderId(supplierIds.get(j));
+                    lblSearchAlert.setText(" ");
                     txtSearch.clear();
                     return;
                 }
             }
         }
-        new Alert(Alert.AlertType.ERROR, "Invalid Contact No Or Order ID!!").show();
+        lblSearchAlert.setText("Invalid Contact No Or Order ID!!");
     }
 
     private boolean validateId() {

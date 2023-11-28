@@ -10,10 +10,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import lk.grb.ceylonPottersPalette.model.EmployeeSalaryModel;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import lk.grb.ceylonPottersPalette.model.ItemStockModel;
 import lk.grb.ceylonPottersPalette.model.SupplierModel;
 import lk.grb.ceylonPottersPalette.util.Navigation;
+import lk.grb.ceylonPottersPalette.util.StyleUtil;
 
 import java.io.IOException;
 import java.net.URL;
@@ -25,6 +27,9 @@ import java.util.regex.Pattern;
 public class ItemStockFormController implements Initializable {
 
     @FXML
+    private Pane addItemPane;
+
+    @FXML
     private Pane btnItemStockPane;
 
     @FXML
@@ -32,6 +37,15 @@ public class ItemStockFormController implements Initializable {
 
     @FXML
     private Pane btnRepairStockPane;
+
+    @FXML
+    private ImageView imgAdd;
+
+    @FXML
+    private Label lblSearchAlert;
+
+    @FXML
+    private Label lblAddItem;
 
     @FXML
     private Label lblItemStock;
@@ -64,8 +78,13 @@ public class ItemStockFormController implements Initializable {
     }
 
     @FXML
-    void btnItemStockOnAction(ActionEvent event) {
+    void btnAddItemOnMouseEntered(MouseEvent event) {
+        StyleUtil.addBtnSelected(addItemPane,lblAddItem, imgAdd);
+    }
 
+    @FXML
+    void btnAddItemOnMouseExited(MouseEvent event) {
+        StyleUtil.addBtnUnselected(addItemPane, lblAddItem, imgAdd);
     }
 
     @FXML
@@ -79,10 +98,15 @@ public class ItemStockFormController implements Initializable {
     }
 
     @FXML
+    void txtSearchOnMouseClicked(MouseEvent event) {
+        lblSearchAlert.setText(" ");
+    }
+
+    @FXML
     void txtSearchOnAction(ActionEvent event) throws IOException, SQLException {
 
         if (!validateName()) {
-            new Alert(Alert.AlertType.ERROR, "Wrong Name! Try again!!").show();
+            lblSearchAlert.setText("Wrong Name! Try again!!");
             return;
         }
 
@@ -92,12 +116,13 @@ public class ItemStockFormController implements Initializable {
         for (int i = 0; i < allItemId.size(); i++) {
             if (txtSearch.getText().equals(itemStockModel.getDescription(allItemId.get(i)))) {
                 ItemViewPopUpFormController.itemId = allItemId.get(i);
+                lblSearchAlert.setText(" ");
                 txtSearch.clear();
                 Navigation.imgPopUpBackground("itemViewPopUpForm.fxml");
                 return;
             }
         }
-        new Alert(Alert.AlertType.ERROR, "Wrong Name! Try again!!").show();
+        lblSearchAlert.setText("Wrong Name! Try again!!");
     }
 
     private boolean validateName() {

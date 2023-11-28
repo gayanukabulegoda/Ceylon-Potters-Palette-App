@@ -1,5 +1,7 @@
 package lk.grb.ceylonPottersPalette.controller;
 
+import javafx.animation.ScaleTransition;
+import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,11 +12,14 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.util.Duration;
 import lk.grb.ceylonPottersPalette.model.EmployeeAttendanceModel;
 import lk.grb.ceylonPottersPalette.model.EmployeeModel;
-import lk.grb.ceylonPottersPalette.model.EmployeeSalaryModel;
 import lk.grb.ceylonPottersPalette.qr.QrReader;
 import lk.grb.ceylonPottersPalette.util.Navigation;
+import lk.grb.ceylonPottersPalette.util.StyleUtil;
 
 import java.io.IOException;
 import java.net.URL;
@@ -33,6 +38,33 @@ public class EmployeeAttendanceFormController implements Initializable {
 
     @FXML
     private Pane btnEmployeeSalaryPane;
+
+    @FXML
+    private Pane scanQrMsgPane;
+
+    @FXML
+    private Pane btnEnterPane;
+
+    @FXML
+    private Pane btnQrPane;
+
+    @FXML
+    private Pane btnRefreshPane;
+
+    @FXML
+    private ImageView imgEnter;
+
+    @FXML
+    private ImageView imgQrScan;
+
+    @FXML
+    private ImageView imgRefresh;
+
+    @FXML
+    private Label lblEnter;
+
+    @FXML
+    private Label lblSearchAlert;
 
     @FXML
     private Label lblEmployeeAttendance;
@@ -60,11 +92,6 @@ public class EmployeeAttendanceFormController implements Initializable {
     }
 
     @FXML
-    void btnEmployeeAttendanceOnAction(ActionEvent event) {
-
-    }
-
-    @FXML
     void btnRefreshTableOnAction(ActionEvent event) {
         try {
             allAttendanceId();
@@ -74,10 +101,25 @@ public class EmployeeAttendanceFormController implements Initializable {
     }
 
     @FXML
+    void btnRefreshTableOnMouseEntered(MouseEvent event) {
+        StyleUtil.refreshBtnSelected(btnRefreshPane, imgRefresh);
+    }
+
+    @FXML
+    void btnRefreshTableOnMouseExited(MouseEvent event) {
+        StyleUtil.refreshBtnUnselected(btnRefreshPane, imgRefresh);
+    }
+
+    @FXML
+    void txtSearchOnMouseClicked(MouseEvent event) {
+        lblSearchAlert.setText(" ");
+    }
+
+    @FXML
     void txtSearchOnAction(ActionEvent event) throws IOException, SQLException {
 
         if (!validateId()) {
-            new Alert(Alert.AlertType.ERROR, "Invalid Contact No!!").show();
+            lblSearchAlert.setText("Invalid Contact No!!");
             return;
         }
 
@@ -87,11 +129,12 @@ public class EmployeeAttendanceFormController implements Initializable {
         for (int i = 0; i < allEmployeeId.size(); i++) {
             if (txtSearch.getText().equals(employeeModel.getEmployeeContactNo(allEmployeeId.get(i)))) {
                 allSelectedEmployeeSalaryId(allEmployeeId.get(i));
+                lblSearchAlert.setText(" ");
                 txtSearch.clear();
                 return;
             }
         }
-        new Alert(Alert.AlertType.ERROR, "Invalid Contact No!!").show();
+        lblSearchAlert.setText("Invalid Contact No!!");
     }
 
     private boolean validateId() {
@@ -109,14 +152,52 @@ public class EmployeeAttendanceFormController implements Initializable {
     }
 
     @FXML
-    void btnEnterIdOnAction(ActionEvent event) throws IOException {
+    void btnEnterOnAction(ActionEvent event) throws IOException {
         Navigation.imgPopUpBackground("employeeAttendanceMarkPopUp.fxml");
+    }
+
+    @FXML
+    void btnEnterOnMouseEntered(MouseEvent event) {
+        StyleUtil.addBtnSelected(btnEnterPane, lblEnter, imgEnter);
+    }
+
+    @FXML
+    void btnEnterOnMouseExited(MouseEvent event) {
+        StyleUtil.addBtnUnselected(btnEnterPane, lblEnter, imgEnter);
     }
 
     @FXML
     void btnQrOnAction(ActionEvent event) throws SQLException {
         String id = QrReader.readQr();
         EmployeeAttendanceMarkPopUpController.markAttendanceOViaQr(id);
+    }
+
+    @FXML
+    void btnQrOnMouseEntered(MouseEvent event) {
+        StyleUtil.qrBtnSelected(btnQrPane, imgQrScan);
+
+        scanQrMsgPane.setVisible(true);
+        // Scale-in effect using ScaleTransition
+        ScaleTransition scaleTransition = new ScaleTransition(Duration.seconds(0.3), scanQrMsgPane);
+        scaleTransition.setFromX(0);
+        scaleTransition.setToX(1);
+        scaleTransition.setFromY(0);
+        scaleTransition.setToY(1);
+
+        // Slide-in effect using TranslateTransition
+        TranslateTransition translateTransition = new TranslateTransition(Duration.seconds(0.2), scanQrMsgPane);
+        translateTransition.setFromX(scanQrMsgPane.getWidth()); // Start from the right of the pane
+        translateTransition.setToX(0);
+
+        scaleTransition.play();
+        translateTransition.play();
+    }
+
+    @FXML
+    void btnQrOnMouseExited(MouseEvent event) {
+        StyleUtil.qrBtnUnselected(btnQrPane, imgQrScan);
+
+        scanQrMsgPane.setVisible(false);
     }
 
     public void allSelectedEmployeeSalaryId(String id) throws SQLException {

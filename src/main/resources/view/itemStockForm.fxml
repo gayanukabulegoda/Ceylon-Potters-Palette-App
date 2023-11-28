@@ -56,34 +56,40 @@
          </children>
       </AnchorPane>
       <Pane layoutX="1203.0" layoutY="24.0" prefHeight="46.0" prefWidth="300.0" style="-fx-background-color: white; -fx-background-radius: 12;" />
-      <TextField fx:id="txtSearch" layoutX="1246.0" layoutY="24.0" onAction="#txtSearchOnAction" prefHeight="46.0" prefWidth="258.0" promptText="Search by Name" style="-fx-background-color: white; -fx-background-radius: 12;">
+      <TextField fx:id="txtSearch" layoutX="1246.0" layoutY="24.0" onAction="#txtSearchOnAction" onMouseClicked="#txtSearchOnMouseClicked" prefHeight="46.0" prefWidth="258.0" promptText="Search by Name" style="-fx-background-color: white; -fx-background-radius: 12;">
          <font>
             <Font size="16.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
       </TextField>
       <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="1218.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assests/icon/searchIcon.png" />
          </image>
       </ImageView>
-      <Pane layoutX="1039.0" layoutY="24.0" prefHeight="46.0" prefWidth="150.0" style="-fx-background-color: white; -fx-background-radius: 12;">
+      <Pane fx:id="addItemPane" layoutX="1039.0" layoutY="24.0" prefHeight="46.0" prefWidth="150.0" style="-fx-background-color: white; -fx-background-radius: 12;">
          <children>
-            <Label layoutX="54.0" layoutY="13.0" text="Add Item">
+            <Label fx:id="lblAddItem" layoutX="54.0" layoutY="13.0" text="Add Item" textFill="#3d3e3e">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="15.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imgAdd" fitHeight="24.0" fitWidth="24.0" layoutX="15.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assests/icon/addIcon.png" />
                </image>
             </ImageView>
          </children>
       </Pane>
-      <JFXButton layoutX="1039.0" layoutY="24.0" onAction="#btnAddItemOnAction" prefHeight="46.0" prefWidth="150.0" style="-fx-background-radius: 12;" text=" ">
+      <JFXButton layoutX="1039.0" layoutY="24.0" onAction="#btnAddItemOnAction" onMouseEntered="#btnAddItemOnMouseEntered" onMouseExited="#btnAddItemOnMouseExited" prefHeight="46.0" prefWidth="150.0" style="-fx-background-radius: 12;" text=" ">
          <font>
             <Font size="16.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </JFXButton>
       <Pane fx:id="btnProductStockPane" layoutX="34.0" layoutY="29.0" prefHeight="38.0" prefWidth="244.0" style="-fx-background-color: white; -fx-background-radius: 25;">
          <children>
@@ -128,7 +134,7 @@
             </Label>
          </children>
       </Pane>
-      <JFXButton alignment="CENTER" layoutX="548.0" layoutY="29.0" onAction="#btnItemStockOnAction" prefHeight="38.0" prefWidth="244.0" style="-fx-background-radius: 25;" text=" " textFill="#885d40">
+      <JFXButton alignment="CENTER" layoutX="548.0" layoutY="29.0" prefHeight="38.0" prefWidth="244.0" style="-fx-background-radius: 25;" text=" " textFill="#885d40">
          <font>
             <Font size="16.0" />
          </font>
@@ -136,5 +142,10 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
+      <Label fx:id="lblSearchAlert" layoutX="1222.0" layoutY="72.0" textFill="RED">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

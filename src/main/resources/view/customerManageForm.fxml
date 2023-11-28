@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
@@ -59,35 +60,46 @@
             <Font name="System Bold" size="25.0" />
          </font>
       </Label>
-      <Pane layoutX="1203.0" layoutY="24.0" prefHeight="46.0" prefWidth="300.0" style="-fx-background-color: white; -fx-background-radius: 12;" />
-      <TextField fx:id="txtSearch" layoutX="1246.0" layoutY="24.0" onAction="#txtSearchOnAction" prefHeight="46.0" prefWidth="258.0" promptText="Search by Contact No" style="-fx-background-color: white; -fx-background-radius: 12;">
+      <Pane fx:id="searchBarPane" layoutX="1203.0" layoutY="24.0" prefHeight="46.0" prefWidth="300.0" style="-fx-background-color: white; -fx-background-radius: 12;" />
+      <TextField fx:id="txtSearch" layoutX="1246.0" layoutY="24.0" onAction="#txtSearchOnAction" onMouseClicked="#txtSearchOnMouseClicked" prefHeight="46.0" prefWidth="258.0" promptText="Search by Contact No" style="-fx-background-color: white; -fx-background-radius: 12;">
          <font>
             <Font size="16.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
       </TextField>
       <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="1218.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assests/icon/searchIcon.png" />
          </image>
       </ImageView>
-      <Pane layoutX="1009.0" layoutY="24.0" prefHeight="46.0" prefWidth="179.0" style="-fx-background-color: white; -fx-background-radius: 12;">
+      <Pane fx:id="addCustomerPane" layoutX="1009.0" layoutY="24.0" prefHeight="46.0" prefWidth="179.0" style="-fx-background-color: white; -fx-background-radius: 12;">
          <children>
-            <Label layoutX="45.0" layoutY="13.0" text=" Add Customer">
+            <Label fx:id="lblAddCustomer" layoutX="45.0" layoutY="13.0" text=" Add Customer" textFill="#3d3e3e">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="13.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imgAdd" fitHeight="24.0" fitWidth="24.0" layoutX="13.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assests/icon/addIcon.png" />
                </image>
             </ImageView>
          </children>
       </Pane>
-      <JFXButton layoutX="1009.0" layoutY="24.0" onAction="#btnAddCustomerOnAction" prefHeight="46.0" prefWidth="179.0" style="-fx-background-radius: 12;" text=" ">
+      <JFXButton layoutX="1009.0" layoutY="24.0" onAction="#btnAddCustomerOnAction" onMouseEntered="#btnAddCustomerOnMouseEntered" onMouseExited="#btnAddCustomerOnMouseExited" prefHeight="46.0" prefWidth="179.0" style="-fx-background-radius: 12;" text=" ">
          <font>
             <Font size="16.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </JFXButton>
+      <Label fx:id="lblSearchAlert" layoutX="1222.0" layoutY="72.0" textFill="RED">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

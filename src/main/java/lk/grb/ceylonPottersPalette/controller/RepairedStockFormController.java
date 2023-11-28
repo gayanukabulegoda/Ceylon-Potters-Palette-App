@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import lk.grb.ceylonPottersPalette.model.ProductStockModel;
@@ -43,6 +44,9 @@ public class RepairedStockFormController implements Initializable {
     private Label lblRepairStock;
 
     @FXML
+    private Label lblSearchAlert;
+
+    @FXML
     private TextField txtSearch;
 
     @FXML
@@ -74,10 +78,15 @@ public class RepairedStockFormController implements Initializable {
     }
 
     @FXML
+    void txtSearchOnMouseClicked(MouseEvent event) {
+        lblSearchAlert.setText(" ");
+    }
+
+    @FXML
     void txtSearchOnAction(ActionEvent event) throws IOException, SQLException {
 
         if (!validateName()) {
-            new Alert(Alert.AlertType.ERROR, "Wrong Name! Try again!!").show();
+            lblSearchAlert.setText("Wrong Name! Try again!!");
             return;
         }
 
@@ -88,11 +97,12 @@ public class RepairedStockFormController implements Initializable {
             if (txtSearch.getText().equals(productStockModel.getDescription(allProductId.get(i)))) {
                 ProductViewPopUpFormController.productId = allProductId.get(i);
                 txtSearch.clear();
+                lblSearchAlert.setText(" ");
                 Navigation.imgPopUpBackground("productViewPopUpForm.fxml");
                 return;
             }
         }
-        new Alert(Alert.AlertType.ERROR, "Wrong Name! Try again!!").show();
+        lblSearchAlert.setText("Wrong Name! Try again!!");
     }
 
     private boolean validateName() {

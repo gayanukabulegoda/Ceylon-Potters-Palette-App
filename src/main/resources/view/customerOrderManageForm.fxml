@@ -62,10 +62,13 @@
       </AnchorPane>
       <Pane layoutX="1159.0" layoutY="25.0" prefHeight="46.0" prefWidth="300.0" style="-fx-background-color: white; -fx-background-radius: 12;">
          <children>
-            <TextField fx:id="txtSearch" layoutX="40.0" onAction="#txtSearchOnAction" prefHeight="46.0" prefWidth="258.0" promptText="Search by ID / Contact No" style="-fx-background-color: white; -fx-background-radius: 12;">
+            <TextField fx:id="txtSearch" layoutX="40.0" onAction="#txtSearchOnAction" onMouseClicked="#txtSearchOnMouseClicked" prefHeight="46.0" prefWidth="258.0" promptText="Search by ID / Contact No" style="-fx-background-color: white; -fx-background-radius: 12;">
                <font>
                   <Font size="16.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
             </TextField>
          </children>
       </Pane>
@@ -74,24 +77,27 @@
             <Image url="@../assests/icon/searchIcon.png" />
          </image>
       </ImageView>
-      <Pane layoutX="1012.0" layoutY="25.0" prefHeight="46.0" prefWidth="140.0" style="-fx-background-color: white; -fx-background-radius: 12;">
+      <Pane fx:id="btnAddOrderPane" layoutX="1012.0" layoutY="25.0" prefHeight="46.0" prefWidth="140.0" style="-fx-background-color: white; -fx-background-radius: 12;">
          <children>
-            <Label layoutX="45.0" layoutY="13.0" text="Add Order">
+            <Label fx:id="lblAddOrder" layoutX="45.0" layoutY="13.0" text="Add Order" textFill="#3d3e3e">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="13.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imgAdd" fitHeight="24.0" fitWidth="24.0" layoutX="13.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assests/icon/addIcon.png" />
                </image>
             </ImageView>
          </children>
       </Pane>
-      <JFXButton layoutX="1012.0" layoutY="25.0" onAction="#btnAddOrderOnAction" prefHeight="46.0" prefWidth="140.0" style="-fx-background-radius: 12;" text=" ">
+      <JFXButton layoutX="1012.0" layoutY="25.0" onAction="#btnAddOrderOnAction" onMouseEntered="#btnAddOrderOnMouseEntered" onMouseExited="#btnAddOrderOnMouseExited" prefHeight="46.0" prefWidth="140.0" style="-fx-background-radius: 12;" text=" ">
          <font>
             <Font size="16.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </JFXButton>
       <Pane fx:id="btnCustomerOrdersPane" layoutX="34.0" layoutY="29.0" prefHeight="38.0" prefWidth="244.0" style="-fx-background-radius: 25;" styleClass="manage-attendance-salary-btn" stylesheets="@../style/EmployeeFormStyle.css">
          <children>
@@ -102,7 +108,7 @@
             </Label>
          </children>
       </Pane>
-      <JFXButton alignment="CENTER" layoutX="34.0" layoutY="29.0" onAction="#btnCustomerOrdersOnAction" prefHeight="38.0" prefWidth="244.0" style="-fx-background-radius: 25;" text=" " textFill="WHITE">
+      <JFXButton alignment="CENTER" layoutX="34.0" layoutY="29.0" prefHeight="38.0" prefWidth="244.0" style="-fx-background-radius: 25;" text=" " textFill="WHITE">
          <font>
             <Font size="16.0" />
          </font>
@@ -127,19 +133,27 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <Pane layoutX="1466.0" layoutY="25.0" prefHeight="46.0" prefWidth="46.0" style="-fx-background-color: white; -fx-background-radius: 12;">
+      <Pane fx:id="btnRefreshPane" layoutX="1466.0" layoutY="25.0" prefHeight="46.0" prefWidth="46.0" style="-fx-background-color: white; -fx-background-radius: 12;">
          <children>
-            <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="11.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imgRefresh" fitHeight="24.0" fitWidth="24.0" layoutX="11.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assests/icon/refreshTableIcon.png" />
                </image>
             </ImageView>
          </children>
       </Pane>
-      <JFXButton layoutX="1466.0" layoutY="25.0" onAction="#btnRefreshTableOnAction" prefHeight="46.0" prefWidth="46.0" style="-fx-background-radius: 12;" text=" ">
+      <JFXButton layoutX="1466.0" layoutY="25.0" onAction="#btnRefreshTableOnAction" onMouseEntered="#btnRefreshTableOnMouseEntered" onMouseExited="#btnRefreshTableOnMouseExited" prefHeight="46.0" prefWidth="46.0" style="-fx-background-radius: 12;" text=" ">
          <font>
             <Font size="16.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </JFXButton>
+      <Label fx:id="lblSearchAlert" layoutX="1178.0" layoutY="73.0" textFill="RED">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

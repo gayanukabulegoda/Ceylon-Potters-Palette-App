@@ -8,9 +8,13 @@ import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
+import javafx.scene.control.Label;
 import lk.grb.ceylonPottersPalette.model.CustomerModel;
-import lk.grb.ceylonPottersPalette.model.EmployeeModel;
 import lk.grb.ceylonPottersPalette.util.Navigation;
+import lk.grb.ceylonPottersPalette.util.StyleUtil;
 
 import java.io.IOException;
 import java.net.URL;
@@ -20,6 +24,21 @@ import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
 public class CustomerManageFormController implements Initializable {
+
+    @FXML
+    private Pane addCustomerPane;
+
+    @FXML
+    private ImageView imgAdd;
+
+    @FXML
+    private Label lblSearchAlert;
+
+    @FXML
+    private Label lblAddCustomer;
+
+    @FXML
+    private Pane searchBarPane;
 
     @FXML
     private TextField txtSearch;
@@ -45,10 +64,25 @@ public class CustomerManageFormController implements Initializable {
     }
 
     @FXML
+    void btnAddCustomerOnMouseEntered(MouseEvent event) {
+        StyleUtil.addBtnSelected(addCustomerPane, lblAddCustomer, imgAdd);
+    }
+
+    @FXML
+    void btnAddCustomerOnMouseExited(MouseEvent event) {
+        StyleUtil.addBtnUnselected(addCustomerPane, lblAddCustomer, imgAdd);
+    }
+
+    @FXML
+    void txtSearchOnMouseClicked(MouseEvent event) {
+        lblSearchAlert.setText(" ");
+    }
+
+    @FXML
     void txtSearchOnAction(ActionEvent event) throws IOException, SQLException {
 
         if (!validateId()) {
-            new Alert(Alert.AlertType.ERROR, "Invalid Contact No!!").show();
+            lblSearchAlert.setText("Invalid Contact No!!");
             return;
         }
 
@@ -58,11 +92,12 @@ public class CustomerManageFormController implements Initializable {
             if (txtSearch.getText().equals(customerModel.getCustomerContactNo(allCustomerId.get(i)))) {
                 CustomerViewPopUpFormController.customerId = allCustomerId.get(i);
                 Navigation.imgPopUpBackground("customerViewPopUpForm.fxml");
+                lblSearchAlert.setText(" ");
                 txtSearch.clear();
                 return;
             }
         }
-        new Alert(Alert.AlertType.ERROR, "Invalid Contact No!!").show();
+        lblSearchAlert.setText("Invalid Contact No!!");
     }
 
     private boolean validateId() {

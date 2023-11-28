@@ -10,9 +10,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import lk.grb.ceylonPottersPalette.model.ItemStockModel;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import lk.grb.ceylonPottersPalette.model.ProductStockModel;
 import lk.grb.ceylonPottersPalette.util.Navigation;
+import lk.grb.ceylonPottersPalette.util.StyleUtil;
 
 import java.io.IOException;
 import java.net.URL;
@@ -24,6 +26,9 @@ import java.util.regex.Pattern;
 public class ProductStockFormController implements Initializable {
 
     @FXML
+    private Pane addProductPane;
+
+    @FXML
     private Pane btnItemStockPane;
 
     @FXML
@@ -31,6 +36,15 @@ public class ProductStockFormController implements Initializable {
 
     @FXML
     private Pane btnRepairStockPane;
+
+    @FXML
+    private ImageView imgAdd;
+
+    @FXML
+    private Label lblSearchAlert;
+
+    @FXML
+    private Label lblAddProduct;
 
     @FXML
     private Label lblItemStock;
@@ -63,13 +77,18 @@ public class ProductStockFormController implements Initializable {
     }
 
     @FXML
-    void btnItemStockOnAction(ActionEvent event) throws IOException {
-        Navigation.switchPaging(GlobalFormController.getInstance().pagingPane, "itemStockForm.fxml");
+    void btnAddProductOnMouseEntered(MouseEvent event) {
+        StyleUtil.addBtnSelected(addProductPane, lblAddProduct, imgAdd);
     }
 
     @FXML
-    void btnProductStockOnAction(ActionEvent event) {
+    void btnAddProductOnMouseExited(MouseEvent event) {
+        StyleUtil.addBtnUnselected(addProductPane, lblAddProduct, imgAdd);
+    }
 
+    @FXML
+    void btnItemStockOnAction(ActionEvent event) throws IOException {
+        Navigation.switchPaging(GlobalFormController.getInstance().pagingPane, "itemStockForm.fxml");
     }
 
     @FXML
@@ -78,10 +97,15 @@ public class ProductStockFormController implements Initializable {
     }
 
     @FXML
+    void txtSearchOnMouseClicked(MouseEvent event) {
+        lblSearchAlert.setText(" ");
+    }
+
+    @FXML
     void txtSearchOnAction(ActionEvent event) throws IOException, SQLException {
 
         if (!validateName()) {
-            new Alert(Alert.AlertType.ERROR, "Wrong Name! Try again!!").show();
+            lblSearchAlert.setText("Wrong Name! Try again!!");
             return;
         }
 
@@ -92,11 +116,12 @@ public class ProductStockFormController implements Initializable {
             if (txtSearch.getText().equals(productStockModel.getDescription(allProductId.get(i)))) {
                 ProductViewPopUpFormController.productId = allProductId.get(i);
                 txtSearch.clear();
+                lblSearchAlert.setText(" ");
                 Navigation.imgPopUpBackground("productViewPopUpForm.fxml");
                 return;
             }
         }
-        new Alert(Alert.AlertType.ERROR, "Wrong Name! Try again!!").show();
+        lblSearchAlert.setText("Wrong Name! Try again!!");
     }
 
     private boolean validateName() {
