@@ -14,10 +14,13 @@ import javafx.scene.layout.VBox;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.util.Duration;
+import lk.grb.ceylonPottersPalette.dto.EmployeeAttendanceDto;
 import lk.grb.ceylonPottersPalette.model.EmployeeAttendanceModel;
 import lk.grb.ceylonPottersPalette.model.EmployeeModel;
 import lk.grb.ceylonPottersPalette.qr.QrReader;
+import lk.grb.ceylonPottersPalette.util.DateTimeUtil;
 import lk.grb.ceylonPottersPalette.util.Navigation;
+import lk.grb.ceylonPottersPalette.util.NewId;
 import lk.grb.ceylonPottersPalette.util.StyleUtil;
 
 import java.io.IOException;
@@ -25,8 +28,12 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.regex.Pattern;
+
+import static lk.grb.ceylonPottersPalette.controller.EmployeeAttendanceMarkPopUpController.employeeAttendanceModel;
 
 public class EmployeeAttendanceFormController implements Initializable {
 
@@ -168,6 +175,7 @@ public class EmployeeAttendanceFormController implements Initializable {
 
     @FXML
     void btnQrOnAction(ActionEvent event) throws SQLException {
+
         AtomicReference<String> id = new AtomicReference<>();
 
         Thread qrThread = new Thread(() -> {
@@ -182,6 +190,7 @@ public class EmployeeAttendanceFormController implements Initializable {
         }
 
         EmployeeAttendanceMarkPopUpController.markAttendanceOViaQr(String.valueOf(id));
+
     }
 
     @FXML

@@ -7,7 +7,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.control.Label;
-import javafx.scene.control.Alert;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -78,13 +77,13 @@ public class SignUpFormController {
     }
 
     @FXML
-    void txtPasswordOnMouseClicked(MouseEvent event) {
-        lblPasswordAlert.setText(" ");
+    void txtUserNameOnMouseClicked(MouseEvent event) {
+        lblUserNameAlert.setText(" ");
     }
 
     @FXML
-    void txtUserNameOnMouseClicked(MouseEvent event) {
-        lblUserNameAlert.setText(" ");
+    void txtPasswordOnMouseClicked(MouseEvent event) {
+        lblPasswordAlert.setText(" ");
     }
 
     private boolean validateCredentials() {

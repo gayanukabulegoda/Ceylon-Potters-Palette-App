@@ -21,7 +21,7 @@
       </ImageView>
       <Hyperlink fx:id="hyperLogIn" layoutX="749.0" layoutY="517.0" onAction="#hyperLogInOnAction" onMouseEntered="#hyperLogInOnMouseEntered" onMouseExited="#hyperLogInOnMouseExited" text="Log In" textFill="#151619" />
       <Text fill="#3d3e3e" layoutX="591.0" layoutY="534.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Already have Account ?" />
-      <TextField fx:id="txtEmployeeId" layoutX="558.0" layoutY="315.0" onKeyPressed="#txtEmployeeIdOnKeyPressed" onMouseClicked="#txtEmployeeIdOnMouseClicked" prefHeight="42.0" prefWidth="267.0" promptText="  Employee ID" style="-fx-background-radius: 12;">
+      <TextField fx:id="txtEmployeeId" layoutX="558.0" layoutY="315.0" onKeyPressed="#txtEmployeeIdOnKeyPressed" onMouseClicked="#txtEmployeeIdOnMouseClicked" prefHeight="45.0" prefWidth="267.0" promptText="  Employee ID" style="-fx-background-radius: 12;">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor>

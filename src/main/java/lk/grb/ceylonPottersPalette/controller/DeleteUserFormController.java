@@ -116,12 +116,13 @@ public class DeleteUserFormController implements Initializable {
     }
 
     @FXML
-    void confirmBtnOnAction(ActionEvent event) throws SQLException, IOException, MessagingException {
+    void confirmBtnOnAction(ActionEvent event) throws MessagingException, SQLException, IOException {
+
         userDataPane.setStyle("-fx-border-color: #E8E8E8;" +
-                                    "-fx-border-radius: 12px");
+                "-fx-border-radius: 12px");
         btnConfirm.setStyle("-fx-border-color: silver;" +
-                                    "-fx-text-fill: #727374;" +
-                                    "-fx-border-radius: 12px");
+                "-fx-text-fill: #727374;" +
+                "-fx-border-radius: 12px");
 
         lblUnsuccessfulAlert.setText(" ");
         lblConfirmAlert.setText(" ");
@@ -158,10 +159,10 @@ public class DeleteUserFormController implements Initializable {
 
         } else {
             userDataPane.setStyle("-fx-border-color: red;" +
-                                        "-fx-border-radius: 12px");
+                    "-fx-border-radius: 12px");
             btnConfirm.setStyle("-fx-border-color: red;" +
-                                        "-fx-text-fill: red;" +
-                                        "-fx-border-radius: 12px");
+                    "-fx-text-fill: red;" +
+                    "-fx-border-radius: 12px");
             lblUnsuccessfulAlert.setText("Unsuccessful Authentication!!");
         }
     }
