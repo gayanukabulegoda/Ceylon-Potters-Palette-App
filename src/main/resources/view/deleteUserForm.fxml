@@ -11,7 +11,7 @@
 
 <AnchorPane prefHeight="472.0" prefWidth="627.0" style="-fx-background-radius: 12; -fx-background-color: white;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.grb.ceylonPottersPalette.controller.DeleteUserFormController">
    <children>
-      <Pane layoutX="90.0" layoutY="161.0" prefHeight="190.0" prefWidth="459.0" style="-fx-border-radius: 12; -fx-border-color: E8E8E8;">
+      <Pane fx:id="userDataPane" layoutX="90.0" layoutY="161.0" prefHeight="190.0" prefWidth="459.0" style="-fx-border-radius: 12; -fx-border-color: E8E8E8;">
          <children>
             <Label layoutX="57.0" layoutY="106.0" text="Employee ID  -  " textFill="#727374">
                <font>
@@ -51,6 +51,12 @@
             <Label fx:id="lblRole" layoutX="113.0" layoutY="144.0" text="Role" textAlignment="CENTER" textFill="#727374">
                <font>
                   <Font size="14.0" />
+               </font>
+            </Label>
+            <JFXButton fx:id="btnConfirm" layoutX="362.0" layoutY="11.0" onAction="#confirmBtnOnAction" prefHeight="33.0" prefWidth="86.0" style="-fx-border-color: silver; -fx-border-radius: 12;" text="Confirm" textFill="#727374" />
+            <Label fx:id="lblConfirmAlert" layoutX="372.0" layoutY="43.0" textFill="RED">
+               <font>
+                  <Font size="11.0" />
                </font>
             </Label>
          </children>
@@ -96,5 +102,10 @@
       <JFXButton fx:id="btnCancel" layoutX="49.0" layoutY="383.0" onAction="#btnCancelOnAction" onMouseEntered="#btnCancelOnMouseEntered" onMouseExited="#btnCancelOnMouseExited" prefHeight="54.0" prefWidth="259.0" style="-fx-background-radius: 12;" text=" " />
       <JFXButton fx:id="btnCloseIcon" layoutX="519.0" layoutY="54.0" onAction="#btnCloseIconOnAction" onMouseEntered="#btnCloseIconOnMouseEntered" onMouseExited="#btnCloseIconOnMouseExited" prefHeight="48.0" prefWidth="48.0" style="-fx-background-radius: 12;" text=" " />
       <JFXButton fx:id="btnDelete" layoutX="320.0" layoutY="381.0" onAction="#btnDeleteOnAction" onMouseEntered="#btnDeleteOnMouseEntered" onMouseExited="#btnDeleteOnMouseExited" prefHeight="54.0" prefWidth="259.0" style="-fx-background-radius: 12;" text=" " />
+      <Label fx:id="lblUnsuccessfulAlert" layoutX="106.0" layoutY="352.0" textFill="RED">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

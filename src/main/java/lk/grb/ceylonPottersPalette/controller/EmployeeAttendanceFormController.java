@@ -7,7 +7,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
@@ -26,6 +25,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.concurrent.atomic.AtomicReference;
 import java.util.regex.Pattern;
 
 public class EmployeeAttendanceFormController implements Initializable {
@@ -168,14 +168,20 @@ public class EmployeeAttendanceFormController implements Initializable {
 
     @FXML
     void btnQrOnAction(ActionEvent event) throws SQLException {
-        new Thread(()->{
-            String id = QrReader.readQr();
-            try {
-                EmployeeAttendanceMarkPopUpController.markAttendanceOViaQr(id);
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
-        }).start();
+        AtomicReference<String> id = new AtomicReference<>();
+
+        Thread qrThread = new Thread(() -> {
+            id.set(QrReader.readQr());
+        });
+        qrThread.start();
+
+        try {
+            qrThread.join(); // Wait for the QR code reading thread to complete
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        EmployeeAttendanceMarkPopUpController.markAttendanceOViaQr(String.valueOf(id));
     }
 
     @FXML

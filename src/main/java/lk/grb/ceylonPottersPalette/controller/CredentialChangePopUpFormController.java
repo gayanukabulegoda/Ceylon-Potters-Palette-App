@@ -3,23 +3,18 @@ package lk.grb.ceylonPottersPalette.controller;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-import lk.grb.ceylonPottersPalette.dto.CustomerDto;
+import javafx.scene.input.KeyEvent;
 import lk.grb.ceylonPottersPalette.dto.UserDto;
 import lk.grb.ceylonPottersPalette.model.UserModel;
-import lk.grb.ceylonPottersPalette.util.DateTimeUtil;
-import lk.grb.ceylonPottersPalette.util.Navigation;
-import lk.grb.ceylonPottersPalette.util.NewId;
-import lk.grb.ceylonPottersPalette.util.StyleUtil;
+import lk.grb.ceylonPottersPalette.util.*;
 
-import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.regex.Pattern;
 
 public class CredentialChangePopUpFormController {
 
@@ -83,79 +78,91 @@ public class CredentialChangePopUpFormController {
     @FXML
     void btnSaveOnAction(ActionEvent event) throws SQLException {
 
-        UserDto userDto = new UserDto();
-        boolean updated;
-        userDto.setUser_Name(GlobalFormController.user);
+        if (validatePasswords()) {
+            UserDto userDto = new UserDto();
 
-        String currentPassword = txtCurrentPassword.getText();
+            userDto.setUser_Name(GlobalFormController.user);
+            userDto.setPassword(txtConfirmPassword.getText());
 
-        if (LoginFormController.password.equals(currentPassword)) {
+            LoginFormController.password = txtConfirmPassword.getText();
+            boolean updated = userModel.update(userDto);
 
-            txtCurrentPassword(event);
-
-            String newPassword = txtNewPassword.getText();
-            String confirmPassword = txtConfirmPassword.getText();
-
-            if (confirmPassword.equals(newPassword)) {
-                lblConfirmPwAlert.setText(" ");
-                userDto.setPassword(txtConfirmPassword.getText());
-                LoginFormController.password = txtConfirmPassword.getText();
-                updated = userModel.update(userDto);
-                txtConfirmPasswordOnAction(event);
-
-                if (updated) {
-                    Navigation.closePane();
-                }
-
+            if (updated) {
+                Navigation.closePane();
             } else {
-                lblConfirmPwAlert.setText("New Password & it's Confirmation Doesn't Match!!!");
+                lblConfirmPwAlert.setText("Error!! Try Again!");
             }
-        } else {
-            lblCurrentPwAlert.setText("Invalid Password!!");
         }
     }
 
-    @FXML
-    void txtCurrentPassword(ActionEvent event) {
-        if(LoginFormController.password.equals(txtCurrentPassword.getText())){
-            lblCurrentPwAlert.setText(" ");
-            txtNewPassword.setEditable(true);
-            txtConfirmPassword.setEditable(true);
-        }
-        else {
-            lblCurrentPwAlert.setText("Invalid Password!!");
-        }
-    }
+    private boolean validatePasswords() {
+        boolean result = true;
 
-    @FXML
-    void txtConfirmPasswordOnAction(ActionEvent event) {
-        if (txtNewPassword.getText().equals(txtConfirmPassword.getText())) {
-            lblConfirmPwAlert.setText(" ");
-            btnSave.setVisible(true);
+        if (!LoginFormController.password.equals(txtCurrentPassword.getText())) {
+            lblCurrentPwAlert.setText("Wrong Password!!");
+            result = false;
         }
-        else {
-            lblConfirmPwAlert.setText("New Password & Confirmation Doesn't Match!!");
-        }
-    }
 
-    @FXML
-    void txtNewPasswordOnAction(ActionEvent event) {
-        if(validateNewPassword()) {
-            lblNewPwAlert.setText(" ");
-        }
-    }
-
-    private boolean validateNewPassword() {
-        String password = txtNewPassword.getText();
-
-        boolean idValidate = Pattern.matches(".{6,25}", password);
-
-        if (!idValidate) {
+        if (RegExPatterns.passwordPattern(txtNewPassword.getText())) {
             lblNewPwAlert.setText("Invalid Password!!\nPassword should contain at least 6 characters");
-            return false;
+            result = false;
         }
+
+        if (!txtNewPassword.getText().equals(txtConfirmPassword.getText())){
+            lblConfirmPwAlert.setText("New Password & Confirmation Doesn't Match!!");
+            result = false;
+        }
+        return result;
+    }
+
+    @FXML
+    void txtCurrentPasswordOnKeyPressed(KeyEvent event) {
+        lblCurrentPwAlert.setText(" ");
+
+        if (event.getCode() == KeyCode.ENTER) {
+            if (!LoginFormController.password.equals(txtCurrentPassword.getText())) {
+                lblCurrentPwAlert.setText("Wrong Password!!");
+                event.consume();
+            } else {
+                txtNewPassword.setEditable(true);
+                txtConfirmPassword.setEditable(true);
+                txtNewPassword.requestFocus();
+            }
+        }
+    }
+
+    @FXML
+    void txtNewPasswordOnKeyPressed(KeyEvent event) {
         lblNewPwAlert.setText(" ");
-        return true;
+
+        if (event.getCode() == KeyCode.ENTER) {
+            if (RegExPatterns.passwordPattern(txtNewPassword.getText())) {
+                lblNewPwAlert.setText("Invalid Password!!\nPassword should contain at least 6 characters");
+                event.consume();
+            } else {
+                txtConfirmPassword.requestFocus();
+            }
+        }
+    }
+
+    @FXML
+    void txtConfirmNewPasswordOnKeyPressed(KeyEvent event) throws SQLException {
+        lblConfirmPwAlert.setText(" ");
+
+        if (event.getCode() == KeyCode.ENTER) {
+            if (!txtNewPassword.getText().equals(txtConfirmPassword.getText())){
+                lblConfirmPwAlert.setText("New Password & Confirmation Doesn't Match!!");
+                event.consume();
+            } else {
+                btnSave.setVisible(true);
+
+                ActionEvent actionEvent = new ActionEvent(
+                        event.getSource(),
+                        event.getTarget()
+                );
+                btnSaveOnAction(actionEvent);
+            }
+        }
     }
 
     @FXML

@@ -97,7 +97,6 @@ public class EmployeeAttendanceMarkPopUpController implements Initializable {
         boolean save = employeeAttendanceModel.save(employeeAttendanceDto);
 
         if (save) {
-            //Navigation.closePane();
             EmployeeAttendanceFormController.getInstance().allAttendanceId();
         }
     }
