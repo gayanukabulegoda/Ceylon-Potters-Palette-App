@@ -3,6 +3,7 @@ package lk.grb.ceylonPottersPalette.controller;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.Hyperlink;
@@ -10,11 +11,13 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.control.Label;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.control.TextField;
 import com.jfoenix.controls.JFXButton;
 import javafx.util.Duration;
 import lk.grb.ceylonPottersPalette.model.UserModel;
 import lk.grb.ceylonPottersPalette.util.Navigation;
+import lk.grb.ceylonPottersPalette.util.RegExPatterns;
 import lk.grb.ceylonPottersPalette.util.StyleUtil;
 
 import java.io.IOException;
@@ -66,7 +69,8 @@ public class LoginFormController {
                     password = txtPassword.getText();
                     Navigation.switchNavigation("globalForm.fxml", event);
                 } else {
-                    new Alert(Alert.AlertType.ERROR, "Invalid Username Or Password!!").show();
+                    lblUserNameAlert.setText("Invalid Username Or Password!!");
+                    lblPasswordAlert.setText("Invalid Username Or Password!!");
                 }
             } catch (SQLException | ClassNotFoundException | IOException e) {
                 throw new RuntimeException(e);
@@ -75,21 +79,52 @@ public class LoginFormController {
     }
 
     private boolean validateCredentials() {
+        boolean result = true;
 
-        boolean userNameValidate = Pattern.matches("([A-Za-z]+)", txtUsername.getText());
-
-        if (!userNameValidate) {
+        if (RegExPatterns.userNamePattern(txtUsername.getText())) {
             lblUserNameAlert.setText("Invalid Username!!");
-            return false;
+            result = false;
         }
 
-        boolean passwordValidate = Pattern.matches(".{6,25}", txtPassword.getText());
-
-        if (!passwordValidate) {
+        if (RegExPatterns.passwordPattern(txtPassword.getText())) {
             lblPasswordAlert.setText("Invalid Password!!");
-            return false;
+            result = false;
         }
-        return true;
+        return result;
+    }
+
+    @FXML
+    void txtUsernameOnKeyPressed(KeyEvent event) {
+        lblUserNameAlert.setText(" ");
+        lblPasswordAlert.setText(" ");
+
+        if (event.getCode() == KeyCode.ENTER) {
+            if (RegExPatterns.userNamePattern(txtUsername.getText())) {
+                lblUserNameAlert.setText("Invalid Username!!");
+                event.consume();
+            } else {
+                txtPassword.requestFocus();
+            }
+        }
+    }
+
+    @FXML
+    void txtPasswordOnKeyPressed(KeyEvent event) {
+        lblPasswordAlert.setText(" ");
+        lblUserNameAlert.setText(" ");
+
+        if (event.getCode() == KeyCode.ENTER) {
+            if (RegExPatterns.passwordPattern(txtPassword.getText())) {
+                lblPasswordAlert.setText("Invalid Password!!");
+                event.consume();
+            } else {
+                ActionEvent actionEvent = new ActionEvent(
+                        event.getSource(),
+                        event.getTarget()
+                );
+                btnLogInOnAction(actionEvent);
+            }
+        }
     }
 
     @FXML
@@ -162,10 +197,5 @@ public class LoginFormController {
     void btnPowerOffOnMouseExited(MouseEvent event) {
         powerOffPane.setVisible(false);
         StyleUtil.powerOffOrBackBtnUnselected(imgPowerOff);
-    }
-
-    @FXML
-    void txtPasswordOnAction(ActionEvent event) {
-        btnLogInOnAction(event);
     }
 }

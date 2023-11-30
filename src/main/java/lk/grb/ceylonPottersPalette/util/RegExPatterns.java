@@ -35,4 +35,20 @@ public class RegExPatterns {
     public static boolean salaryOrBonusPattern(String value) {
         return !Pattern.matches("(\\d.+)", value);
     }
+
+    public static boolean otpPattern(String otp) {
+        return !Pattern.matches("[0-9]{6}", otp);
+    }
+
+    public static boolean userNamePattern(String userName) {
+        return !Pattern.matches("([A-Za-z]+)", userName);
+    }
+
+    public static boolean passwordPattern(String password) {
+        return !Pattern.matches(".{6,25}", password);
+    }
+
+    public static boolean employeeIdPattern(String employeeId) {
+        return !Pattern.matches("(E-00)\\d+", employeeId);
+    }
 }

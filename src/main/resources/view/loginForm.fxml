@@ -20,7 +20,7 @@
             <Image url="@../assests/img/LoginPage.png" />
          </image>
       </ImageView>
-      <TextField fx:id="txtUsername" layoutX="560.0" layoutY="272.0" onMouseClicked="#txtUserNameOnMouseClicked" prefHeight="42.0" prefWidth="267.0" promptText="  Username" style="-fx-background-radius: 12;">
+      <TextField fx:id="txtUsername" layoutX="560.0" layoutY="272.0" onKeyPressed="#txtUsernameOnKeyPressed" onMouseClicked="#txtUserNameOnMouseClicked" prefHeight="42.0" prefWidth="267.0" promptText="  Username" style="-fx-background-radius: 12;" styleClass="text-field">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor>
@@ -28,7 +28,7 @@
             <Font size="15.0" />
          </font>
       </TextField>
-      <PasswordField fx:id="txtPassword" layoutX="560.0" layoutY="331.0" onAction="#txtPasswordOnAction" onMouseClicked="#txtPasswordOnMouseClicked" prefHeight="43.0" prefWidth="267.0" promptText="  Password" style="-fx-background-radius: 12;">
+      <PasswordField fx:id="txtPassword" layoutX="560.0" layoutY="331.0" onKeyPressed="#txtPasswordOnKeyPressed" onMouseClicked="#txtPasswordOnMouseClicked" prefHeight="43.0" prefWidth="267.0" promptText="  Password" style="-fx-background-radius: 12;">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor>

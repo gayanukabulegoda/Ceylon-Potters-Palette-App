@@ -5,23 +5,23 @@ import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.control.Label;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
-import lk.grb.ceylonPottersPalette.dto.EmployeeDto;
-import lk.grb.ceylonPottersPalette.model.EmployeeModel;
 import lk.grb.ceylonPottersPalette.util.Navigation;
+import lk.grb.ceylonPottersPalette.util.RegExPatterns;
 import lk.grb.ceylonPottersPalette.util.SendEmail;
 import lk.grb.ceylonPottersPalette.util.StyleUtil;
 
 import javax.mail.MessagingException;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
@@ -52,7 +52,6 @@ public class SignUpOTPVerifyFormController implements Initializable {
     public static String employeeId;
     public static String otp;
 
-    //EmployeeModel employeeModel = new EmployeeModel();
     SendEmail sendEmail = new SendEmail();
 
     @FXML
@@ -101,24 +100,37 @@ public class SignUpOTPVerifyFormController implements Initializable {
     void btnVerifyOnAction(ActionEvent event) throws IOException {
 
         if (validateOtp()) {
-            if (otp.equals(txtOTP.getText())) {
-                Navigation.close(event);
-                Navigation.switchNavigation("signUpForm.fxml", event);
-            } else {
-                new Alert(Alert.AlertType.ERROR, "Wrong OTP !! Try Again").show();
-            }
+            Navigation.close(event);
+            Navigation.switchNavigation("signUpForm.fxml", event);
         }
     }
 
     private boolean validateOtp() {
 
-        boolean otpValidate = Pattern.matches("[0-9]{6}", txtOTP.getText());
-
-        if (!otpValidate) {
+        if (RegExPatterns.otpPattern(txtOTP.getText()) | (!otp.equals(txtOTP.getText()))) {
             lblOtpAlert.setText("Wrong OTP!! Try Again!!");
             return false;
         }
         return true;
+    }
+
+    @FXML
+    void txtOTPOnKeyPressed(KeyEvent event) throws IOException {
+        lblOtpAlert.setText(" ");
+
+        if (event.getCode() == KeyCode.ENTER) {
+            if (RegExPatterns.otpPattern(txtOTP.getText()) | (!otp.equals(txtOTP.getText()))) {
+                lblOtpAlert.setText("Wrong OTP!! Try Again!!");
+                event.consume();
+            } else {
+                // Convert the key event to an ActionEvent
+                ActionEvent actionEvent = new ActionEvent(
+                        event.getSource(),
+                        event.getTarget()
+                );
+                btnVerifyOnAction(actionEvent);
+            }
+        }
     }
 
     @FXML

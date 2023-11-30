@@ -4,15 +4,18 @@ import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import com.jfoenix.controls.JFXButton;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 import lk.grb.ceylonPottersPalette.model.UserModel;
 import lk.grb.ceylonPottersPalette.util.Navigation;
+import lk.grb.ceylonPottersPalette.util.RegExPatterns;
 import lk.grb.ceylonPottersPalette.util.StyleUtil;
 
 import java.io.IOException;
@@ -57,20 +60,36 @@ public class ForgotPasswordFormController {
                 Navigation.close(event);
                 Navigation.switchNavigation("OTPVerifyForm.fxml", event);
             } else {
-                new Alert(Alert.AlertType.ERROR, "Invalid UserName!! Try Again!!").show();
+                lblUserNameAlert.setText("Invalid UserName!! Try Again!!");
             }
         }
     }
 
     private boolean validateUserName() {
 
-        boolean userNameValidate = Pattern.matches("([A-Za-z]+)", txtUsername.getText());
-
-        if (!userNameValidate) {
+        if (RegExPatterns.userNamePattern(txtUsername.getText())) {
             lblUserNameAlert.setText("Invalid Username!!");
             return false;
         }
         return true;
+    }
+
+    @FXML
+    void txtUsernameOnKeyPressed(KeyEvent event) throws SQLException, IOException {
+        lblUserNameAlert.setText(" ");
+
+        if (event.getCode() == KeyCode.ENTER) {
+            if (RegExPatterns.userNamePattern(txtUsername.getText())) {
+                lblUserNameAlert.setText("Invalid Username!!");
+                event.consume();
+            } else {
+                ActionEvent actionEvent = new ActionEvent(
+                        event.getSource(),
+                        event.getTarget()
+                );
+                btnResetPasswordOnAction(actionEvent);
+            }
+        }
     }
 
     @FXML

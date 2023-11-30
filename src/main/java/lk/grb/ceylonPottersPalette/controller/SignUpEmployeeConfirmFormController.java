@@ -6,7 +6,9 @@ import javafx.fxml.FXML;
 import com.jfoenix.controls.JFXButton;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.control.Label;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
@@ -14,6 +16,7 @@ import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 import lk.grb.ceylonPottersPalette.model.EmployeeModel;
 import lk.grb.ceylonPottersPalette.util.Navigation;
+import lk.grb.ceylonPottersPalette.util.RegExPatterns;
 import lk.grb.ceylonPottersPalette.util.StyleUtil;
 
 import java.io.IOException;
@@ -57,20 +60,36 @@ public class SignUpEmployeeConfirmFormController {
                 Navigation.close(event);
                 Navigation.switchNavigation("signUpOTPVerifyForm.fxml", event);
             } else {
-                new Alert(Alert.AlertType.ERROR, "Invalid ID!! Try Again!!").show();
+                lblEmployeeIdAlert.setText("Invalid ID!! Try Again!!");
             }
         }
     }
 
     private boolean validateEmployeeId() {
 
-        boolean employeeIdValidate = Pattern.matches("(E-00)\\d+", txtEmployeeId.getText());
-
-        if (!employeeIdValidate) {
+        if (RegExPatterns.employeeIdPattern(txtEmployeeId.getText())) {
             lblEmployeeIdAlert.setText("Invalid ID!! Try Again!!");
             return false;
         }
         return true;
+    }
+
+    @FXML
+    void txtEmployeeIdOnKeyPressed(KeyEvent event) throws SQLException, IOException {
+        lblEmployeeIdAlert.setText(" ");
+
+        if (event.getCode() == KeyCode.ENTER) {
+            if (RegExPatterns.employeeIdPattern(txtEmployeeId.getText())) {
+                lblEmployeeIdAlert.setText("Invalid ID!! Try Again!!");
+                event.consume();
+            } else {
+                ActionEvent actionEvent = new ActionEvent(
+                        event.getSource(),
+                        event.getTarget()
+                );
+                btnConfirmOnAction(actionEvent);
+            }
+        }
     }
 
     @FXML

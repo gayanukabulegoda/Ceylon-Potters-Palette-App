@@ -5,16 +5,19 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import com.jfoenix.controls.JFXButton;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.control.Label;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 import lk.grb.ceylonPottersPalette.dto.UserDto;
 import lk.grb.ceylonPottersPalette.model.EmployeeModel;
 import lk.grb.ceylonPottersPalette.model.UserModel;
 import lk.grb.ceylonPottersPalette.util.Navigation;
+import lk.grb.ceylonPottersPalette.util.RegExPatterns;
 import lk.grb.ceylonPottersPalette.util.StyleUtil;
 
 import java.io.IOException;
@@ -45,48 +48,71 @@ public class ResetPasswordFromController {
     private Pane backPane;
 
     UserModel userModel = new UserModel();
-    EmployeeModel employeeModel = new EmployeeModel();
 
     @FXML
     void btnResetPasswordOnAction(ActionEvent event) throws IOException, SQLException {
 
         if (validatePassword()) {
+            UserDto userDto = new UserDto();
 
-            if (txtNewPassword.getText().equals(txtConfirmPassword.getText())) {
+            userDto.setPassword(txtConfirmPassword.getText());
+            userDto.setUser_Name(userModel.getUserName(OTPVerifyFormController.employeeId));
 
-                UserDto userDto = new UserDto();
-
-                userDto.setPassword(txtConfirmPassword.getText());
-                userDto.setUser_Name(userModel.getUserName(OTPVerifyFormController.employeeId));
-
-                if (userModel.update(userDto)) {
-                    Navigation.close(event);
-                    Navigation.switchNavigation("loginForm.fxml", event);
-                } else {
-                    new Alert(Alert.AlertType.ERROR, "Unable to Change Your Password! Try again!!");
-                }
+            if (userModel.update(userDto)) {
+                Navigation.close(event);
+                Navigation.switchNavigation("loginForm.fxml", event);
             } else {
-                new Alert(Alert.AlertType.ERROR, "Invalid Password Confirmation!!");
+                lblNewPwAlert.setText("............");
+                lblConfirmPwAlert.setText("Unable to Change Your Password! Try again!!");
             }
         }
     }
 
     private boolean validatePassword() {
+        boolean result = true;
 
-        boolean newPasswordValidate = Pattern.matches(".{6,25}", txtNewPassword.getText());
-
-        if (!newPasswordValidate) {
-            lblNewPwAlert.setText("Unable to Change Your Password! Try again!!");
-            return false;
+        if (RegExPatterns.passwordPattern(txtNewPassword.getText())) {
+            lblNewPwAlert.setText("Invalid Password! Try again!!");
+            result = false;
         }
 
-        boolean confirmPasswordValidate = Pattern.matches(".{6,25}", txtConfirmPassword.getText());
-
-        if ((!confirmPasswordValidate) | (!txtNewPassword.getText().equals(txtConfirmPassword.getText()))) {
+        if ((RegExPatterns.passwordPattern(txtConfirmPassword.getText())) | (!txtNewPassword.getText().equals(txtConfirmPassword.getText()))) {
             lblConfirmPwAlert.setText("Invalid Password Confirmation!!");
-            return false;
+            result = false;
         }
-        return true;
+        return result;
+    }
+
+    @FXML
+    void txtNewPasswordOnKeyPressed(KeyEvent event) {
+        lblNewPwAlert.setText(" ");
+
+        if (event.getCode() == KeyCode.ENTER) {
+            if (RegExPatterns.passwordPattern(txtNewPassword.getText())) {
+                lblNewPwAlert.setText("Invalid Password! Try again!!");
+                event.consume();
+            } else {
+                txtConfirmPassword.requestFocus();
+            }
+        }
+    }
+
+    @FXML
+    void txtConfirmPasswordOnKeyPressed(KeyEvent event) throws SQLException, IOException {
+        lblConfirmPwAlert.setText(" ");
+
+        if (event.getCode() == KeyCode.ENTER) {
+            if ((RegExPatterns.passwordPattern(txtConfirmPassword.getText())) | (!txtNewPassword.getText().equals(txtConfirmPassword.getText()))) {
+                lblConfirmPwAlert.setText("Invalid Password Confirmation!!");
+                event.consume();
+            } else {
+                ActionEvent actionEvent = new ActionEvent(
+                        event.getSource(),
+                        event.getTarget()
+                );
+                btnResetPasswordOnAction(actionEvent);
+            }
+        }
     }
 
     @FXML
