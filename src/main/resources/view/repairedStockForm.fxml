@@ -30,7 +30,7 @@
                         <Font name="System Bold" size="16.0" />
                      </font>
                   </Label>
-                  <Label layoutX="296.0" layoutY="40.0" prefHeight="20.0" prefWidth="360.0" text="QTY To Repair">
+                  <Label layoutX="296.0" layoutY="40.0" prefHeight="20.0" prefWidth="348.0" text="QTY To Repair">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
@@ -55,23 +55,25 @@
             </ScrollPane>
          </children>
       </AnchorPane>
-      <Pane layoutX="1203.0" layoutY="24.0" prefHeight="46.0" prefWidth="300.0" style="-fx-background-color: white; -fx-background-radius: 12;" />
-      <TextField fx:id="txtSearch" layoutX="1246.0" layoutY="24.0" onAction="#txtSearchOnAction" onMouseClicked="#txtSearchOnMouseClicked" prefHeight="46.0" prefWidth="258.0" promptText="Search by Name" style="-fx-background-color: white; -fx-background-radius: 12;">
-         <font>
-            <Font size="16.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="TEXT" />
-         </cursor>
-      </TextField>
+      <Pane fx:id="searchBarPane" layoutX="1203.0" layoutY="24.0" prefHeight="46.0" prefWidth="300.0" style="-fx-background-color: white; -fx-background-radius: 12;">
+         <children>
+            <TextField fx:id="txtSearch" layoutX="40.0" layoutY="2.0" onAction="#txtSearchOnAction" onMouseClicked="#txtSearchOnMouseClicked" prefHeight="42.0" prefWidth="254.0" promptText="Search by Name" style="-fx-background-color: white; -fx-background-radius: 12;">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </TextField>
+         </children></Pane>
       <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="1218.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assests/icon/searchIcon.png" />
          </image>
       </ImageView>
-      <Pane fx:id="btnProductStockPane" layoutX="34.0" layoutY="29.0" prefHeight="38.0" prefWidth="244.0" style="-fx-background-color: white; -fx-background-radius: 25;">
+      <Pane layoutX="34.0" layoutY="29.0" prefHeight="38.0" prefWidth="244.0" style="-fx-background-color: white; -fx-background-radius: 25;">
          <children>
-            <Label fx:id="lblProductStock" layoutX="67.0" layoutY="9.0" text="Product Stock" textFill="#885d40">
+            <Label layoutX="67.0" layoutY="9.0" text="Product Stock" textFill="#885d40">
                <font>
                   <Font size="16.0" />
                </font>
@@ -86,16 +88,16 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <Pane fx:id="btnRepairStockPane" layoutX="291.0" layoutY="29.0" prefHeight="38.0" prefWidth="244.0" style="-fx-background-radius: 25;" styleClass="manage-attendance-salary-btn" stylesheets="@../style/EmployeeFormStyle.css">
+      <Pane layoutX="291.0" layoutY="29.0" prefHeight="38.0" prefWidth="244.0" style="-fx-background-radius: 25;" styleClass="manage-attendance-salary-btn" stylesheets="@../style/EmployeeFormStyle.css">
          <children>
-            <Label fx:id="lblRepairStock" layoutX="71.0" layoutY="9.0" text="Repair Stock" textFill="WHITE">
+            <Label layoutX="71.0" layoutY="9.0" text="Repair Stock" textFill="WHITE">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
          </children>
       </Pane>
-      <JFXButton alignment="CENTER" layoutX="291.0" layoutY="29.0" onAction="#btnRepairStockOnAction" prefHeight="38.0" prefWidth="244.0" style="-fx-background-radius: 25;" text=" " textFill="#885d40">
+      <JFXButton alignment="CENTER" layoutX="291.0" layoutY="29.0" prefHeight="38.0" prefWidth="244.0" style="-fx-background-radius: 25;" text=" " textFill="#885d40">
          <font>
             <Font size="16.0" />
          </font>
@@ -103,9 +105,9 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <Pane fx:id="btnItemStockPane" layoutX="548.0" layoutY="29.0" prefHeight="38.0" prefWidth="244.0" style="-fx-background-color: white; -fx-background-radius: 25;">
+      <Pane layoutX="548.0" layoutY="29.0" prefHeight="38.0" prefWidth="244.0" style="-fx-background-color: white; -fx-background-radius: 25;">
          <children>
-            <Label fx:id="lblItemStock" layoutX="79.0" layoutY="9.0" text="Item Stock" textFill="#885d40">
+            <Label layoutX="79.0" layoutY="9.0" text="Item Stock" textFill="#885d40">
                <font>
                   <Font size="16.0" />
                </font>

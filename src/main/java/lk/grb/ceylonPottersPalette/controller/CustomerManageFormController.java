@@ -5,7 +5,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.scene.image.ImageView;
@@ -76,6 +75,7 @@ public class CustomerManageFormController implements Initializable {
     @FXML
     void txtSearchOnMouseClicked(MouseEvent event) {
         lblSearchAlert.setText(" ");
+        StyleUtil.searchBarTransparent(searchBarPane);
     }
 
     @FXML
@@ -83,6 +83,7 @@ public class CustomerManageFormController implements Initializable {
 
         if (!validateId()) {
             lblSearchAlert.setText("Invalid Contact No!!");
+            StyleUtil.searchBarRed(searchBarPane);
             return;
         }
 
@@ -93,11 +94,13 @@ public class CustomerManageFormController implements Initializable {
                 CustomerViewPopUpFormController.customerId = allCustomerId.get(i);
                 Navigation.imgPopUpBackground("customerViewPopUpForm.fxml");
                 lblSearchAlert.setText(" ");
+                StyleUtil.searchBarTransparent(searchBarPane);
                 txtSearch.clear();
                 return;
             }
         }
         lblSearchAlert.setText("Invalid Contact No!!");
+        StyleUtil.searchBarRed(searchBarPane);
     }
 
     private boolean validateId() {

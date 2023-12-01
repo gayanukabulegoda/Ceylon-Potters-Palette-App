@@ -1,10 +1,8 @@
 package lk.grb.ceylonPottersPalette.util;
 
 import com.jfoenix.controls.JFXButton;
-import javafx.scene.Cursor;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -282,5 +280,21 @@ public class StyleUtil {
                         "-fx-background-radius: 12px;");
 
         imageView.setImage(new Image("assests/icon/qrScanIcon.png"));
+    }
+
+    public static void searchBarRed(Pane pane) {
+        pane.setStyle(
+                "-fx-background-color: #FFFFFF;" +
+                        "-fx-border-color: red;" +
+                        "-fx-border-radius: 12px;" +
+                        "-fx-background-radius: 12px;");
+    }
+
+    public static void searchBarTransparent(Pane pane) {
+        pane.setStyle(
+                "-fx-background-color: #FFFFFF;" +
+                        "-fx-border-color: transparent;" +
+                        "-fx-border-radius: 12px;" +
+                        "-fx-background-radius: 12px;");
     }
 }

@@ -37,6 +37,12 @@ public class SupplierOrderAddPopUpBarFormController {
     void deleteOnMouseClick(MouseEvent event) {
         String[] x ={id.getText(),qty.getText()};
         removeElement(SupplierOrderAddPopUpFormController.itemList,x);
+
+        double netTotal = SupplierOrderAddPopUpFormController.getInstance().netTotal;
+        double total = Integer.parseInt(qty.getText()) * Double.parseDouble(unitPrice.getText());
+        SupplierOrderAddPopUpFormController.getInstance().netTotal = (netTotal - total);
+
+        SupplierOrderAddPopUpFormController.getInstance().lblNetTotal.setText(String.valueOf(SupplierOrderAddPopUpFormController.getInstance().netTotal));
         SupplierOrderAddPopUpFormController.getInstance().allSupplierOrderCartId();
     }
 

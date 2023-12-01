@@ -7,11 +7,8 @@ import javafx.scene.text.Text;
 import lk.grb.ceylonPottersPalette.db.DbConnection;
 import lk.grb.ceylonPottersPalette.dto.CustomerDto;
 import lk.grb.ceylonPottersPalette.dto.CustomerOrderDto;
-import lk.grb.ceylonPottersPalette.dto.SupplierOrderDto;
 import lk.grb.ceylonPottersPalette.model.CustomerModel;
-import lk.grb.ceylonPottersPalette.model.CustomerOrderDetailModel;
 import lk.grb.ceylonPottersPalette.model.CustomerOrderModel;
-import lk.grb.ceylonPottersPalette.model.ProductStockModel;
 import lk.grb.ceylonPottersPalette.util.Navigation;
 import lk.grb.ceylonPottersPalette.util.StyleUtil;
 import net.sf.jasperreports.engine.*;
@@ -50,7 +47,6 @@ public class CustomerOrderManageBarFormController {
 
     CustomerModel customerModel = new CustomerModel();
     CustomerOrderModel customerOrderModel = new CustomerOrderModel();
-    CustomerOrderDetailModel customerOrderDetailModel = new CustomerOrderDetailModel();
 
     @FXML
     void viewDetailsOnMouseClick(MouseEvent event) throws IOException {

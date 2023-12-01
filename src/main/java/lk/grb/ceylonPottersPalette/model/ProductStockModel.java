@@ -1,13 +1,9 @@
 package lk.grb.ceylonPottersPalette.model;
 
-import com.mysql.cj.protocol.Resultset;
-import com.mysql.cj.protocol.ResultsetRow;
 import lk.grb.ceylonPottersPalette.db.DbConnection;
 import lk.grb.ceylonPottersPalette.dto.ProductStockDto;
-import lk.grb.ceylonPottersPalette.dto.SupplierDto;
 import lk.grb.ceylonPottersPalette.util.SQLUtil;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;

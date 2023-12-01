@@ -1,7 +1,6 @@
 package lk.grb.ceylonPottersPalette.controller;
 
 import com.google.zxing.WriterException;
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -24,18 +23,8 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-import java.util.regex.Pattern;
 
 public class EmployeeUpdatePopUpFormController implements Initializable {
-
-    @FXML
-    private JFXButton btnCancel;
-
-    @FXML
-    private JFXButton btnCloseIcon;
-
-    @FXML
-    private JFXButton btnUpdate;
 
     @FXML
     private Pane cancelBtnPane;
@@ -51,9 +40,6 @@ public class EmployeeUpdatePopUpFormController implements Initializable {
 
     @FXML
     private Label lblCancel;
-
-    @FXML
-    private Label lblUpdate;
 
     @FXML
     private TextField txtCity;
@@ -209,7 +195,7 @@ public class EmployeeUpdatePopUpFormController implements Initializable {
     }
 
     @FXML
-    void txtCityOnKeyPressed(KeyEvent event) throws SQLException, IOException, WriterException {
+    void txtCityOnKeyPressed(KeyEvent event) throws SQLException {
         lblCityAlert.setText(" ");
 
         if (event.getCode() == KeyCode.ENTER) {

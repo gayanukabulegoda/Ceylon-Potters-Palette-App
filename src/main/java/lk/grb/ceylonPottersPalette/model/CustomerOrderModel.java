@@ -1,7 +1,6 @@
 package lk.grb.ceylonPottersPalette.model;
 
 import lk.grb.ceylonPottersPalette.dto.CustomerOrderDto;
-import lk.grb.ceylonPottersPalette.dto.SupplierOrderDto;
 import lk.grb.ceylonPottersPalette.util.SQLUtil;
 
 import java.sql.ResultSet;

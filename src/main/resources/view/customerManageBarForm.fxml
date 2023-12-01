@@ -21,12 +21,12 @@
                   <Font name="SansSerif Regular" size="16.0" />
                </font>
             </Text>
-            <Text fx:id="email" opacity="0.68" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" wrappingWidth="335.82106018066406">
+            <Text fx:id="email" opacity="0.68" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" wrappingWidth="346.73023986816406">
                <font>
                   <Font name="SansSerif Regular" size="16.0" />
                </font>
             </Text>
-            <Text fx:id="contact_No" opacity="0.68" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact_No" wrappingWidth="339.4933547973633">
+            <Text fx:id="contact_No" opacity="0.68" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact_No" wrappingWidth="325.8570022583008">
                <font>
                   <Font name="SansSerif Regular" size="16.0" />
                </font>

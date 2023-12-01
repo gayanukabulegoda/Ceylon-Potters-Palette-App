@@ -1,6 +1,5 @@
 package lk.grb.ceylonPottersPalette.controller;
 
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -22,22 +21,10 @@ import lk.grb.ceylonPottersPalette.util.StyleUtil;
 
 import java.net.URL;
 import java.sql.SQLException;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-import java.util.regex.Pattern;
 
 public class EmployeeSalaryUpdatePopUpFormController implements Initializable {
-
-    @FXML
-    private JFXButton btnCancel;
-
-    @FXML
-    private JFXButton btnCloseIcon;
-
-    @FXML
-    private JFXButton btnUpdate;
 
     @FXML
     private Pane cancelBtnPane;
@@ -59,9 +46,6 @@ public class EmployeeSalaryUpdatePopUpFormController implements Initializable {
 
     @FXML
     private Label lblTotalAmount;
-
-    @FXML
-    private Label lblUpdate;
 
     @FXML
     private Label lblWorkedDays;
@@ -205,7 +189,6 @@ public class EmployeeSalaryUpdatePopUpFormController implements Initializable {
     void cmbEmployeeIdOnAction(ActionEvent event) throws SQLException {
         lblEmployeeName.setText(employeeModel.getEmployeeName(String.valueOf(cmbEmployeeId.getSelectionModel().getSelectedItem())));
         lblWorkedDays.setText(employeeAttendanceModel.workedDayCount(cmbEmployeeId.getSelectionModel().getSelectedItem()));
-        //lblWorkedDays.setText(employeeAttendanceModel.workedDayCount(cmbEmployeeId.getSelectionModel().getSelectedItem(), (LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM")) + "%")));
     }
 
     @FXML

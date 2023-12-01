@@ -1,6 +1,5 @@
 package lk.grb.ceylonPottersPalette.controller;
 
-import com.jfoenix.controls.JFXButton;
 import javafx.animation.Interpolator;
 import javafx.animation.RotateTransition;
 import javafx.event.ActionEvent;
@@ -15,7 +14,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
-import lk.grb.ceylonPottersPalette.dto.SupplierDto;
 import lk.grb.ceylonPottersPalette.dto.SupplierOrderDto;
 import lk.grb.ceylonPottersPalette.model.SupplierModel;
 import lk.grb.ceylonPottersPalette.model.SupplierOrderDetailModel;
@@ -32,9 +30,6 @@ import java.util.ResourceBundle;
 public class SupplierOrderViewPopUpFormController implements Initializable {
 
     @FXML
-    private JFXButton btnClose;
-
-    @FXML
     private Pane btnClosePane;
 
     @FXML
@@ -45,9 +40,6 @@ public class SupplierOrderViewPopUpFormController implements Initializable {
 
     @FXML
     private ImageView imgFlower3;
-
-    @FXML
-    private Label lblClose;
 
     @FXML
     private Label lblNetTotal;

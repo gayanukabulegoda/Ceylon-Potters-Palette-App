@@ -19,7 +19,6 @@
             <Image url="@../assests/img/SignUpEmployeeConfirmPage.png" />
          </image>
       </ImageView>
-      <Hyperlink fx:id="hyperLogIn" layoutX="749.0" layoutY="517.0" onAction="#hyperLogInOnAction" onMouseEntered="#hyperLogInOnMouseEntered" onMouseExited="#hyperLogInOnMouseExited" text="Log In" textFill="#151619" />
       <Text fill="#3d3e3e" layoutX="591.0" layoutY="534.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Already have Account ?" />
       <TextField fx:id="txtEmployeeId" layoutX="558.0" layoutY="315.0" onKeyPressed="#txtEmployeeIdOnKeyPressed" onMouseClicked="#txtEmployeeIdOnMouseClicked" prefHeight="45.0" prefWidth="267.0" promptText="  Employee ID" style="-fx-background-radius: 12;">
          <cursor>
@@ -29,11 +28,12 @@
             <Font size="15.0" />
          </font>
       </TextField>
-      <Label fx:id="lblEmployeeIdAlert" layoutX="573.0" layoutY="357.0" textFill="RED">
+      <Label fx:id="lblEmployeeIdAlert" layoutX="573.0" layoutY="360.0" textFill="RED">
          <font>
             <Font size="11.0" />
          </font>
       </Label>
+      <Hyperlink fx:id="hyperLogIn" layoutX="749.0" layoutY="517.0" onAction="#hyperLogInOnAction" onMouseEntered="#hyperLogInOnMouseEntered" onMouseExited="#hyperLogInOnMouseExited" text="Log In" textFill="#151619" />
       <Pane fx:id="backPane" layoutX="9.0" layoutY="8.0" prefHeight="37.0" prefWidth="115.0" style="-fx-background-color: FFE1E1; -fx-background-radius: 20;" visible="false">
          <children>
             <Label layoutX="57.0" layoutY="10.0" text="Back" textFill="#885d40">

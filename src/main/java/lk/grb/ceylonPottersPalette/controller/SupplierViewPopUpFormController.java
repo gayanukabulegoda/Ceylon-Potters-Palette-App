@@ -1,6 +1,5 @@
 package lk.grb.ceylonPottersPalette.controller;
 
-import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -20,12 +19,6 @@ import java.util.ResourceBundle;
 public class SupplierViewPopUpFormController implements Initializable {
 
     @FXML
-    private JFXButton btnClose;
-
-    @FXML
-    private JFXButton btnCloseIcon;
-
-    @FXML
     private Pane btnClosePane;
 
     @FXML
@@ -33,9 +26,6 @@ public class SupplierViewPopUpFormController implements Initializable {
 
     @FXML
     private ImageView imgCloseIcon;
-
-    @FXML
-    private Label lblClose;
 
     @FXML
     private Label lblContactNo;

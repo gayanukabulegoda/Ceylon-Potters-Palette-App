@@ -34,15 +34,15 @@
       </Pane>
       <Pane fx:id="updateBtnPane" layoutX="146.0" layoutY="250.0" prefHeight="54.0" prefWidth="335.0" style="-fx-background-color: C56E33; -fx-background-radius: 12;">
          <children>
-            <Label fx:id="lblUpdate" layoutX="131.0" layoutY="17.0" text="UPDATE" textFill="WHITE">
+            <Label layoutX="131.0" layoutY="17.0" text="UPDATE" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
             </Label>
          </children>
       </Pane>
-      <JFXButton fx:id="btnUpdate" layoutX="146.0" layoutY="250.0" onAction="#btnUpdateOnAction" onMouseEntered="#btnUpdateOnMouseEntered" onMouseExited="#btnUpdateOnMouseExited" prefHeight="54.0" prefWidth="335.0" style="-fx-background-radius: 12;" text=" " />
-      <JFXButton fx:id="btnCloseIcon" layoutX="519.0" layoutY="54.0" onAction="#btnCloseIconOnAction" onMouseEntered="#btnCloseIconOnMouseEntered" onMouseExited="#btnCloseIconOnMouseExited" prefHeight="48.0" prefWidth="48.0" style="-fx-background-radius: 12;" text=" " />
+      <JFXButton layoutX="146.0" layoutY="250.0" onAction="#btnUpdateOnAction" onMouseEntered="#btnUpdateOnMouseEntered" onMouseExited="#btnUpdateOnMouseExited" prefHeight="54.0" prefWidth="335.0" style="-fx-background-radius: 12;" text=" " />
+      <JFXButton layoutX="519.0" layoutY="54.0" onAction="#btnCloseIconOnAction" onMouseEntered="#btnCloseIconOnMouseEntered" onMouseExited="#btnCloseIconOnMouseExited" prefHeight="48.0" prefWidth="48.0" style="-fx-background-radius: 12;" text=" " />
       <TextField fx:id="txtEnterQuantity" layoutX="94.0" layoutY="171.0" onAction="#txtEnterQuantityOnAction" prefHeight="42.0" prefWidth="441.0" promptText="   Enter Quantity" style="-fx-background-color: white; -fx-background-radius: 12; -fx-border-color: E8E8E8; -fx-border-width: 1; -fx-border-radius: 12;">
          <font>
             <Font size="15.0" />

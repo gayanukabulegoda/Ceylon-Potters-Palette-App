@@ -1,8 +1,6 @@
 package lk.grb.ceylonPottersPalette.model;
 
-import lk.grb.ceylonPottersPalette.dto.EmployeeDto;
 import lk.grb.ceylonPottersPalette.dto.EmployeeSalaryDto;
-import lk.grb.ceylonPottersPalette.dto.SupplierDto;
 import lk.grb.ceylonPottersPalette.util.SQLUtil;
 
 import java.sql.ResultSet;

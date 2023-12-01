@@ -26,15 +26,6 @@ import java.util.concurrent.atomic.AtomicReference;
 public class DeleteUserFormController implements Initializable {
 
     @FXML
-    private JFXButton btnCancel;
-
-    @FXML
-    private JFXButton btnCloseIcon;
-
-    @FXML
-    private JFXButton btnDelete;
-
-    @FXML
     private JFXButton btnConfirm;
 
     @FXML

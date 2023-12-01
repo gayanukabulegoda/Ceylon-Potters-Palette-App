@@ -5,7 +5,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
@@ -13,7 +12,6 @@ import javafx.scene.layout.VBox;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import lk.grb.ceylonPottersPalette.model.ItemStockModel;
-import lk.grb.ceylonPottersPalette.model.SupplierModel;
 import lk.grb.ceylonPottersPalette.util.Navigation;
 import lk.grb.ceylonPottersPalette.util.StyleUtil;
 
@@ -30,13 +28,7 @@ public class ItemStockFormController implements Initializable {
     private Pane addItemPane;
 
     @FXML
-    private Pane btnItemStockPane;
-
-    @FXML
-    private Pane btnProductStockPane;
-
-    @FXML
-    private Pane btnRepairStockPane;
+    private Pane searchBarPane;
 
     @FXML
     private ImageView imgAdd;
@@ -46,15 +38,6 @@ public class ItemStockFormController implements Initializable {
 
     @FXML
     private Label lblAddItem;
-
-    @FXML
-    private Label lblItemStock;
-
-    @FXML
-    private Label lblProductStock;
-
-    @FXML
-    private Label lblRepairStock;
 
     @FXML
     private TextField txtSearch;
@@ -100,6 +83,7 @@ public class ItemStockFormController implements Initializable {
     @FXML
     void txtSearchOnMouseClicked(MouseEvent event) {
         lblSearchAlert.setText(" ");
+        StyleUtil.searchBarTransparent(searchBarPane);
     }
 
     @FXML
@@ -107,6 +91,7 @@ public class ItemStockFormController implements Initializable {
 
         if (!validateName()) {
             lblSearchAlert.setText("Wrong Name! Try again!!");
+            StyleUtil.searchBarRed(searchBarPane);
             return;
         }
 
@@ -117,12 +102,14 @@ public class ItemStockFormController implements Initializable {
             if (txtSearch.getText().equals(itemStockModel.getDescription(allItemId.get(i)))) {
                 ItemViewPopUpFormController.itemId = allItemId.get(i);
                 lblSearchAlert.setText(" ");
+                StyleUtil.searchBarTransparent(searchBarPane);
                 txtSearch.clear();
                 Navigation.imgPopUpBackground("itemViewPopUpForm.fxml");
                 return;
             }
         }
         lblSearchAlert.setText("Wrong Name! Try again!!");
+        StyleUtil.searchBarRed(searchBarPane);
     }
 
     private boolean validateName() {

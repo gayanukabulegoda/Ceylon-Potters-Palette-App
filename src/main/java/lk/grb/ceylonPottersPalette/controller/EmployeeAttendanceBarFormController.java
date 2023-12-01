@@ -6,7 +6,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import lk.grb.ceylonPottersPalette.dto.EmployeeAttendanceDto;
 import lk.grb.ceylonPottersPalette.dto.EmployeeDto;
-import lk.grb.ceylonPottersPalette.dto.SupplierDto;
 import lk.grb.ceylonPottersPalette.model.EmployeeAttendanceModel;
 import lk.grb.ceylonPottersPalette.model.EmployeeModel;
 import lk.grb.ceylonPottersPalette.util.Navigation;

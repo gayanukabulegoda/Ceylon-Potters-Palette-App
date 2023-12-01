@@ -7,7 +7,6 @@ import javafx.fxml.FXML;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.image.ImageView;
@@ -27,7 +26,6 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.Random;
 import java.util.ResourceBundle;
-import java.util.regex.Pattern;
 
 public class OTPVerifyFormController implements Initializable {
 
@@ -172,7 +170,7 @@ public class OTPVerifyFormController implements Initializable {
             EmployeeDto employeeDto = employeeModel.getData(employeeId);
             String email = employeeDto.getEmail();
             String subject = "OTP Verification";
-            String body = otp;
+            String body = "OTP : " + otp;
 
             String[] detail = {email, subject, body};
             sendEmail.sendMail(detail);

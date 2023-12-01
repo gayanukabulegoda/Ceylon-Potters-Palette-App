@@ -2,9 +2,6 @@ package lk.grb.ceylonPottersPalette.model;
 
 import lk.grb.ceylonPottersPalette.db.DbConnection;
 import lk.grb.ceylonPottersPalette.dto.EmployeeAttendanceDto;
-import lk.grb.ceylonPottersPalette.dto.EmployeeDto;
-import lk.grb.ceylonPottersPalette.dto.EmployeeSalaryDto;
-import lk.grb.ceylonPottersPalette.dto.SupplierDto;
 import lk.grb.ceylonPottersPalette.util.SQLUtil;
 
 import java.sql.Connection;
@@ -77,7 +74,6 @@ public class EmployeeAttendanceModel {
         PreparedStatement pstm = connection.prepareStatement(sql);
 
         pstm.setString(1,id);
-        //pstm.setString(2,date);
 
         ResultSet resultSet = pstm.executeQuery();
 

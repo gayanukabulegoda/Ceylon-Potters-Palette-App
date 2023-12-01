@@ -102,14 +102,14 @@
             </Label>
             <Pane fx:id="btnClosePane" layoutX="470.0" layoutY="600.0" prefHeight="54.0" prefWidth="349.0" style="-fx-background-color: C56E33; -fx-background-radius: 12;">
                <children>
-                  <Label fx:id="lblClose" layoutX="146.0" layoutY="17.0" text="CLOSE" textFill="WHITE">
+                  <Label layoutX="146.0" layoutY="17.0" text="CLOSE" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
                   </Label>
                </children>
             </Pane>
-            <JFXButton fx:id="btnClose" layoutX="470.0" layoutY="599.0" onAction="#btnCloseOnAction" onMouseEntered="#btnCloseOnMouseEntered" onMouseExited="#btnCloseOnMouseExited" prefHeight="54.0" prefWidth="349.0" style="-fx-background-radius: 12;" text=" " />
+            <JFXButton layoutX="470.0" layoutY="599.0" onAction="#btnCloseOnAction" onMouseEntered="#btnCloseOnMouseEntered" onMouseExited="#btnCloseOnMouseExited" prefHeight="54.0" prefWidth="349.0" style="-fx-background-radius: 12;" text=" " />
          </children>
       </Pane>
    </children>

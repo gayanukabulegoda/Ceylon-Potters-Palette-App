@@ -1,6 +1,5 @@
 package lk.grb.ceylonPottersPalette.controller;
 
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -27,13 +26,7 @@ import java.util.ResourceBundle;
 public class EmployeeAttendanceMarkPopUpController implements Initializable {
 
     @FXML
-    private JFXButton btnCloseIcon;
-
-    @FXML
     private Label lblCmbEmployeeIdAlert;
-
-    @FXML
-    private JFXButton btnMarkAttendance;
 
     @FXML
     private Pane closeIconPane;
@@ -46,9 +39,6 @@ public class EmployeeAttendanceMarkPopUpController implements Initializable {
 
     @FXML
     private Label lblEmployeeName;
-
-    @FXML
-    private Label lblMarkAttendance;
 
     @FXML
     private Pane markAttendaceBtnPane;

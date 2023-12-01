@@ -22,12 +22,6 @@ public class CredentialChangePopUpFormController {
     private Pane SaveBtnPane;
 
     @FXML
-    private JFXButton btnCancel;
-
-    @FXML
-    private JFXButton btnCloseIcon;
-
-    @FXML
     private JFXButton btnSave;
 
     @FXML
@@ -41,9 +35,6 @@ public class CredentialChangePopUpFormController {
 
     @FXML
     private Label lblCancel;
-
-    @FXML
-    private Label lblSave;
 
     @FXML
     private PasswordField txtConfirmPassword;

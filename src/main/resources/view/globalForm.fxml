@@ -28,7 +28,7 @@
                </children>
             </Pane>
             <JFXButton layoutX="-24.0" layoutY="-26.0" prefHeight="0.0" prefWidth="0.0" style="-fx-background-color: white;" text=" " />
-            <JFXButton fx:id="btnLogOut" layoutX="24.0" layoutY="865.0" onAction="#btnLogOutOnAction" onMouseEntered="#btnLogOutOnMouseEntered" onMouseExited="#btnLogOutOnMouseExited" prefHeight="48.0" prefWidth="174.0" style="-fx-background-radius: 12;" text=" " textFill="#727374">
+            <JFXButton layoutX="24.0" layoutY="865.0" onAction="#btnLogOutOnAction" onMouseEntered="#btnLogOutOnMouseEntered" onMouseExited="#btnLogOutOnMouseExited" prefHeight="48.0" prefWidth="174.0" style="-fx-background-radius: 12;" text=" " textFill="#727374">
                <font>
                   <Font size="16.0" />
                </font>
@@ -47,7 +47,7 @@
                   </ImageView>
                </children>
             </Pane>
-            <JFXButton fx:id="btnSupplier" layoutX="24.0" layoutY="510.0" onAction="#btnSupplierOnAction" onMouseEntered="#btnSupplierOnMouseEntered" onMouseExited="#btnSupplierOnMouseExited" prefHeight="48.0" prefWidth="174.0" style="-fx-background-radius: 12;" text=" " textFill="#727374">
+            <JFXButton layoutX="24.0" layoutY="510.0" onAction="#btnSupplierOnAction" onMouseEntered="#btnSupplierOnMouseEntered" onMouseExited="#btnSupplierOnMouseExited" prefHeight="48.0" prefWidth="174.0" style="-fx-background-radius: 12;" text=" " textFill="#727374">
                <font>
                   <Font size="16.0" />
                </font>
@@ -66,7 +66,7 @@
                   </ImageView>
                </children>
             </Pane>
-            <JFXButton fx:id="btnEmployee" layoutX="24.0" layoutY="445.0" onAction="#btnEmployeeOnAction" onMouseEntered="#btnEmployeeOnMouseEntered" onMouseExited="#btnEmployeeOnMouseExited" prefHeight="48.0" prefWidth="174.0" style="-fx-background-radius: 12;" text=" " textFill="#727374">
+            <JFXButton layoutX="24.0" layoutY="445.0" onAction="#btnEmployeeOnAction" onMouseEntered="#btnEmployeeOnMouseEntered" onMouseExited="#btnEmployeeOnMouseExited" prefHeight="48.0" prefWidth="174.0" style="-fx-background-radius: 12;" text=" " textFill="#727374">
                <font>
                   <Font size="16.0" />
                </font>
@@ -85,7 +85,7 @@
                   </ImageView>
                </children>
             </Pane>
-            <JFXButton fx:id="btnCustomer" layoutX="24.0" layoutY="379.0" onAction="#btnCustomerOnAction" onMouseEntered="#btnCustomerOnMouseEntered" onMouseExited="#btnCustomerOnMouseExited" prefHeight="48.0" prefWidth="174.0" style="-fx-background-radius: 12;" text=" " textFill="#727374">
+            <JFXButton layoutX="24.0" layoutY="379.0" onAction="#btnCustomerOnAction" onMouseEntered="#btnCustomerOnMouseEntered" onMouseExited="#btnCustomerOnMouseExited" prefHeight="48.0" prefWidth="174.0" style="-fx-background-radius: 12;" text=" " textFill="#727374">
                <font>
                   <Font size="16.0" />
                </font>
@@ -104,7 +104,7 @@
                   </ImageView>
                </children>
             </Pane>
-            <JFXButton fx:id="btnStock" layoutX="23.0" layoutY="313.0" onAction="#btnStockOnAction" onMouseEntered="#btnStockOnMouseEntered" onMouseExited="#btnStockOnMouseExited" prefHeight="48.0" prefWidth="174.0" style="-fx-background-radius: 12;" text=" " textFill="#727374">
+            <JFXButton layoutX="23.0" layoutY="313.0" onAction="#btnStockOnAction" onMouseEntered="#btnStockOnMouseEntered" onMouseExited="#btnStockOnMouseExited" prefHeight="48.0" prefWidth="174.0" style="-fx-background-radius: 12;" text=" " textFill="#727374">
                <font>
                   <Font size="16.0" />
                </font>
@@ -123,7 +123,7 @@
                   </ImageView>
                </children>
             </Pane>
-            <JFXButton fx:id="btnSales" layoutX="23.0" layoutY="245.0" onAction="#btnSalesOnAction" onMouseEntered="#btnSalesOnMouseEntered" onMouseExited="#btnSalesOnMouseExited" prefHeight="48.0" prefWidth="174.0" style="-fx-background-radius: 12;" text=" " textFill="#727374">
+            <JFXButton layoutX="23.0" layoutY="245.0" onAction="#btnSalesOnAction" onMouseEntered="#btnSalesOnMouseEntered" onMouseExited="#btnSalesOnMouseExited" prefHeight="48.0" prefWidth="174.0" style="-fx-background-radius: 12;" text=" " textFill="#727374">
                <font>
                   <Font size="16.0" />
                </font>
@@ -142,7 +142,7 @@
                   </Label>
                </children>
             </Pane>
-            <JFXButton fx:id="btnDashboard" layoutX="24.0" layoutY="179.0" onAction="#btnDashboardOnAction" onMouseEntered="#btnDashboardOnMouseEntered" onMouseExited="#btnDashboardOnMouseExited" prefHeight="48.0" prefWidth="174.0" style="-fx-background-radius: 12;" text=" " textFill="#885d40">
+            <JFXButton layoutX="24.0" layoutY="179.0" onAction="#btnDashboardOnAction" onMouseEntered="#btnDashboardOnMouseEntered" onMouseExited="#btnDashboardOnMouseExited" prefHeight="48.0" prefWidth="174.0" style="-fx-background-radius: 12;" text=" " textFill="#885d40">
                <font>
                   <Font size="16.0" />
                </font>

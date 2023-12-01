@@ -1,7 +1,5 @@
 package lk.grb.ceylonPottersPalette.model;
 
-import lk.grb.ceylonPottersPalette.dto.CustomerDto;
-import lk.grb.ceylonPottersPalette.dto.ItemStockDto;
 import lk.grb.ceylonPottersPalette.dto.UserDto;
 import lk.grb.ceylonPottersPalette.util.SQLUtil;
 
@@ -67,7 +65,6 @@ public class UserModel {
 
     public String getUserName(String employeeId) throws SQLException {
         ResultSet set = SQLUtil.execute("SELECT user_Name FROM user WHERE employee_Id=?", employeeId);
-
 
         if (set.next()) {
             return set.getString(1);

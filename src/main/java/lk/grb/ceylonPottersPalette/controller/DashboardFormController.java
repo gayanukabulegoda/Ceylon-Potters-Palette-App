@@ -31,9 +31,6 @@ import java.util.ResourceBundle;
 public class DashboardFormController implements Initializable {
 
     @FXML
-    private JFXButton btnDeleteUser;
-
-    @FXML
     private Pane changeCredentialsPane;
 
     @FXML
@@ -246,14 +243,10 @@ public class DashboardFormController implements Initializable {
 
     public void setPiChart() throws SQLException {
 
-        //double savings = (customerOrderModel.getOrderTotal()) - (supplierOrderModel.getOrderTotal() + employeeSalaryModel.getSalaryTotal());
-
         // Create sample data for the pie chart
         ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
                 new PieChart.Data("Total Income", customerOrderModel.getOrderTotal()),
                 new PieChart.Data("Total Expenses", (supplierOrderModel.getOrderTotal() + employeeSalaryModel.getSalaryTotal()))
-              //  new PieChart.Data("Total Savings", (savings))
-//                new PieChart.Data("Category 4", 15)
         );
 
         // Create a pie chart with the data
@@ -261,7 +254,6 @@ public class DashboardFormController implements Initializable {
 
         pieChart.getData().get(0).getNode().setStyle("-fx-pie-color: #C56E33;");
         pieChart.getData().get(1).getNode().setStyle("-fx-pie-color: #973F04;");
-     //   pieChart.getData().get(2).getNode().setStyle("-fx-pie-color: #727374;");
 
         pieChart.setLabelLineLength(0);
         pieChart.setLabelsVisible(false);
@@ -277,7 +269,7 @@ public class DashboardFormController implements Initializable {
             ArrayList<String> allProductId = productStockModel.getAllProductId();
 
             for (int i = 0; i < allProductId.size(); i++) {
-                qtyTotal =+ Integer.parseInt(productStockModel.getQtyTotal(allProductId.get(i)));
+                qtyTotal += Integer.parseInt(productStockModel.getQtyTotal(allProductId.get(i)));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

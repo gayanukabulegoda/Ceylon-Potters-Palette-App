@@ -1,9 +1,7 @@
 package lk.grb.ceylonPottersPalette.controller;
 
-import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
@@ -15,15 +13,6 @@ import lk.grb.ceylonPottersPalette.util.StyleUtil;
 import java.sql.SQLException;
 
 public class ConfirmationPopUpFormController {
-
-    @FXML
-    private JFXButton btnCancel;
-
-    @FXML
-    private JFXButton btnCloseIcon;
-
-    @FXML
-    private JFXButton btnConfirm;
 
     @FXML
     private Pane cancelBtnPane;
@@ -39,9 +28,6 @@ public class ConfirmationPopUpFormController {
 
     @FXML
     private Label lblCancel;
-
-    @FXML
-    private Label lblConfirm;
 
     private static String id;
 
@@ -69,22 +55,22 @@ public class ConfirmationPopUpFormController {
     @FXML
     void btnConfirmOnAction(ActionEvent event) throws SQLException {
         if (id.startsWith("E")) {
-            boolean delete = employeeModel.delete(id);
+            employeeModel.delete(id);
             EmployeeManageFormController.getInstance().allEmployeeId();
         } else if (id.startsWith("S")) {
-            boolean delete = supplierModel.delete(id);
+            supplierModel.delete(id);
             SupplierManageFormController.getInstance().allSupplierId();
         } else if (id.startsWith("C")) {
-            boolean delete = customerModel.delete(id);
+            customerModel.delete(id);
             CustomerManageFormController.getInstance().allCustomerId();
         } else if (id.startsWith("A")) {
-            boolean delete = employeeAttendanceModel.delete(id);
+            employeeAttendanceModel.delete(id);
             EmployeeAttendanceFormController.getInstance().allAttendanceId();
         } else if (id.startsWith("P")) {
-            boolean delete = productStockModel.delete(id);
+            productStockModel.delete(id);
             ProductStockFormController.getInstance().allProductId();
         } else if (id.startsWith("I")) {
-            boolean delete = itemStockModel.delete(id);
+            itemStockModel.delete(id);
             ItemStockFormController.getInstance().allItemId();
         }
         Navigation.closePane();

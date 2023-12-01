@@ -5,7 +5,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
@@ -33,13 +32,7 @@ public class EmployeeSalaryFormController implements Initializable {
     private Pane btnRefreshPane;
 
     @FXML
-    private Pane btnEmployeeAttendancePane;
-
-    @FXML
-    private Pane btnEmployeeManagePane;
-
-    @FXML
-    private Pane btnEmployeeSalaryPane;
+    private Pane searchBarPane;
 
     @FXML
     private ImageView imgAdd;
@@ -52,15 +45,6 @@ public class EmployeeSalaryFormController implements Initializable {
 
     @FXML
     private Label lblSearchAlert;
-
-    @FXML
-    private Label lblEmployeeAttendance;
-
-    @FXML
-    private Label lblEmployeeManage;
-
-    @FXML
-    private Label lblEmployeeSalary;
 
     @FXML
     private TextField txtSearch;
@@ -125,6 +109,7 @@ public class EmployeeSalaryFormController implements Initializable {
     @FXML
     void txtSearchOnMouseClicked(MouseEvent event) {
         lblSearchAlert.setText(" ");
+        StyleUtil.searchBarTransparent(searchBarPane);
     }
 
     @FXML
@@ -132,6 +117,7 @@ public class EmployeeSalaryFormController implements Initializable {
 
         if (!validateId()) {
             lblSearchAlert.setText("Invalid Contact No!!");
+            StyleUtil.searchBarRed(searchBarPane);
             return;
         }
 
@@ -143,11 +129,13 @@ public class EmployeeSalaryFormController implements Initializable {
             if (txtSearch.getText().equals(employeeModel.getEmployeeContactNo(allEmployeeId.get(i)))) {
                 allSelectedEmployeeSalaryId(allEmployeeId.get(i));
                 lblSearchAlert.setText(" ");
+                StyleUtil.searchBarTransparent(searchBarPane);
                 txtSearch.clear();
                 return;
             }
         }
         lblSearchAlert.setText("Invalid Contact No!!");
+        StyleUtil.searchBarRed(searchBarPane);
     }
 
     private boolean validateId() {

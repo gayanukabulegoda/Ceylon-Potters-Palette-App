@@ -62,7 +62,6 @@ public class WelcomeFormController implements Initializable{
 
                 Stage stage = new Stage();
                 stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/loginForm.fxml"))));
-                // stage.getIcons().add(new Image("img/logo.png"));
                 stage.setMaximized(false);
                 stage.initStyle(StageStyle.UNDECORATED);
                 stage.centerOnScreen();

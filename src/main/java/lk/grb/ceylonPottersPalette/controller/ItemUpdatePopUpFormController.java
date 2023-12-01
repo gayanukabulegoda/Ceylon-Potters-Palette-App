@@ -1,6 +1,5 @@
 package lk.grb.ceylonPottersPalette.controller;
 
-import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.input.KeyCode;
@@ -12,7 +11,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import lk.grb.ceylonPottersPalette.dto.ItemStockDto;
-import lk.grb.ceylonPottersPalette.dto.ProductStockDto;
 import lk.grb.ceylonPottersPalette.model.ItemStockModel;
 import lk.grb.ceylonPottersPalette.util.Navigation;
 import lk.grb.ceylonPottersPalette.util.RegExPatterns;
@@ -21,18 +19,8 @@ import lk.grb.ceylonPottersPalette.util.StyleUtil;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
-import java.util.regex.Pattern;
 
 public class ItemUpdatePopUpFormController implements Initializable {
-
-    @FXML
-    private JFXButton btnCancel;
-
-    @FXML
-    private JFXButton btnCloseIcon;
-
-    @FXML
-    private JFXButton btnUpdate;
 
     @FXML
     private Pane cancelBtnPane;
@@ -45,9 +33,6 @@ public class ItemUpdatePopUpFormController implements Initializable {
 
     @FXML
     private Label lblCancel;
-
-    @FXML
-    private Label lblUpdate;
 
     @FXML
     private TextField txtDescription;
@@ -65,7 +50,7 @@ public class ItemUpdatePopUpFormController implements Initializable {
     private Label lblDescriptionAlert;
 
     @FXML
-    private Label lblQtyAlert;
+    private Label lblQuantityAlert;
 
     @FXML
     private Label lblUnitPriceAlert;
@@ -118,7 +103,7 @@ public class ItemUpdatePopUpFormController implements Initializable {
         }
 
         if (RegExPatterns.qtyOrUnitPricePattern(txtQuantity.getText())) {
-            lblQtyAlert.setText("Invalid Quantity!!");
+            lblQuantityAlert.setText("Invalid Quantity!!");
             result = false;
         }
         return result;
@@ -154,11 +139,11 @@ public class ItemUpdatePopUpFormController implements Initializable {
 
     @FXML
     void txtQuantityOnKeyPressed(KeyEvent event) throws SQLException {
-        lblQtyAlert.setText(" ");
+        lblQuantityAlert.setText(" ");
 
         if (event.getCode() == KeyCode.ENTER) {
             if (RegExPatterns.qtyOrUnitPricePattern(txtQuantity.getText())) {
-                lblQtyAlert.setText("Invalid Quantity!!");
+                lblQuantityAlert.setText("Invalid Quantity!!");
                 event.consume();
             } else {
                 btnUpdateOnAction();
@@ -173,7 +158,7 @@ public class ItemUpdatePopUpFormController implements Initializable {
 
     @FXML
     void txtQuantityOnMouseClicked(MouseEvent event) {
-        lblQtyAlert.setText(" ");
+        lblQuantityAlert.setText(" ");
     }
 
     @FXML

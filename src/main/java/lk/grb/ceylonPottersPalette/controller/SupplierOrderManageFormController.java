@@ -5,7 +5,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
@@ -33,10 +32,7 @@ public class SupplierOrderManageFormController implements Initializable {
     private Pane btnRefreshPane;
 
     @FXML
-    private Pane btnCustomerOrdersPane;
-
-    @FXML
-    private Pane btnSupplierOrdersPane;
+    private Pane searchBarPane;
 
     @FXML
     private ImageView imgAdd;
@@ -49,12 +45,6 @@ public class SupplierOrderManageFormController implements Initializable {
 
     @FXML
     private Label lblSearchAlert;
-
-    @FXML
-    private Label lblCustomerOrders;
-
-    @FXML
-    private Label lblSupplierOrders;
 
     @FXML
     private TextField txtSearch;
@@ -114,6 +104,7 @@ public class SupplierOrderManageFormController implements Initializable {
     @FXML
     void txtSearchOnMouseClicked(MouseEvent event) {
         lblSearchAlert.setText(" ");
+        StyleUtil.searchBarTransparent(searchBarPane);
     }
 
     @FXML
@@ -121,6 +112,7 @@ public class SupplierOrderManageFormController implements Initializable {
 
         if (!(validateId() | validateContactNo())) {
             lblSearchAlert.setText("Invalid Contact No Or Order ID!!");
+            StyleUtil.searchBarRed(searchBarPane);
             return;
         }
 
@@ -133,6 +125,7 @@ public class SupplierOrderManageFormController implements Initializable {
                 SupplierOrderViewPopUpFormController.supplierOrderId = txtSearch.getText();
                 SupplierOrderViewPopUpFormController.supplierId = supplierOrderModel.getSupplierIdForOrder(txtSearch.getText());
                 lblSearchAlert.setText(" ");
+                StyleUtil.searchBarTransparent(searchBarPane);
                 Navigation.imgPopUpBackground("supplierOrderViewPopUpForm.fxml");
                 txtSearch.clear();
                 return;
@@ -144,12 +137,14 @@ public class SupplierOrderManageFormController implements Initializable {
                 if (txtSearch.getText().equals(supplierModel.getSupplierContactNo(supplierIds.get(j)))) {
                     allSelectedSupplierOrderId(supplierIds.get(j));
                     lblSearchAlert.setText(" ");
+                    StyleUtil.searchBarTransparent(searchBarPane);
                     txtSearch.clear();
                     return;
                 }
             }
         }
         lblSearchAlert.setText("Invalid Contact No Or Order ID!!");
+        StyleUtil.searchBarRed(searchBarPane);
     }
 
     private boolean validateId() {

@@ -5,16 +5,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import lk.grb.ceylonPottersPalette.model.ProductStockModel;
-import lk.grb.ceylonPottersPalette.model.RepairStockModel;
-import lk.grb.ceylonPottersPalette.model.SupplierModel;
 import lk.grb.ceylonPottersPalette.util.Navigation;
+import lk.grb.ceylonPottersPalette.util.StyleUtil;
 
 import java.io.IOException;
 import java.net.URL;
@@ -26,22 +24,7 @@ import java.util.regex.Pattern;
 public class RepairedStockFormController implements Initializable {
 
     @FXML
-    private Pane btnItemStockPane;
-
-    @FXML
-    private Pane btnProductStockPane;
-
-    @FXML
-    private Pane btnRepairStockPane;
-
-    @FXML
-    private Label lblItemStock;
-
-    @FXML
-    private Label lblProductStock;
-
-    @FXML
-    private Label lblRepairStock;
+    private Pane searchBarPane;
 
     @FXML
     private Label lblSearchAlert;
@@ -73,13 +56,9 @@ public class RepairedStockFormController implements Initializable {
     }
 
     @FXML
-    void btnRepairStockOnAction(ActionEvent event) {
-
-    }
-
-    @FXML
     void txtSearchOnMouseClicked(MouseEvent event) {
         lblSearchAlert.setText(" ");
+        StyleUtil.searchBarTransparent(searchBarPane);
     }
 
     @FXML
@@ -87,6 +66,7 @@ public class RepairedStockFormController implements Initializable {
 
         if (!validateName()) {
             lblSearchAlert.setText("Wrong Name! Try again!!");
+            StyleUtil.searchBarRed(searchBarPane);
             return;
         }
 
@@ -98,11 +78,13 @@ public class RepairedStockFormController implements Initializable {
                 ProductViewPopUpFormController.productId = allProductId.get(i);
                 txtSearch.clear();
                 lblSearchAlert.setText(" ");
+                StyleUtil.searchBarTransparent(searchBarPane);
                 Navigation.imgPopUpBackground("productViewPopUpForm.fxml");
                 return;
             }
         }
         lblSearchAlert.setText("Wrong Name! Try again!!");
+        StyleUtil.searchBarRed(searchBarPane);
     }
 
     private boolean validateName() {

@@ -14,13 +14,10 @@ import javafx.scene.layout.VBox;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.util.Duration;
-import lk.grb.ceylonPottersPalette.dto.EmployeeAttendanceDto;
 import lk.grb.ceylonPottersPalette.model.EmployeeAttendanceModel;
 import lk.grb.ceylonPottersPalette.model.EmployeeModel;
 import lk.grb.ceylonPottersPalette.qr.QrReader;
-import lk.grb.ceylonPottersPalette.util.DateTimeUtil;
 import lk.grb.ceylonPottersPalette.util.Navigation;
-import lk.grb.ceylonPottersPalette.util.NewId;
 import lk.grb.ceylonPottersPalette.util.StyleUtil;
 
 import java.io.IOException;
@@ -28,23 +25,10 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.regex.Pattern;
 
-import static lk.grb.ceylonPottersPalette.controller.EmployeeAttendanceMarkPopUpController.employeeAttendanceModel;
-
 public class EmployeeAttendanceFormController implements Initializable {
-
-    @FXML
-    private Pane btnEmployeeAttendancePane;
-
-    @FXML
-    private Pane btnEmployeeManagePane;
-
-    @FXML
-    private Pane btnEmployeeSalaryPane;
 
     @FXML
     private Pane scanQrMsgPane;
@@ -57,6 +41,9 @@ public class EmployeeAttendanceFormController implements Initializable {
 
     @FXML
     private Pane btnRefreshPane;
+
+    @FXML
+    private Pane searchBarPane;
 
     @FXML
     private ImageView imgEnter;
@@ -72,15 +59,6 @@ public class EmployeeAttendanceFormController implements Initializable {
 
     @FXML
     private Label lblSearchAlert;
-
-    @FXML
-    private Label lblEmployeeAttendance;
-
-    @FXML
-    private Label lblEmployeeManage;
-
-    @FXML
-    private Label lblEmployeeSalary;
 
     @FXML
     private TextField txtSearch;
@@ -120,6 +98,7 @@ public class EmployeeAttendanceFormController implements Initializable {
     @FXML
     void txtSearchOnMouseClicked(MouseEvent event) {
         lblSearchAlert.setText(" ");
+        StyleUtil.searchBarTransparent(searchBarPane);
     }
 
     @FXML
@@ -127,6 +106,7 @@ public class EmployeeAttendanceFormController implements Initializable {
 
         if (!validateId()) {
             lblSearchAlert.setText("Invalid Contact No!!");
+            StyleUtil.searchBarRed(searchBarPane);
             return;
         }
 
@@ -137,11 +117,13 @@ public class EmployeeAttendanceFormController implements Initializable {
             if (txtSearch.getText().equals(employeeModel.getEmployeeContactNo(allEmployeeId.get(i)))) {
                 allSelectedEmployeeSalaryId(allEmployeeId.get(i));
                 lblSearchAlert.setText(" ");
+                StyleUtil.searchBarTransparent(searchBarPane);
                 txtSearch.clear();
                 return;
             }
         }
         lblSearchAlert.setText("Invalid Contact No!!");
+        StyleUtil.searchBarRed(searchBarPane);
     }
 
     private boolean validateId() {
@@ -190,7 +172,6 @@ public class EmployeeAttendanceFormController implements Initializable {
         }
 
         EmployeeAttendanceMarkPopUpController.markAttendanceOViaQr(String.valueOf(id));
-
     }
 
     @FXML

@@ -21,23 +21,23 @@ CREATE TABLE employee(
 
 
 INSERT INTO employee (employee_Id, first_Name, last_Name, nic, house_No, street, city, contact_No, email, role, date, time, user_Name)
-VALUES ('E-001', 'John', 'Doe', '1234567890123', '123', 'Main Street', 'Cityville', '+1234567890', 'john.doe@example.com', 'Manager', '2023-11-12', '10:15:00', 'grb');
+VALUES ('E-001', 'John', 'Doe', '200109801752', '123', 'Main Street', 'Cityville', '0702410111', 'gayanukariviru@gmail.com', 'Manager', '2023-11-12', '10:15:00', 'grb');
 
 
 INSERT INTO employee (employee_Id, first_Name, last_Name, nic, house_No, street, city, contact_No, email, role, date, time, user_Name)
-VALUES ('E-002', 'Jane', 'Smith', '2345678901234', '456', 'Broadway', 'Towntown', '+9876543210', 'jane.smith@example.com', 'Clerk', '2023-11-12', '10:15:00', 'rgb');
+VALUES ('E-002', 'Jane', 'Smith', '200109801733', '456', 'Broadway', 'Towntown', '0702410222', 'gayanukariviru1@gmail.com', 'Sales staff', '2023-11-13', '10:15:00', 'rgb');
 
 
 INSERT INTO employee (employee_Id, first_Name, last_Name, nic, house_No, street, city, contact_No, email, role, date, time, user_Name)
-VALUES ('E-003', 'Alice', 'Johnson', '3456789012345', '789', 'Park Avenue', 'Villageton', '+1122334455', 'alice.johnson@example.com', 'Salesperson', '2023-11-12', '10:15:00', 'rgb');
+VALUES ('E-003', 'Alice', 'Johnson', '200109809912', '789', 'Park Avenue', 'Villageton', '0702410333', 'gayanukariviru2@gmail.com', 'Manufacturing Staff', '2023-11-14', '10:15:00', 'rgb');
 
 
 INSERT INTO employee (employee_Id, first_Name, last_Name, nic, house_No, street, city, contact_No, email, role, date, time, user_Name)
-VALUES ('E-004', 'Bob', 'Williams', '4567890123456', '1011', 'Sunset Boulevard', 'Cityscape', '+9988776655', 'bob.williams@example.com', 'Technician', '2023-11-12', '10:15:00', 'rgb');
+VALUES ('E-004', 'Bob', 'Williams', '200109801212', '1011', 'Sunset Boulevard', 'Cityscape', '0702410444', 'gayanukariviru3@gmail.com', 'Other', '2023-11-15', '10:15:00', 'rgb');
 
 
 INSERT INTO employee (employee_Id, first_Name, last_Name, nic, house_No, street, city, contact_No, email, role, date, time, user_Name)
-VALUES ('E-005', 'Eva', 'Miller', '5678901234567', '1314', 'Ocean Drive', 'Seaville', '+1125334455', 'eva.miller@example.com', 'Intern', '2023-11-12', '10:15:00', 'rgb');
+VALUES ('E-005', 'Eva', 'Miller', '200109807894', '1314', 'Ocean Drive', 'Seaville', '0702410555', 'gayanukariviru4@gmail.com', 'Sales staff', '2023-11-16', '10:15:00', 'rgb');
 
 
 CREATE TABLE user(
@@ -69,23 +69,23 @@ CREATE TABLE customer(
 );
 
 INSERT INTO customer (customer_Id, name, contact_No, email, date, time, user_Name)
-VALUES ('C-001', 'John Doe', '+1234567890', 'john.doe@example.com', '2023-11-10', '12:30:00', 'grb');
+VALUES ('C-001', 'John Doe', '0702410111', 'johndoe@example.com', '2023-11-10', '12:30:00', 'grb');
 
 
 INSERT INTO customer (customer_Id, name, contact_No, email, date, time, user_Name)
-VALUES ('C-002', 'Jane Smith', '+9876543210', 'jane.smith@example.com', '2023-11-11', '15:45:00', 'grb');
+VALUES ('C-002', 'Jane Smith', '0702410222', 'janesmith@example.com', '2023-11-11', '15:45:00', 'grb');
 
 
 INSERT INTO customer (customer_Id, name, contact_No, email, date, time, user_Name)
-VALUES ('C-003', 'Alice Johnson', '+1122334455', 'alice.johnson@example.com', '2023-11-12', '10:15:00', 'rgb');
+VALUES ('C-003', 'Alice Johnson', '0702410333', 'alicejohnson@example.com', '2023-11-12', '10:15:00', 'rgb');
 
 
 INSERT INTO customer (customer_Id, name, contact_No, email, date, time, user_Name)
-VALUES ('C-004', 'Bob Williams', '+9988776655', 'bob.williams@example.com', '2023-11-13', '14:00:00', 'rgb');
+VALUES ('C-004', 'Bob Williams', '0702410444', 'bobwilliams@example.com', '2023-11-13', '14:00:00', 'rgb');
 
 
 INSERT INTO customer (customer_Id, name, contact_No, email, date, time, user_Name)
-VALUES ('C-005', 'Eva Davis', '+7766554433', 'eva.davis@example.com', '2023-11-14', '17:30:00', 'grb');
+VALUES ('C-005', 'Eva Davis', '0702410555', 'evadavis@example.com', '2023-11-14', '17:30:00', 'grb');
 
 
 CREATE TABLE customer_Order(
@@ -132,23 +132,23 @@ CREATE TABLE supplier(
 );
 
 INSERT INTO supplier (supplier_Id, name, email, contact_No, time, date, user_Name)
-VALUES ('S-001', 'ABC Suppliers', 'abc.suppliers@example.com', '+1234567890', '08:00:00', '2023-11-10', 'rgb');
+VALUES ('S-001', 'ABC Suppliers', 'abcsuppliers@example.com', '0702410111', '08:00:00', '2023-11-10', 'rgb');
 
 
 INSERT INTO supplier (supplier_Id, name, email, contact_No, time, date, user_Name)
-VALUES ('S-002', 'XYZ Distributors', 'xyz.distributors@example.com', '+9876543210', '10:30:00', '2023-11-11', 'grb');
+VALUES ('S-002', 'XYZ Distributors', 'xyzdistributors@example.com', '0702410222', '10:30:00', '2023-11-11', 'grb');
 
 
 INSERT INTO supplier (supplier_Id, name, email, contact_No, time, date, user_Name)
-VALUES ('S-003', 'LMN Traders', 'lmn.traders@example.com', '+1122334455', '13:15:00', '2023-11-12', 'rgb');
+VALUES ('S-003', 'LMN Traders', 'lmntraders@example.com', '0702410333', '13:15:00', '2023-11-12', 'rgb');
 
 
 INSERT INTO supplier (supplier_Id, name, email, contact_No, time, date, user_Name)
-VALUES ('S-004', 'PQR Importers', 'pqr.importers@example.com', '+9988776655', '15:45:00', '2023-11-13', 'grb');
+VALUES ('S-004', 'PQR Importers', 'pqrimporters@example.com', '0702410444', '15:45:00', '2023-11-13', 'grb');
 
 
 INSERT INTO supplier (supplier_Id, name, email, contact_No, time, date, user_Name)
-VALUES ('S-005', 'MNO Wholesalers', 'mno.wholesalers@example.com', '+7766554433', '18:20:00', '2023-11-14', 'rgb');
+VALUES ('S-005', 'MNO Wholesalers', 'mnowholesalers@example.com', '0702410555', '18:20:00', '2023-11-14', 'rgb');
 
 
 CREATE TABLE supplier_Order(
@@ -214,5 +214,3 @@ VALUES ('I-004', 'Gasoline', 120.00, 90);
 
 INSERT INTO item_Stock (item_Id, description, unit_Price, qty_On_Hand)
 VALUES ('I-005', 'Water', 80.00, 60);
-
-SELECT COUNT(*) AS work_days FROM attendance WHERE employee_Id = 'E-005' AND MONTH(date) = MONTH(CURDATE());

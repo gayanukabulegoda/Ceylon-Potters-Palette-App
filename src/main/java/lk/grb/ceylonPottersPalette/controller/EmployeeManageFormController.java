@@ -5,7 +5,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
@@ -13,7 +12,6 @@ import javafx.scene.layout.VBox;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import lk.grb.ceylonPottersPalette.model.EmployeeModel;
-import lk.grb.ceylonPottersPalette.model.SupplierModel;
 import lk.grb.ceylonPottersPalette.util.Navigation;
 import lk.grb.ceylonPottersPalette.util.StyleUtil;
 
@@ -30,13 +28,7 @@ public class EmployeeManageFormController implements Initializable {
     private Pane addEmployeePane;
 
     @FXML
-    private Pane btnEmployeeAttendancePane;
-
-    @FXML
-    private Pane btnEmployeeManagePane;
-
-    @FXML
-    private Pane btnEmployeeSalaryPane;
+    private Pane searchBarPane;
 
     @FXML
     private ImageView imgAdd;
@@ -46,15 +38,6 @@ public class EmployeeManageFormController implements Initializable {
 
     @FXML
     private Label lblSearchAlert;
-
-    @FXML
-    private Label lblEmployeeAttendance;
-
-    @FXML
-    private Label lblEmployeeManage;
-
-    @FXML
-    private Label lblEmployeeSalary;
 
     @FXML
     private TextField txtSearch;
@@ -100,6 +83,7 @@ public class EmployeeManageFormController implements Initializable {
     @FXML
     void txtSearchOnMouseClicked(MouseEvent event) {
         lblSearchAlert.setText(" ");
+        StyleUtil.searchBarTransparent(searchBarPane);
     }
 
     @FXML
@@ -107,6 +91,7 @@ public class EmployeeManageFormController implements Initializable {
 
         if (!validateId()) {
             lblSearchAlert.setText("Invalid Contact No!!");
+            StyleUtil.searchBarRed(searchBarPane);
             return;
         }
 
@@ -117,12 +102,14 @@ public class EmployeeManageFormController implements Initializable {
             if (txtSearch.getText().equals(employeeModel.getEmployeeContactNo(allEmployeeId.get(i)))) {
                 EmployeeViewPopUpFormController.employeeId = allEmployeeId.get(i);
                 lblSearchAlert.setText(" ");
+                StyleUtil.searchBarTransparent(searchBarPane);
                 txtSearch.clear();
                 Navigation.imgPopUpBackground("employeeViewPopUpForm.fxml");
                 return;
             }
         }
         lblSearchAlert.setText("Invalid Contact No!!");
+        StyleUtil.searchBarRed(searchBarPane);
     }
 
     private boolean validateId() {

@@ -1,6 +1,5 @@
 package lk.grb.ceylonPottersPalette.controller;
 
-import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -8,7 +7,6 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
-import lk.grb.ceylonPottersPalette.dto.ItemStockDto;
 import lk.grb.ceylonPottersPalette.dto.ProductStockDto;
 import lk.grb.ceylonPottersPalette.model.ProductStockModel;
 import lk.grb.ceylonPottersPalette.util.Navigation;
@@ -21,12 +19,6 @@ import java.util.ResourceBundle;
 public class ProductViewPopUpFormController implements Initializable {
 
     @FXML
-    private JFXButton btnClose;
-
-    @FXML
-    private JFXButton btnCloseIcon;
-
-    @FXML
     private Pane btnClosePane;
 
     @FXML
@@ -34,9 +26,6 @@ public class ProductViewPopUpFormController implements Initializable {
 
     @FXML
     private ImageView imgCloseIcon;
-
-    @FXML
-    private Label lblClose;
 
     @FXML
     private Label lblDescription;

@@ -5,7 +5,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
@@ -29,13 +28,7 @@ public class ProductStockFormController implements Initializable {
     private Pane addProductPane;
 
     @FXML
-    private Pane btnItemStockPane;
-
-    @FXML
-    private Pane btnProductStockPane;
-
-    @FXML
-    private Pane btnRepairStockPane;
+    private Pane searchBarPane;
 
     @FXML
     private ImageView imgAdd;
@@ -45,15 +38,6 @@ public class ProductStockFormController implements Initializable {
 
     @FXML
     private Label lblAddProduct;
-
-    @FXML
-    private Label lblItemStock;
-
-    @FXML
-    private Label lblProductStock;
-
-    @FXML
-    private Label lblRepairStock;
 
     @FXML
     private TextField txtSearch;
@@ -99,6 +83,7 @@ public class ProductStockFormController implements Initializable {
     @FXML
     void txtSearchOnMouseClicked(MouseEvent event) {
         lblSearchAlert.setText(" ");
+        StyleUtil.searchBarTransparent(searchBarPane);
     }
 
     @FXML
@@ -106,6 +91,7 @@ public class ProductStockFormController implements Initializable {
 
         if (!validateName()) {
             lblSearchAlert.setText("Wrong Name! Try again!!");
+            StyleUtil.searchBarRed(searchBarPane);
             return;
         }
 
@@ -117,11 +103,13 @@ public class ProductStockFormController implements Initializable {
                 ProductViewPopUpFormController.productId = allProductId.get(i);
                 txtSearch.clear();
                 lblSearchAlert.setText(" ");
+                StyleUtil.searchBarTransparent(searchBarPane);
                 Navigation.imgPopUpBackground("productViewPopUpForm.fxml");
                 return;
             }
         }
         lblSearchAlert.setText("Wrong Name! Try again!!");
+        StyleUtil.searchBarRed(searchBarPane);
     }
 
     private boolean validateName() {

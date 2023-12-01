@@ -55,7 +55,7 @@ public class CustomerOrderAddPopUpFormController implements Initializable {
     private Label lblDescription;
 
     @FXML
-    private Label lblNetTotal;
+    public Label lblNetTotal;
 
     @FXML
     private Label lblOrderDate;
@@ -118,7 +118,7 @@ public class CustomerOrderAddPopUpFormController implements Initializable {
     @FXML
     void btnAddNewCustomerOnAction(ActionEvent event) throws IOException {
         Navigation.closeOrderPopUpPane();
-        Navigation.switchPaging(GlobalFormController.getInstance().pagingPane, "customerManageForm.fxml");
+        Navigation.imgPopUpBackground("customerAddPopUpForm.fxml");
     }
 
     @FXML
@@ -133,9 +133,9 @@ public class CustomerOrderAddPopUpFormController implements Initializable {
 
                     double unitPrice = Double.parseDouble(lblUnitPrice.getText());
                     int orderQty = Integer.parseInt(txtProductQty.getText());
-                    double netTotal = Double.parseDouble(lblNetTotal.getText());
 
-                    lblNetTotal.setText(String.valueOf(netTotal + (orderQty * unitPrice)));
+                    netTotal += (orderQty * unitPrice);
+                    lblNetTotal.setText(String.valueOf(netTotal));
                     allCustomerOrderCartId();
                     txtProductQty.clear();
 

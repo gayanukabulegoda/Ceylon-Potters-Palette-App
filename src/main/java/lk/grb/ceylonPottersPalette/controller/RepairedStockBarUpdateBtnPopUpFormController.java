@@ -1,9 +1,7 @@
 package lk.grb.ceylonPottersPalette.controller;
 
-import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -17,19 +15,10 @@ import java.sql.SQLException;
 public class RepairedStockBarUpdateBtnPopUpFormController {
 
     @FXML
-    private JFXButton btnCloseIcon;
-
-    @FXML
-    private JFXButton btnUpdate;
-
-    @FXML
     private Pane closeIconPane;
 
     @FXML
     private ImageView imgCloseIcon;
-
-    @FXML
-    private Label lblUpdate;
 
     @FXML
     private TextField txtEnterQuantity;
@@ -62,7 +51,7 @@ public class RepairedStockBarUpdateBtnPopUpFormController {
 
     @FXML
     void txtEnterQuantityOnAction(ActionEvent event) {
-
+        btnUpdateOnAction(event);
     }
 
     @FXML

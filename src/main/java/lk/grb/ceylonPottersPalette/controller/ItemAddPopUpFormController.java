@@ -1,6 +1,5 @@
 package lk.grb.ceylonPottersPalette.controller;
 
-import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.input.KeyCode;
@@ -26,15 +25,6 @@ public class ItemAddPopUpFormController {
     private Pane AddBtnPane;
 
     @FXML
-    private JFXButton btnAdd;
-
-    @FXML
-    private JFXButton btnCancel;
-
-    @FXML
-    private JFXButton btnCloseIcon;
-
-    @FXML
     private Pane cancelBtnPane;
 
     @FXML
@@ -42,9 +32,6 @@ public class ItemAddPopUpFormController {
 
     @FXML
     private ImageView imgCloseIcon;
-
-    @FXML
-    private Label lblAdd;
 
     @FXML
     private Label lblCancel;

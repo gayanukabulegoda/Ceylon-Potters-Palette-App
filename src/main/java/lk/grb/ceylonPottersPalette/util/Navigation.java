@@ -7,12 +7,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import lk.grb.ceylonPottersPalette.controller.GlobalFormController;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.Objects;
 
 public class Navigation {
 
@@ -26,26 +23,6 @@ public class Navigation {
         scene = new Scene(parent);
         stage.setScene(scene);
         stage.centerOnScreen();
-        stage.show();
-    }
-
-    public static void switchNavigation(String link, javafx.scene.input.MouseEvent event) throws IOException {
-        parent = FXMLLoader.load(Navigation.class.getResource("/view/" + link));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(parent);
-        stage.setScene(scene);
-        stage.centerOnScreen();
-        stage.show();
-    }
-
-    public static void popupNavigation(String link) throws IOException {
-        URL resource = Navigation.class.getResource("/view/" + link);
-        Parent parent = FXMLLoader.load(resource);
-        Scene scene = new Scene(parent);
-        Stage stage = new Stage();
-        stage.initStyle(StageStyle.UNDECORATED);
-        stage.setAlwaysOnTop(true);
-        stage.setScene(scene);
         stage.show();
     }
 

@@ -18,6 +18,14 @@
             <Image url="@../assests/img/SignUpPage.png" />
          </image>
       </ImageView>
+      <TextField fx:id="txtUsername" layoutX="560.0" layoutY="293.0" onKeyPressed="#txtUsernameOnKeyPressed" onMouseClicked="#txtUserNameOnMouseClicked" prefHeight="42.0" prefWidth="267.0" promptText="  Username" style="-fx-background-radius: 12;">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+         <font>
+            <Font size="15.0" />
+         </font>
+      </TextField>
       <PasswordField fx:id="txtPassword" layoutX="560.0" layoutY="351.0" onKeyPressed="#txtPasswordOnKeyPressed" onMouseClicked="#txtPasswordOnMouseClicked" prefHeight="43.0" prefWidth="267.0" promptText=" Password" style="-fx-background-radius: 12;">
          <cursor>
             <Cursor fx:constant="TEXT" />
@@ -34,14 +42,6 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </JFXButton>
-      <TextField fx:id="txtUsername" layoutX="560.0" layoutY="293.0" onKeyPressed="#txtUsernameOnKeyPressed" onMouseClicked="#txtUserNameOnMouseClicked" prefHeight="42.0" prefWidth="267.0" promptText="  Username" style="-fx-background-radius: 12;">
-         <cursor>
-            <Cursor fx:constant="TEXT" />
-         </cursor>
-         <font>
-            <Font size="15.0" />
-         </font>
-      </TextField>
       <Label fx:id="lblUserNameAlert" layoutX="574.0" layoutY="334.0" textFill="RED">
          <font>
             <Font size="11.0" />

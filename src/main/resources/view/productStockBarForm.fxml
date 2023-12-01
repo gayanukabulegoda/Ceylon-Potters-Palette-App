@@ -26,12 +26,12 @@
                   <Font name="SansSerif Regular" size="16.0" />
                </font>
             </Text>
-            <Text fx:id="quantity" opacity="0.68" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantity" wrappingWidth="223.12946319580078">
+            <Text fx:id="quantity" opacity="0.68" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantity" wrappingWidth="230.40216827392578">
                <font>
                   <Font name="SansSerif Regular" size="16.0" />
                </font>
             </Text>
-            <Text fx:id="category" layoutX="793.0" layoutY="44.0" opacity="0.68" strokeType="OUTSIDE" strokeWidth="0.0" text="Category" wrappingWidth="253.12934112548828">
+            <Text fx:id="category" layoutX="793.0" layoutY="44.0" opacity="0.68" strokeType="OUTSIDE" strokeWidth="0.0" text="Category" wrappingWidth="244.03839874267578">
                <font>
                   <Font name="SansSerif Regular" size="16.0" />
                </font>

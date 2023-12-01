@@ -1,6 +1,5 @@
 package lk.grb.ceylonPottersPalette.controller;
 
-import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.input.KeyCode;
@@ -12,7 +11,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import lk.grb.ceylonPottersPalette.dto.ProductStockDto;
-import lk.grb.ceylonPottersPalette.dto.SupplierDto;
 import lk.grb.ceylonPottersPalette.model.ProductStockModel;
 import lk.grb.ceylonPottersPalette.util.Navigation;
 import lk.grb.ceylonPottersPalette.util.RegExPatterns;
@@ -21,18 +19,9 @@ import lk.grb.ceylonPottersPalette.util.StyleUtil;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
-import java.util.regex.Pattern;
+
 
 public class ProductUpdatePopUpFormController implements Initializable {
-
-    @FXML
-    private JFXButton btnCancel;
-
-    @FXML
-    private JFXButton btnCloseIcon;
-
-    @FXML
-    private JFXButton btnUpdate;
 
     @FXML
     private Pane cancelBtnPane;
@@ -45,9 +34,6 @@ public class ProductUpdatePopUpFormController implements Initializable {
 
     @FXML
     private Label lblCancel;
-
-    @FXML
-    private Label lblUpdate;
 
     @FXML
     private TextField txtCategory;

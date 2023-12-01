@@ -3,7 +3,6 @@ package lk.grb.ceylonPottersPalette.controller;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.util.Duration;
-import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -22,26 +21,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class GlobalFormController implements Initializable {
-    @FXML
-    private JFXButton btnCustomer;
-
-    @FXML
-    private JFXButton btnDashboard;
-
-    @FXML
-    private JFXButton btnEmployee;
-
-    @FXML
-    private JFXButton btnLogOut;
-
-    @FXML
-    private JFXButton btnSales;
-
-    @FXML
-    private JFXButton btnStock;
-
-    @FXML
-    private JFXButton btnSupplier;
 
     @FXML
     private ImageView imgCustomer;

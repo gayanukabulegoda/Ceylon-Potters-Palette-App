@@ -14,6 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 import lk.grb.ceylonPottersPalette.model.EmployeeModel;
+import lk.grb.ceylonPottersPalette.model.UserModel;
 import lk.grb.ceylonPottersPalette.util.Navigation;
 import lk.grb.ceylonPottersPalette.util.RegExPatterns;
 import lk.grb.ceylonPottersPalette.util.StyleUtil;
@@ -42,6 +43,7 @@ public class SignUpEmployeeConfirmFormController {
     private ImageView imgBackBtn;
 
     EmployeeModel employeeModel = new EmployeeModel();
+    UserModel userModel = new UserModel();
 
     @FXML
     void btnBackOnAction(ActionEvent event) throws IOException {
@@ -52,11 +54,14 @@ public class SignUpEmployeeConfirmFormController {
     void btnConfirmOnAction(ActionEvent event) throws IOException, SQLException {
         if(validateEmployeeId()) {
             if (employeeModel.getEmployeeName(txtEmployeeId.getText()) != null) {
+                if (userModel.getUserName(txtEmployeeId.getText()).equals("null")) {
+                    SignUpOTPVerifyFormController.employeeId = txtEmployeeId.getText();
 
-                SignUpOTPVerifyFormController.employeeId = txtEmployeeId.getText();
-
-                Navigation.close(event);
-                Navigation.switchNavigation("signUpOTPVerifyForm.fxml", event);
+                    Navigation.close(event);
+                    Navigation.switchNavigation("signUpOTPVerifyForm.fxml", event);
+                } else {
+                    lblEmployeeIdAlert.setText("Already you have an Account!!");
+                }
             } else {
                 lblEmployeeIdAlert.setText("Invalid ID!! Try Again!!");
             }

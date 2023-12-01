@@ -33,7 +33,7 @@ public class RegExPatterns {
     }
 
     public static boolean salaryOrBonusPattern(String value) {
-        return !Pattern.matches("(\\d.+)", value);
+        return !Pattern.matches("([\\d.]+)", value);
     }
 
     public static boolean otpPattern(String otp) {

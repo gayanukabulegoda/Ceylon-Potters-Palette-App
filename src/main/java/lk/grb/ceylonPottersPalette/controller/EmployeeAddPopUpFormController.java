@@ -1,7 +1,6 @@
 package lk.grb.ceylonPottersPalette.controller;
 
 import com.google.zxing.WriterException;
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -30,15 +29,6 @@ public class EmployeeAddPopUpFormController implements Initializable {
     private Pane AddBtnPane;
 
     @FXML
-    private JFXButton btnAdd;
-
-    @FXML
-    private JFXButton btnCancel;
-
-    @FXML
-    private JFXButton btnCloseIcon;
-
-    @FXML
     private Pane cancelBtnPane;
 
     @FXML
@@ -49,9 +39,6 @@ public class EmployeeAddPopUpFormController implements Initializable {
 
     @FXML
     private ImageView imgCloseIcon;
-
-    @FXML
-    private Label lblAdd;
 
     @FXML
     private Label lblCancel;

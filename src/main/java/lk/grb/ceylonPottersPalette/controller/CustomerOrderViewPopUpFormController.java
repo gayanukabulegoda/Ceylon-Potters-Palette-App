@@ -1,9 +1,7 @@
 package lk.grb.ceylonPottersPalette.controller;
 
-import com.jfoenix.controls.JFXButton;
 import javafx.animation.Interpolator;
 import javafx.animation.RotateTransition;
-import javafx.animation.ScaleTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,11 +12,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 import javafx.util.Duration;
-import lk.grb.ceylonPottersPalette.dto.CustomerDto;
 import lk.grb.ceylonPottersPalette.dto.CustomerOrderDto;
 import lk.grb.ceylonPottersPalette.model.CustomerModel;
 import lk.grb.ceylonPottersPalette.model.CustomerOrderDetailModel;
@@ -35,9 +30,6 @@ import java.util.ResourceBundle;
 public class CustomerOrderViewPopUpFormController implements Initializable {
 
     @FXML
-    private JFXButton btnClose;
-
-    @FXML
     private Pane btnClosePane;
 
     @FXML
@@ -48,9 +40,6 @@ public class CustomerOrderViewPopUpFormController implements Initializable {
 
     @FXML
     private ImageView imgFlower3;
-
-    @FXML
-    private Label lblClose;
 
     @FXML
     private Label lblCustomerId;

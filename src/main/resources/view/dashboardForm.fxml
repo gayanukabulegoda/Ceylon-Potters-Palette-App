@@ -177,9 +177,9 @@
       </Pane>
       <Pane layoutX="1201.0" layoutY="227.0" prefHeight="603.0" prefWidth="283.0" style="-fx-background-color: white; -fx-background-radius: 16;">
          <children>
-            <ScrollPane layoutX="13.0" layoutY="72.0" prefHeight="533.0" prefWidth="256.0" style="-fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: white;">
+            <ScrollPane layoutX="9.0" layoutY="72.0" prefHeight="533.0" prefWidth="271.0" style="-fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: white;">
                <content>
-                  <VBox fx:id="vBoxOrders" alignment="TOP_CENTER" prefHeight="514.0" prefWidth="251.0" spacing="4.0" style="-fx-background-color: white; -fx-border-color: white;" />
+                  <VBox fx:id="vBoxOrders" alignment="TOP_CENTER" prefHeight="515.0" prefWidth="265.0" spacing="4.0" style="-fx-background-color: white; -fx-border-color: white;" />
                </content>
             </ScrollPane>
             <Label layoutX="100.0" layoutY="21.0" text="Orders" textFill="#c56e33">
@@ -189,7 +189,7 @@
             </Label>
             <Line endX="-66.0845947265625" layoutX="340.0" layoutY="56.0" startX="-331.5401611328125" stroke="#c56e33" strokeLineCap="ROUND" strokeWidth="2.0" />
             <Pane layoutX="7.0" layoutY="60.0" prefHeight="14.0" prefWidth="267.0" style="-fx-background-color: white;" />
-            <Pane layoutX="13.0" layoutY="314.0" prefHeight="15.0" prefWidth="523.0" rotate="90.0" style="-fx-background-color: white;" />
+            <Pane layoutX="18.0" layoutY="314.0" prefHeight="8.0" prefWidth="523.0" rotate="90.0" style="-fx-background-color: white;" />
          </children>
       </Pane>
       <Pane layoutX="31.0" layoutY="224.0" prefHeight="144.0" prefWidth="358.0" style="-fx-background-color: white; -fx-background-radius: 16;">
@@ -258,7 +258,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <Pane layoutX="947.0" layoutY="554.0" prefHeight="15.0" prefWidth="523.0" rotate="90.0" style="-fx-background-color: white;" />
+      <Pane layoutX="943.0" layoutY="554.0" prefHeight="8.0" prefWidth="523.0" rotate="90.0" style="-fx-background-color: white;" />
       <Pane layoutX="302.0" layoutY="743.0" prefHeight="86.0" prefWidth="86.0" style="-fx-background-color: white; -fx-background-radius: 20;">
          <children>
             <Pane fx:id="deleteUserBtnInnerPane" layoutX="8.0" layoutY="8.0" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: white; -fx-border-color: E8E8E8; -fx-background-radius: 20; -fx-border-radius: 20;">
@@ -272,7 +272,7 @@
             </Pane>
          </children>
       </Pane>
-      <JFXButton fx:id="btnDeleteUser" layoutX="302.0" layoutY="743.0" onAction="#btnDeleteUserOnAction" onMouseEntered="#btnDeleteUserOnMouseEntered" onMouseExited="#btnDeleteUserOnMouseExited" prefHeight="86.0" prefWidth="86.0" style="-fx-background-radius: 20;" text=" " textFill="#727374" wrapText="true">
+      <JFXButton layoutX="302.0" layoutY="743.0" onAction="#btnDeleteUserOnAction" onMouseEntered="#btnDeleteUserOnMouseEntered" onMouseExited="#btnDeleteUserOnMouseExited" prefHeight="86.0" prefWidth="86.0" style="-fx-background-radius: 20;" text=" " textFill="#727374" wrapText="true">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>

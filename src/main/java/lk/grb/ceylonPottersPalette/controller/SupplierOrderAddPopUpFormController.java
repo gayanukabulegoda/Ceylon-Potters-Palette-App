@@ -1,6 +1,5 @@
 package lk.grb.ceylonPottersPalette.controller;
 
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -35,22 +34,10 @@ public class SupplierOrderAddPopUpFormController implements Initializable {
     private Pane AddToCartBtnPane;
 
     @FXML
-    private JFXButton btnAddNewSupplier;
-
-    @FXML
     private ImageView btnAddNewSupplierIconImg;
 
     @FXML
     private Pane btnAddNewSupplierPane;
-
-    @FXML
-    private JFXButton btnAddToCart;
-
-    @FXML
-    private JFXButton btnCancel;
-
-    @FXML
-    private JFXButton btnPlaceOrder;
 
     @FXML
     private Pane cancelBtnPane;
@@ -62,25 +49,19 @@ public class SupplierOrderAddPopUpFormController implements Initializable {
     private JFXComboBox<String> cmbSupplierId;
 
     @FXML
-    private Label lblAddToCart;
-
-    @FXML
     private Label lblCancel;
 
     @FXML
     private Label lblDescription;
 
     @FXML
-    private Label lblNetTotal;
+    public Label lblNetTotal;
 
     @FXML
     private Label lblOrderDate;
 
     @FXML
     private Label lblOrderId;
-
-    @FXML
-    private Label lblPlaceOrder;
 
     @FXML
     private Label lblQtyOnHand;
@@ -140,7 +121,7 @@ public class SupplierOrderAddPopUpFormController implements Initializable {
     @FXML
     void btnAddNewSupplierOnAction(ActionEvent event) throws IOException {
         Navigation.closeOrderPopUpPane();
-        Navigation.switchPaging(GlobalFormController.getInstance().pagingPane, "supplierManageForm.fxml");
+        Navigation.imgPopUpBackground("supplierAddPopUpForm.fxml");
     }
 
     @FXML
@@ -155,9 +136,9 @@ public class SupplierOrderAddPopUpFormController implements Initializable {
 
                     double unitPrice = Double.parseDouble(lblUnitPrice.getText());
                     int orderQty = Integer.parseInt(txtItemQty.getText());
-                    double netTotal = Double.parseDouble(lblNetTotal.getText());
 
-                    lblNetTotal.setText(String.valueOf(netTotal + (orderQty * unitPrice)));
+                    netTotal += (orderQty * unitPrice);
+                    lblNetTotal.setText(String.valueOf(netTotal));
                     allSupplierOrderCartId();
                     txtItemQty.clear();
 

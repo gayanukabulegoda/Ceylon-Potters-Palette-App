@@ -5,7 +5,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.scene.image.ImageView;
@@ -24,7 +23,6 @@ import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
 public class SupplierManageFormController implements Initializable {
-
 
     @FXML
     private Pane addSupllierPane;
@@ -75,6 +73,7 @@ public class SupplierManageFormController implements Initializable {
     @FXML
     void txtSearchOnMouseClicked(MouseEvent event) {
         lblSearchAlert.setText(" ");
+        StyleUtil.searchBarTransparent(searchBarPane);
     }
 
     @FXML
@@ -82,6 +81,7 @@ public class SupplierManageFormController implements Initializable {
 
         if (!validateId()) {
             lblSearchAlert.setText("Invalid Contact No!!");
+            StyleUtil.searchBarRed(searchBarPane);
             return;
         }
 
@@ -93,11 +93,13 @@ public class SupplierManageFormController implements Initializable {
                 SupplierViewPopUpFormController.supplierId = allSupplierId.get(i);
                 Navigation.imgPopUpBackground("supplierViewPopUpForm.fxml");
                 lblSearchAlert.setText(" ");
+                StyleUtil.searchBarTransparent(searchBarPane);
                 txtSearch.clear();
                 return;
             }
         }
         lblSearchAlert.setText("Invalid Contact No!!");
+        StyleUtil.searchBarRed(searchBarPane);
     }
 
     private boolean validateId() {
