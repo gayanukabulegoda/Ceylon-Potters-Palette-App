@@ -21,23 +21,8 @@ CREATE TABLE employee(
 
 
 INSERT INTO employee (employee_Id, first_Name, last_Name, nic, house_No, street, city, contact_No, email, role, date, time, user_Name)
-VALUES ('E-001', 'John', 'Doe', '200109801752', '123', 'Main Street', 'Cityville', '0702410111', 'gayanukariviru@gmail.com', 'Manager', '2023-11-12', '10:15:00', 'grb');
+VALUES ('E-001', 'John', 'Doe', '200109801752', '123', 'Main Street', 'Cityville', '0702410231', 'gayanukariviru@gmail.com', 'Manager', '2023-11-12', '10:15:00', 'grb');
 
-
-INSERT INTO employee (employee_Id, first_Name, last_Name, nic, house_No, street, city, contact_No, email, role, date, time, user_Name)
-VALUES ('E-002', 'Jane', 'Smith', '200109801733', '456', 'Broadway', 'Towntown', '0702410222', 'gayanukariviru1@gmail.com', 'Sales staff', '2023-11-13', '10:15:00', 'rgb');
-
-
-INSERT INTO employee (employee_Id, first_Name, last_Name, nic, house_No, street, city, contact_No, email, role, date, time, user_Name)
-VALUES ('E-003', 'Alice', 'Johnson', '200109809912', '789', 'Park Avenue', 'Villageton', '0702410333', 'gayanukariviru2@gmail.com', 'Manufacturing Staff', '2023-11-14', '10:15:00', 'rgb');
-
-
-INSERT INTO employee (employee_Id, first_Name, last_Name, nic, house_No, street, city, contact_No, email, role, date, time, user_Name)
-VALUES ('E-004', 'Bob', 'Williams', '200109801212', '1011', 'Sunset Boulevard', 'Cityscape', '0702410444', 'gayanukariviru3@gmail.com', 'Other', '2023-11-15', '10:15:00', 'rgb');
-
-
-INSERT INTO employee (employee_Id, first_Name, last_Name, nic, house_No, street, city, contact_No, email, role, date, time, user_Name)
-VALUES ('E-005', 'Eva', 'Miller', '200109807894', '1314', 'Ocean Drive', 'Seaville', '0702410555', 'gayanukariviru4@gmail.com', 'Sales staff', '2023-11-16', '10:15:00', 'rgb');
 
 
 CREATE TABLE user(
@@ -48,11 +33,7 @@ CREATE TABLE user(
 );
 
 INSERT INTO user (user_Name, password, employee_Id)
-VALUES ('grb', '1234', 'E-001');
-
-
-INSERT INTO user (user_Name, password, employee_Id)
-VALUES ('rgb', '1234', 'E-002');
+VALUES ('grb', '123456', 'E-001');
 
 
 ALTER TABLE employee ADD CONSTRAINT user_Name FOREIGN KEY(user_Name) REFERENCES user(user_Name) ON DELETE CASCADE ON UPDATE CASCADE;
@@ -77,11 +58,11 @@ VALUES ('C-002', 'Jane Smith', '0702410222', 'janesmith@example.com', '2023-11-1
 
 
 INSERT INTO customer (customer_Id, name, contact_No, email, date, time, user_Name)
-VALUES ('C-003', 'Alice Johnson', '0702410333', 'alicejohnson@example.com', '2023-11-12', '10:15:00', 'rgb');
+VALUES ('C-003', 'Alice Johnson', '0702410333', 'alicejohnson@example.com', '2023-11-12', '10:15:00', 'grb');
 
 
 INSERT INTO customer (customer_Id, name, contact_No, email, date, time, user_Name)
-VALUES ('C-004', 'Bob Williams', '0702410444', 'bobwilliams@example.com', '2023-11-13', '14:00:00', 'rgb');
+VALUES ('C-004', 'Bob Williams', '0702410444', 'bobwilliams@example.com', '2023-11-13', '14:00:00', 'grb');
 
 
 INSERT INTO customer (customer_Id, name, contact_No, email, date, time, user_Name)
@@ -132,7 +113,7 @@ CREATE TABLE supplier(
 );
 
 INSERT INTO supplier (supplier_Id, name, email, contact_No, time, date, user_Name)
-VALUES ('S-001', 'ABC Suppliers', 'abcsuppliers@example.com', '0702410111', '08:00:00', '2023-11-10', 'rgb');
+VALUES ('S-001', 'ABC Suppliers', 'abcsuppliers@example.com', '0702410111', '08:00:00', '2023-11-10', 'grb');
 
 
 INSERT INTO supplier (supplier_Id, name, email, contact_No, time, date, user_Name)
@@ -140,7 +121,7 @@ VALUES ('S-002', 'XYZ Distributors', 'xyzdistributors@example.com', '0702410222'
 
 
 INSERT INTO supplier (supplier_Id, name, email, contact_No, time, date, user_Name)
-VALUES ('S-003', 'LMN Traders', 'lmntraders@example.com', '0702410333', '13:15:00', '2023-11-12', 'rgb');
+VALUES ('S-003', 'LMN Traders', 'lmntraders@example.com', '0702410333', '13:15:00', '2023-11-12', 'grb');
 
 
 INSERT INTO supplier (supplier_Id, name, email, contact_No, time, date, user_Name)
@@ -148,7 +129,7 @@ VALUES ('S-004', 'PQR Importers', 'pqrimporters@example.com', '0702410444', '15:
 
 
 INSERT INTO supplier (supplier_Id, name, email, contact_No, time, date, user_Name)
-VALUES ('S-005', 'MNO Wholesalers', 'mnowholesalers@example.com', '0702410555', '18:20:00', '2023-11-14', 'rgb');
+VALUES ('S-005', 'MNO Wholesalers', 'mnowholesalers@example.com', '0702410555', '18:20:00', '2023-11-14', 'grb');
 
 
 CREATE TABLE supplier_Order(

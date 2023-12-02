@@ -172,7 +172,7 @@ public class ProductStockModel {
 
     public String getQtyTotal(String id) throws SQLException {
 
-        String sql = ("SELECT qty FROM product_Stock WHERE product_Id=?");
+        String sql = ("SELECT qty_On_Hand FROM product_Stock WHERE product_Id=?");
         PreparedStatement statement = DbConnection.getInstance().getConnection().prepareStatement(sql);
         statement.setString(1,id);
 

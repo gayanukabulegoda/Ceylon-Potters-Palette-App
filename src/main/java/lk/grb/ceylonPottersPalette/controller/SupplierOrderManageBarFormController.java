@@ -73,7 +73,7 @@ public class SupplierOrderManageBarFormController {
         HashMap<String, Object> hashMap = new HashMap<>();
 
         hashMap.put("date", supplierOrderDto.getDate());
-        hashMap.put("time", supplierOrderDto.getDate());
+        hashMap.put("time", supplierOrderDto.getTime());
         hashMap.put("orderId", supplierOrderDto.getSupplier_Order_Id());
         hashMap.put("supplierId", supplierOrderDto.getSupplier_Id());
         hashMap.put("supplierName", supplierDto.getName());
