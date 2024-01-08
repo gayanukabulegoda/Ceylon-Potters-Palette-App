@@ -21,7 +21,7 @@ business by enhancing productivity and profitability.
 <a href="https://git-scm.com/" target="blank"><img src = "https://img.shields.io/badge/Git-100000?style=for-the-badge&logo=git&logoColor=white"></a>
 <a href="https://jdk.java.net/java-se-ri/11-MR2" target="blank"><img src = "https://img.shields.io/badge/Java-100000?style=for-the-badge&logo=openjdk&logoColor=white"></a>
 <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.desktop/javax/swing/text/html/CSS.html" target="blank"><img src = "https://img.shields.io/badge/CSS-100000?style=for-the-badge&logo=css3&logoColor=white"></a>
-<a href="https://jdk.java.net/java-se-ri/11-MR2" target="blank"><img src = "https://img.shields.io/badge/Mysql-100000?style=for-the-badge&logo=mysql&logoColor=white"></a>
+<a href="https://dev.mysql.com/doc/mysql-getting-started/en/" target="blank"><img src = "https://img.shields.io/badge/Mysql-100000?style=for-the-badge&logo=mysql&logoColor=white"></a>
 <a href="https://www.jetbrains.com/idea/download/?section=linux" target="blank"><img src = "https://img.shields.io/badge/Intellij Idea-100000?style=for-the-badge&logo=intellij%20idea&logoColor=white"></a>
 <a href="https://linuxmint.com/download_all.php" target="blank"><img src = "https://img.shields.io/badge/Linux_Mint-100000?style=for-the-badge&logo=linux-mint&logoColor=white"></a>
 </div> <br>
