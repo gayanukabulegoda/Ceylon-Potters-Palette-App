@@ -1,19 +1,67 @@
-
 # Ceylon Potters' Pallet App
 
-An standalone & customized IT solution for the Ceylon Potters' Palette pottery production
-industry, the software optimizes and centralizes essential functions.
+**Ceylon Potters' Palette App** is a standalone and customized IT solution designed to streamline and centralize key functions for the Ceylon Potters' Palette pottery production company. This application optimizes employee, stock, supplier, and order management processes while providing insightful dashboards and profit analysis, driving efficiency and productivity.
 
-## Overview
+# Overview
 
-This software encompasses robust modules for employee
-management, supplier management, salary management, item & product stock management,
-order management and customer management ensuring seamless customer interactions and
-order processing.
+This comprehensive software solution includes the following key modules:
 
-Additionally, a comprehensive profit analysis module provides valuable
-insights for informed decision-making. This standalone IT solution elevates this pottery
-business by enhancing productivity and profitability.
+- **Employee Management**: Track and manage employee details.
+- **Employee Attendance Management**: Monitor attendance via QR code scanning or manual ID entry.
+- **Supplier Management**: Streamline supplier data and interactions.
+- **Salary Management**: Automate salary calculations and tracking.
+- **Stock Management**: Manage product and repair stock efficiently, including inventory levels and updates.
+- **Customer & Order Management**: Track customer data, orders, and supplier interactions.
+- **Interactive Dashboard**: Analyze key business metrics such as today's sales, stock levels, employee attendance, total production, and more. Includes a bar graph showcasing income vs. expenses for profit analysis.
+- **Order Pop-ups and Billing**: View detailed order information in pop-ups and generate customized bills for each customer and supplier order.
+- **Search Functionality**: Search filters are implemented for customers, suppliers, employees, stock, and sales for better user experience.
+- **Security Features**: Includes QR code scanning for account deletion, OTP-based password recovery, and email confirmation for account actions.
+- **Notifications**: Sends welcome messages upon sign-up and confirmation emails for password changes or account deletions.
+
+### Profit Analysis Module
+
+The system features a comprehensive profit analysis module that provides insights into business performance, aiding in better decision-making.
+
+## Technologies Used
+
+- **Java**
+- **JavaFX**
+- **MySQL**
+- **CSS** (for styling)
+- **MVC Architecture**
+
+## Figma Design
+
+For a detailed view of the user interface, please refer to the [Figma Design](https://www.figma.com/community/file/1419020131831010712/ceylon-potters-pallet).
+
+## Project Proposal Document
+
+You can access the detailed project proposal document [here](https://drive.google.com/file/d/1DA_U-qJJnA8zVxInYtB2E-nHA2uBZCdg/view?usp=sharing).
+
+## Getting Started
+
+To get started with the project, follow these steps:
+
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/gayanukabulegoda/Ceylon-Potters-Palette.git
+
+2. **Prerequisites:**:
+   - Ensure you have the latest version of Java and JavaFX installed (JDK 8 or higher).
+   - You will need an IDE like IntelliJ IDEA or Eclipse to run the project.
+   - Make sure to install MySQL and any additional libraries or dependencies as required.
+
+3. **Run the Application:**:
+   - Open the project in your preferred IDE.
+   - Build and run the project to launch the application.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+
+## Contact
+
+For any inquiries or further information, feel free to reach out via [LinkedIn](https://www.linkedin.com/in/gayanuka-bulegoda-2b993127a).
 
 ##
 <div align="center">
